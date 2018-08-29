@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TratoMedi.Views.V_MasterMenu"
+             xmlns:pages="clr-namespace:TratoMedi.Views">
+    <MasterDetailPage.Resources>
+        <Style x:Key="imgBoton" TargetType="Image">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="2,10,2,5"/>
+        </Style>
+        <Style x:Key="LblBoton" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+    </MasterDetailPage.Resources>
+
+
+    <MasterDetailPage.Master>
+        <ContentPage  BackgroundColor="LightGray" Title="Master">
+            <ContentPage.Content>
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout x:Name="StackPrin" IsVisible="True">
+                            <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Fn_Inicio" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Inicio" Style="{StaticResource LblBoton}"/>
+
+
+                            <Image Source="INFO_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Fn_Info" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Información" Style="{StaticResource LblBoton}"/>
+
+
+                            <Image Source="Registro" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Registro" Style="{StaticResource LblBoton}" />
+
+
+                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Login"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Iniciar Sesión" Style="{StaticResource LblBoton}" />
+
+
+                            <Image Source="mail_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Contacto"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Contacto" Style="{StaticResource LblBoton}" />
+
+                        </StackLayout>
+
+
+
+
+
+                        <StackLayout x:Name="StackLog" IsVisible="True">
+                            <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Inicio"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Inicio" Style="{StaticResource LblBoton}"/>
+
+                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Perfil"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Perfil" Style="{StaticResource LblBoton}"/>
+
+
+                            <Image Source="Citas" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Citas"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Citas" Style="{StaticResource LblBoton}" />
+
+
+                            <Image Source="Opciones" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Opciones"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text=" Opciones" Style="{StaticResource LblBoton}"/>
+
+
+
+                            <Image Source="mail_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Contacto" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Contacto" Style="{StaticResource LblBoton}" />
+
+                            <Image Source="LogOut" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_CerraSesion"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Salir" Style="{StaticResource LblBoton}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

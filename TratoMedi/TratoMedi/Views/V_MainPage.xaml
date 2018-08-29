@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:TratoMedi.Views"
+            x:Class="TratoMedi.Views.V_MainPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView x:Name="Stack_Info" IsVisible="false">
+                <StackLayout   Margin="20,0" >
+                    <Image Source="ICONOAPP"></Image>
+                    <Label FontSize="Large" Text="¿QUIÉNES SOMOS?" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource NavigationPrimary}"></Label>
+                    <Label x:Name="I_lbl" HorizontalTextAlignment="Center" FontSize="Medium" ></Label>
+                </StackLayout>
+            </ScrollView>
+
+
+            <ScrollView x:Name="StackContacto"  IsVisible="False">
+                <StackLayout  Margin="20,0">
+                    <Label Text="Enviar Correo a Trato Especial" FontSize="Large"></Label>
+                    <Label Text="Nombre: " Style="{StaticResource AzulMedLbl}"></Label>
+                    <Entry x:Name="C_nom"></Entry>
+                    <Label Text="Correo Electronico: " Style="{StaticResource AzulMedLbl}"></Label>
+                    <Entry x:Name="C_correo"></Entry>
+                    <Label Text="Escribe aquí tu comentario: " Style="{StaticResource AzulMedLbl}"></Label>
+                    <Editor AutoSize="TextChanges" x:Name="C_mensaje"></Editor>
+                    <Button Text="Enviar" Style="{StaticResource Buton}" ></Button>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout x:Name="StackPrin" IsVisible="False">
+                <Grid>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="LOGOTRATOESPECIAL.png" Grid.Column="0" Grid.Row="0"></Image>
+                    <Image x:Name="MainBanner" Source="" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" Aspect="AspectFit" Margin="0,20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Fn_AbrirSitio"   NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
