@@ -10,7 +10,8 @@ using ZXing.Net.Mobile.Forms;
 using TratoMedi.Personas;
 using System.Net.Http;
 using Newtonsoft.Json;
-
+using TratoMedi.Varios;
+using System.Collections.ObjectModel;
 
 
 namespace TratoMedi.Views
@@ -18,23 +19,37 @@ namespace TratoMedi.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class V_Paciente : ContentPage
 	{
-
+        ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
         public V_Paciente (bool _scan)
 		{
 			InitializeComponent ();
             if(_scan)
             {
+                Scanner.IsVisible = true;
+
                 Scanner.IsScanning = true;
-                StackPerfiles.IsVisible = false;
+                aaaa.IsVisible = false;
             }
             else
             {
                 Scanner.IsVisible = false;
                 Scanner.IsScanning = false;
-                StackPerfiles.IsVisible = true;
+                aaaa.IsVisible = true;
                 CargarGen();
                 CargarMed();
             }
+        }
+        public void Fn_NuevoMed(object sender, EventArgs _Args)
+        {
+
+        }
+        public void Fn_MostrarMed(object sender, EventArgs _Args)
+        {
+
+        }
+        public void Fn_Terminar(object sender, EventArgs _args)
+        {
+
         }
         /*private async void Scan(object sender, EventArgs _Args)
         {//crea una pagina especial del lector
@@ -112,15 +127,15 @@ namespace TratoMedi.Views
             }
             
         }
-        public void Fn_NullEntry(Entry _entry, string _textos)
+        public void Fn_NullEntry(Label _lbl, string _textos)
         {
             if (string.IsNullOrEmpty(_textos))
             {
-                _entry.Text = "";
+                _lbl.Text = "";
             }
             else
             {
-                _entry.Text = _textos;
+                _lbl.Text = _textos;
             }
         }
         public void Fn_NullEntry(Editor _editor, string _textos)
@@ -140,14 +155,12 @@ namespace TratoMedi.Views
 
             if (string.IsNullOrEmpty(App.v_pergen.v_FecNaci))
             {
-                G_fecha.Date = DateTime.Now;
-                G_fecha.IsEnabled = true;
+                G_fecha.Text = "N/A";
             }
             else
             {
-                string[] fecha = App.v_pergen.v_FecNaci.Split('-');
-                G_fecha.Date = new DateTime(int.Parse(fecha[0]), int.Parse(fecha[1]), int.Parse(fecha[2]));
-                G_fecha.IsEnabled = false;
+                string[] fecha = App.v_pergen.v_FecNaci.Split('-');               
+                G_fecha.Text = fecha[2] + " - " + fecha[1] + " - " + fecha[0];
             }
             
             Fn_NullEntry(G_Ocu, App.v_pergen.v_Ocup);
@@ -161,9 +174,9 @@ namespace TratoMedi.Views
             Fn_NullEntry(M_Sangre, App.v_perMed.v_sangre);
             if ((App.v_perMed.v_sexo < 0) || (App.v_perMed.v_sexo > 1))
             {
-                M_sexoPick.IsEnabled = true;
                 if (App.v_perMed.v_sexo == 1)
                 {
+                    M_sexoPick.Text = "Femenino";
                     M_sexo.IsVisible = true;
                     M_sexolbl.IsVisible = true;
                     M_sexolbl.Text = "¿estas embarazada?,\n ¿tienes hijos? ¿cuantos?";
@@ -171,6 +184,7 @@ namespace TratoMedi.Views
                 }
                 else
                 {
+                    M_sexoPick.Text = "Masculino";
                     M_sexo.IsVisible = false;
                     M_sexolbl.IsVisible = false;
                     M_sexolbl.Text = "";
@@ -179,11 +193,9 @@ namespace TratoMedi.Views
             }
             else
             {
-                M_sexoPick.SelectedIndex = App.v_perMed.v_sexo;
-                M_sexoPick.Title = M_sexoPick.SelectedIndex.ToString();
-                M_sexoPick.IsEnabled = false;
                 if (App.v_perMed.v_sexo == 1)
                 {
+                    M_sexoPick.Text = "Femenino";
                     M_sexo.IsVisible = true;
                     M_sexolbl.IsVisible = true;
                     M_sexolbl.Text = "¿estas embarazada?,\n ¿tienes hijos? ¿cuantos?";
@@ -191,6 +203,7 @@ namespace TratoMedi.Views
                 }
                 else
                 {
+                    M_sexoPick.Text = "Masculino";
                     M_sexo.IsVisible = false;
                     M_sexolbl.IsVisible = false;
                     M_sexolbl.Text = "";
@@ -198,30 +211,30 @@ namespace TratoMedi.Views
             }
 
 
-            if (string.IsNullOrEmpty(App.v_perMed.v_alergias))
-            {
-                M_Alergias.IsVisible = false;
                 Fn_NullEntry(M_Alergias, App.v_perMed.v_alergias);
-            }
-            else
-            {
-                M_Alergias.IsVisible = true;
-                Fn_NullEntry(M_Alergias, App.v_perMed.v_alergias);
-            }
+            //if (string.IsNullOrEmpty(App.v_perMed.v_alergias))
+            //{
+            //    M_Alergias.IsVisible = false;
+            //}
+            //else
+            //{
+            //    M_Alergias.IsVisible = true;
+            //    Fn_NullEntry(M_Alergias, App.v_perMed.v_alergias);
+            //}
 
             Fn_NullEntry(M_Operaciones, App.v_perMed.v_operaciones);
 
 
-            if (string.IsNullOrEmpty(App.v_perMed.v_enfer))
-            {
-                M_Enferme.IsVisible = false;
                 Fn_NullEntry(M_Enferme, App.v_perMed.v_enfer);
-            }
-            else
-            {
-                M_Enferme.IsVisible = true;
-                Fn_NullEntry(M_Enferme, App.v_perMed.v_enfer);
-            }
+            //if (string.IsNullOrEmpty(App.v_perMed.v_enfer))
+            //{
+            //    M_Enferme.IsVisible = false;
+            //}
+            //else
+            //{
+            //    M_Enferme.IsVisible = true;
+            //    Fn_NullEntry(M_Enferme, App.v_perMed.v_enfer);
+            //}
 
             Fn_NullEntry(M_Medicamentos, App.v_perMed.v_medica);
 

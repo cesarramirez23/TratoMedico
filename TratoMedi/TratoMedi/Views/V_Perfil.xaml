@@ -44,7 +44,7 @@
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Sexo" Style="{StaticResource lblSty}"></Label>
-                    <Picker x:Name="P_sexoPick" HorizontalOptions="FillAndExpand"  Title="Elige tu sexo">
+                    <Picker x:Name="P_sexoPick" HorizontalOptions="FillAndExpand"  Title="Elige tu sexo" IsEnabled="False">
                         <Picker.Items>
                             <x:String>Masculino</x:String>
                             <x:String>Femenino</x:String>
@@ -87,16 +87,7 @@
                     <Label Text="Correo Electronico" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Casa@correo.com" Text="" Style="{StaticResource entry_perfil}" Keyboard="Email" x:Name="P_Corr"></Entry>
                 </StackLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                 
-                
-                <TimePicker Margin="10,0" x:Name="time1" BackgroundColor="Beige"> </TimePicker>               
-                <TimePicker Margin="10,0" x:Name="time2" BackgroundColor="HotPink"> </TimePicker>               
-
-                </StackLayout>
-               
-
                 <Label Text="Descripcion y Descuentos" Style="{StaticResource lblSty}"></Label>
                 <Editor   Text="descuentos especiales por trato" Style="{StaticResource Editor}" IsEnabled="False" x:Name="P_Descrip"></Editor>
 

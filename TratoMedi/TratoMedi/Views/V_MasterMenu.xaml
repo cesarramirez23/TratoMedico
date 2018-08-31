@@ -96,7 +96,7 @@
                             
                             <Image Source="Citas" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Horario"/>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Citas" Style="{StaticResource LblBoton}" />

@@ -66,11 +66,6 @@ namespace TratoMedi.Views
             IsPresented = false;
             Detail = new NavigationPage(new V_Login() { Title = "Iniciar Sesión" });
         }
-        public void Fn_Horario(object sender, EventArgs _args)
-        {
-            IsPresented = false;
-            Detail = new NavigationPage(new V_Horarios() { Title = "Horarios" });
-        }
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;

@@ -19,9 +19,6 @@ namespace TratoMedi.Views
         bool v_editar = false;
         public V_Perfil ()
         {
-            InitializeComponent();
-            time1.Time = new TimeSpan(08, 12, 00);
-            time2.Time = new TimeSpan(23, 58, 0);
         }
         public async void Fn_Editar(object sender, EventArgs _args)
         {
