@@ -5,7 +5,7 @@
     <SdkVersion>22</SdkVersion>
   </Device>
   <Device id="emulator-5554">
-    <ResultingAbi></ResultingAbi>
+    <ResultingAbi>x86_64</ResultingAbi>
     <SdkVersion>25</SdkVersion>
   </Device>
 </Devices>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TratoMedi.Views.V_Perfil">
+    <TabbedPage.Resources>
+        <Style x:Key="Editor" TargetType="Editor">
+            <Setter Property="AutoSize" Value="TextChanges"></Setter>
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+        <Style TargetType="Label" x:Key="lblSty">
+            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalOptions" Value="Start"></Setter>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="{StaticResource NavigationPrimary}"/>
+        </Style>
+        <Style x:Key="entry_perfil" TargetType="Entry">
+            <Setter Property="VerticalOptions" Value="Center"></Setter>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Keyboard" Value="Default"/>
+        </Style>
+    </TabbedPage.Resources>
+    
+    
+    
+    <ContentPage Title="Perfil" >
+        <ScrollView>
+            <StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Titulo" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Titulo" Text="lic, dr " x:Name="P_Titulo"  Style="{StaticResource entry_perfil}"></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Nombres" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Colonia" Text="colonia del usuario" x:Name="P_Nom" Style="{StaticResource entry_perfil}"></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Apellido" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Apellidos " Text="Ar" Style="{StaticResource entry_perfil}" x:Name="P_Ape" ></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Sexo" Style="{StaticResource lblSty}"></Label>
+                    <Picker x:Name="P_sexoPick" HorizontalOptions="FillAndExpand"  Title="Elige tu sexo">
+                        <Picker.Items>
+                            <x:String>Masculino</x:String>
+                            <x:String>Femenino</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Especialidad" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Especialidad" Text="Anestesiología" Style="{StaticResource entry_perfil}" x:Name="P_Esp" ></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Cédula Profesional" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Cédula Profesional" Text="ADER4T58UGCSW2342D" Style="{StaticResource entry_perfil}" x:Name="P_Ced"></Entry>
+                </StackLayout>
+
+                
+                <Label Text="Horario" Style="{StaticResource lblSty}"></Label>
+                <Editor Text="lunes marte 23" Style="{StaticResource Editor}" x:Name="P_hor"></Editor>
+
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Domicilio" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Domicilio" Text="avenid dos #23 colonia nueva " x:Name="P_dom" Style="{StaticResource entry_perfil}" ></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Ciudad" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Ciudad" Text="Zapopan" Style="{StaticResource entry_perfil}" x:Name="P_Ciu"></Entry>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Telefono de Contacto" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="334455667788" Text="1234567890" Style="{StaticResource entry_perfil}" x:Name="P_Tel" Keyboard="Numeric"></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Correo Electronico" Style="{StaticResource lblSty}"></Label>
+                    <Entry  Placeholder="Casa@correo.com" Text="" Style="{StaticResource entry_perfil}" Keyboard="Email" x:Name="P_Corr"></Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                
+                
+                <TimePicker Margin="10,0" x:Name="time1" BackgroundColor="Beige"> </TimePicker>               
+                <TimePicker Margin="10,0" x:Name="time2" BackgroundColor="HotPink"> </TimePicker>               
+
+                </StackLayout>
+               
+
+                <Label Text="Descripcion y Descuentos" Style="{StaticResource lblSty}"></Label>
+                <Editor   Text="descuentos especiales por trato" Style="{StaticResource Editor}" IsEnabled="False" x:Name="P_Descrip"></Editor>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton}" HorizontalOptions="Start" Clicked="Fn_Editar"></Button>
+                    <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton}" HorizontalOptions="End" Clicked="Fn_Guardar" IsVisible="False"></Button>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage>
+</TabbedPage>

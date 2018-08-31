@@ -17,15 +17,15 @@ namespace TratoMedi.Views
             InitializeComponent();
             if (_logeado)
             {
-                StackLog.IsVisible = true;
+                //StackLog.IsVisible = true;
                 App.Fn_CargarDatos();
                 Detail.Title = _title;
-                StackPrin.IsVisible = false;
+               // StackPrin.IsVisible = false;
             }
             else
             {
-                StackPrin.IsVisible = true;
-                StackLog.IsVisible = false;
+                //StackPrin.IsVisible = true;
+                //StackLog.IsVisible = false;
             }
             IsPresented = false;
             Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
@@ -49,7 +49,7 @@ namespace TratoMedi.Views
         public void Fn_Perfil(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_MainPage(2) { Title = "Contacto" });
+            Detail = new NavigationPage(new V_Perfil() { Title = "Perfil" });
         }
         public void Fn_Login(object sender, EventArgs _args)
         {
@@ -65,6 +65,11 @@ namespace TratoMedi.Views
         {
             IsPresented = false;
             Detail = new NavigationPage(new V_Login() { Title = "Iniciar Sesión" });
+        }
+        public void Fn_Lector(object sender, EventArgs _args)
+        {
+            IsPresented = false;
+            Detail = new NavigationPage(new V_Paciente() { Title = "Lector" });
         }
         public void Fn_CerraSesion(object sender, EventArgs _args)
         {

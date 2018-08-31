@@ -1,5 +1,7 @@
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.pdb
+C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMed.apk
+C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMed-Signed.apk
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.dll
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.pdb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\TratoMedi.Android.csprojAssemblyReference.cache
@@ -8,6 +10,7 @@ C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Deb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\TratoMedi.Android.csproj.CopyComplete
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\TratoMedi.Android.dll
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\TratoMedi.Android.pdb
+C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\android\bin\com.alsain.TratoMed.apk
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\res\layout\tabbar.xml
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\res\layout\toolbar.xml
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\res\values\styles.xml
@@ -106,9 +109,6 @@ C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Deb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\TratoMedi.pdb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMed.apk
-C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMed-Signed.apk
-C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\android\bin\com.alsain.TratoMed.apk
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.pdb
 C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.Android.dll.mdb
