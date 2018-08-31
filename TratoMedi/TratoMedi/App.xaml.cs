@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TratoMedi.Personas;
 using Newtonsoft.Json;
 
+//casa compila con com.alsain.TratoMed     com.alsain.TratoMedicos
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace TratoMedi
 {
@@ -14,6 +15,8 @@ namespace TratoMedi
         public static string v_membresia = "";
         public static string v_log="";
         public static C_Medico v_perfil;
+        public static C_PerfilGen v_pergen;
+        public static C_PerfilMed v_perMed;
         public App ()
 		{
 			InitializeComponent();
@@ -22,6 +25,7 @@ namespace TratoMedi
 		protected override void OnStart ()
 		{
             // Handle when your app starts
+            Properties.Clear();
             if (Properties.ContainsKey("log"))
             {
                 //lee el valor guardado
@@ -84,6 +88,18 @@ namespace TratoMedi
                 string _json = JsonConvert.SerializeObject(v_perfil);
                 Properties.Add("perfil", _json);
             }
+            if (!Properties.ContainsKey("perfMed"))
+            {
+                v_perMed = new C_PerfilMed();
+                string _json = JsonConvert.SerializeObject(v_perMed);
+                Properties.Add("perfMed", _json);
+            }
+            if (!Properties.ContainsKey("perfGen"))
+            {
+                v_pergen = new C_PerfilGen();
+                string _json = JsonConvert.SerializeObject(v_pergen);
+                Properties.Add("perfGen", _json);
+            }
             await Task.Delay(100);
         }
         public static async void Fn_CargarDatos()
@@ -108,7 +124,28 @@ namespace TratoMedi
                 string _json=Current.Properties["perfil"] as string;
                 v_perfil = JsonConvert.DeserializeObject<C_Medico>(_json);
             }
-
+            if (!Current.Properties.ContainsKey("perfMed"))
+            {
+                v_perMed = new C_PerfilMed();
+                string _json = JsonConvert.SerializeObject(v_perMed);
+                Current.Properties.Add("perfMed", _json);
+            }
+            else
+            {
+                string _json = Current.Properties["perfMed"] as string;
+                v_perMed = JsonConvert.DeserializeObject<C_PerfilMed>(_json);
+            }
+            if (!Current.Properties.ContainsKey("perfGen"))
+            {
+                v_pergen = new C_PerfilGen();
+                string _json = JsonConvert.SerializeObject(v_pergen);
+                Current.Properties.Add("perfGen", _json);
+            }
+            else
+            {
+                string _json = Current.Properties["perfGen"] as string;
+                v_pergen = JsonConvert.DeserializeObject<C_PerfilGen>(_json);
+            }
 
             await Task.Delay(100);
         }
@@ -122,8 +159,42 @@ namespace TratoMedi
         {
             Current.Properties["log"] = v_log;
             Current.Properties["membre"] = v_membresia;
+
+            v_perfil = _perfil;
             string _json = JsonConvert.SerializeObject(_perfil);
             Current.Properties["perfil"] = _json;
+
+            await Current.SavePropertiesAsync();
+            Fn_CargarDatos();
+            await Task.Delay(100);
+        }
+        public static async void Fn_GuardarDatos(C_PerfilMed _med)
+        {
+            Current.Properties["log"] = v_log;
+            Current.Properties["membre"] = v_membresia;
+
+            v_perMed = _med;
+            string _jsonPerMed = JsonConvert.SerializeObject(v_perMed, Formatting.Indented);
+            Current.Properties["perfMed"] = _jsonPerMed;
+        
+
+            await Current.SavePropertiesAsync();
+            Fn_CargarDatos();
+            await Task.Delay(100);
+        }
+
+        public static async void Fn_GuardarDatos(C_PerfilGen _gen)
+        {
+            Current.Properties["log"] = v_log;
+            Current.Properties["membre"] = v_membresia;
+
+            v_pergen = _gen;
+            string _jsonGen = JsonConvert.SerializeObject(v_pergen, Formatting.Indented);
+            Current.Properties["perfGen"] = _jsonGen;
+
+
+            await Current.SavePropertiesAsync();
+            Fn_CargarDatos();
             await Task.Delay(100);
         }
         public static async void Fn_CerrarSesion()

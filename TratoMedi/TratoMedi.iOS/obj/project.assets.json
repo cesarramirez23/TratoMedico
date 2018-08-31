@@ -950,20 +950,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CesarAugusto\\.nuget\\packages\\": {}
+    "C:\\Users\\AlsainVR\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
       "projectName": "TratoMedi.iOS",
-      "projectPath": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
-      "packagesPath": "C:\\Users\\CesarAugusto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi.iOS\\obj\\",
+      "projectPath": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
+      "packagesPath": "C:\\Users\\AlsainVR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\CesarAugusto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AlsainVR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -976,8 +976,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi\\TratoMedi.csproj": {
-              "projectPath": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi\\TratoMedi.csproj"
+            "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj": {
+              "projectPath": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj"
             }
           }
         }

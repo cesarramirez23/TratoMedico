@@ -1,8 +1,9 @@
+System.Runtime
+TratoMedi
+netstandard
 FastAndroidCamera
 FormsViewGroup
 Newtonsoft.Json
-System.Runtime
-TratoMedi
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common
 Xamarin.Android.Arch.Lifecycle.Runtime
@@ -31,4 +32,3 @@ ZXing.Net.Mobile.Forms.Android
 ZXing.Net.Mobile.Forms
 zxing.portable
 ZXingNetMobile
-netstandard

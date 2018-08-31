@@ -20,10 +20,10 @@
             <Setter Property="Keyboard" Value="Default"/>
         </Style>
     </TabbedPage.Resources>
+
+
     
-    
-    
-    <ContentPage Title="Perfil" >
+    <ContentPage Title="Perfil"  >
         <ScrollView>
             <StackLayout>
                 

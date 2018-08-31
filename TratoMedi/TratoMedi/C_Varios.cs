@@ -23,4 +23,10 @@ namespace TratoMedi.Varios
             v_sitio = _sitio;
         }
     }
+    public class Citas
+    {
+        public string v_cliente { get; set; }
+        public string v_hora { get; set; }
+        public string v_fecha { get; set; }
+    }
 }

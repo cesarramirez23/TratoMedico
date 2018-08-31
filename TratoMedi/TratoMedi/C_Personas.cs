@@ -67,6 +67,115 @@ namespace TratoMedi.Personas
             this.v_pass = _pass;
         }
     }
+    public class C_PerfilGen
+    {
+        [JsonProperty("nombre")]
+        public string v_Nombre { get; set; }
+        [JsonProperty("rfc")]
+        public string v_Rfc { get; set; }
+        [JsonProperty("fechanac")]
+        public string v_FecNaci { get; set; }
+        [JsonProperty("lugnac")]
+        public string v_LugNac { get; set; }
+        [JsonProperty("ocu")]
+        public string v_Ocup { get; set; }
+        [JsonProperty("idsexo")]
+        public int v_idsexo { get; set; }
+        [JsonProperty("tel")]
+        public string v_Tel { get; set; }
+        [JsonProperty("cel")]
+        public string v_Cel { get; set; }
+        [JsonProperty("calle")]
+        public string v_Calle { get; set; }
+        [JsonProperty("numext")]
+        public string v_NumExt { get; set; }
+        [JsonProperty("numint")]
+        public string v_NumInt { get; set; }
+        [JsonProperty("colonia")]
+        public string v_Colonia { get; set; }
+        [JsonProperty("ciudad")]
+        public string v_Ciudad { get; set; }
+        [JsonProperty("municipio")]
+        public string v_municipio { get; set; }
+        [JsonProperty("estado")]
+        public string v_Estado { get; set; }
+        [JsonProperty("cp")]
+        public string v_Cp { get; set; }
+        [JsonProperty("correo")]
+        public string v_Correo { get; set; }
+
+        public C_PerfilGen()
+        {
+            v_idsexo = -1;
+            v_Nombre = "";
+            v_Rfc = "";
+            v_FecNaci = "";
+            v_LugNac = "";
+            v_Ocup = "";
+            v_Tel = "";
+            v_Cel = "";
+            v_Calle = "";
+            v_NumExt = "";
+            v_NumInt = "";
+            v_Colonia = "";
+            v_Ciudad = "";
+            v_municipio = "";
+            v_Estado = "";
+            v_Cp = "";
+            v_Correo = "";
+        }
+        public C_PerfilGen(string _nom, string _rfc, DateTime _fechnac, string _lugnac, string _ocu, int _idsexo, string _tel, string _cel,
+            string _calle, string _numExt, string _numInt, string _col, string _ciud, string _mun, string _est, string _cp, string _corr)
+        {
+            v_Nombre = _nom;
+            v_Rfc = _rfc;
+            string _month = "";
+            if (_fechnac.Month < 10)
+            {
+                _month = "0" + _fechnac.Month.ToString();
+            }
+            else
+            {
+                _month = _fechnac.Month.ToString();
+            }
+            string _day = "";
+            if (_fechnac.Day < 10)
+            {
+                _day = "0" + _fechnac.Day.ToString();
+            }
+            else
+            {
+                _day = _fechnac.Day.ToString();
+            }
+            v_FecNaci = _fechnac.Year.ToString() + "-" + _month + "-" + _day;
+            v_LugNac = _lugnac;
+            v_Ocup = _ocu;
+            v_idsexo = _idsexo;
+            v_Tel = _tel;
+            v_Cel = _cel;
+            v_Calle = _calle;
+            v_NumExt = _numExt;
+            v_NumInt = _numInt;
+            v_Colonia = _col;
+            v_Ciudad = _ciud;
+            v_municipio = _mun;
+            v_Estado = _est;
+            v_Cp = _cp;
+            v_Correo = _corr;
+        }
+        public string Fn_GetDatos()
+        {
+            string _ret = "";
+            _ret = "nombre " + v_Nombre + "  rfc  " + v_Rfc + "  fech nac" + v_FecNaci + " lugnac  " + v_LugNac + " ocu " + v_Ocup + "\n" +
+                 "id sexo " + v_idsexo + "  tel " + v_Tel + " cel  " + v_Cel + "  \n" +
+                 "  calle  " + v_Calle + " numext " + v_NumExt + "  numint " + v_NumInt + "  " +
+                 "colonia " + v_Colonia + "ciud  " + v_Ciudad + " muni" + v_municipio + "  esta" + v_Estado + " \n" +
+                 "cp  " + v_Cp + "  corr " + v_Correo;
+            return _ret;
+
+
+        }
+    }
     /// <summary>
     /// informacion a mostrar en el buscador, para solicitar citas 
     /// </summary>
@@ -121,4 +230,5 @@ namespace TratoMedi.Personas
         }
 
     }
+
 }

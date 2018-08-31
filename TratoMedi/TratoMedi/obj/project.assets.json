@@ -452,23 +452,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CesarAugusto\\.nuget\\packages\\": {},
+    "C:\\Users\\AlsainVR\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
+      "projectUniqueName": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
       "projectName": "TratoMedi",
-      "projectPath": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
-      "packagesPath": "C:\\Users\\CesarAugusto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CesarAugusto\\source\\repos\\TratoMedi\\TratoMedi\\TratoMedi\\obj\\",
+      "projectPath": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
+      "packagesPath": "C:\\Users\\AlsainVR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AlsainVR\\Documents\\GitHub\\TratoMedico\\TratoMedi\\TratoMedi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\CesarAugusto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AlsainVR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
