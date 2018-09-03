@@ -19,6 +19,7 @@ namespace TratoMedi.Views
         bool v_editar = false;
         public V_Perfil ()
         {
+            InitializeComponent();
         }
         public async void Fn_Editar(object sender, EventArgs _args)
         {

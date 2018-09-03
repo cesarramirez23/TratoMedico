@@ -96,13 +96,13 @@
                             
                             <Image Source="Citas" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Citas"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Citas" Style="{StaticResource LblBoton}" />
 
 
-                            <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
+                            <Image Source="QR" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Lector"/>
                                 </Image.GestureRecognizers>

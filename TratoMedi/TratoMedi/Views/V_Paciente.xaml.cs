@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 
 namespace TratoMedi.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+	[XamlCompilation(XamlCompilationOptions.Compile)] 
 	public partial class V_Paciente : ContentPage
 	{
         ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
@@ -26,7 +26,6 @@ namespace TratoMedi.Views
             if(_scan)
             {
                 Scanner.IsVisible = true;
-
                 Scanner.IsScanning = true;
                 aaaa.IsVisible = false;
             }
@@ -35,20 +34,51 @@ namespace TratoMedi.Views
                 Scanner.IsVisible = false;
                 Scanner.IsScanning = false;
                 aaaa.IsVisible = true;
+                Todos.ItemsSource = v_medicamentos;
                 CargarGen();
                 CargarMed();
             }
         }
-        public void Fn_NuevoMed(object sender, EventArgs _Args)
+        public void Fn_CancelMedi(object sender, EventArgs _Args)
         {
+            Fn_Limpiar();
+            Fn_CAmbioStack(true, false, false);
 
         }
-        public void Fn_MostrarMed(object sender, EventArgs _Args)
+        public void Fn_GuarMedi(object sender, EventArgs _args)
         {
+            Medicamentos _nuevo = new Medicamentos();
+            _nuevo.v_nombre =App.Fn_Vacio( N_nombre.Text);
+            //tiene que ser un numero no vacio
+            if (string.IsNullOrEmpty(N_Perio.Text) || string.IsNullOrWhiteSpace(N_Perio.Text))
+            {
+                N_Perio.Text = "0";
+            }
+            _nuevo.v_periodo= int.Parse(   N_Perio.Text);
 
+            if (string.IsNullOrEmpty(N_Tiem.Text) || string.IsNullOrWhiteSpace(N_Tiem.Text))
+            {
+                N_Tiem.Text = "0";
+            }
+            _nuevo.v_tiempo= int.Parse( N_Tiem.Text);
+
+            _nuevo.v_extra =App.Fn_Vacio( N_Extra.Text );
+            v_medicamentos.Add(_nuevo);
+            Fn_CAmbioStack(true, false, false);
+            Fn_Limpiar();
+        }
+        public void Fn_NuevoMed(object sender, EventArgs _Args)
+        {
+            Fn_CAmbioStack( false, true, false);
+        }
+        public void Fn_MostrarMed(object sender, EventArgs _Args)
+        {//|
+            Fn_CAmbioStack( false, false,true);
+            Todos.ItemsSource = v_medicamentos;
         }
         public void Fn_Terminar(object sender, EventArgs _args)
         {
+            //eliminar lo guardado local y enviar su informacion de medicamentos
 
         }
         /*private async void Scan(object sender, EventArgs _Args)
@@ -71,7 +101,27 @@ namespace TratoMedi.Views
             // Navigate to our scanner page
             await Navigation.PushAsync(scanPage);
         }*/
-
+        void Fn_NoNumeros(object sender, TextChangedEventArgs _args)
+        {
+            Entry _entry = (Entry)sender;
+            char _ultimo = _entry.Text[_entry.Text.Length - 1];
+            if (_ultimo > 47 && _ultimo < 58)
+            {
+                _entry.Text = _entry.Text.Remove(_entry.Text.Length - 1); // remove last char
+            }
+        }
+        public void Fn_Eliminar(object sender, EventArgs _args)
+        {
+            var button = sender as Button;
+            var _elim = button.BindingContext as Medicamentos;
+            v_medicamentos.Remove(_elim);
+            //Todos.ItemsSource = v_medicamentos;
+        }
+        public async void Fn_TApMedi(object sender, ItemTappedEventArgs _args)
+        {
+            Medicamentos _item = _args.Item as Medicamentos;
+            await DisplayAlert("Medicamento", _item.Fn_Info(),"Aceptar");
+        }
         private async void Fn_Scan(ZXing.Result result)
         {
             //deja de escanear
@@ -240,6 +290,27 @@ namespace TratoMedi.Views
 
             await Task.Delay(100);
         }
+        void Fn_Limpiar()
+        {
+            N_Extra.Text = "";
+            N_nombre.Text = "";
+            N_Perio.Text = "";
+            N_Tiem.Text = "";
+        }
+        /// <summary>
+        /// perfil nuevo nota
+        /// </summary>
+        /// <param name="_perfil"></param>
+        /// <param name="_nuevo"></param>
+        /// <param name="_nota"></param>
+        void Fn_CAmbioStack(bool _perfil, bool _nuevo, bool _nota)
+        {
+            StackPerfiles.IsVisible = _perfil;
+            StackNuevo.IsVisible = _nuevo;
+            StackNota.IsVisible = _nota;
+        }
     }
+
+   
 
 }

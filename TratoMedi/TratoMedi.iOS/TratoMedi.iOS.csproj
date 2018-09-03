@@ -176,4 +176,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Perfil.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\QR.png" />
+  </ItemGroup>
 </Project>

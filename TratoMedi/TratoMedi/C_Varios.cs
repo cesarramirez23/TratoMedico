@@ -31,17 +31,23 @@ namespace TratoMedi.Varios
     }
     public class Medicamentos
     {
-        public string v_nombre;
+        public string v_nombre{ get; set; }
         /// <summary>
         /// por cuantos dias 
         /// </summary>
-        public int v_periodo;
+        public int v_periodo { get; set; }
        /// <summary>
        /// cada cuantas horas
        /// </summary>
-        public int v_tiempo;
+        public int v_tiempo { get; set; }
 
-        public string v_extra;
+        public string v_extra { get; set; }
 
+        public string Fn_Info()
+        {
+            string _info = "";
+            _info = "nombre " + v_nombre + "\n periodo " + v_periodo + "\n tiempo " + v_tiempo + "\n extra " + v_extra;
+            return _info;
+        }
     }
 }

@@ -220,6 +220,7 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMedicos1.apk
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.TratoMedicos1-Signed.apk
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\bin\com.alsain.TratoMedicos1.apk
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\res\drawable\qr.png
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.Android.dll.mdb

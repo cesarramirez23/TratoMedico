@@ -3029,14 +3029,17 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F010011
 			public const int Perfil = 2130771985;
 			
+			// aapt resource value: 0x7F010012
+			public const int QR = 2130771986;
+			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;
 			
 			// aapt resource value: 0x7F09006A
 			public const int tooltip_frame_light = 2131296362;
 			
-			// aapt resource value: 0x7F010012
-			public const int xamarin_logo = 2130771986;
+			// aapt resource value: 0x7F010013
+			public const int xamarin_logo = 2130771987;
 			
 			static Drawable()
 			{
