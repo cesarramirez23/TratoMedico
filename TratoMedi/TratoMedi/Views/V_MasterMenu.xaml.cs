@@ -59,17 +59,17 @@ namespace TratoMedi.Views
         public void Fn_Citas(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Paciente(false) { Title = "Iniciar Sesión" });
+            Detail = new NavigationPage(new V_Citas() { Title ="Citas"});
         }
         public void Fn_Opciones(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Login() { Title = "Iniciar Sesión" });
+            Detail = new NavigationPage(new V_Opciones() { Title = "Opciones" });
         }
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Paciente(true) { Title = "Lector" });
+            Detail = new NavigationPage(new V_Paciente(true) );
         }
         public void Fn_CerraSesion(object sender, EventArgs _args)
         {

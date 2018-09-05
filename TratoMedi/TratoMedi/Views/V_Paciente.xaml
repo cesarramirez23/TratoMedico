@@ -88,9 +88,9 @@
                             <Label Text="Medicamento"></Label>
                             <Editor AutoSize="TextChanges" x:Name="N_nombre"></Editor>
                             <Label Text="¿Por cuantos dias?"/>
-                            <Entry Keyboard="Numeric" TextChanged="Fn_NoNumeros" x:Name="N_Perio"></Entry>
+                            <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="N_Perio"></Entry>
                             <Label Text="¿Cada cuantas horas?"/>
-                            <Entry Keyboard="Numeric" x:Name="N_Tiem" TextChanged="Fn_NoNumeros"></Entry>
+                            <Entry Keyboard="Numeric" x:Name="N_Tiem" TextChanged="Fn_SoloNumero"></Entry>
                             <Label Text="Informacion Extra"/>
                             <Editor AutoSize="TextChanges" x:Name="N_Extra"/>
                             <Grid>
@@ -117,19 +117,32 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Text="Cancelar" Clicked="Fn_CancelMedi" Grid.Column="0"></Button>
+                            <Button Text="Actualizar" Clicked="Actualizar" Grid.Column="1"></Button>
                         </Grid>
-                        <Label Style="{StaticResource AzulMedLbl}" Text="Nota Medica" HorizontalOptions="Center"/>
-                        <ListView x:Name="Todos" ItemsSource="{Binding v_medicamentos, Mode=TwoWay}" ItemTapped="Fn_TApMedi" SelectionMode="None"
-                                  SeparatorColor="Black" SeparatorVisibility="Default" RowHeight="200">
+                        <Label Style="{StaticResource AzulMedLbl}" Text="Receta Médica" HorizontalOptions="Center"/>
+                        <ListView x:Name="Todos" ItemTapped="Fn_TApMedi" SelectionMode="None"
+                                  SeparatorColor="Black" SeparatorVisibility="Default" RowHeight="300" Margin="0,10">
+                            <!-- ItemsSource="{Binding v_medicamentos, Mode=TwoWay}" -->
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" BackgroundColor="LightGray"  Margin="10,0">
-                                            <Editor IsEnabled="False" Text="{Binding v_nombre}" Style="{StaticResource AzulMedLbl}"/>
-                                            <Label Text="{Binding v_periodo}" Style="{StaticResource AzulMedLbl}"/>
-                                            <Label Text="{Binding v_tiempo}" Style="{StaticResource AzulMedLbl}"/>
-                                            <Editor IsEnabled="False" Text="{Binding v_extra}" Style="{StaticResource AzulMedLbl}"/>
-                                            <Button Text="Eliminar" Clicked="Fn_Eliminar" Margin="10,5" Style="{StaticResource Buton}"></Button>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Button Text="Eliminar" Clicked="Fn_Eliminar" Margin="10,7" Style="{StaticResource Buton}"></Button>
+                                                <Button Text="Editar" Clicked="Fn_Editar" Margin="10,7" Style="{StaticResource Buton}"></Button>
+                                            </StackLayout>
+                                            <Label Text="Medicamento:" Style="{StaticResource AzulMedLbl}"></Label>
+                                            <Editor AutoSize="Disabled" IsEnabled="False" Text="{Binding v_nombre}" Style="{StaticResource AzulMedLbl}"/>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="Cantidad de dias: " HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}"></Label>
+                                                <Label Text="{Binding v_periodo}" Style="{StaticResource AzulMedLbl}"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="Cantidad de horas: " HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}"></Label>
+                                                <Label Text="{Binding v_tiempo}" Style="{StaticResource AzulMedLbl}"/> 
+                                            </StackLayout>
+                                            <Label Text="Información extra: " Style="{StaticResource AzulMedLbl}"/>
+                                            <Editor AutoSize="Disabled" IsEnabled="False" Text="{Binding v_extra}" Style="{StaticResource AzulMedLbl}"/>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>

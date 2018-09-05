@@ -31,16 +31,20 @@ namespace TratoMedi.Varios
     }
     public class Medicamentos
     {
+        [JsonProperty("nombre")]
         public string v_nombre{ get; set; }
+        [JsonProperty("periodo")]
         /// <summary>
         /// por cuantos dias 
         /// </summary>
         public int v_periodo { get; set; }
+        [JsonProperty("tiempo")]
        /// <summary>
        /// cada cuantas horas
        /// </summary>
         public int v_tiempo { get; set; }
 
+        [JsonProperty("extra")]
         public string v_extra { get; set; }
 
         public string Fn_Info()
@@ -50,4 +54,10 @@ namespace TratoMedi.Varios
             return _info;
         }
     }
+
+    public class C_Paciente
+    {
+
+    }
+
 }

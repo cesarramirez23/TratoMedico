@@ -20,23 +20,29 @@ namespace TratoMedi.Views
 	public partial class V_Paciente : ContentPage
 	{
         ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
-        public V_Paciente (bool _scan)
+        int v_editando = -1;
+
+        public  V_Paciente (bool _scan)
 		{
 			InitializeComponent ();
-            if(_scan)
+            if(_scan && App.v_paciente=="0")
             {
+                Title = "Lector";
+                Fn_CAmbioStack(false, false, false);
                 Scanner.IsVisible = true;
                 Scanner.IsScanning = true;
                 aaaa.IsVisible = false;
             }
             else
             {
+                Title = "En consulta";
+                Fn_CargarMedica();
+                Fn_CAmbioStack(true, false, false);
                 Scanner.IsVisible = false;
                 Scanner.IsScanning = false;
                 aaaa.IsVisible = true;
-                Todos.ItemsSource = v_medicamentos;
                 CargarGen();
-                CargarMed();
+                CargarMed(); 
             }
         }
         public void Fn_CancelMedi(object sender, EventArgs _Args)
@@ -45,8 +51,10 @@ namespace TratoMedi.Views
             Fn_CAmbioStack(true, false, false);
 
         }
-        public void Fn_GuarMedi(object sender, EventArgs _args)
+        public  async void Fn_GuarMedi(object sender, EventArgs _args)
         {
+            Button _but = (Button)sender;
+            _but.IsEnabled = false;
             Medicamentos _nuevo = new Medicamentos();
             _nuevo.v_nombre =App.Fn_Vacio( N_nombre.Text);
             //tiene que ser un numero no vacio
@@ -63,22 +71,51 @@ namespace TratoMedi.Views
             _nuevo.v_tiempo= int.Parse( N_Tiem.Text);
 
             _nuevo.v_extra =App.Fn_Vacio( N_Extra.Text );
-            v_medicamentos.Add(_nuevo);
-            Fn_CAmbioStack(true, false, false);
+            // si no esta editando agregarlo, sino darle diferente valor
+            if(v_editando>-1)
+            {
+                v_medicamentos[v_editando] = _nuevo;
+                v_editando = -1;
+            }
+            else
+            {
+                v_medicamentos.Add(_nuevo);
+            }
+            App.Fn_GuardarDatos(v_medicamentos);
+            await Fn_CargarMedica();
             Fn_Limpiar();
+            await Task.Delay(100);
+            _but.IsEnabled = true;
+            Fn_CAmbioStack(true, false, false);
+        }
+        public async void Actualizar(object sender, EventArgs _args)
+        {
+            Todos.ItemsSource = null; 
+            await Fn_CargarMedica();
+            Fn_CAmbioStack(false, false, false);
+            Fn_CAmbioStack(false, false, true);
+            Todos.ItemsSource = v_medicamentos;
         }
         public void Fn_NuevoMed(object sender, EventArgs _Args)
         {
+            v_editando=-1;
             Fn_CAmbioStack( false, true, false);
         }
-        public void Fn_MostrarMed(object sender, EventArgs _Args)
+        public async void Fn_MostrarMed(object sender, EventArgs _Args)
         {//|
+            Todos.ItemsSource = null;
+            await Fn_CargarMedica();
+            await Task.Delay(100);
+            Fn_CAmbioStack( false, false,true);
+            Fn_CAmbioStack( false, false,false);
+            await Task.Delay(10);
             Fn_CAmbioStack( false, false,true);
             Todos.ItemsSource = v_medicamentos;
         }
         public void Fn_Terminar(object sender, EventArgs _args)
         {
             //eliminar lo guardado local y enviar su informacion de medicamentos
+            App.Fn_Terminaconsullta();
 
         }
         /*private async void Scan(object sender, EventArgs _Args)
@@ -101,21 +138,60 @@ namespace TratoMedi.Views
             // Navigate to our scanner page
             await Navigation.PushAsync(scanPage);
         }*/
-        void Fn_NoNumeros(object sender, TextChangedEventArgs _args)
+        void Fn_SoloNumero(object sender, TextChangedEventArgs _args)
         {
+            //-  ,  _  .
             Entry _entry = (Entry)sender;
-            char _ultimo = _entry.Text[_entry.Text.Length - 1];
-            if (_ultimo > 47 && _ultimo < 58)
+            if(_entry.Text.Length>0)
             {
-                _entry.Text = _entry.Text.Remove(_entry.Text.Length - 1); // remove last char
+                char _ultimo = _entry.Text[_entry.Text.Length - 1];
+                if (_ultimo == '-' || _ultimo == ',' || _ultimo == '_' || _ultimo == '.' )
+                {
+                    if(_entry.Text.Length==1)
+                    {
+                        _entry.Text = "";
+                    }
+                    else
+                    {
+                        _entry.Text = _entry.Text.Remove(_entry.Text.Length - 1); // remove last char
+                    }
+                }
             }
         }
-        public void Fn_Eliminar(object sender, EventArgs _args)
+        public async void Fn_Eliminar(object sender, EventArgs _args)
         {
-            var button = sender as Button;
-            var _elim = button.BindingContext as Medicamentos;
-            v_medicamentos.Remove(_elim);
-            //Todos.ItemsSource = v_medicamentos;
+            Button button = sender as Button;
+            Medicamentos _elim = button.BindingContext as Medicamentos;
+            if(_elim!= null)
+            {
+                v_medicamentos.Remove(_elim);
+                App.Fn_GuardarDatos(v_medicamentos);
+                await Fn_CargarMedica();
+                Todos.ItemsSource = null;
+                await Task.Delay(100);
+                Todos.ItemsSource = v_medicamentos;
+            }
+            await Task.Delay(100);
+        }
+        public void Fn_Editar(object sender, EventArgs _args)
+        {
+            Button button = sender as Button;
+            Medicamentos _medi = button.BindingContext as Medicamentos;
+            if (_medi != null)
+            {
+                N_nombre.Text = _medi.v_nombre;
+                N_Perio.Text = _medi.v_periodo.ToString();
+                N_Tiem.Text = _medi.v_tiempo.ToString();
+                N_Extra.Text = _medi.v_extra;
+                for (int i = 0; i < v_medicamentos.Count; i++)
+                {
+                    if(v_medicamentos[i]== _medi)
+                    {
+                        v_editando = i;
+                    }
+                }
+                Fn_CAmbioStack(false, true, false);
+            }
         }
         public async void Fn_TApMedi(object sender, ItemTappedEventArgs _args)
         {
@@ -135,6 +211,7 @@ namespace TratoMedi.Views
             HttpResponseMessage _respuestaphp;
             try
             {
+
                 //baja la info de perfil general
                 _DirEnviar=  "https://useller.com.mx/trato_especial/query_perfil.php";
                 //mandar el json con el post
@@ -159,6 +236,7 @@ namespace TratoMedi.Views
                 {
                     Scanner.IsScanning = true;
                     await Navigation.PopAsync();
+                    App.Fn_GuardarDatos("1");
                     await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
                 });
 
@@ -174,6 +252,7 @@ namespace TratoMedi.Views
                     Scanner.IsScanning = true;
                     Scanner.IsVisible = true;
                 });
+                App.Fn_GuardarDatos("0");
             }
             
         }
@@ -292,10 +371,10 @@ namespace TratoMedi.Views
         }
         void Fn_Limpiar()
         {
-            N_Extra.Text = "";
             N_nombre.Text = "";
             N_Perio.Text = "";
             N_Tiem.Text = "";
+            N_Extra.Text = "";
         }
         /// <summary>
         /// perfil nuevo nota
@@ -309,8 +388,12 @@ namespace TratoMedi.Views
             StackNuevo.IsVisible = _nuevo;
             StackNota.IsVisible = _nota;
         }
+        public async Task Fn_CargarMedica()
+        {
+            string _medi = App.Current.Properties["medi"] as string;
+            App.v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
+            v_medicamentos = App.v_medicamentos;
+            await Task.Delay(100);
+        }
     }
-
-   
-
 }
