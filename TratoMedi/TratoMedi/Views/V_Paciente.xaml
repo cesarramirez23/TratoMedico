@@ -28,7 +28,7 @@
                 <StackLayout >
 
 
-                    <StackLayout  x:Name="StackPerfiles" >
+                    <StackLayout  x:Name="StackPerfiles" Margin="20,0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
@@ -84,7 +84,7 @@
 
 
                     <ScrollView x:Name="StackNuevo">
-                        <StackLayout Margin="10,0" >
+                        <StackLayout Margin="20,0" >
                             <Label Text="Medicamento"></Label>
                             <Editor AutoSize="TextChanges" x:Name="N_nombre"></Editor>
                             <Label Text="¿Por cuantos dias?"/>
@@ -107,7 +107,7 @@
                         </StackLayout>
                     </ScrollView>
 
-                    <StackLayout x:Name="StackNota" BackgroundColor="LemonChiffon">
+                    <StackLayout x:Name="StackNota" BackgroundColor="LemonChiffon" Margin="20,0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"/>

@@ -4,14 +4,31 @@
              x:Class="TratoMedi.Views.V_Citas">
     <ContentPage.Content>
         <StackLayout>
-            <ListView>
+            <ListView x:Name="ListaCita" RowHeight="250" BackgroundColor="Bisque">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding v_cliente}"/>
-                            <Label Text="{Binding v_hora}"/>
-                            <Label Text="{Binding v_fecha}"/>
-                        </StackLayout>
+                        <ViewCell>
+                            
+                            <StackLayout Margin="10,0" BackgroundColor="{Binding v_color}">
+                                <StackLayout>
+                                    <Label Text="Nombre del cliente"  Style="{StaticResource AzulMedLbl}"/>
+                                    <Label Text="{Binding v_cliente}" FontSize="Medium" TextColor="Black"/>
+                                </StackLayout>
+                                
+                                <StackLayout>
+                                    <Label Text="Fecha: " Style="{StaticResource AzulMedLbl}"/>
+                                    <DatePicker Date="{Binding v_F_Fecha}" Format="dd/MM/yyyy" IsEnabled="False"/>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <Label Text="Hora: " Style="{StaticResource AzulMedLbl}"/>
+                                    <TimePicker Time="{Binding v_F_Hora}" IsEnabled="False"/>
+                                </StackLayout>
+
+                            </StackLayout>
+                            
+
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

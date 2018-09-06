@@ -17,9 +17,37 @@ namespace TratoMedi.Views
     public partial class V_Perfil : TabbedPage
     {
         bool v_editar = false;
+        bool v_cita = false;
         public V_Perfil ()
         {
             InitializeComponent();
+            P_Swi.IsToggled = v_cita;
+            P_StackCita.IsVisible = v_cita;
+        }
+        public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
+        {
+            v_cita = _args.Value;
+            P_StackCita.IsVisible = v_cita;
+        }
+        void Fn_SoloNumero(object sender, TextChangedEventArgs _args)
+        {
+            //-  ,  _  .
+            Entry _entry = (Entry)sender;
+            if (_entry.Text.Length > 0)
+            {
+                char _ultimo = _entry.Text[_entry.Text.Length - 1];
+                if (_ultimo == '-' || _ultimo == ',' || _ultimo == '_' || _ultimo == '.')
+                {
+                    if (_entry.Text.Length == 1)
+                    {
+                        _entry.Text = "";
+                    }
+                    else
+                    {
+                        _entry.Text = _entry.Text.Remove(_entry.Text.Length - 1); // remove last char
+                    }
+                }
+            }
         }
         public async void Fn_Editar(object sender, EventArgs _args)
         {

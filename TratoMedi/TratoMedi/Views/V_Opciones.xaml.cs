@@ -21,6 +21,8 @@ namespace TratoMedi.Views
         public V_Opciones()
         {
             InitializeComponent();
+            //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+            regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
         }
         public void FN_passCambio(object sender, TextChangedEventArgs args)
         {
@@ -52,7 +54,7 @@ namespace TratoMedi.Views
             }
             else
             {
-                if (Fn_validar(P_actual.Text, P_mensaje.Text))
+                if (Fn_validar(P_actual.Text, P_Nueva.Text))
                 {
                     P_actual.BackgroundColor = Color.Transparent;
 
@@ -126,7 +128,7 @@ namespace TratoMedi.Views
 
                 if (!regex.IsMatch(_nueva))
                 {
-                    P_mensaje.Text = "Debe contener al menos una mayuscula,una minuscula y un numero";
+                    P_mensaje.Text = "Debe contener al menos una mayuscula,una minuscula y un numero, minimo 8 de longitud";
                     return false;
                 }
                 else

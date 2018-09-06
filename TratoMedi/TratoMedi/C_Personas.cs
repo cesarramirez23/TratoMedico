@@ -215,6 +215,10 @@ namespace TratoMedi.Personas
         [JsonProperty("idsexo")]
         public int v_idsexo { get; set; }
 
+        [JsonProperty("activada")]
+        public bool v_citaActiva { get; set; }
+        [JsonProperty("tiempo")]
+        public string v_tiempo { get; set; }
 
         public string v_img { get; set; }
         public string v_completo { get; set; }

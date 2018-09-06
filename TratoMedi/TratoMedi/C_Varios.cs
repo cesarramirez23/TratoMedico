@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace TratoMedi.Varios
 {
@@ -25,9 +26,27 @@ namespace TratoMedi.Varios
     }
     public class Citas
     {
+        [JsonProperty("Nombre")]
         public string v_cliente { get; set; }
+        public TimeSpan v_F_Hora { get; set; }
+        public DateTime v_F_Fecha { get; set; }
+        [JsonProperty("hora")]
         public string v_hora { get; set; }
+        [JsonProperty("fecha")]
         public string v_fecha { get; set; }
+        public Color v_color { get; set; }
+
+        public void Fn_CAmbioCol(int _valor)
+        {
+            if((_valor%2) ==1)
+            {
+                v_color = Color.PaleGreen;
+            }
+            else
+            {
+                v_color = Color.PaleTurquoise;
+            }
+        }
     }
     public class Medicamentos
     {
