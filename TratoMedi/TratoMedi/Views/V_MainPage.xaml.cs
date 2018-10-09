@@ -37,7 +37,7 @@ namespace TratoMedi.Views
                 default:
                     {
                         StackPrin.IsVisible = true;
-                        FN_Red();
+                        //FN_Red();
                     }
                     break;
 

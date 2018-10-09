@@ -36,7 +36,7 @@ namespace TratoMedi.Views
             else
             {
                 Title = "En consulta";
-                Fn_CargarMedica();
+               // Fn_CargarMedica();
                 Fn_CAmbioStack(true, false, false);
                 Scanner.IsVisible = false;
                 Scanner.IsScanning = false;
@@ -213,32 +213,44 @@ namespace TratoMedi.Views
             {
 
                 //baja la info de perfil general
-                _DirEnviar=  "https://useller.com.mx/trato_especial/query_perfil.php";
+                _DirEnviar=  "http://tratoespecial.com/query_perfil.php";
                 //mandar el json con el post
                 _respuestaphp= await _client.PostAsync(_DirEnviar, _content);
-
-                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-
+                _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                 C_PerfilGen _nuePer = JsonConvert.DeserializeObject<C_PerfilGen>(_respuesta);
                 App.Fn_GuardarDatos(_nuePer);
 
-                _DirEnviar = "https://useller.com.mx/trato_especial/query_perfil_medico.php";
-                _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
-                //mandar el json con el post
-                _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-
-                _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-
-                C_PerfilMed _nuePerMEd = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
-                
-                App.Fn_GuardarDatos(_nuePerMEd);
-                Device.BeginInvokeOnMainThread(async () =>
+                try
                 {
-                    Scanner.IsScanning = true;
-                    await Navigation.PopAsync();
-                    App.Fn_GuardarDatos("1");
-                    await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
-                });
+                    _DirEnviar = "http://tratoespecial.com/query_perfil_medico.php";
+                    _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
+                    //mandar el json con el post
+                    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                    C_PerfilMed _nuePerMEd = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
+                    App.Fn_GuardarDatos(_nuePerMEd);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        Scanner.IsScanning = true;
+                        await Navigation.PopAsync();
+                        App.Fn_GuardarDatos("1");
+                        await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
+                    });
+                }
+                catch(HttpRequestException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //await Navigation.PopAsync();
+                        //await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                        await DisplayAlert("Error", ex.Message, "ok");
+                        // StackPerfil.IsVisible = true;
+                        Scanner.IsScanning = true;
+                        Scanner.IsVisible = true;
+                    });
+                    App.Fn_GuardarDatos("0");
+                }
+
 
             }
             catch (HttpRequestException ex)

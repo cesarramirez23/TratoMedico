@@ -31,6 +31,8 @@ namespace TratoMedi
         {
             // Handle when your app starts
             //Properties.Clear();
+           
+            
             if (Properties.ContainsKey("log"))
             {
                 //lee el valor guardado
@@ -64,7 +66,7 @@ namespace TratoMedi
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
                     Fn_CargarDatos();
 
-                    MainPage = new V_MasterMenu(true, "Bienvenido Nombre del medico");
+                    MainPage = new V_MasterMenu(true, "Bienvenido a Trato Especial");
                 }
                 else
                 {
@@ -79,7 +81,7 @@ namespace TratoMedi
                 v_medicamentos = new ObservableCollection<Medicamentos>();
                 Fn_CrearKey();
 
-                App.Current.MainPage = new V_MasterMenu(false, "no properties");
+                App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
             }
         }
 

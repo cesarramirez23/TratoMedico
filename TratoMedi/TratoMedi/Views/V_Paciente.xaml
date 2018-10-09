@@ -29,6 +29,7 @@
 
 
                     <StackLayout  x:Name="StackPerfiles" Margin="20,0">
+                        <!--
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
@@ -40,8 +41,10 @@
                             <Button Text="Terminar Cita" Clicked="Fn_Terminar" Grid.Column="0"></Button>
                             <Button Text="Agregar Medicamento" Clicked="Fn_NuevoMed" Grid.Column="1"></Button>
                             <Button Text="Ver Medicamentos" Clicked="Fn_MostrarMed" Grid.Column="2"></Button>
-                        </Grid>
-                        <ScrollView>
+                        </Grid> -->
+                        <Button Text="Terminar Cita" Clicked="Fn_Terminar" Style="{StaticResource Buton}"></Button>
+                        
+                        <ScrollView Margin="2,10">
                             <StackLayout >
                                 <Label Text="Datos Generales" Style="{StaticResource AzulMedLbl}" HorizontalOptions="Center"></Label>
 
