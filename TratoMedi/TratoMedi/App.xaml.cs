@@ -30,9 +30,7 @@ namespace TratoMedi
         protected override void OnStart()
         {
             // Handle when your app starts
-            //Properties.Clear();
-           
-            
+            Properties.Clear();
             if (Properties.ContainsKey("log"))
             {
                 //lee el valor guardado
@@ -323,6 +321,30 @@ namespace TratoMedi
             else
             {
                 return _valor;
+            }
+        }
+        public static async void Fn_SetToken(string _token)
+        {
+            if (Current.Properties.ContainsKey(NombresAux.v_token))
+            {
+                Current.Properties[NombresAux.v_token] = _token;
+            }
+            else
+            {
+                Current.Properties.Add(NombresAux.v_token, "");
+                Current.Properties[NombresAux.v_token] = _token;
+            }
+            await Current.SavePropertiesAsync();
+        }
+        public static string Fn_GEtToken()
+        {
+            if (Current.Properties.ContainsKey(NombresAux.v_token))
+            {
+                return Current.Properties[NombresAux.v_token].ToString();
+            }
+            else
+            {
+                return "a";
             }
         }
     }

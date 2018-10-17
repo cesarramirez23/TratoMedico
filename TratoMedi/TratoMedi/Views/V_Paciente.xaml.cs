@@ -231,10 +231,12 @@ namespace TratoMedi.Views
                     App.Fn_GuardarDatos(_nuePerMEd);
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Scanner.IsScanning = true;
-                        await Navigation.PopAsync();
                         App.Fn_GuardarDatos("1");
-                        await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
+                        Scanner.IsScanning = true;
+                        await Task.Delay(100);
+                        MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
+                        //await Navigation.PopAsync();
+                        //await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
                     });
                 }
                 catch(HttpRequestException ex)

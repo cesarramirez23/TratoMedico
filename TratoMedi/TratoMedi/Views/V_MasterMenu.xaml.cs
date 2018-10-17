@@ -15,6 +15,12 @@ namespace TratoMedi.Views
         public V_MasterMenu(bool _logeado, string _title)
         {
             InitializeComponent();
+            MessagingCenter.Subscribe<V_Paciente, string>(this, "Fn_Paci", (sender, arg) => {
+                if(arg=="1")
+                {
+                    Detail = new NavigationPage(new V_Paciente(false) { Title = App.v_pergen.v_Nombre });
+                }
+            });
             if (_logeado)
             {
                 //StackLog.IsVisible = true;

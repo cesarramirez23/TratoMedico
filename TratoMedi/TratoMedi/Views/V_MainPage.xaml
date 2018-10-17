@@ -38,13 +38,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image Source="LOGOTRATOESPECIAL.png" Grid.Column="0" Grid.Row="0"></Image>
-                    <Image x:Name="MainBanner" Source="" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" Aspect="AspectFit" Margin="0,20">
+                  <!--  <Image x:Name="MainBanner" Source="" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" Aspect="AspectFit" Margin="0,20">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Fn_AbrirSitio"   NumberOfTapsRequired="1"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
-                    </Image>
+                    </Image>-->
+                    <Label x:Name="TExtoken"/>
                 </Grid>
-
             </StackLayout>
 
         </StackLayout>

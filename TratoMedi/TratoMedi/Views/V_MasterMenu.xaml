@@ -47,6 +47,13 @@
                             </Image>
                             <Label Text="Lector Tarjeta Virtual" Style="{StaticResource LblBoton}"/>
 
+
+                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Login"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Iniciar Sesión" Style="{StaticResource LblBoton}" />
                             <!--
                             <Image Source="Registro" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
@@ -55,12 +62,7 @@
                             </Image>
                             <Label Text="Registro" Style="{StaticResource LblBoton}" />
 
-                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Login"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label Text="Iniciar Sesión" Style="{StaticResource LblBoton}" />
+                          
 
 
                             <Image Source="mail_icon" Style="{StaticResource imgBoton}">

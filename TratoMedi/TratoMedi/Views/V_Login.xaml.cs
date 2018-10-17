@@ -42,9 +42,7 @@ namespace TratoMedi.Views
                 //mandar el json con el post
                 try
                 {
-                    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
                     HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-
                     if (_respuestaphp == null)
                     {
                         Mensajes_over.Text = "sadsad";
@@ -59,7 +57,7 @@ namespace TratoMedi.Views
                                 Mensajes_over.Text += "\n Error en los datos";
                                 Reinten.IsVisible = true;
                             }
-                            else if (_respuesta == "1")
+                            else if (_respuesta == "1" || _respuesta == "2")
                             {
                                 //cambiar a logeado
                                 //StackMen.IsVisible = false;
@@ -67,6 +65,7 @@ namespace TratoMedi.Views
                                 //crear un objeto para hacer las consultas de perfil propio
                                 string json = @"{";
                                 json += "membre:'" + L_usu.Text + "',\n";
+                                json += "pass:'" + L_pass.Text + "',\n";
                                 json += "}";
                                 
                                 JObject _jsonper = JObject.Parse(json);
@@ -78,11 +77,9 @@ namespace TratoMedi.Views
                                 _content = new StringContent(_jsonper.ToString(), Encoding.UTF8, "application/json");
                                 //mandar el json con el post
                                 _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-
                                 _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                                 C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_respuesta);
                                 App.Fn_GuardarDatos(_nuePer);
-                                
                                 //cargar la nueva pagina de perfil
                                 string _nombre = (_nuePer.v_Nombre.Split(' ')[0]);
                                 Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido " + App.v_perfil.v_Nombre);
@@ -90,7 +87,7 @@ namespace TratoMedi.Views
                             }
                             else
                             {
-                                Mensajes_over.Text = "no 0 1  " + _respuesta;
+                                Mensajes_over.Text = "no 1 y 2  " + _respuesta;
                                 Reinten.IsVisible = true;
                             }
                         }

@@ -6,6 +6,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+//para las notificaciones
+using Firebase.Messaging;
+using Firebase.Iid;
+using Firebase;
+using Android.Util;
+using Android.Gms.Common;
+using Android.Content;
 
 namespace TratoMedi.Droid
 {
