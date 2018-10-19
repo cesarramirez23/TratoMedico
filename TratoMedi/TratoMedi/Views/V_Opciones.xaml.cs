@@ -57,7 +57,6 @@ namespace TratoMedi.Views
                 if (Fn_validar(P_actual.Text, P_Nueva.Text))
                 {
                     P_actual.BackgroundColor = Color.Transparent;
-
                     if (string.IsNullOrEmpty(P_Nueva.Text) || string.IsNullOrWhiteSpace(P_Nueva.Text))
                     {
                         P_mensaje.IsVisible = true;
@@ -66,7 +65,6 @@ namespace TratoMedi.Views
                     else
                     {
                         P_mensaje.IsVisible = false;
-
                         string prime = App.v_membresia.Split('-')[0];
                         string _membre = "";
                         for (int i = 0; i < prime.Length - 1; i++)
@@ -75,36 +73,53 @@ namespace TratoMedi.Views
                         }
                         string letra = prime[prime.Length - 1].ToString();
                         string _conse = App.v_membresia.Split('-')[1];
-
-
-
                         string json = @"{";
                         json += "membre:'" + _membre + "',\n";
                         json += "password:'" + P_actual.Text + "',\n";
                         json += "newpassword:'" + P_Nueva.Text + "',\n";
                         json += "}";
-
-
                         JObject jsonPer = JObject.Parse(json);
                         StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
                         HttpClient _client = new HttpClient();
-                        string _url = "https://useller.com.mx/trato_especial/password_change.php";
-                        HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
-                        string _result = _respuestphp.Content.ReadAsStringAsync().Result;
-                        await DisplayAlert("respuesta", _result + "\n" + jsonPer.ToString(), "Aceptar");
-
+                        string _url = "http://tratoespecial.com/password_change.php";
+                        try
+                        {
+                            HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
+                            string _result = _respuestphp.Content.ReadAsStringAsync().Result;
+                            if (_result == "1")
+                            {
+                                await DisplayAlert("Exito", "Cambio de contraseña exitoso", "Aceptar");
+                                P_actual.Text = "";
+                                P_Nueva.Text = "";
+                                P_mensaje.Text = "";
+                                P_mensaje.IsVisible = false;
+                            }
+                            else if (_result == "8")
+                            {
+                                await DisplayAlert("Error", "No se pudo actualizar, por favor intentalo mas tarde", "Aceptar");
+                            }
+                            else if (_result == "9")
+                            {
+                                await DisplayAlert("Error", "La información proporcionada como contraseña actual, no coincide con la información del usuario",
+                                    "Aceptar");
+                            }
+                            else if (_result == "10")
+                            {
+                                await DisplayAlert("respuesta", "Usuario no encontrado, por favor intentalo mas tarde ", "Aceptar");
+                            }
+                        }
+                        catch (HttpRequestException exception)
+                        {
+                            await DisplayAlert("Error", exception.Message, "Aceptar");
+                        }
                     }
                 }
                 else
                 {
                     P_mensaje.IsVisible = true;
                 }
-
             }
             _buton.IsEnabled = true;
-
-
-
             //if (Fn_validar(P_actual.Text, P_Nueva.Text))
             //{
             //    await DisplayAlert("bien", "bien", "bien");

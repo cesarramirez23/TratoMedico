@@ -1,33 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TratoMedi.Views.V_Citas">
+             x:Class="TratoMedi.Views.V_Citas" >
     <ContentPage.Content>
-        <StackLayout>
+
+        <StackLayout >
             <ListView x:Name="ListaCita" RowHeight="250" BackgroundColor="Bisque">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            
                             <StackLayout Margin="10,0" BackgroundColor="{Binding v_color}">
                                 <StackLayout>
                                     <Label Text="Nombre del cliente"  Style="{StaticResource AzulMedLbl}"/>
-                                    <Label Text="{Binding v_cliente}" FontSize="Medium" TextColor="Black"/>
+                                    <Label Text="{Binding v_nombre}" FontSize="Medium" TextColor="Black"/>
                                 </StackLayout>
-                                
                                 <StackLayout>
                                     <Label Text="Fecha: " Style="{StaticResource AzulMedLbl}"/>
-                                    <DatePicker Date="{Binding v_F_Fecha}" Format="dd/MM/yyyy" IsEnabled="False"/>
+                                    <DatePicker Date="{Binding v_fecha}" Format="dd/MM/yyyy" IsEnabled="False"/>
                                 </StackLayout>
-
                                 <StackLayout>
                                     <Label Text="Hora: " Style="{StaticResource AzulMedLbl}"/>
-                                    <TimePicker Time="{Binding v_F_Hora}" IsEnabled="False"/>
+                                    <TimePicker Time="{Binding v_hora}" IsEnabled="False"/>
                                 </StackLayout>
-
+                                <Label Style="{StaticResource AzulMedLbl}" Text="{Binding v_Estadocita}"></Label>
                             </StackLayout>
-                            
-
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

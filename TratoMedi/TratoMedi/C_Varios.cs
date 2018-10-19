@@ -24,29 +24,67 @@ namespace TratoMedi.Varios
             v_sitio = _sitio;
         }
     }
-    public class Citas
-    {
-        [JsonProperty("Nombre")]
-        public string v_cliente { get; set; }
-        public TimeSpan v_F_Hora { get; set; }
-        public DateTime v_F_Fecha { get; set; }
-        [JsonProperty("hora")]
-        public string v_hora { get; set; }
-        [JsonProperty("fecha")]
-        public string v_fecha { get; set; }
-        public Color v_color { get; set; }
 
-        public void Fn_CAmbioCol(int _valor)
+    public enum EstadoCita
+    {
+        Inactiva,
+        Nueva,
+        Pendiente,
+        Aceptada,
+        Cancelada
+    }
+    public class Cita
         {
-            if((_valor%2) ==1)
+            [JsonProperty("ID_paciente")]
+            public string v_pacienteId { get; set; }
+            [JsonProperty("estado")]
+            public string v_estado { get; set; }
+            [JsonProperty("fecha")]
+            public DateTime v_fecha { get; set; }
+            [JsonProperty("hora")]
+            public TimeSpan v_hora { get; set; }
+
+            public string v_nombre { get; set; }
+
+
+            public Color v_color { get; set; }
+        
+            public EstadoCita v_Estadocita { get; set; }
+            /// <summary>
+            /// para cambiar el color dentro de la lista visible
+            /// </summary>
+            /// <param name="_valor"></param>
+            public void Fn_CAmbioCol(int _valor)
             {
-                v_color = Color.PaleGreen;
-            }
-            else
-            {
-                v_color = Color.PaleTurquoise;
+                if ((_valor % 2) == 1)
+                {
+                    v_color = Color.PaleGreen;
+                }
+                else
+                {
+                    v_color = Color.PaleTurquoise;
+                }
+            v_Estadocita =(EstadoCita)(int.Parse(v_estado));
             }
         }
+
+    public class C_Notificacion
+    {
+        public C_Notificacion()
+        { }
+        public C_Notificacion(string _titulo, string _body)
+        {
+            v_titulo = _titulo;
+            string temp = _body.Replace("\n", Environment.NewLine);
+            v_cuerpo = temp;
+        }
+        [JsonProperty("estado")]
+        public string v_estado { get; set; }
+        //Lo que se vaa a mostrar
+        [JsonProperty("title") ]
+        public string v_titulo { get; set; }
+        [JsonProperty("message")]
+        public string v_cuerpo { set; get; }
     }
     public class Medicamentos
     {
@@ -62,10 +100,8 @@ namespace TratoMedi.Varios
        /// cada cuantas horas
        /// </summary>
         public int v_tiempo { get; set; }
-
         [JsonProperty("extra")]
         public string v_extra { get; set; }
-
         public string Fn_Info()
         {
             string _info = "";

@@ -64,6 +64,10 @@ C:\Users\CesarAugusto\source\repos\TratoMedi\TratoMedi\TratoMedi.iOS\obj\iPhoneS
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\TratoMedi.iOS.exe
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\TratoMedi.iOS.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Newtonsoft.Json.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Firebase.Analytics.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Firebase.CloudMessaging.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Firebase.Core.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Firebase.InstanceID.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Core.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.dll

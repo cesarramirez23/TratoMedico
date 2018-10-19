@@ -16,13 +16,14 @@ using Android.Content;
 
 namespace TratoMedi.Droid
 {
-    [Activity(Label = "Trato Especial Medicos", Icon = "@drawable/Citas", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Trato Especial Medicos", Icon = "@drawable/Citas", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
 
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);

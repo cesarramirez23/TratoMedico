@@ -38,6 +38,7 @@ namespace TratoMedi.Views
                     {
                         StackPrin.IsVisible = true;
                         TExtoken.Text = App.Fn_GEtToken();
+                        Console.WriteLine("token refre " + App.Fn_GEtToken());
                         //FN_Red();
                     }
                     break;

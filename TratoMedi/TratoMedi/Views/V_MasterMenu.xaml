@@ -54,6 +54,13 @@
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Iniciar Sesión" Style="{StaticResource LblBoton}" />
+                            
+                            <Image Source="Opciones" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Opciones"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text=" Opciones" Style="{StaticResource LblBoton}"/>
                             <!--
                             <Image Source="Registro" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
@@ -75,8 +82,6 @@
 -->
                         </StackLayout>
 
-                        <!--    
-                        <Image Source="Perfil" Style="{StaticResource imgBoton}">
                         <StackLayout x:Name="StackLog" IsVisible="True">
                             
                             <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
@@ -86,6 +91,7 @@
                             </Image>
                             <Label Text="Inicio" Style="{StaticResource LblBoton}"/>
 
+                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Perfil"/>
                                 </Image.GestureRecognizers>
@@ -117,13 +123,14 @@
 
 
 
+                        <!--    
                             <Image Source="mail_icon" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Contacto" />
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Contacto" Style="{StaticResource LblBoton}" />
-
+-->
                             <Image Source="LogOut" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_CerraSesion"/>
@@ -131,7 +138,7 @@
                             </Image>
                             <Label Text="Salir" Style="{StaticResource LblBoton}"/>
                         </StackLayout>
--->
+
                     </StackLayout>
                 </ScrollView>
             </ContentPage.Content>

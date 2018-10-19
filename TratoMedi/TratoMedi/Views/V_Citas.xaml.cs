@@ -8,55 +8,71 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using TratoMedi.Varios;
+using TratoMedi.ViewModels;
 
 namespace TratoMedi.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class V_Citas : ContentPage
 	{
-        ObservableCollection<Citas> citas= new ObservableCollection<Citas>();
+        ObservableCollection<Cita> citas= new ObservableCollection<Cita>();
 		public V_Citas ()
 		{
 			InitializeComponent ();
             DateTime _fecha = new DateTime(2018, 9, 23, 14, 00, 00);
-            citas.Add(new Citas() {
-                v_cliente = "nombre 1",
-                v_F_Fecha = _fecha, v_F_Hora= _fecha.TimeOfDay
+            citas.Add(new Cita()
+            {
+                v_nombre = "nombre 1",
+                v_fecha = _fecha,
+                v_hora= _fecha.TimeOfDay,
+                v_estado="0"
+                
             });
 
             _fecha = new DateTime(2018, 9, 25, 19, 42, 00);
-            citas.Add(new Citas()
+            citas.Add(new Cita()
             {
-                v_cliente = "nombre 2",
-                v_F_Fecha = _fecha,
-                v_F_Hora = _fecha.TimeOfDay
+                v_nombre = "nombre 2",
+                v_fecha = _fecha,
+                v_hora = _fecha.TimeOfDay,
+                v_estado = "1"
             });
 
             _fecha = new DateTime(2018, 11, 25, 09, 42, 00);
-            citas.Add(new Citas()
+            citas.Add(new Cita()
             {
-                v_cliente = "nombre 2",
-                v_F_Fecha = _fecha,
-                v_F_Hora = _fecha.TimeOfDay
+                v_nombre = "nombre 2",
+                v_fecha = _fecha,
+                v_hora = _fecha.TimeOfDay,
+                v_estado = "2"
             });
 
             _fecha = new DateTime(2018, 9, 7, 12, 12, 00);
-            citas.Add(new Citas()
+            citas.Add(new Cita()
             {
-                v_cliente = "nombre 2",
-                v_F_Fecha = _fecha,
-                v_F_Hora = _fecha.TimeOfDay
+                v_nombre = "nombre 2",
+                v_fecha = _fecha,
+                v_hora = _fecha.TimeOfDay,
+                v_estado = "3"
+            });
+            _fecha = new DateTime(2018, 9, 7, 12, 12, 00);
+            citas.Add(new Cita()
+            {
+                v_nombre = "nombre 2",
+                v_fecha = _fecha,
+                v_hora = _fecha.TimeOfDay,
+                v_estado = "4"
             });
 
-            ListaCita.ItemsSource = citas;
             Ordenar();
+            ListaCita.ItemsSource = citas;
 		}
         public void Ordenar()
         {
-            IEnumerable<Citas> _temp = citas.OrderBy(x => x.v_F_Fecha);
-            citas = new ObservableCollection<Citas>(_temp);
+            IEnumerable<Cita> _temp = citas.OrderBy(x => x.v_fecha);
+            citas = new ObservableCollection<Cita>(_temp);
 
-            for(int i=0; i<citas.Count; i++)
+            for (int i = 0; i < citas.Count; i++)
             {
                 citas[i].Fn_CAmbioCol(i);
             }

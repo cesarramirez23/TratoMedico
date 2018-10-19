@@ -30,7 +30,7 @@ namespace TratoMedi
         protected override void OnStart()
         {
             // Handle when your app starts
-            Properties.Clear();
+            //Properties.Clear();
             if (Properties.ContainsKey("log"))
             {
                 //lee el valor guardado
