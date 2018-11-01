@@ -15,23 +15,17 @@ namespace TratoMedi.Views
         public V_MasterMenu(bool _logeado, string _title)
         {
             InitializeComponent();
-            MessagingCenter.Subscribe<V_Paciente, string>(this, "Fn_Paci", (sender, arg) => {
-                if(arg=="1")
-                {
-                    Detail = new NavigationPage(new V_Paciente(false) { Title = App.v_pergen.v_Nombre });
-                }
-            });
             if (_logeado)
             {
-                //StackLog.IsVisible = true;
+                StackLog.IsVisible = true;
                 App.Fn_CargarDatos();
                 Detail.Title = _title;
-               // StackPrin.IsVisible = false;
+                StackPrin.IsVisible = false;
             }
             else
             {
-                //StackPrin.IsVisible = true;
-                //StackLog.IsVisible = false;
+                StackPrin.IsVisible = true;
+                StackLog.IsVisible = false;
             }
             IsPresented = false;
             Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
@@ -80,7 +74,8 @@ namespace TratoMedi.Views
         public void Fn_CerraSesion(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Login() { Title = "Iniciar Sesión" });
+            App.Fn_CerrarSesion();
+            Detail = new NavigationPage(new V_MainPage(0) { Title = "Bienvenido" });
         }
     }
 }
