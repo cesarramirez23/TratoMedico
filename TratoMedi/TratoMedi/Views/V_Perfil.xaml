@@ -14,35 +14,38 @@
             <Setter Property="TextColor" Value="{StaticResource NavigationPrimary}"/>
         </Style>
         <Style x:Key="entry_perfil" TargetType="Entry">
-            <Setter Property="VerticalOptions" Value="Center"></Setter>
+            <!--<Setter Property="VerticalOptions" Value="Center"></Setter>-->
             <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
             <Setter Property="IsEnabled" Value="False"/>
             <Setter Property="Keyboard" Value="Default"/>
         </Style>
     </TabbedPage.Resources>
-
-
     
     <ContentPage Title="Perfil"  >
-        <ScrollView>
-            <StackLayout>
-                
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Name="Espe" Clicked="Fn_Setespe"></ToolbarItem>
+            <ToolbarItem Name="titulo" Clicked="Fn_SetTitu"></ToolbarItem>
+        </ContentPage.ToolbarItems>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
                     <Label Text="Titulo" Style="{StaticResource lblSty}"></Label>
+                    <Label  Text="lic, dr " x:Name="P_Titulo"  Style="{StaticResource entry_perfil}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_SetTitu">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                   <!--
                     <Entry  Placeholder="Titulo" Text="lic, dr " x:Name="P_Titulo"  Style="{StaticResource entry_perfil}"></Entry>
-                </StackLayout>
+                    -->
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Nombres" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Colonia" Text="colonia del usuario" x:Name="P_Nom" Style="{StaticResource entry_perfil}"></Entry>
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Apellido" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Apellidos " Text="Ar" Style="{StaticResource entry_perfil}" x:Name="P_Ape" ></Entry>
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Sexo" Style="{StaticResource lblSty}"></Label>
                     <Picker x:Name="P_sexoPick" HorizontalOptions="FillAndExpand"  Title="Elige tu sexo" IsEnabled="False">
                         <Picker.Items>
@@ -50,65 +53,88 @@
                             <x:String>Femenino</x:String>
                         </Picker.Items>
                     </Picker>
-                </StackLayout>
-                
-                
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Label Text="Especialidad" Style="{StaticResource lblSty}"></Label>
-                    <Entry  Placeholder="Especialidad" Text="Anestesiología" Style="{StaticResource entry_perfil}" x:Name="P_Esp" ></Entry>
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Especialidad" Style="{StaticResource lblSty}"></Label>
+                    <Label Text="Anestesiología" Style="{StaticResource entry_perfil}" x:Name="P_Esp">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Setespe">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                   <!--
+                    <Entry  Placeholder="Especialidad" Text="Anestesiología" Style="{StaticResource entry_perfil}" x:Name="P_Esp" ></Entry>
+                    -->
+                   
                     <Label Text="Cédula Profesional" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Cédula Profesional" Text="ADER4T58UGCSW2342D" Style="{StaticResource entry_perfil}" x:Name="P_Ced"></Entry>
-                </StackLayout>
 
-                
-                <Label Text="Horario" Style="{StaticResource lblSty}"></Label>
-                <Editor Text="lunes marte 23" Style="{StaticResource Editor}" x:Name="P_hor"></Editor>
+                    <Label Text="Horario" Style="{StaticResource lblSty}"></Label>
+                    <Editor Text="lunes marte 23" Style="{StaticResource Editor}" x:Name="P_hor"></Editor>
 
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Domicilio" Style="{StaticResource lblSty}"></Label>
-                    <Entry  Placeholder="Domicilio" Text="avenid dos #23 colonia nueva " x:Name="P_dom" Style="{StaticResource entry_perfil}" ></Entry>
-                </StackLayout>
+                    <!--<Entry  Placeholder="nombre de la calle #234, Col. nombre de la colonia" 
+                            x:Name="P_dom" Style="{StaticResource entry_perfil}" ></Entry>-->
+                    <Editor Placeholder="nombre de la calle #234, Col. nombre de la colonia" 
+                            x:Name="P_dom" Style="{StaticResource Editor}"></Editor>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Ciudad" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Ciudad" Text="Zapopan" Style="{StaticResource entry_perfil}" x:Name="P_Ciu"></Entry>
-                </StackLayout>
-                
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+
                     <Label Text="Telefono de Contacto" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="334455667788" Text="1234567890" Style="{StaticResource entry_perfil}" x:Name="P_Tel" Keyboard="Numeric"></Entry>
-                </StackLayout>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Label Text="Correo Electronico" Style="{StaticResource lblSty}"></Label>
                     <Entry  Placeholder="Casa@correo.com" Text="" Style="{StaticResource entry_perfil}" Keyboard="Email" x:Name="P_Corr"></Entry>
-                </StackLayout>
-                
-                <Label Text="Descripcion y Descuentos" Style="{StaticResource lblSty}"></Label>
-                <Editor   Text="descuentos especiales por trato" Style="{StaticResource Editor}" IsEnabled="False" x:Name="P_Descrip"></Editor>
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Label Text="Descripción" Style="{StaticResource lblSty}"></Label>
+                    <Editor   Text="descuentos especiales por trato" Style="{StaticResource Editor}" IsEnabled="False" x:Name="P_Descrip"></Editor>
+
                     <Label Text="Solicitar citas desde este medio" HorizontalOptions="StartAndExpand" Style="{StaticResource lblSty}"/>
                     <Switch IsToggled="False" Toggled="Fn_ActivarCita" x:Name="P_Swi"/>
-                </StackLayout>
-                
-                <StackLayout x:Name="P_StackCita" IsVisible="False">
-                    <Label Text="Tiempo Estimado por consulta, en minutos" Style="{StaticResource lblSty}"/>
-                    <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="P_tiempo"></Entry>
-                </StackLayout>
-                
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton}" HorizontalOptions="Start" Clicked="Fn_Editar"></Button>
-                    <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton}" HorizontalOptions="End" Clicked="Fn_Guardar" IsVisible="False"></Button>
-                </StackLayout>
 
+                    <StackLayout x:Name="P_StackCita" IsVisible="False">
+                        <Label Text="Tiempo Estimado por consulta, en minutos" Style="{StaticResource lblSty}"/>
+                        <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="P_tiempo"></Entry>
+                    </StackLayout>
 
-            </StackLayout>
-        </ScrollView>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                        <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton}" HorizontalOptions="Start" Clicked="Fn_Editar"></Button>
+                        <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton}" HorizontalOptions="End" Clicked="Fn_Guardar" IsVisible="False"></Button>
+                    </StackLayout>
 
+                </StackLayout>
+            </ScrollView>
+           
+            <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                         x:Name="StackOver" IsVisible="False" BackgroundColor="LightGray">
+                <StackLayout Margin="0,20" VerticalOptions="Center" HorizontalOptions="Center" >
+                    <ListView x:Name="pickTitulo" Margin="10,5" BackgroundColor="Gray" IsVisible="False" ItemTapped="pickTitulo_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="{Binding v_nombreTitulo}" Style="{StaticResource AzulMedLbl}"></Label>
+                                        <Image Source="INFO_icon.png" IsVisible="{Binding v_visible}"></Image>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView x:Name="pickEspe" Margin="5,10" BackgroundColor="Gray" IsVisible="False" ItemTapped="pickEspe_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding v_nombreEspec}" Style="{StaticResource AzulMedLbl}"></Label>
+                                        <Image Source="INFO_icon.png" IsVisible="{Binding v_visible}"></Image>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
     </ContentPage>
 </TabbedPage>

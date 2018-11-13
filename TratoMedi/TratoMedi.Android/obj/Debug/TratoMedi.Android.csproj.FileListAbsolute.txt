@@ -234,6 +234,7 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.Android.dll.mdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb

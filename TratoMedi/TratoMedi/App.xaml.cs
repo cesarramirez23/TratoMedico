@@ -71,7 +71,7 @@ namespace TratoMedi
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
                     Fn_CargarDatos();
 
-                    MainPage = new V_MasterMenu(true, "Bienvenido a Trato Especial");
+                    MainPage = new V_MasterMenu(true, "Bienvenido " + v_perfil.v_titulo + " " +v_perfil.v_Nombre);
                 }
                 else
                 {
@@ -352,7 +352,8 @@ namespace TratoMedi
         public static async void Fn_CerrarSesion()
         {
             v_membresia = "";
-            Current.Properties[NombresAux.v_log] = "0";
+            v_log = "0";
+            Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             Current.Properties[NombresAux.v_paciente] = "0";
             v_perfil = new C_Medico();

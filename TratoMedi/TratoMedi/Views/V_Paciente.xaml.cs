@@ -25,7 +25,7 @@ namespace TratoMedi.Views
         public  V_Paciente (bool _scan)
 		{
 			InitializeComponent ();
-            if(_scan && App.v_paciente=="0")
+            if(_scan )
             {
                 Title = "Lector";
                 Fn_CAmbioStack(false, false, false);
@@ -234,9 +234,9 @@ namespace TratoMedi.Views
                         App.Fn_GuardarDatos("1");
                         Scanner.IsScanning = true;
                         await Task.Delay(100);
-                        MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
-                        //await Navigation.PopAsync();
-                        //await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
+                        //MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
+                        await Navigation.PopAsync();
+                        await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
                     });
                 }
                 catch(HttpRequestException ex)

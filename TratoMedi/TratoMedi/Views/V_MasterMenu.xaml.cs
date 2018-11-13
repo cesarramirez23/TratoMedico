@@ -69,13 +69,21 @@ namespace TratoMedi.Views
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
+            if (App.v_paciente=="0")
+            {
             Detail = new NavigationPage(new V_Paciente(true) );
+            }
+            else if(App.v_paciente=="1")
+            {
+            Detail = new NavigationPage(new V_Paciente(false) );
+            }
         }
-        public void Fn_CerraSesion(object sender, EventArgs _args)
+        public async void Fn_CerraSesion(object sender, EventArgs _args)
         {
             IsPresented = false;
             App.Fn_CerrarSesion();
-            Detail = new NavigationPage(new V_MainPage(0) { Title = "Bienvenido" });
+            await Task.Delay(100);
+            App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
         }
     }
 }

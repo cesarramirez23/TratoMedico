@@ -36,6 +36,7 @@ namespace TratoMedi.Views
                        Ordenar();
                        ListaCita.ItemsSource = v_citas;
            */
+
         }
         public async void Fn_SelectCita(object sender,ItemTappedEventArgs _Args)
         {
@@ -45,7 +46,7 @@ namespace TratoMedi.Views
 
         public void Ordenar()
         {
-            IEnumerable<Cita> _temp = v_citas.OrderBy(x => x.v_fecha);
+            IEnumerable<Cita> _temp = v_citas.OrderBy(x => x.v_fechaDate);
             v_citas = new ObservableCollection<Cita>(_temp);
 
             for (int i = 0; i < v_citas.Count; i++)

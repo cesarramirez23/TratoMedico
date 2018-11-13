@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using Newtonsoft.Json;
+using TratoMedi.Varios;
 
 namespace TratoMedi.Personas
 {
@@ -183,9 +185,13 @@ namespace TratoMedi.Personas
     {
         [JsonProperty("Consecutivo")]
         public string v_id { get; set; }
+        [JsonProperty("ID_DR")]
+        public string v_membre { get; set; }
         //get y set para poder que sean binding
         [JsonProperty("titulo")]
         public string v_titulo { get; set; }
+
+
         [JsonProperty("nombre")]
         public string v_Nombre { get; set; }
         /// <summary>
@@ -208,19 +214,68 @@ namespace TratoMedi.Personas
         public string v_Tel { get; set; }
         [JsonProperty("correo")]
         public string v_Correo { get; set; }
-        [JsonProperty("cedula")]
-        public string v_cedula { get; set; }
+        //[JsonProperty("cedula")]
+        //public string v_cedula { get; set; }
         [JsonProperty("descrip")]
         public string v_descripcion { get; set; }
         [JsonProperty("idsexo")]
         public int v_idsexo { get; set; }
 
-        [JsonProperty("activada")]
-        public bool v_citaActiva { get; set; }
-        [JsonProperty("tiempo")]
-        public string v_tiempo { get; set; }
+        [JsonProperty("activado")]
+        public string v_activo { get; set; }
+        [JsonProperty("fecha_vig")]
+        public string v_vig;
 
+        [JsonProperty("especialidad")]
+        public ObservableCollection<C_EspeTitu> v_especs = new ObservableCollection<C_EspeTitu>();
+        [JsonProperty("titulos")]
+        public ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
+
+        public void Fn_SetEspecTitulo()
+        {
+            int _val =0;
+            string[] _list = v_Especialidad.Split('&');
+            v_Especialidad = "";
+            for(int  i=0;i< _list.Length; i++)
+            {
+                _val = int.Parse(_list[i]);
+                v_Especialidad +=v_especs[_val].v_nombreEspec+"&";
+                v_especs[i].v_visible = false;
+            }
+            
+            _list = v_titulo.Split('&');
+            v_titulo = "";
+            for (int i = 0; i < _list.Length; i++)
+            {
+                _val = int.Parse(_list[i]);
+                v_titulo += v_titulos[_val].v_nombreTitulo + "&";
+                v_titulos[i].v_visible = false;
+            }
+            
+            //int length = v_idEspe.Length;
+            //C_Espec _nueEsp = new C_Espec();
+            //v_especs.Clear();
+            //for (int i = 0; i < length; i++)
+            //{
+            //    _nueEsp.v_id = v_idEspe[i];
+            //    _nueEsp.v_nombre = v_nombreEspe[i];
+            //    v_especs.Add(_nueEsp);
+            //}
+            //_nueEsp.v_id = "-2";
+            //_nueEsp.v_nombre = "nada";
+            //v_especs.Add(_nueEsp);
+        }
+        public bool Fn_GetActivado()
+        {
+            //if (v_activo == "1")
+            //{ return true; }
+            //else
+            //{ return false; }
+            return true;
+        }
+        
         public string v_img { get; set; }
+        [JsonIgnore]
         public string v_completo { get; set; }
 
 
@@ -228,11 +283,12 @@ namespace TratoMedi.Personas
         {
             string _ret;
             _ret = "tit " + v_titulo + "nom " + v_Nombre + " ape " + v_Apellido + " espe " + v_Especialidad + " dom " + v_Domicilio + " ciu " + v_Ciudad +
-                " tel " + v_Tel + " corr " + v_Correo + " horario" + v_horario + " ced " + v_cedula + " des " + v_descripcion +
-                " sexo " + v_idsexo;
+                " tel " + v_Tel + " corr " +
+                //v_Correo + " horario" + v_horario + " ced " + v_cedula + 
+                " des " + v_descripcion +
+                " sexo " + v_idsexo + "  activado" + v_activo + "  vig" + v_vig;
             return _ret;
         }
-
     }
 
 
