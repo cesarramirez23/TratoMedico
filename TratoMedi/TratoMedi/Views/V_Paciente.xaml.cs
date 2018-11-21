@@ -136,35 +136,45 @@ namespace TratoMedi.Views
         /// <param name="_args"></param>
         public async void Fn_Terminar(object sender, EventArgs _args)
         {
-           /* Cita _cita = new Cita("0", v_cita.v_fechaDate.Date,v_cita.v_hora, v_cita.v_idCita);
-            string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
-           // await DisplayAlert("Enviar", _json, "aceptar");
-            HttpClient _client = new HttpClient();
-            string _DirEnviar = "http://tratoespecial.com/update_citas.php";
-            StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
-            try
-            {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
-                HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                    if (_respuesta == "1")
-                    {
-                        await DisplayAlert("Exito", "Cambios generados correctamente", "Aceptar");
-                        await Navigation.PopAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Error", "No se pudo agendar tu cita, intentalo mas tarde", "Aceptar");
-                    }
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                await DisplayAlert("Error", ex.Message, "Aceptar");
-            }*/
-            //eliminar lo guardado local y enviar su informacion de medicamentos
-            App.Fn_Terminaconsullta();
+        // membresia completa  1810I-0558 [JsonProperty("ID_paciente")]
+        //public string v_pacienteId { get; set; }
+        //[JsonProperty("folio")]
+        //public string v_folio { get; set; }
+        //id de la cita
+        //medicamentos la lista
+
+
+
+
+        /* Cita _cita = new Cita("0", v_cita.v_fechaDate.Date,v_cita.v_hora, v_cita.v_idCita);
+         string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
+        // await DisplayAlert("Enviar", _json, "aceptar");
+         HttpClient _client = new HttpClient();
+         string _DirEnviar = "http://tratoespecial.com/update_citas.php";
+         StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
+         try
+         {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
+             HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+             if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+             {
+                 string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                 if (_respuesta == "1")
+                 {
+                     await DisplayAlert("Exito", "Cambios generados correctamente", "Aceptar");
+                     await Navigation.PopAsync();
+                 }
+                 else
+                 {
+                     await DisplayAlert("Error", "No se pudo agendar tu cita, intentalo mas tarde", "Aceptar");
+                 }
+             }
+         }
+         catch (HttpRequestException ex)
+         {
+             await DisplayAlert("Error", ex.Message, "Aceptar");
+         }*/
+        //eliminar lo guardado local y enviar su informacion de medicamentos
+        App.Fn_Terminaconsullta();
 
         }
         /*private async void Scan(object sender, EventArgs _Args)
