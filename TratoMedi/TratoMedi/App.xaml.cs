@@ -15,7 +15,7 @@ namespace TratoMedi
     public partial class App : Application
     {
         /// <summary>
-        /// membresia completa 1808D-0008
+        /// membresia completa 1808D-0008 del doctor
         /// </summary>
         public static string v_membresia = "";
         public static ObservableCollection<Cita> v_citas;
@@ -71,7 +71,7 @@ namespace TratoMedi
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
                     Fn_CargarDatos();
 
-                    MainPage = new V_MasterMenu(true, "Bienvenido " + v_perfil.v_titulo + " " +v_perfil.v_Nombre);
+                    MainPage = new V_MasterMenu(true, "Bienvenido " +v_perfil.v_Nombre);
                 }
                 else
                 {
@@ -220,6 +220,7 @@ namespace TratoMedi
             Current.Properties[NombresAux.v_paciente] = v_paciente;
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
+            await Current.SavePropertiesAsync();
             await Task.Delay(100);
         }
         /// <summary>
@@ -263,7 +264,8 @@ namespace TratoMedi
         /// <param name="_citas"></param>
         public static async void Fn_GuardarCitas(ObservableCollection<Cita> _citas)
         {
-            string _json = JsonConvert.SerializeObject(_citas, Formatting.Indented);
+            v_citas = _citas;
+            string _json = JsonConvert.SerializeObject(v_citas, Formatting.Indented);
             if (Current.Properties.ContainsKey(NombresAux.v_citas))
             {
                 Current.Properties[NombresAux.v_citas] = "";
@@ -340,8 +342,8 @@ namespace TratoMedi
             }//si esta logeado
             else if (v_log == "1")
             {
-
-                Current.MainPage = new V_MasterMenu(true, "Bienvenido Nombre del medico");
+               
+                Current.MainPage = new V_MasterMenu(true, "Bienvenido " + v_perfil.v_Nombre);
             }
             else
             {
@@ -400,6 +402,22 @@ namespace TratoMedi
             {
                 return "a";
             }
+        }
+        public static ObservableCollection<Cita> Fn_GetCitas(string _idpaciente)
+        {
+            ObservableCollection<Cita> _ret = new ObservableCollection<Cita>();
+            for(int i=0; i<v_citas.Count; i++)
+            {
+                if(v_citas[i].v_pacienteId== _idpaciente)
+                {
+                    _ret.Add(v_citas[i]);
+                }
+            }
+            for(int  i = 0; i < _ret.Count; i++)
+            {
+                _ret[i].Fn_SetValores();
+            }
+            return _ret;
         }
     }
 }

@@ -19,30 +19,47 @@ namespace TratoMedi.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)] 
 	public partial class V_Paciente : ContentPage
 	{
+        Cita v_cita;
         ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
         int v_editando = -1;
 
-        public  V_Paciente (bool _scan)
+        public  V_Paciente (bool _scan, string _membresia)
 		{
 			InitializeComponent ();
             if(_scan )
             {
                 Title = "Lector";
                 Fn_CAmbioStack(false, false, false);
+                
                 Scanner.IsVisible = true;
                 Scanner.IsScanning = true;
+                OverlayScan.IsVisible = true;
+
+               // ListaCita.IsVisible = false;
                 aaaa.IsVisible = false;
             }
             else
             {
                 Title = "En consulta";
-               // Fn_CargarMedica();
-                Fn_CAmbioStack(true, false, false);
+                GridLEctor.IsVisible = false;
+                OverlayScan.IsVisible = false;
                 Scanner.IsVisible = false;
                 Scanner.IsScanning = false;
                 aaaa.IsVisible = true;
                 CargarGen();
-                CargarMed(); 
+                CargarMed();
+                string[] _Arr = _membresia.Split('/');
+                if(_Arr[1]=="1")//ya eligio su cita
+                {
+                    ListaCita.IsVisible = false;
+                    Fn_CAmbioStack(true, false, false);
+                }
+                else
+                {
+                    ListaCita.IsVisible = true;
+                    Fn_CAmbioStack(false, false, false);
+                    ListaCita.ItemsSource = App.Fn_GetCitas(_Arr[0]);
+                }
             }
         }
         public void Fn_CancelMedi(object sender, EventArgs _Args)
@@ -62,13 +79,13 @@ namespace TratoMedi.Views
             {
                 N_Perio.Text = "0";
             }
-            _nuevo.v_periodo= int.Parse(   N_Perio.Text);
+            _nuevo.v_periodo= float .Parse(   N_Perio.Text);
 
             if (string.IsNullOrEmpty(N_Tiem.Text) || string.IsNullOrWhiteSpace(N_Tiem.Text))
             {
                 N_Tiem.Text = "0";
             }
-            _nuevo.v_tiempo= int.Parse( N_Tiem.Text);
+            _nuevo.v_tiempo= float.Parse( N_Tiem.Text);
 
             _nuevo.v_extra =App.Fn_Vacio( N_Extra.Text );
             // si no esta editando agregarlo, sino darle diferente valor
@@ -112,8 +129,40 @@ namespace TratoMedi.Views
             Fn_CAmbioStack( false, false,true);
             Todos.ItemsSource = v_medicamentos;
         }
-        public void Fn_Terminar(object sender, EventArgs _args)
+        /// <summary>
+        /// terminar la cita y actualizar su estado 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="_args"></param>
+        public async void Fn_Terminar(object sender, EventArgs _args)
         {
+           /* Cita _cita = new Cita("0", v_cita.v_fechaDate.Date,v_cita.v_hora, v_cita.v_idCita);
+            string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
+           // await DisplayAlert("Enviar", _json, "aceptar");
+            HttpClient _client = new HttpClient();
+            string _DirEnviar = "http://tratoespecial.com/update_citas.php";
+            StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
+            try
+            {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
+                HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                    if (_respuesta == "1")
+                    {
+                        await DisplayAlert("Exito", "Cambios generados correctamente", "Aceptar");
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "No se pudo agendar tu cita, intentalo mas tarde", "Aceptar");
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Aceptar");
+            }*/
             //eliminar lo guardado local y enviar su informacion de medicamentos
             App.Fn_Terminaconsullta();
 
@@ -145,7 +194,7 @@ namespace TratoMedi.Views
             if(_entry.Text.Length>0)
             {
                 char _ultimo = _entry.Text[_entry.Text.Length - 1];
-                if (_ultimo == '-' || _ultimo == ',' || _ultimo == '_' || _ultimo == '.' )
+                if (_ultimo == '-' || _ultimo == ',' || _ultimo == '_' )//|| _ultimo == '.' )//os valores que se van a eliminar
                 {
                     if(_entry.Text.Length==1)
                     {
@@ -202,10 +251,15 @@ namespace TratoMedi.Views
         {
             //deja de escanear
             Scanner.IsScanning = false;
-
             //crear el cliente
             HttpClient _client = new HttpClient();
             string _DirEnviar = "";
+            Perf _info = JsonConvert.DeserializeObject<Perf>(result.Text);
+            if(_info.v_fol!="0")//si no es el titular, mostrar algo de informacion del titular
+            {
+                Console.Write("No es el titular, descargar perfil del principal");
+            }
+            ///descargar la info del que escanean su codigo
             StringContent _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
             string _respuesta;
             HttpResponseMessage _respuestaphp;
@@ -231,13 +285,13 @@ namespace TratoMedi.Views
                     App.Fn_GuardarDatos(_nuePerMEd);
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        App.Fn_GuardarDatos("1");
-                        Scanner.IsScanning = true;
+                        App.Fn_GuardarDatos("1/"+_info.v_membre+"/0");
+                        Scanner.IsScanning = false;
                         await Task.Delay(100);
                         //MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
                         await Navigation.PopAsync();
-                        await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
-                    });
+                        await Navigation.PushAsync(new V_Paciente(false,_info.v_membre+ "/0") { Title =App.v_pergen.v_Nombre });
+                     });
                 }
                 catch(HttpRequestException ex)
                 {
@@ -404,10 +458,31 @@ namespace TratoMedi.Views
         }
         public async Task Fn_CargarMedica()
         {
-            string _medi = App.Current.Properties["medi"] as string;
+            string _medi = App.Current.Properties[NombresAux.v_medicamentos] as string;
             App.v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
             v_medicamentos = App.v_medicamentos;
             await Task.Delay(100);
+        }
+
+        public async void Fn_SelectCita(object sender, ItemTappedEventArgs _Args)
+        {
+            Cita _selec = _Args.Item as Cita;
+            if(_selec.v_estado=="3")//solo elegir las que ya esten aceptadas
+            {
+                bool opcion= await DisplayAlert("Continuar", "Seguro de continuar esta cita?", "Continuar", "Elegir otra");
+                if(opcion)
+                {
+                    ListaCita.IsVisible = false;
+                    App.Fn_GuardarDatos(App.v_paciente+"/1");
+                    v_cita = _selec;
+                    Fn_CAmbioStack(true, false, false);
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Esta cita no está aceptada, elige otra"+ _selec.v_estado, "Aceptar");
+            }
+
         }
     }
 }

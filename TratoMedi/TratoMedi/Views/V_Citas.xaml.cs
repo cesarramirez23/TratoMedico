@@ -20,7 +20,7 @@ namespace TratoMedi.Views
 		public V_Citas ()
 		{
 			InitializeComponent ();
-            Fn_GetCitas();
+            //Fn_GetCitas();
             /*if (App.v_citas.Count > 0)
                        {
                            v_citas = App.v_citas;
@@ -38,14 +38,23 @@ namespace TratoMedi.Views
            */
 
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Fn_GetCitas();
+        }
         public async void Fn_SelectCita(object sender,ItemTappedEventArgs _Args)
         {
             Cita _selec = _Args.Item as Cita;
-            await Navigation.PushAsync(new V_NCita(_selec));
+            await Navigation.PushAsync(new V_NCita(_selec,false));
         }
 
         public void Ordenar()
         {
+            for (int i = 0; i < v_citas.Count; i++)
+            {
+                v_citas[i].Fn_SetValores();
+            }
             IEnumerable<Cita> _temp = v_citas.OrderBy(x => x.v_fechaDate);
             v_citas = new ObservableCollection<Cita>(_temp);
 
@@ -57,7 +66,7 @@ namespace TratoMedi.Views
         private async void Fn_GetCitas()
         {
             HttpClient _client = new HttpClient();
-            Cita _cita = new Cita("1808D-0008", "1");
+            Cita _cita = new Cita(App.v_membresia, "1");
             string _json = JsonConvert.SerializeObject(_cita);
             string _DirEnviar = "http://tratoespecial.com/get_citas.php";
             StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
@@ -69,8 +78,8 @@ namespace TratoMedi.Views
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
                     Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
-                    App.Fn_GuardarCitas(v_citas);
                     Ordenar();
+                    App.Fn_GuardarCitas(v_citas);
                     ListaCita.ItemsSource = v_citas;
                 }
             }
@@ -87,12 +96,21 @@ namespace TratoMedi.Views
                     v_citas.Add(new Cita() { v_nombreDR = "nombre 2", v_fecha = "2019-01-22", v_hora = new TimeSpan(10, 04, 00), v_estado = "1" });
                     v_citas.Add(new Cita() { v_nombreDR = "nombre 3", v_fecha = "2018-10-30", v_hora = new TimeSpan(16, 50, 00), v_estado = "2" });
                     v_citas.Add(new Cita() { v_nombreDR = "nombre 4", v_fecha = "2018-12-16", v_hora = new TimeSpan(18, 29, 00), v_estado = "3" });
+                    Ordenar();
                     App.Fn_GuardarCitas(v_citas);
                 }
                 Ordenar();
                 ListaCita.ItemsSource = v_citas;
             }
         }
-        
+
+        private async void ListaCita_Refreshing(object sender, EventArgs e)
+        {
+            var list = (ListView)sender;
+            Fn_GetCitas();
+            await Task.Delay(100);
+            //cancelar la actualizacion
+            list.IsRefreshing = false;
+        }
     }
 }

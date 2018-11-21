@@ -22,6 +22,7 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\net
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Login.xaml.g.cs
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_MainPage.xaml.g.cs
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_MasterMenu.xaml.g.cs
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_NCita.xaml.g.cs
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Opciones.xaml.g.cs
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Paciente.xaml.g.cs
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Perfil.xaml.g.cs
@@ -32,4 +33,3 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\net
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_NCita.xaml.g.cs

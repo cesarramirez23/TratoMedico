@@ -15,12 +15,16 @@ using System.Net.Http;
 namespace TratoMedi.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class V_Opciones : TabbedPage
+	public partial class V_Opciones : ContentPage
 	{
         Regex regex = new Regex(@"^(?=.*[A-Za-z])(?=.*\w)[A-Za-z\w]{8,}$");
         public V_Opciones()
         {
             InitializeComponent();
+            App.Fn_CargarDatos();
+
+            C_Membre.Text = App.v_membresia;
+            C_fecha.Text = App.v_perfil.v_vig;
             //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
             regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
         }
@@ -65,23 +69,15 @@ namespace TratoMedi.Views
                     else
                     {
                         P_mensaje.IsVisible = false;
-                        string prime = App.v_membresia.Split('-')[0];
-                        string _membre = "";
-                        for (int i = 0; i < prime.Length - 1; i++)
-                        {
-                            _membre += prime[i];
-                        }
-                        string letra = prime[prime.Length - 1].ToString();
-                        string _conse = App.v_membresia.Split('-')[1];
                         string json = @"{";
-                        json += "membre:'" + _membre + "',\n";
+                        json += "membre:'" + App.v_membresia + "',\n";
                         json += "password:'" + P_actual.Text + "',\n";
                         json += "newpassword:'" + P_Nueva.Text + "',\n";
                         json += "}";
                         JObject jsonPer = JObject.Parse(json);
                         StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
                         HttpClient _client = new HttpClient();
-                        string _url = "http://tratoespecial.com/password_change.php";
+                        string _url = "http://tratoespecial.com/password_change_dr.php";
                         try
                         {
                             HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
@@ -130,7 +126,6 @@ namespace TratoMedi.Views
 
             //}
         }
-
         public bool Fn_validar(string _actual, string _nueva)
         {
             if (_actual == _nueva)
@@ -151,6 +146,13 @@ namespace TratoMedi.Views
                     return true;
                 }
             }
+        }
+        /// <summary>
+        /// prende apaga el al stak para cambio de contraseña
+        /// </summary>
+        public void MostrarPass(object sender, EventArgs _Args)
+        {
+            StackPass.IsVisible = !StackPass.IsVisible;
         }
     }
 }

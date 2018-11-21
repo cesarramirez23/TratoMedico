@@ -21,15 +21,24 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <forms:ZXingScannerView x:Name="Scanner" OnScanResult="Fn_Scan" IsScanning="False" IsTorchOn="False">
-
+            <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="GridLEctor">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <forms:ZXingScannerView x:Name="Scanner" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                    OnScanResult="Fn_Scan" IsScanning="False" IsTorchOn="False" > 
             </forms:ZXingScannerView>
+                <forms:ZXingDefaultOverlay HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                 x:Name="OverlayScan" TopText="Apunta a la tarjeta virtual del paciente"  >
+                </forms:ZXingDefaultOverlay>
+            </Grid>
+           
             <ScrollView x:Name="aaaa" IsVisible="False">
                 <StackLayout >
-
-
-                    <StackLayout  x:Name="StackPerfiles" Margin="20,0">
-                        <!--
+                    <StackLayout  x:Name="StackPerfiles" Margin="20,0" VerticalOptions="FillAndExpand" >
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
@@ -41,9 +50,9 @@
                             <Button Text="Terminar Cita" Clicked="Fn_Terminar" Grid.Column="0"></Button>
                             <Button Text="Agregar Medicamento" Clicked="Fn_NuevoMed" Grid.Column="1"></Button>
                             <Button Text="Ver Medicamentos" Clicked="Fn_MostrarMed" Grid.Column="2"></Button>
-                        </Grid> -->
-                        <Button Text="Terminar Cita" Clicked="Fn_Terminar" Style="{StaticResource Buton}"></Button>
-                        
+                        </Grid>
+                        <!--<Button Text="Terminar Cita" Clicked="Fn_Terminar" Style="{StaticResource Buton}"></Button>-->
+
                         <ScrollView Margin="2,10">
                             <StackLayout >
                                 <Label Text="Datos Generales" Style="{StaticResource AzulMedLbl}" HorizontalOptions="Center"></Label>
@@ -85,32 +94,29 @@
                         </ScrollView>
                     </StackLayout>
 
+                    <StackLayout Margin="20,0" x:Name="StackNuevo" VerticalOptions="FillAndExpand">
+                        <Label Text="Medicamento"></Label>
+                        <Editor AutoSize="TextChanges" x:Name="N_nombre"></Editor>
+                        <Label Text="¿Por cuantos dias?"/>
+                        <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="N_Perio"></Entry>
+                        <Label Text="¿Cada cuantas horas?"/>
+                        <Entry Keyboard="Numeric" x:Name="N_Tiem" TextChanged="Fn_SoloNumero"></Entry>
+                        <Label Text="Informacion Extra"/>
+                        <Editor AutoSize="TextChanges" x:Name="N_Extra"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Cancelar" Clicked="Fn_CancelMedi" Grid.Column="0"></Button>
+                            <Button Text="Agregar" Clicked="Fn_GuarMedi" Grid.Column="1"></Button>
+                        </Grid>
+                    </StackLayout>
 
-                    <ScrollView x:Name="StackNuevo">
-                        <StackLayout Margin="20,0" >
-                            <Label Text="Medicamento"></Label>
-                            <Editor AutoSize="TextChanges" x:Name="N_nombre"></Editor>
-                            <Label Text="¿Por cuantos dias?"/>
-                            <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="N_Perio"></Entry>
-                            <Label Text="¿Cada cuantas horas?"/>
-                            <Entry Keyboard="Numeric" x:Name="N_Tiem" TextChanged="Fn_SoloNumero"></Entry>
-                            <Label Text="Informacion Extra"/>
-                            <Editor AutoSize="TextChanges" x:Name="N_Extra"/>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Text="Cancelar" Clicked="Fn_CancelMedi" Grid.Column="0"></Button>
-                                <Button Text="Agregar" Clicked="Fn_GuarMedi" Grid.Column="1"></Button>
-                            </Grid>
-                        </StackLayout>
-                    </ScrollView>
-
-                    <StackLayout x:Name="StackNota" BackgroundColor="LemonChiffon" Margin="20,0">
+                    <StackLayout x:Name="StackNota" VerticalOptions="FillAndExpand">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"/>
@@ -123,7 +129,7 @@
                             <Button Text="Actualizar" Clicked="Actualizar" Grid.Column="1"></Button>
                         </Grid>
                         <Label Style="{StaticResource AzulMedLbl}" Text="Receta Médica" HorizontalOptions="Center"/>
-                        <ListView x:Name="Todos" ItemTapped="Fn_TApMedi" SelectionMode="None"
+                        <ListView x:Name="Todos" ItemTapped="Fn_TApMedi" SelectionMode="None" VerticalOptions="FillAndExpand"
                                   SeparatorColor="Black" SeparatorVisibility="Default" RowHeight="300" Margin="0,10">
                             <!-- ItemsSource="{Binding v_medicamentos, Mode=TwoWay}" -->
                             <ListView.ItemTemplate>
@@ -152,6 +158,40 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
+
+                    <ListView x:Name="ListaCita"  BackgroundColor="Bisque" HasUnevenRows="True" IsVisible="False"
+                             ItemTapped="Fn_SelectCita" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="10,0" BackgroundColor="{Binding v_color}">
+                                        <StackLayout>
+                                            <Label Text="Nombre del paciente"  Style="{StaticResource AzulMedLbl}"/>
+                                            <Label Text="{Binding v_nombrePaciente}" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Fecha: " Style="{StaticResource AzulMedLbl}"/>
+                                            <DatePicker Date="{Binding v_fecha}" Format="dd/MM/yyyy" IsEnabled="False"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Hora: " Style="{StaticResource AzulMedLbl}"/>
+                                            <TimePicker Time="{Binding v_hora}"  IsEnabled="False"/>
+                                        </StackLayout>
+                                        <Picker SelectedIndex="{Binding v_Estadocita}" IsEnabled="False">
+                                            <Picker.Items>
+                                                <x:String>Terminada</x:String>
+                                                <x:String>Nueva</x:String>
+                                                <x:String>Pendiente</x:String>
+                                                <x:String>Aceptada</x:String>
+                                                <x:String>Cancelada</x:String>
+                                            </Picker.Items>
+                                        </Picker>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
                 </StackLayout>
             </ScrollView>
         </StackLayout>

@@ -42,11 +42,11 @@ namespace TratoMedi.Varios
 
     public enum EstadoCita
     {
-        Inactiva,
-        Nueva,
-        Pendiente,
-        Aceptada,
-        Cancelada
+        Terminada = 0,
+        Nueva = 1,
+        Pendiente = 2,
+        Aceptada = 3,
+        Cancelada = 4
     }
     public class Cita
     {
@@ -65,6 +65,9 @@ namespace TratoMedi.Varios
         /// </summary>
         [JsonProperty("folio")]
         public string v_folio { get; set; }
+        /// <summary>
+        /// el numero que manda la base de datos en forma de texto
+        /// </summary>
         [JsonProperty("estado")]
         public string v_estado { get; set; }
         /// <summary>
@@ -90,6 +93,18 @@ namespace TratoMedi.Varios
         /// <value>The v tipo.</value>
         [JsonProperty("tipo")]
         public string v_tipo { get; set; }
+        [JsonProperty("ID_cita")]
+        public string v_idCita { get; set; }
+        /// <summary>
+        /// en la opantalla de citas colores
+        /// </summary>
+        [JsonIgnore]
+        public Color v_color { get; set; }
+
+        /// <summary>
+        /// el int que se le manda a la lista
+        /// </summary>
+        public int v_Estadocita { get; set; }
 
         public Cita() { }
         /// <summary>
@@ -109,12 +124,12 @@ namespace TratoMedi.Varios
                 v_doctorId = _membre;
             }
         }
-        public Cita(string _membredr, string _membrepac, string _folio, string _estado, DateTime _fecha, TimeSpan _hora, string _tokenDr, string _tokenpac)
+       /* public Cita(string _membredr, string _membrepac, string _folio, string _estado, DateTime _fecha, TimeSpan _hora, string _tokenDr, string _tokenpac)
         {
 
-        }
+        }*/
         /// <summary>
-        /// para crear el json a enviar
+        /// para crear el json a enviar en la nueva cita
         /// </summary>
         /// <param name="_membredr"></param>
         /// <param name="_membrepac"></param>
@@ -151,15 +166,41 @@ namespace TratoMedi.Varios
             }
             v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
         }
-
-
         /// <summary>
-        /// en la opantalla de citas colores
+        /// para el update
         /// </summary>
-        [JsonIgnore]
-        public Color v_color { get; set; }
-        [JsonIgnore]
-        public EstadoCita v_Estadocita { get; set; }
+        /// <param name="_estado"></param>
+        /// <param name="_fecha"></param>
+        /// <param name="_hora"></param>
+        /// <param name="_idcita"></param>
+        public Cita( string _estado, DateTime _fecha, TimeSpan _hora, string _idcita)
+        {
+            v_idCita = _idcita;
+            v_estado = _estado;
+            v_hora = _hora;
+            string _month = "";
+            if (_fecha.Month < 10)
+            {
+                _month = "0" + _fecha.Month.ToString();
+            }
+            else
+            {
+                _month = _fecha.Month.ToString();
+            }
+            string _day = "";
+            if (_fecha.Day < 10)
+            {
+                _day = "0" + _fecha.Day.ToString();
+            }
+            else
+            {
+                _day = _fecha.Day.ToString();
+            }
+            v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
+        }
+
+
+
         /// <summary>
         /// para cambiar el color dentro de la lista visible, cambia estado cita, y formato de la fecha
         /// </summary>
@@ -174,17 +215,17 @@ namespace TratoMedi.Varios
             {
                 v_color = Color.PaleTurquoise;
             }
-            v_Estadocita = (EstadoCita)(int.Parse(v_estado));
+            v_Estadocita =(int.Parse(v_estado));
             string[] _fecha = v_fecha.Split('-');
-            v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]));
+            v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
+                                       v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
         }
         public void Fn_SetValores()
         {
-            v_Estadocita = (EstadoCita)(int.Parse(v_estado));
-            string[] _fecha = v_fecha.Split('/');//month day year
-            string[] _year = _fecha[2].Split(' ');
-
-            v_fechaDate = new DateTime(int.Parse(_year[0]), int.Parse(_fecha[0]), int.Parse(_fecha[1]));
+            v_Estadocita = (int.Parse(v_estado));
+            string[] _fecha = v_fecha.Split('-');//month day year
+            v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
+                                       v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
         }
     }
 
@@ -214,14 +255,16 @@ namespace TratoMedi.Varios
         /// <summary>
         /// por cuantos dias 
         /// </summary>
-        public int v_periodo { get; set; }
+        public float v_periodo { get; set; }
         [JsonProperty("tiempo")]
        /// <summary>
        /// cada cuantas horas
        /// </summary>
-        public int v_tiempo { get; set; }
+        public float v_tiempo { get; set; }
         [JsonProperty("extra")]
         public string v_extra { get; set; }
+        [JsonProperty("ID_cita")]
+        public string v_idCita { get; set; }
         public string Fn_Info()
         {
             string _info = "";

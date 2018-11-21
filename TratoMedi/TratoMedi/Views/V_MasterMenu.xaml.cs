@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using System.Net.Http;
+using TratoMedi.Varios;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+
 namespace TratoMedi.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,6 +26,7 @@ namespace TratoMedi.Views
                 App.Fn_CargarDatos();
                 Detail.Title = _title;
                 StackPrin.IsVisible = false;
+                Fn_GetCitas();
             }
             else
             {
@@ -29,6 +35,29 @@ namespace TratoMedi.Views
             }
             IsPresented = false;
             Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+        }
+        private async void Fn_GetCitas()
+        {
+            HttpClient _client = new HttpClient();
+            Cita _cita = new Cita(App.v_membresia, "1");
+            string _json = JsonConvert.SerializeObject(_cita);
+            string _DirEnviar = "http://tratoespecial.com/get_citas.php";
+            StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
+            try
+            {
+                HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                    ObservableCollection<Cita> v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
+                    Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
+                    App.Fn_GuardarCitas(v_citas);
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                await DisplayAlert("Error buscando tus citas", ex.ToString(), "Aceptar");
+            }
         }
 
         public void Fn_Inicio(object sender, EventArgs _args)
@@ -64,18 +93,21 @@ namespace TratoMedi.Views
         public void Fn_Opciones(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Opciones() { Title = "Opciones" });
+            Detail = new NavigationPage(new V_Opciones() { Title = "Cuenta" });
         }
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
-            if (App.v_paciente=="0")
+            string[] _paci = App.v_paciente.Split('/');
+            //if (App.v_paciente=="0")
+            if (_paci[0]=="0")
             {
-            Detail = new NavigationPage(new V_Paciente(true) );
+            Detail = new NavigationPage(new V_Paciente(true,"") );
             }
-            else if(App.v_paciente=="1")
+            //else if(App.v_paciente=="1")
+            else if (_paci[0] == "1")
             {
-            Detail = new NavigationPage(new V_Paciente(false) );
+            Detail = new NavigationPage(new V_Paciente(false,_paci[1]+"/"+_paci[2]) );
             }
         }
         public async void Fn_CerraSesion(object sender, EventArgs _args)

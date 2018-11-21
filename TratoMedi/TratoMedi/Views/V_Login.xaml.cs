@@ -65,9 +65,10 @@ namespace TratoMedi.Views
                                 ////cargar la nueva pagina de perfil
                                 App.v_log = "1";
                                 App.v_membresia = L_usu.Text;
+                                _nuePer.Fn_SetEspecTitulo();
                                 App.Fn_GuardarDatos(_nuePer);
                                 StackMen.IsVisible = false;
-                                Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido "+ App.v_perfil.v_titulo+" "+ App.v_perfil.v_Nombre );
+                                Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido "+  App.v_perfil.v_Nombre );
                             }
                             catch (HttpRequestException ex)
                             {

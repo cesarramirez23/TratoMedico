@@ -18,8 +18,9 @@ namespace TratoMedi.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class V_Perfil : TabbedPage
     {
+        string v_especId = "";
+
         ObservableCollection<C_EspeTitu> v_espec = new ObservableCollection<C_EspeTitu>();
-        ObservableCollection<C_EspeTitu> v_titu = new ObservableCollection<C_EspeTitu>();
         bool v_Selec = false;
         bool v_editar = false;
         bool v_cita = false;
@@ -29,6 +30,7 @@ namespace TratoMedi.Views
             Fn_CargaPerfil();
             P_Swi.IsToggled = v_cita;
             P_StackCita.IsVisible = v_cita;
+           
         }
         public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
         {
@@ -64,7 +66,7 @@ namespace TratoMedi.Views
                 P_Editar.Text = "Cancelar";
                 P_Guardar.IsVisible = true;
 
-                P_Titulo.IsEnabled = true;
+                PickTitulo.IsEnabled = true;
                 P_Nom.IsEnabled = true;
                 P_Ape.IsEnabled = true;
                 P_sexoPick.IsEnabled = true;
@@ -84,7 +86,7 @@ namespace TratoMedi.Views
                 P_Editar.Text = "Editar";
                 P_Guardar.IsVisible = false;
 
-                P_Titulo.IsEnabled = false;
+                PickTitulo.IsEnabled = false;
                 P_Nom.IsEnabled = false;
                 P_Ape.IsEnabled = false;
                 P_sexoPick.IsEnabled = false;
@@ -98,6 +100,44 @@ namespace TratoMedi.Views
                 P_Descrip.IsEnabled = false;
 
                 App.Fn_CargarDatos();
+                v_espec = App.v_perfil.v_especs;
+                PickTitulo.ItemsSource = App.v_perfil._tituArr;
+
+                P_Nom.Text = App.v_perfil.v_Nombre;
+                P_Ape.Text = App.v_perfil.v_Apellido;
+                PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
+                P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
+                pickEspe.ItemsSource = v_espec;
+
+                P_Esp.Text = App.v_perfil.v_Especialidad;
+                v_especId = App.v_perfil.v_Especialidad;
+                Console.Write("idEspe" + v_especId);
+                int val = -1;
+                string[] _arr = v_especId.Split('&');
+                P_Esp.Text = "";
+                for (int i = 0; i < _arr.Length; i++)//prende soloo unos
+                {
+                    val = int.Parse(_arr[i]);
+                    if (i == 0)
+                    {
+
+                        P_Esp.Text += v_espec[val - 1].v_nombreEspec;
+                        v_espec[val - 1].v_visible = true;
+                    }
+                    else
+                    {
+                        //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
+                        P_Esp.Text += "," + v_espec[val - 1].v_nombreEspec;
+                        v_espec[val - 1].v_visible = true;
+                    }
+                }
+                //  P_Ced.Text = App.v_perfil.v_cedula;
+                P_hor.Text = App.v_perfil.v_horario;
+                P_dom.Text = App.v_perfil.v_Domicilio;
+                P_Ciu.Text = App.v_perfil.v_Ciudad;
+                P_Tel.Text = App.v_perfil.v_Tel;
+                P_Corr.Text = App.v_perfil.v_Correo;
+                P_Descrip.Text = App.v_perfil.v_descripcion;
             }
         }
         public async void Fn_Guardar(object sender, EventArgs _args)
@@ -105,12 +145,15 @@ namespace TratoMedi.Views
             Button _buton = (Button)sender;
             _buton.IsEnabled = false;
             //se crea el json con la clase mas lel folio y membresia
+            
+           
+
             string json = @"{";
             json += "membre:'" + App.v_membresia + "',\n";
-            json += "titulo:'" + App.Fn_Vacio(P_Titulo.Text) + "',\n";
+            json += "titulo:'" + App.Fn_Vacio(PickTitulo.SelectedIndex.ToString()) + "',\n";
             json += "nombre:'" + App.Fn_Vacio(P_Nom.Text) + "',\n";
             json += "ape:'" + App.Fn_Vacio(P_Ape.Text) + "',\n";
-            json += "espe:'" + App.Fn_Vacio(P_Esp.Text) + "',\n";
+            json += "espe:'" + App.Fn_Vacio(v_especId) + "',\n";
             json += "dom:'" + App.Fn_Vacio(P_dom.Text) + "',\n";
             json += "horario:'" + App.Fn_Vacio(P_hor.Text) + "',\n";
             json += "ciudad:'" + App.Fn_Vacio(P_Ciu.Text) + "',\n";
@@ -121,6 +164,7 @@ namespace TratoMedi.Views
             json += "idsexo:'" + P_sexoPick.SelectedIndex + "'\n";
             json += "}";
 
+            await DisplayAlert("Envia", json.ToString(), "Aceptar");
             JObject jsonPer = JObject.Parse(json);
             StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
             HttpClient _client = new HttpClient();
@@ -153,6 +197,7 @@ namespace TratoMedi.Views
                         _respuestphp = await _client.PostAsync(_url, _content);
                         _result = await _respuestphp.Content.ReadAsStringAsync();
                         C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_result);
+                        _nuePer.Fn_SetEspecTitulo();
                         ////cargar la nueva pagina de perfil
                         App.Fn_GuardarDatos(_nuePer);
                         Fn_Editar(sender,_args);
@@ -203,49 +248,80 @@ namespace TratoMedi.Views
                 _nuePer.Fn_SetEspecTitulo();
                 App.Fn_GuardarDatos(_nuePer);
 
-                App.Fn_CargarDatos();
-                v_espec = App.v_perfil.v_especs;
-                v_titu = App.v_perfil.v_titulos;
-
-
-                P_Titulo.Text = App.v_perfil.v_titulo;
-                pickTitulo.ItemsSource = v_titu;
-                P_Nom.Text = App.v_perfil.v_Nombre;
-                P_Ape.Text = App.v_perfil.v_Apellido;
-                P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
-                P_Esp.Text = App.v_perfil.v_Especialidad;
-                pickEspe.ItemsSource = v_espec;
-                //  P_Ced.Text = App.v_perfil.v_cedula;
-                P_hor.Text = App.v_perfil.v_horario;
-                P_dom.Text = App.v_perfil.v_Domicilio;
-                P_Ciu.Text = App.v_perfil.v_Ciudad;
-                P_Tel.Text = App.v_perfil.v_Tel;
-                P_Corr.Text = App.v_perfil.v_Correo;
-                P_Descrip.Text = App.v_perfil.v_descripcion;
                 await Task.Delay(100);
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("dsad", ex.Message, "asdad");
+                await DisplayAlert("Error en actualizar, Se Cargará la ultima informacion guardada", ex.Message, "Aceptar");
             }
 
+            App.Fn_CargarDatos();
+            v_espec = App.v_perfil.v_especs;
+            PickTitulo.ItemsSource = App.v_perfil._tituArr;
+
+            P_Nom.Text = App.v_perfil.v_Nombre;
+            P_Ape.Text = App.v_perfil.v_Apellido;
+            PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
+            P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
+            pickEspe.ItemsSource = v_espec;
+
+            P_Esp.Text = App.v_perfil.v_Especialidad;
+            v_especId = App.v_perfil.v_Especialidad;
+            Console.Write("idEspe" + v_especId);
+            int val = -1;
+            string[] _arr = v_especId.Split('&');
+            P_Esp.Text = "";
+            for (int i = 0; i < _arr.Length; i++)//prende soloo unos
+            {
+                val = int.Parse(_arr[i]);
+                if (i == 0)
+                {
+
+                    P_Esp.Text += v_espec[val - 1].v_nombreEspec;
+                    v_espec[val - 1].v_visible = true;
+                }
+                else
+                {
+                    //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
+                    P_Esp.Text += "," + v_espec[val - 1].v_nombreEspec;
+                    v_espec[val - 1].v_visible = true;
+                }
+            }
+
+            //  P_Ced.Text = App.v_perfil.v_cedula;
+            P_hor.Text = App.v_perfil.v_horario;
+            P_dom.Text = App.v_perfil.v_Domicilio;
+            P_Ciu.Text = App.v_perfil.v_Ciudad;
+            P_Tel.Text = App.v_perfil.v_Tel;
+            P_Corr.Text = App.v_perfil.v_Correo;
+            P_Descrip.Text = App.v_perfil.v_descripcion;
         }
         private void Fn_Setespe(object sender, EventArgs e)
         {
+            P_Esp.Text = "";
+             int val = -1;
+            string[] _arr = v_especId.Split('&');
+
+            for(int i=0;i<_arr.Length; i++)//prende soloo unos
+            {
+                if (_arr[i] != "")
+                {
+                    val = int.Parse(_arr[i]);
+                    if (i == 0)
+                    {
+                        P_Esp.Text += v_espec[val-1].v_nombreEspec;
+                    }
+                    else
+                    {
+                      //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
+                        P_Esp.Text += "," + v_espec[val-1].v_nombreEspec;
+                    }
+                }
+            }
             v_Selec = !v_Selec;
             StackOver.IsVisible = v_Selec;
-            pickTitulo.IsVisible = false;
-            pickEspe.IsVisible = true;
+            pickEspe.IsVisible = v_Selec;
         }
-
-        private void Fn_SetTitu(object sender, EventArgs e)
-        {
-            v_Selec = !v_Selec;
-            StackOver.IsVisible = v_Selec;
-            pickTitulo.IsVisible = true;
-            pickEspe.IsVisible = false;
-        }
-
         private void pickEspe_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var list = (ListView)sender;
@@ -260,20 +336,44 @@ namespace TratoMedi.Views
             }
             list.ItemsSource = v_espec;
         }
-
-        private void pickTitulo_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void Fn_Cancel(object sender, EventArgs _arg)
         {
-            var list = (ListView)sender;
-            list.ItemsSource = null;
-            C_EspeTitu _tap = e.Item as C_EspeTitu;
-            for (int i = 0; i < v_titu.Count; i++)
+            for (int i = 0; i < v_espec.Count; i++)//apaga todo
             {
-                if (v_titu[i] == _tap)
+                v_espec[i].v_visible = false;
+            }
+            int val = -1;
+            string[] _arr = v_especId.Split('&');
+            for(int i=0;i<_arr.Length; i++)//prende soloo unos
+            {
+                if (_arr[i] != "")
                 {
-                    v_titu[i].v_visible = !v_titu[i].v_visible;
+                    val = int.Parse(_arr[i]);
+                    v_espec[val-1].v_visible = true;
                 }
             }
-            list.ItemsSource = v_titu;
+            pickEspe.ItemsSource = v_espec;
+            Fn_Setespe(sender, _arg);
         }
+        private void Fn_Aceptar(object sender, EventArgs _arg)
+        {
+            v_especId = "";
+            for(int i=0; i<v_espec.Count;i++)
+            {
+                if(v_espec[i].v_visible)
+                {
+                    if(i==0 || v_especId=="")
+                    {
+                        v_especId += v_espec[i].v_idespecial;
+                    }
+                    else
+                    {
+                        v_especId += "&" + v_espec[i].v_idespecial;
+                    }
+                }
+            }
+            Fn_Setespe(sender, _arg);
+        }
+
     }
 }

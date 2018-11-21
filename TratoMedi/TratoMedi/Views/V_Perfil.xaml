@@ -18,25 +18,17 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
             <Setter Property="IsEnabled" Value="False"/>
             <Setter Property="Keyboard" Value="Default"/>
+            <Setter Property="FontSize" Value="Medium"/>
         </Style>
     </TabbedPage.Resources>
-    
+
     <ContentPage Title="Perfil"  >
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Name="Espe" Clicked="Fn_Setespe"></ToolbarItem>
-            <ToolbarItem Name="titulo" Clicked="Fn_SetTitu"></ToolbarItem>
-        </ContentPage.ToolbarItems>
         <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout>
                     <Label Text="Titulo" Style="{StaticResource lblSty}"></Label>
-                    <Label  Text="lic, dr " x:Name="P_Titulo"  Style="{StaticResource entry_perfil}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_SetTitu">
-                            </TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
-                   <!--
+                    <Picker x:Name="PickTitulo" TextColor="Black" Title="Titulo" IsEnabled="False"></Picker>
+                    <!--
                     <Entry  Placeholder="Titulo" Text="lic, dr " x:Name="P_Titulo"  Style="{StaticResource entry_perfil}"></Entry>
                     -->
 
@@ -109,18 +101,6 @@
             <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
                          x:Name="StackOver" IsVisible="False" BackgroundColor="LightGray">
                 <StackLayout Margin="0,20" VerticalOptions="Center" HorizontalOptions="Center" >
-                    <ListView x:Name="pickTitulo" Margin="10,5" BackgroundColor="Gray" IsVisible="False" ItemTapped="pickTitulo_ItemTapped">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" >
-                                        <Label Text="{Binding v_nombreTitulo}" Style="{StaticResource AzulMedLbl}"></Label>
-                                        <Image Source="INFO_icon.png" IsVisible="{Binding v_visible}"></Image>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                     <ListView x:Name="pickEspe" Margin="5,10" BackgroundColor="Gray" IsVisible="False" ItemTapped="pickEspe_ItemTapped">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -133,6 +113,10 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Cancelar" Clicked="Fn_Cancel" Style="{StaticResource Buton}"/>
+                        <Button Text="Aceptar" Clicked="Fn_Aceptar" Style="{StaticResource Buton}"/>
+                    </StackLayout>
                 </StackLayout>
             </ContentView>
         </AbsoluteLayout>
