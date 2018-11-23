@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -102,9 +103,9 @@ namespace TratoMedi.Varios
         public Color v_color { get; set; }
 
         /// <summary>
-        /// el int que se le manda a la lista
+        /// el string que se le manda a la lista
         /// </summary>
-        public int v_Estadocita { get; set; }
+        public string v_Estadocita { get; set; }
 
         public Cita() { }
         /// <summary>
@@ -209,23 +210,28 @@ namespace TratoMedi.Varios
         {
             if ((_valor % 2) == 1)
             {
-                v_color = Color.PaleGreen;
+                v_color = Color.FromHex("F2F2F2");
             }
             else
             {
-                v_color = Color.PaleTurquoise;
+                v_color = Color.White;
             }
-            v_Estadocita =(int.Parse(v_estado));
+            int _a = int.Parse(v_estado);
+            v_Estadocita = ((EstadoCita)_a).ToString();
             string[] _fecha = v_fecha.Split('-');
             v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
                                        v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
         }
         public void Fn_SetValores()
         {
-            v_Estadocita = (int.Parse(v_estado));
+            int _a = int.Parse(v_estado);
+            v_Estadocita = ((EstadoCita)_a).ToString();
+            if (v_fechaDate== null)
+            {
             string[] _fecha = v_fecha.Split('-');//month day year
             v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
                                        v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
+            }
         }
     }
 
@@ -263,8 +269,9 @@ namespace TratoMedi.Varios
         public float v_tiempo { get; set; }
         [JsonProperty("extra")]
         public string v_extra { get; set; }
-        [JsonProperty("ID_cita")]
-        public string v_idCita { get; set; }
+        [JsonProperty("dosis")]
+        public string v_dosis { get; set; }
+
         public string Fn_Info()
         {
             string _info = "";
@@ -273,8 +280,35 @@ namespace TratoMedi.Varios
         }
     }
 
-    public class C_Paciente
+    public class C_NotaMed
     {
+        /// <summary>
+        /// membresia completa  1810I-0558
+        /// </summary>
+        [JsonProperty("ID_paciente")]
+        public string v_pacienteId { get; set; }
+        /// <summary>
+        /// folio del usuario
+        /// </summary>
+        [JsonProperty("folio")]
+        public string v_folio { get; set; }
+        [JsonProperty("ID_cita")]
+        public string v_idCita { get; set; }
+        [JsonProperty("cuantos")]
+        public string v_cuantos { get; set; }
+        [JsonProperty("medicamentos")]
+        public ObservableCollection<Medicamentos> v_medic = new ObservableCollection<Medicamentos>();
+
+        public C_NotaMed() { }
+        public C_NotaMed(string _paci, string _folio, string _idcita, string _cuantos, ObservableCollection<Medicamentos> _medi)
+        {
+            v_pacienteId = _paci;
+            v_folio = _folio;
+            v_idCita = _idcita;
+            v_cuantos = _cuantos;
+            v_medic = _medi;
+        }
+
 
     }
 

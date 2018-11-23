@@ -22,6 +22,12 @@
                 <Setter Property="CornerRadius" Value="4"/>
                 <Setter Property="BorderColor" Value="{StaticResource Lightgray}"/>
             </Style>
+            <Style TargetType="ListView">
+                <Setter Property="SeparatorVisibility" Value="Default"/>
+                <Setter Property="SeparatorColor" Value="{StaticResource NavigationPrimary}"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
             <Style TargetType="ContentPage">
                 <Setter  Property="BackgroundColor" Value="{StaticResource White}"/>
             </Style>

@@ -98,16 +98,15 @@ namespace TratoMedi.Views
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
-            string[] _paci = App.v_paciente.Split('/');
             //if (App.v_paciente=="0")
-            if (_paci[0]=="0")
+            if (App.v_paciente[0]=="0")
             {
-            Detail = new NavigationPage(new V_Paciente(true,"") );
+            Detail = new NavigationPage(new V_Paciente(true) );
             }
             //else if(App.v_paciente=="1")
-            else if (_paci[0] == "1")
+            else if (App.v_paciente[0] == "1")
             {
-            Detail = new NavigationPage(new V_Paciente(false,_paci[1]+"/"+_paci[2]) );
+            Detail = new NavigationPage(new V_Paciente(false) );
             }
         }
         public async void Fn_CerraSesion(object sender, EventArgs _args)

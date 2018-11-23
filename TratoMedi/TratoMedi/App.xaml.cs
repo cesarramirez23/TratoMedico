@@ -14,21 +14,27 @@ namespace TratoMedi
 {
     public partial class App : Application
     {
+        #region COSAS PROPIAS DEL DOCTOR 
         /// <summary>
         /// membresia completa 1808D-0008 del doctor
         /// </summary>
         public static string v_membresia = "";
-        public static ObservableCollection<Cita> v_citas;
         public static string v_log = "";
         public static C_Medico v_perfil;
+        public static ObservableCollection<Cita> v_citas;
+        #endregion
+
+
+        #region PARA LA CONSULTA
+        public static Cita v_citaInd;
         public static C_PerfilGen v_pergen;
         public static C_PerfilMed v_perMed;
         public static ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
         /// <summary>
-        /// 1 en consulta 0 nadie
+        /// (1-0 escaneado?)/membresia completa/(0-1 en consulta)
         /// </summary>
-        public static string v_paciente = "0";
-
+        public static string[] v_paciente = { "","",""};
+        #endregion
         public App()
         {
             InitializeComponent();
@@ -66,7 +72,10 @@ namespace TratoMedi
                     string _json = Properties[NombresAux.v_perfilPropio] as string;
                     v_perfil = JsonConvert.DeserializeObject<C_Medico>(_json);
 
-                    v_paciente = Properties [NombresAux.v_paciente] as string;
+
+                    string _arrPaci = Properties[NombresAux.v_paciente] as string;
+                    v_paciente = JsonConvert.DeserializeObject<string[]>(_arrPaci);
+
                     string _medi = Properties[NombresAux.v_medicamentos] as string;
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
                     Fn_CargarDatos();
@@ -114,7 +123,9 @@ namespace TratoMedi
             }
             if (!Properties.ContainsKey(NombresAux.v_paciente))
             {
-                Properties.Add(NombresAux.v_paciente, v_paciente);
+                v_paciente = new string[3] { "0", "", "0" };
+                string _json = JsonConvert.SerializeObject(v_paciente);
+                Properties.Add(NombresAux.v_paciente, _json);
             }
             if (!Properties.ContainsKey(NombresAux.v_membre))
             {
@@ -137,6 +148,12 @@ namespace TratoMedi
                 v_pergen = new C_PerfilGen();
                 string _json = JsonConvert.SerializeObject(v_pergen);
                 Properties.Add(NombresAux.v_perfilGen, _json);
+            }
+            if (!Current.Properties.ContainsKey(NombresAux.v_citaInd))
+            {
+                v_citaInd = new Cita();
+                string _json = JsonConvert.SerializeObject(v_citaInd);
+                Current.Properties.Add(NombresAux.v_citaInd, _json);
             }
             await Current.SavePropertiesAsync();
 
@@ -200,12 +217,27 @@ namespace TratoMedi
             }
             if (!Current.Properties.ContainsKey(NombresAux.v_paciente))
             {
-                v_paciente = "0";
-                Current.Properties.Add(NombresAux.v_paciente, v_paciente);
+                v_paciente = new string[3] { "0","","0"};
+                string _json = JsonConvert.SerializeObject(v_paciente);
+                Current.Properties.Add(NombresAux.v_paciente, _json);
             }
             else
             {
-                v_paciente = Current.Properties[NombresAux.v_paciente] as string;
+                string _json= Current.Properties[NombresAux.v_paciente] as string;
+                v_paciente = JsonConvert.DeserializeObject<string[]>(_json);
+                    
+            }
+            if (!Current.Properties.ContainsKey(NombresAux.v_citaInd))
+            {
+                v_citaInd = new Cita();
+                string _json = JsonConvert.SerializeObject(v_citaInd);
+                Current.Properties.Add(NombresAux.v_citaInd, _json);
+            }
+            else
+            {
+                string _json = Current.Properties[NombresAux.v_citaInd] as string;
+                v_citaInd = JsonConvert.DeserializeObject<Cita>(_json);
+
             }
 
             await Task.Delay(100);
@@ -214,10 +246,27 @@ namespace TratoMedi
        /// guardaa 1 si esta en consulta
        /// </summary>
        /// <param name="_paci"></param>
-        public static async void Fn_GuardarDatos(string _paci)
+        public static async void Fn_GuardarDatos(string[] _paci)
         {
             v_paciente = _paci;
-            Current.Properties[NombresAux.v_paciente] = v_paciente;
+            string _json = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _json;
+
+            Current.Properties[NombresAux.v_log] = v_log;
+            Current.Properties[NombresAux.v_membre] = v_membresia;
+            await Current.SavePropertiesAsync();
+            await Task.Delay(100);
+        }
+        public static async void Fn_GuardarDatos(string[] _paci,Cita _cita)
+        {
+            v_paciente = _paci;
+            string _json = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _json;
+
+            v_citaInd = _cita;
+            _json = JsonConvert.SerializeObject(v_citaInd);
+            Current.Properties[NombresAux.v_citaInd] = _json;
+
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             await Current.SavePropertiesAsync();
@@ -266,16 +315,7 @@ namespace TratoMedi
         {
             v_citas = _citas;
             string _json = JsonConvert.SerializeObject(v_citas, Formatting.Indented);
-            if (Current.Properties.ContainsKey(NombresAux.v_citas))
-            {
-                Current.Properties[NombresAux.v_citas] = "";
-                Current.Properties[NombresAux.v_citas] = _json;
-            }
-            else
-            {
-                Current.Properties.Add(NombresAux.v_citas, "");
-                Current.Properties[NombresAux.v_citas] = _json;
-            }
+            Current.Properties[NombresAux.v_citas] = _json;
             await Current.SavePropertiesAsync();
         }
         /// <summary>
@@ -286,7 +326,8 @@ namespace TratoMedi
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
-            Current.Properties[NombresAux.v_paciente] = v_paciente;
+            string _json = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _json;
 
             v_pergen = _gen;
             string _jsonGen = JsonConvert.SerializeObject(v_pergen, Formatting.Indented);
@@ -305,7 +346,8 @@ namespace TratoMedi
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
-            Current.Properties[NombresAux.v_paciente] = v_paciente;
+            string _json = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _json;
 
             v_medicamentos = _medi;
             string _jsonGen = JsonConvert.SerializeObject(v_medicamentos, Formatting.Indented);
@@ -318,10 +360,16 @@ namespace TratoMedi
         }
         public async static void Fn_Terminaconsullta()
         {
-            Current.Properties[NombresAux.v_paciente] = "0";
+            v_paciente = new string[3] { "0","","0"};
+            string _paci = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _paci;
             v_perMed = new C_PerfilMed();
             string _json = JsonConvert.SerializeObject(v_perMed);
             Current.Properties[NombresAux.v_perfilMed]= _json;
+
+            v_citaInd = new Cita();
+            _json = JsonConvert.SerializeObject(v_citaInd);
+            Current.Properties[NombresAux.v_citaInd]= _json;
 
 
             v_pergen = new C_PerfilGen();
@@ -355,9 +403,12 @@ namespace TratoMedi
         {
             v_membresia = "";
             v_log = "0";
+            v_citaInd = new Cita();
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
-            Current.Properties[NombresAux.v_paciente] = "0";
+            v_paciente = new string[3] { "0", "", "0" };
+            string _paci = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _paci;
             v_perfil = new C_Medico();
             string _json = JsonConvert.SerializeObject(v_perfil, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilPropio] = _json;
@@ -365,6 +416,10 @@ namespace TratoMedi
             Current.Properties[NombresAux.v_perfilGen] = _json;
             _json = JsonConvert.SerializeObject(v_perMed, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilMed] = _json;
+
+            _json = JsonConvert.SerializeObject(v_citaInd, Formatting.Indented);
+            Current.Properties[NombresAux.v_citaInd] = _json;
+
             await Current.SavePropertiesAsync();
             await Task.Delay(100);
         }

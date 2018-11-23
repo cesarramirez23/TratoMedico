@@ -5,6 +5,7 @@
     <ContentPage.Content>
 
         <StackLayout >
+            <Label Text="Error de Conexión" FontSize="Large" x:Name="L_Error" IsVisible="False"></Label>
             <ListView x:Name="ListaCita"  BackgroundColor="Bisque" HasUnevenRows="True" IsPullToRefreshEnabled="True"
                       Refreshing="ListaCita_Refreshing" ItemTapped="Fn_SelectCita">
                 <ListView.ItemTemplate>

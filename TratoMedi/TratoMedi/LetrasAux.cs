@@ -15,5 +15,7 @@ namespace TratoMedi
         public const string v_paciente = "paciente";
         public const string v_token = "token";
         public const string v_citas = "citas";
+        public const string v_citaInd = "citaInd";
+
     }
 }

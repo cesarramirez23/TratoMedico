@@ -10,6 +10,7 @@ using ZXing.Net.Mobile.Forms;
 using TratoMedi.Personas;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TratoMedi.Varios;
 using System.Collections.ObjectModel;
 
@@ -23,7 +24,7 @@ namespace TratoMedi.Views
         ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
         int v_editando = -1;
 
-        public  V_Paciente (bool _scan, string _membresia)
+        public  V_Paciente (bool _scan)
 		{
 			InitializeComponent ();
             if(_scan )
@@ -48,9 +49,9 @@ namespace TratoMedi.Views
                 aaaa.IsVisible = true;
                 CargarGen();
                 CargarMed();
-                string[] _Arr = _membresia.Split('/');
-                if(_Arr[1]=="1")//ya eligio su cita
+                if(App.v_paciente[2]=="1")//ya eligio su cita
                 {
+                    Fn_CargaCita();
                     ListaCita.IsVisible = false;
                     Fn_CAmbioStack(true, false, false);
                 }
@@ -58,7 +59,8 @@ namespace TratoMedi.Views
                 {
                     ListaCita.IsVisible = true;
                     Fn_CAmbioStack(false, false, false);
-                    ListaCita.ItemsSource = App.Fn_GetCitas(_Arr[0]);
+                    ///error esta en get citas con el setvalores
+                    ListaCita.ItemsSource = App.Fn_GetCitas(App.v_paciente[1]);
                 }
             }
         }
@@ -86,7 +88,7 @@ namespace TratoMedi.Views
                 N_Tiem.Text = "0";
             }
             _nuevo.v_tiempo= float.Parse( N_Tiem.Text);
-
+            _nuevo.v_dosis = App.Fn_Vacio(N_Dosis.Text);
             _nuevo.v_extra =App.Fn_Vacio( N_Extra.Text );
             // si no esta editando agregarlo, sino darle diferente valor
             if(v_editando>-1)
@@ -136,67 +138,70 @@ namespace TratoMedi.Views
         /// <param name="_args"></param>
         public async void Fn_Terminar(object sender, EventArgs _args)
         {
-        // membresia completa  1810I-0558 [JsonProperty("ID_paciente")]
-        //public string v_pacienteId { get; set; }
-        //[JsonProperty("folio")]
-        //public string v_folio { get; set; }
-        //id de la cita
-        //medicamentos la lista
+            C_NotaMed _nota = new C_NotaMed(v_cita.v_pacienteId, v_cita.v_folio, v_cita.v_idCita, v_medicamentos.Count.ToString(), v_medicamentos);
+
+            string _jsonNota= JsonConvert.SerializeObject(_nota, Formatting.Indented);
+            await DisplayAlert("Envia", _jsonNota, "aa");
+
+            bool _sel=await DisplayAlert("Terminar Consulta?", "Seguro de terminar ahora?", "Sí", "No");
+            if(_sel)
+            {
+                HttpClient _client = new HttpClient();
+                string _DirEnviar = "http://tratoespecial.com/set_medicamentos.php";
+                StringContent _content = new StringContent(_jsonNota, Encoding.UTF8, "application/json");
+                try
+                {
+                    HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                    if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                        if (_respuesta == "1")
+                        {
+                            await DisplayAlert("Exito", "Medicamentos bien", "Aceptar");//aca termina el actulizado del estado de la cita
+                            ///actualizar  el estado de la cita
+                            Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita);
+                            string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
+                             _client = new HttpClient();
+                             _DirEnviar = "http://tratoespecial.com/update_citas.php";
+                             _content = new StringContent(_json, Encoding.UTF8, "application/json");
+                            try
+                            {
+                                _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                                if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                                {
+                                     _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                                    if (_respuesta == "1")
+                                    {
+                                        await DisplayAlert("CONSULTA TERMINADA ", "Cita terminada correctamente", "Aceptar");//aca termina el actulizado del estado de la cita
+                                        App.Fn_Terminaconsullta();
+                                    }
+                                    else
+                                    {
+                                        await DisplayAlert("Error", "No se pudo Terminar tu cita, intentalo mas tarde", "Aceptar");
+                                    }
+                                }
+                            }
+                            catch (HttpRequestException ex)
+                            {
+                                await DisplayAlert("Error", ex.Message, "Aceptar");
+                            }
+                        }
+                        else
+                        {
+                            await DisplayAlert("Error", "Medicamentos mal, intentalo mas tarde", "Aceptar");
+                        }
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    await DisplayAlert("Error", ex.Message, "Aceptar");
+                }
+            }
+            //App.Fn_Terminaconsullta();
 
 
-
-
-        /* Cita _cita = new Cita("0", v_cita.v_fechaDate.Date,v_cita.v_hora, v_cita.v_idCita);
-         string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
-        // await DisplayAlert("Enviar", _json, "aceptar");
-         HttpClient _client = new HttpClient();
-         string _DirEnviar = "http://tratoespecial.com/update_citas.php";
-         StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
-         try
-         {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
-             HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-             if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
-             {
-                 string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                 if (_respuesta == "1")
-                 {
-                     await DisplayAlert("Exito", "Cambios generados correctamente", "Aceptar");
-                     await Navigation.PopAsync();
-                 }
-                 else
-                 {
-                     await DisplayAlert("Error", "No se pudo agendar tu cita, intentalo mas tarde", "Aceptar");
-                 }
-             }
-         }
-         catch (HttpRequestException ex)
-         {
-             await DisplayAlert("Error", ex.Message, "Aceptar");
-         }*/
-        //eliminar lo guardado local y enviar su informacion de medicamentos
-        App.Fn_Terminaconsullta();
 
         }
-        /*private async void Scan(object sender, EventArgs _Args)
-        {//crea una pagina especial del lector
-            var scanPage = new ZXingScannerPage();
-            //cuando escanee algo que va a hacer?
-            scanPage.OnScanResult += (result) =>
-            {
-                //deja de escanear
-                scanPage.IsScanning = false;
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                   // StackPerfil.IsVisible = true;
-                });
-            };
-            
-            // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
-        }*/
         void Fn_SoloNumero(object sender, TextChangedEventArgs _args)
         {
             //-  ,  _  .
@@ -295,12 +300,12 @@ namespace TratoMedi.Views
                     App.Fn_GuardarDatos(_nuePerMEd);
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        App.Fn_GuardarDatos("1/"+_info.v_membre+"/0");
+                        App.Fn_GuardarDatos(new string[] { "1" , _info.v_membre ,"0" });
                         Scanner.IsScanning = false;
                         await Task.Delay(100);
                         //MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
                         await Navigation.PopAsync();
-                        await Navigation.PushAsync(new V_Paciente(false,_info.v_membre+ "/0") { Title =App.v_pergen.v_Nombre });
+                        await Navigation.PushAsync(new V_Paciente(false) { Title =App.v_pergen.v_Nombre });
                      });
                 }
                 catch(HttpRequestException ex)
@@ -314,7 +319,7 @@ namespace TratoMedi.Views
                         Scanner.IsScanning = true;
                         Scanner.IsVisible = true;
                     });
-                    App.Fn_GuardarDatos("0");
+                    App.Fn_GuardarDatos(new string[] { "0" ,"" , "0" });
                 }
 
 
@@ -330,7 +335,7 @@ namespace TratoMedi.Views
                     Scanner.IsScanning = true;
                     Scanner.IsVisible = true;
                 });
-                App.Fn_GuardarDatos("0");
+                App.Fn_GuardarDatos(new string[] { "0", "", "0" });
             }
             
         }
@@ -473,7 +478,13 @@ namespace TratoMedi.Views
             v_medicamentos = App.v_medicamentos;
             await Task.Delay(100);
         }
-
+        public async void Fn_CargaCita()
+        {
+            string json = App.Current.Properties[NombresAux.v_citaInd] as string;
+            App.v_citaInd = JsonConvert.DeserializeObject<Cita>(json);
+            v_cita = App.v_citaInd;
+            await Task.Delay(100);
+        }
         public async void Fn_SelectCita(object sender, ItemTappedEventArgs _Args)
         {
             Cita _selec = _Args.Item as Cita;
@@ -483,8 +494,8 @@ namespace TratoMedi.Views
                 if(opcion)
                 {
                     ListaCita.IsVisible = false;
-                    App.Fn_GuardarDatos(App.v_paciente+"/1");
                     v_cita = _selec;
+                    App.Fn_GuardarDatos(new string[] {"1", _selec.v_pacienteId, "1" },v_cita);
                     Fn_CAmbioStack(true, false, false);
                 }
             }

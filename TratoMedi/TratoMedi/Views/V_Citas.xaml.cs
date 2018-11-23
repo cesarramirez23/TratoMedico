@@ -66,6 +66,8 @@ namespace TratoMedi.Views
         private async void Fn_GetCitas()
         {
             HttpClient _client = new HttpClient();
+            L_Error.IsVisible = true;
+            L_Error.Text = "Procesando Informacion";
             Cita _cita = new Cita(App.v_membresia, "1");
             string _json = JsonConvert.SerializeObject(_cita);
             string _DirEnviar = "http://tratoespecial.com/get_citas.php";
@@ -77,7 +79,8 @@ namespace TratoMedi.Views
                 {
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
-                    Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
+                    L_Error.IsVisible = false;
+                    //Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
                     Ordenar();
                     App.Fn_GuardarCitas(v_citas);
                     ListaCita.ItemsSource = v_citas;
@@ -85,19 +88,16 @@ namespace TratoMedi.Views
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("Error", ex.ToString(), "Aceptar");
+                await DisplayAlert("Error", ex.Message.ToString(), "Aceptar");
                 if (App.v_citas.Count > 0)
                 {
                     v_citas = App.v_citas;
+                    L_Error.IsVisible = false;
                 }
                 else
                 {
-                    v_citas.Add(new Cita() { v_nombreDR = "nombre 1", v_fecha = "2018-11-03", v_hora = new TimeSpan(12, 24, 00), v_estado = "0" });
-                    v_citas.Add(new Cita() { v_nombreDR = "nombre 2", v_fecha = "2019-01-22", v_hora = new TimeSpan(10, 04, 00), v_estado = "1" });
-                    v_citas.Add(new Cita() { v_nombreDR = "nombre 3", v_fecha = "2018-10-30", v_hora = new TimeSpan(16, 50, 00), v_estado = "2" });
-                    v_citas.Add(new Cita() { v_nombreDR = "nombre 4", v_fecha = "2018-12-16", v_hora = new TimeSpan(18, 29, 00), v_estado = "3" });
-                    Ordenar();
-                    App.Fn_GuardarCitas(v_citas);
+                    L_Error.Text = "Error de Conexion";
+                    L_Error.IsVisible = true;
                 }
                 Ordenar();
                 ListaCita.ItemsSource = v_citas;

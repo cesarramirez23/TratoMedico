@@ -101,6 +101,8 @@
                         <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="N_Perio"></Entry>
                         <Label Text="¿Cada cuantas horas?"/>
                         <Entry Keyboard="Numeric" x:Name="N_Tiem" TextChanged="Fn_SoloNumero"></Entry>
+                        <Label Text="Dosis"/>
+                        <Entry x:Name="N_Dosis"></Entry>
                         <Label Text="Informacion Extra"/>
                         <Editor AutoSize="TextChanges" x:Name="N_Extra"/>
                         <Grid>
