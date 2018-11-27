@@ -20,22 +20,6 @@ namespace TratoMedi.Views
 		public V_Citas ()
 		{
 			InitializeComponent ();
-            //Fn_GetCitas();
-            /*if (App.v_citas.Count > 0)
-                       {
-                           v_citas = App.v_citas;
-                       }
-                       else
-                       {
-                           v_citas.Add(new Cita() { v_nombreDR = "nombre 1", v_fecha = "2018-11-03", v_hora = new TimeSpan(12, 24, 00), v_estado = "0" });
-                           v_citas.Add(new Cita() { v_nombreDR = "nombre 2", v_fecha = "2019-01-22", v_hora = new TimeSpan(10, 04, 00), v_estado = "1" });
-                           v_citas.Add(new Cita() { v_nombreDR = "nombre 3", v_fecha = "2018-10-30", v_hora = new TimeSpan(16, 50, 00), v_estado = "2" });
-                           v_citas.Add(new Cita() { v_nombreDR = "nombre 4", v_fecha = "2018-12-16", v_hora = new TimeSpan(18, 29, 00), v_estado = "3" });
-                           App.Fn_GuardarCitas(v_citas);
-                       }
-                       Ordenar();
-                       ListaCita.ItemsSource = v_citas;
-           */
 
         }
         protected override void OnAppearing()

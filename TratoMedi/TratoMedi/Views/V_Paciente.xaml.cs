@@ -458,6 +458,7 @@ namespace TratoMedi.Views
             N_Perio.Text = "";
             N_Tiem.Text = "";
             N_Extra.Text = "";
+            N_Dosis.Text = "";
         }
         /// <summary>
         /// perfil nuevo nota

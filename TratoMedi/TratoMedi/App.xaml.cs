@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using TratoMedi.Personas;
 using TratoMedi.Varios;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
 
 //casa compila con com.alsain.TratoMed     com.alsain.TratoMedicos
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
@@ -463,7 +466,7 @@ namespace TratoMedi
             ObservableCollection<Cita> _ret = new ObservableCollection<Cita>();
             for(int i=0; i<v_citas.Count; i++)
             {
-                if(v_citas[i].v_pacienteId== _idpaciente)
+                if(v_citas[i].v_pacienteId== _idpaciente && v_citas[i].v_estado=="3")
                 {
                     _ret.Add(v_citas[i]);
                 }
@@ -471,6 +474,13 @@ namespace TratoMedi
             for(int  i = 0; i < _ret.Count; i++)
             {
                 _ret[i].Fn_SetValores();
+            }
+            IEnumerable<Cita> _temp = _ret.OrderBy(x => x.v_fechaDate);
+            _ret = new ObservableCollection<Cita>(_temp);
+
+            for (int i = 0; i < _ret.Count; i++)
+            {
+                _ret[i].Fn_CAmbioCol(i);
             }
             return _ret;
         }

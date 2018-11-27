@@ -226,12 +226,12 @@ namespace TratoMedi.Varios
         {
             int _a = int.Parse(v_estado);
             v_Estadocita = ((EstadoCita)_a).ToString();
-            if (v_fechaDate== null)
+            /*if (v_fechaDate== null)
             {
+            }*/
             string[] _fecha = v_fecha.Split('-');//month day year
             v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
                                        v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
-            }
         }
     }
 
