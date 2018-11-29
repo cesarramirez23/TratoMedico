@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TratoMedi.Views.V_Medicamentos">
+    <ContentPage.Content>
+        <StackLayout Margin="10,5">
+            <Label x:Name="nombre" Style="{StaticResource AzulMedLbl}" TextColor="Black"></Label>
+            <!--<Label x:Name="espe" Style="{StaticResource AzulMedLbl}"></Label>-->
+            <Label x:Name="fecha" Style="{StaticResource AzulMedLbl}" TextColor="Black"></Label>
+            <Label Text="Lista de Medicamentos" x:Name="nota" Style="{StaticResource AzulMedLbl}" TextColor="Black"></Label>
+            <ListView x:Name="ListaMed" SelectionMode="None" HasUnevenRows="True" Margin="0,5" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="0,2">
+                                <Label Text="{Binding v_texto}"  Style="{StaticResource AzulMedLbl}"/>
+                                <Label Text="{Binding v_nombre,StringFormat='Nombre del Medicamento : {0}'}"  Style="{StaticResource AzulMedLbl}"/>
+                                <Label Text="{Binding v_dosis, StringFormat='Dosis : {0}'}"  Style="{StaticResource AzulMedLbl}"/>
+                                <Label Text="{Binding v_periodo, StringFormat='Días : {0}'}"  Style="{StaticResource AzulMedLbl}"/>
+                                <Label Text="{Binding v_tiempo, StringFormat='Horas : {0}'}"  Style="{StaticResource AzulMedLbl}"/>
+                                <Label Text="{Binding v_extra, StringFormat='Información Extra : {0}'}"  Style="{StaticResource AzulMedLbl}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

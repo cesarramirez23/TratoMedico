@@ -46,7 +46,7 @@ namespace TratoMedi.Views
                  v_hora.Time, App.Fn_GEtToken());
                 string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                 Console.Write("Info cita " + _json);
-                await DisplayAlert("Enviar", _json, "aceptar");
+                //await DisplayAlert("Enviar", _json, "aceptar");
                 HttpClient _client = new HttpClient();
                 string _DirEnviar = "http://tratoespecial.com/set_citas.php";
                 StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
@@ -76,8 +76,8 @@ namespace TratoMedi.Views
             {
                 Cita _cita = new Cita("2", v_fecha.Date, v_hora.Time, v_cita.v_idCita);
                 string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
-                Console.Write("Info cita " + _json);
-                await DisplayAlert("Enviar", _json, "aceptar");
+               // Console.Write("Info cita " + _json);
+                //await DisplayAlert("Enviar", _json, "aceptar");
                 HttpClient _client = new HttpClient();
                 string _DirEnviar = "http://tratoespecial.com/update_citas.php";
                 StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");

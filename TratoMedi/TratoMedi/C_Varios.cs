@@ -125,10 +125,23 @@ namespace TratoMedi.Varios
                 v_doctorId = _membre;
             }
         }
-       /* public Cita(string _membredr, string _membrepac, string _folio, string _estado, DateTime _fecha, TimeSpan _hora, string _tokenDr, string _tokenpac)
+        public Cita(string _membre, string _folio, string _tipo)
         {
+            v_tipo = _tipo;
+            if (_tipo == "0")
+            {
+                v_pacienteId = _membre;
+                v_folio = _folio;
+            }
+            else if (_tipo == "1")
+            {
+                v_doctorId = _membre;
+            }
+        }
+        /* public Cita(string _membredr, string _membrepac, string _folio, string _estado, DateTime _fecha, TimeSpan _hora, string _tokenDr, string _tokenpac)
+         {
 
-        }*/
+         }*/
         /// <summary>
         /// para crear el json a enviar en la nueva cita
         /// </summary>
@@ -272,6 +285,26 @@ namespace TratoMedi.Varios
         [JsonProperty("dosis")]
         public string v_dosis { get; set; }
 
+        [JsonProperty("estado")]
+        public string v_estado { get; set; }
+        [JsonIgnore]
+        public string v_texto { get; set; }
+
+        public void Fn_SetTexto()
+        {
+            if (v_estado == "0")//todavia no empieza a tomar
+            {
+                v_texto ="Tratamiento no iniciado";
+            }
+            else if (v_estado == "1")//ya tomandose
+            {
+                v_texto = "Tratamiento en Proceso";
+            }
+            else if (v_estado == "2")//ya se acabo
+            {
+                v_texto = "Tratamiento Terminado";
+            }
+        }
         public string Fn_Info()
         {
             string _info = "";
@@ -281,7 +314,41 @@ namespace TratoMedi.Varios
     }
 
     public class C_NotaMed
-    {
+    {   //para mostrar el historial de lo que esta tomando
+        [JsonProperty("fecha")]
+        public string v_fecha { get; set; }
+        public DateTime v_fechaDate { get; set; }
+        [JsonProperty("hora")]
+        public TimeSpan v_hora { get; set; }
+        [JsonProperty("titulo")]
+        public string v_titulo { get; set; }
+        [JsonProperty("nombreDr")]
+        public string v_nombreDr { get; set; }
+        [JsonProperty("espe")]
+        public ObservableCollection<C_EspeTitu> v_espe;
+        public string v_especialidad { get; set; }
+
+        public void Fn_SetEspe()
+        {
+            v_especialidad = "";
+            for (int i = 0; i < v_espe.Count; i++)
+            {
+                if(i==0)
+                {
+                    v_especialidad += v_espe[i].v_nombreEspec;
+                }
+                else
+                {
+                    v_especialidad += ", "+v_espe[i].v_nombreEspec;
+                }
+            }
+        }
+
+
+
+        //para mostrar el historial de lo que esta tomando
+
+
         /// <summary>
         /// membresia completa  1810I-0558
         /// </summary>
@@ -294,12 +361,20 @@ namespace TratoMedi.Varios
         public string v_folio { get; set; }
         [JsonProperty("ID_cita")]
         public string v_idCita { get; set; }
-        [JsonProperty("cuantos")]
+       [JsonProperty("cuantos")]
         public string v_cuantos { get; set; }
         [JsonProperty("medicamentos")]
         public ObservableCollection<Medicamentos> v_medic = new ObservableCollection<Medicamentos>();
 
         public C_NotaMed() { }
+        /// <summary>
+        /// para hacer el insert de terminar una cita
+        /// </summary>
+        /// <param name="_paci"></param>
+        /// <param name="_folio"></param>
+        /// <param name="_idcita"></param>
+        /// <param name="_cuantos"></param>
+        /// <param name="_medi"></param>
         public C_NotaMed(string _paci, string _folio, string _idcita, string _cuantos, ObservableCollection<Medicamentos> _medi)
         {
             v_pacienteId = _paci;
@@ -308,6 +383,7 @@ namespace TratoMedi.Varios
             v_cuantos = _cuantos;
             v_medic = _medi;
         }
+
 
 
     }

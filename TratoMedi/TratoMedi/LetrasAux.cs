@@ -14,8 +14,19 @@ namespace TratoMedi
         public const string v_medicamentos = "medicamentos";
         public const string v_paciente = "paciente";
         public const string v_token = "token";
+        /// <summary>
+        /// todas la citas que tiene con ese usuario
+        /// </summary>
         public const string v_citas = "citas";
+        /// <summary>
+        /// la cita que ya se eligio
+        /// </summary>
         public const string v_citaInd = "citaInd";
+        /// <summary>
+        /// El historial de citas y medicamentos que ya terminaron
+        /// </summary>
+        public const string v_NotasMed = "NotaMed";
+
 
     }
 }

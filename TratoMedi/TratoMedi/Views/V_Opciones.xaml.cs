@@ -34,6 +34,7 @@ namespace TratoMedi.Views
             {
                 P_mensaje.IsVisible = true;
                 P_mensaje.Text = "Este campo no puede estar vacio o con espacios";
+                P_but.IsEnabled = false;
             }
             else
             {
@@ -41,10 +42,12 @@ namespace TratoMedi.Views
                 {
                     P_mensaje.IsVisible = true;
                     P_mensaje.Text = "Debe contener al menos una mayuscula,una minuscula y un numero";
+                    P_but.IsEnabled = false;
                 }
                 else
                 {
                     P_mensaje.IsVisible = false;
+                    P_but.IsEnabled = true;
                 }
             }
         }
@@ -115,7 +118,6 @@ namespace TratoMedi.Views
                     P_mensaje.IsVisible = true;
                 }
             }
-            _buton.IsEnabled = true;
             //if (Fn_validar(P_actual.Text, P_Nueva.Text))
             //{
             //    await DisplayAlert("bien", "bien", "bien");

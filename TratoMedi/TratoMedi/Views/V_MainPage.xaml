@@ -10,7 +10,7 @@
                 <StackLayout   Margin="20,0" >
                     <Image Source="ICONOAPP"></Image>
                     <Label FontSize="Large" Text="¿QUIÉNES SOMOS?" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource NavigationPrimary}"></Label>
-                    <Label x:Name="I_lbl" HorizontalTextAlignment="Center" FontSize="Medium" ></Label>
+                    <Label x:Name="I_lbl" HorizontalTextAlignment="Start" FontSize="Medium" ></Label>
                 </StackLayout>
             </ScrollView>
 

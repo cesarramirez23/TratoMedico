@@ -68,6 +68,11 @@ namespace TratoMedi.Views
                     Ordenar();
                     App.Fn_GuardarCitas(v_citas);
                     ListaCita.ItemsSource = v_citas;
+                    if(v_citas.Count<1)
+                    {
+                        L_Error.IsVisible = true;
+                        L_Error.Text = "No tiene citas";
+                    }
                 }
             }
             catch (HttpRequestException ex)
@@ -80,8 +85,8 @@ namespace TratoMedi.Views
                 }
                 else
                 {
-                    L_Error.Text = "Error de Conexion";
                     L_Error.IsVisible = true;
+                    L_Error.Text = "No tiene citas";
                 }
                 Ordenar();
                 ListaCita.ItemsSource = v_citas;

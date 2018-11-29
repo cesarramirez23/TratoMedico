@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 namespace TratoMedi.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class V_Perfil : TabbedPage
+    public partial class V_Perfil : ContentPage
     {
         string v_especId = "";
 
@@ -27,10 +27,15 @@ namespace TratoMedi.Views
         public V_Perfil ()
         {
             InitializeComponent();
+          
+           
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
             Fn_CargaPerfil();
             P_Swi.IsToggled = v_cita;
-            P_StackCita.IsVisible = v_cita;
-           
+            P_StackCita.IsVisible = false;
         }
         public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
         {
@@ -164,7 +169,7 @@ namespace TratoMedi.Views
             json += "idsexo:'" + P_sexoPick.SelectedIndex + "'\n";
             json += "}";
 
-            await DisplayAlert("Envia", json.ToString(), "Aceptar");
+            //await DisplayAlert("Envia", json.ToString(), "Aceptar");
             JObject jsonPer = JObject.Parse(json);
             StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
             HttpClient _client = new HttpClient();
@@ -252,7 +257,7 @@ namespace TratoMedi.Views
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("Error en actualizar, Se Cargará la ultima informacion guardada", ex.Message, "Aceptar");
+                await DisplayAlert("Error en actualizar, Se Cargará la ultima informacion guardada", ex.Message.ToString(), "Aceptar");
             }
 
             App.Fn_CargarDatos();

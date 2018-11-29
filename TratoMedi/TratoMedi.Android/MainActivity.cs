@@ -16,7 +16,7 @@ using Android.Content;
 
 namespace TratoMedi.Droid
 {
-    [Activity(Label = "Trato Especial Medicos", Icon = "@drawable/Citas", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "TE Servicios", Icon = "@drawable/Logo_RedondoGRIS_512x512", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

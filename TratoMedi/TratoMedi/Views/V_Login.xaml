@@ -7,9 +7,11 @@
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0">
 
                 <Label Text="Nombre de usuario" HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}" ></Label>
-                <Entry Placeholder="1808D-0008" x:Name="L_usu" HorizontalOptions="FillAndExpand" Text="1808D-0008" ></Entry>
+                <Entry Placeholder="0000D-0000" x:Name="L_usu" HorizontalOptions="FillAndExpand"/>
+                <!--="1808D-0008" ></Entry>-->
                 <Label Text="Ingresa tu contraseña" Style="{StaticResource AzulMedLbl}"></Label>
-                <Entry x:Name="L_pass" IsPassword="True" Text="Cesar1234"></Entry>
+                <Entry x:Name="L_pass" IsPassword="True"/>
+                <!--="Cesar1234"></Entry>-->
                 <Button Style="{StaticResource Buton}"  Text="Login" Clicked="Fn_Login"></Button>
                 
             </StackLayout>

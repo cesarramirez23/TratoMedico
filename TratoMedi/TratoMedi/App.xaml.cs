@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Linq;
 
 //casa compila con com.alsain.TratoMed     com.alsain.TratoMedicos
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
@@ -37,6 +36,7 @@ namespace TratoMedi
         /// (1-0 escaneado?)/membresia completa/(0-1 en consulta)
         /// </summary>
         public static string[] v_paciente = { "","",""};
+        public static ObservableCollection<C_NotaMed> v_notasMed = new ObservableCollection<C_NotaMed>();
         #endregion
         public App()
         {
@@ -62,8 +62,8 @@ namespace TratoMedi
 
                     Fn_CargarDatos();
 
-                    string _medi = Properties[NombresAux.v_medicamentos] as string;
-                    v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
+                    //string _medi = Properties[NombresAux.v_medicamentos] as string;
+                    //v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
 
 
                     MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
@@ -81,6 +81,10 @@ namespace TratoMedi
 
                     string _medi = Properties[NombresAux.v_medicamentos] as string;
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
+
+                    string _Notas = Properties[NombresAux.v_NotasMed] as string;
+                    v_notasMed = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_Notas);
+
                     Fn_CargarDatos();
 
                     MainPage = new V_MasterMenu(true, "Bienvenido " +v_perfil.v_Nombre);
@@ -101,12 +105,10 @@ namespace TratoMedi
                 App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
             }
         }
-
         protected override void OnSleep()
         {
             // Handle when your app sleeps
         }
-
         protected override void OnResume()
         {
             // Handle when your app resumes
@@ -119,6 +121,13 @@ namespace TratoMedi
                 string _json = JsonConvert.SerializeObject(v_medicamentos);
                 Current.Properties.Add(NombresAux.v_medicamentos, "");
                 Current.Properties[NombresAux.v_medicamentos] = _json;
+            }
+            if (!Properties.ContainsKey(NombresAux.v_NotasMed))
+            {
+                v_notasMed = new ObservableCollection<C_NotaMed>();
+                string _json = JsonConvert.SerializeObject(v_notasMed);
+                Current.Properties.Add(NombresAux.v_NotasMed, "");
+                Current.Properties[NombresAux.v_NotasMed] = _json;
             }
             if (!Properties.ContainsKey(NombresAux.v_log))
             {
@@ -217,6 +226,18 @@ namespace TratoMedi
             {
                 string _json = Current.Properties[NombresAux.v_medicamentos] as string;
                 v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_json);
+            }
+            if (!Current.Properties.ContainsKey(NombresAux.v_NotasMed))
+            {
+                v_notasMed = new ObservableCollection<C_NotaMed>();
+                string _json = JsonConvert.SerializeObject(v_notasMed);
+                Current.Properties.Add(NombresAux.v_NotasMed, "");
+                Current.Properties[NombresAux.v_NotasMed] = _json;
+            }
+            else
+            {
+                string _json = Current.Properties[NombresAux.v_NotasMed] as string;
+                v_notasMed = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_json);
             }
             if (!Current.Properties.ContainsKey(NombresAux.v_paciente))
             {
@@ -361,6 +382,22 @@ namespace TratoMedi
             Fn_CargarDatos();
             await Task.Delay(100);
         }
+        public static async void Fn_GuardarDatos(ObservableCollection<C_NotaMed> _notaMed)
+        {
+            Current.Properties[NombresAux.v_log] = v_log;
+            Current.Properties[NombresAux.v_membre] = v_membresia;
+            string _json = JsonConvert.SerializeObject(v_paciente);
+            Current.Properties[NombresAux.v_paciente] = _json;
+
+            v_notasMed = _notaMed;
+            string _jsonGen = JsonConvert.SerializeObject(v_notasMed, Formatting.Indented);
+            Current.Properties[NombresAux.v_NotasMed] = _jsonGen;
+
+
+            await Current.SavePropertiesAsync();
+            Fn_CargarDatos();
+            await Task.Delay(100);
+        }
         public async static void Fn_Terminaconsullta()
         {
             v_paciente = new string[3] { "0","","0"};
@@ -382,6 +419,10 @@ namespace TratoMedi
             v_medicamentos = new ObservableCollection<Medicamentos>();
             _json = JsonConvert.SerializeObject(v_medicamentos);
             Current.Properties[NombresAux.v_medicamentos] = _json;
+
+            v_notasMed = new ObservableCollection<C_NotaMed>();
+            _json = JsonConvert.SerializeObject(v_notasMed);
+            Current.Properties[NombresAux.v_NotasMed] = _json;
 
             await  Current.SavePropertiesAsync();
 
@@ -407,6 +448,9 @@ namespace TratoMedi
             v_membresia = "";
             v_log = "0";
             v_citaInd = new Cita();
+            v_medicamentos = new ObservableCollection<Medicamentos>();
+            v_notasMed = new ObservableCollection<C_NotaMed>();
+
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             v_paciente = new string[3] { "0", "", "0" };
@@ -422,6 +466,14 @@ namespace TratoMedi
 
             _json = JsonConvert.SerializeObject(v_citaInd, Formatting.Indented);
             Current.Properties[NombresAux.v_citaInd] = _json;
+
+            _json = JsonConvert.SerializeObject(v_medicamentos, Formatting.Indented);
+            Current.Properties[NombresAux.v_medicamentos] = _json;
+
+            _json = JsonConvert.SerializeObject(v_notasMed, Formatting.Indented);
+            Current.Properties[NombresAux.v_NotasMed] = _json;
+
+
 
             await Current.SavePropertiesAsync();
             await Task.Delay(100);

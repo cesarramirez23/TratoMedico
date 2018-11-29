@@ -14,7 +14,7 @@ namespace TratoMedi.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\V_Perfil.xaml")]
-    public partial class V_Perfil : global::Xamarin.Forms.TabbedPage {
+    public partial class V_Perfil : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Picker PickTitulo;

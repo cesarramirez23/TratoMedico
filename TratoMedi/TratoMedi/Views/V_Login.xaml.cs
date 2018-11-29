@@ -34,7 +34,7 @@ namespace TratoMedi.Views
                 //crear el json
                 string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
                 //mostrar la pantalla con mensajes
-                Mensajes_over.Text += _jsonLog;
+                //Mensajes_over.Text += _jsonLog;
                 //crear el cliente
                 HttpClient _client = new HttpClient();
                 string _DirEnviar = "http://tratoespecial.com/login_dr.php";
@@ -54,7 +54,7 @@ namespace TratoMedi.Views
                         else if (_respuesta == "1" || _respuesta == "2")
                         {
                             _DirEnviar = "http://tratoespecial.com/query_perfil_dr.php";
-                            Console.Write(_jsonLog);
+                            //Console.Write(_jsonLog);
                             _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
                             try
                             {

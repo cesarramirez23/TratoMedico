@@ -56,7 +56,7 @@ namespace TratoMedi.Views
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("Error buscando tus citas", ex.ToString(), "Aceptar");
+                await DisplayAlert("Error buscando tus citas", ex.Message.ToString(), "Aceptar");
             }
         }
 
