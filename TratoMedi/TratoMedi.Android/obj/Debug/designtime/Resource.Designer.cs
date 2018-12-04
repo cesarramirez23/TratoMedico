@@ -3840,10 +3840,13 @@ namespace TratoMedi.Droid
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
 			// aapt resource value: 0x7F010011
-			public const int Opciones = 2130771985;
+			public const int Notif_Blanco = 2130771985;
 			
 			// aapt resource value: 0x7F010012
-			public const int Perfil = 2130771986;
+			public const int Opciones = 2130771986;
+			
+			// aapt resource value: 0x7F010013
+			public const int Perfil = 2130771987;
 			
 			// aapt resource value: 0x1
 			public const int places_ic_clear = 1;
@@ -3857,8 +3860,8 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x1
 			public const int powered_by_google_light = 1;
 			
-			// aapt resource value: 0x7F010013
-			public const int QR = 2130771987;
+			// aapt resource value: 0x7F010014
+			public const int QR = 2130771988;
 			
 			// aapt resource value: 0x1
 			public const int quantum_ic_art_track_grey600_48 = 1;
@@ -3989,8 +3992,8 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F09006A
 			public const int tooltip_frame_light = 2131296362;
 			
-			// aapt resource value: 0x7F010014
-			public const int xamarin_logo = 2130771988;
+			// aapt resource value: 0x7F010015
+			public const int xamarin_logo = 2130771989;
 			
 			static Drawable()
 			{

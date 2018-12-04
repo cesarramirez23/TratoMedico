@@ -36,6 +36,7 @@ namespace TratoMedi.Views
             Fn_CargaPerfil();
             P_Swi.IsToggled = v_cita;
             P_StackCita.IsVisible = false;
+            await Task.Delay(100);
         }
         public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
         {

@@ -107,7 +107,7 @@ namespace TratoMedi.Varios
         /// </summary>
         public string v_Estadocita { get; set; }
 
-        public Cita() { }
+        public Cita() { v_estado = "-1";}
         /// <summary>
         /// get de las citas si es medico o paciente
         /// </summary>
@@ -142,6 +142,7 @@ namespace TratoMedi.Varios
          {
 
          }*/
+       
         /// <summary>
         /// para crear el json a enviar en la nueva cita
         /// </summary>
@@ -213,6 +214,23 @@ namespace TratoMedi.Varios
             v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
         }
 
+        /// <summary>
+        /// prueba de notification
+        /// </summary>
+        /// <param name="_estado"></param>
+        public Cita(string _estado)
+        {
+            v_doctorId = "1808D-0008";
+            v_pacienteId = "1810I-0558";
+            v_folio = "0";
+            v_estado = _estado;
+            v_hora = DateTime.Now.TimeOfDay;
+            v_fecha = DateTime.Now.Date.Year + "-" + DateTime.Now.Date.Month + "-" + DateTime.Now.Date.Day;
+            v_fechaDate = DateTime.Now.Date;
+            
+            v_nombreDR = "prueba notif";
+            v_nombrePaciente = "Prueba notif paciente";
+        }
 
 
         /// <summary>

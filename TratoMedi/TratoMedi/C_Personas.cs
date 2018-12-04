@@ -53,9 +53,14 @@ namespace TratoMedi.Personas
     {
         [JsonProperty("membre")]
         string v_membre { get; set; }
+        [JsonProperty("letra")]
+        string v_letra { get; set; }
+        [JsonProperty("consecutivo")]
+        string v_conse { get; set; }
         [JsonProperty("password")]
         string v_pass { get; set; }
-
+        [JsonProperty("token")]
+        string v_topken { get; set; }
 
 
         public C_Login()
@@ -63,10 +68,29 @@ namespace TratoMedi.Personas
             this.v_membre = "";
             this.v_pass = "";
         }
+        /// <summary>
+        /// login,  membre y password
+        /// </summary>
+        /// <param name="_membr"></param>
+        /// <param name="_pass"></param>
         public C_Login(string _membr, string _pass)
         {
             this.v_membre = _membr;
             this.v_pass = _pass;
+        }
+        /// <summary>
+        /// para el token
+        /// </summary>
+        /// <param name="_membr"></param>
+        /// <param name="_token"></param>
+        /// <param name="_a"></param>
+        public C_Login(string _membr,string _letra,string _conse,string _token)
+        {
+            this.v_membre = _membr;
+            v_letra = _letra;
+            v_conse = _conse;
+            //membre letra consecutivo
+            this.v_topken = _token;
         }
     }
     public class C_PerfilGen

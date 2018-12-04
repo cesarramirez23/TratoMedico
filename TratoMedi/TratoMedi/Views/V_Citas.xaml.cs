@@ -17,15 +17,36 @@ namespace TratoMedi.Views
 	public partial class V_Citas : ContentPage
 	{
         ObservableCollection<Cita> v_citas= new ObservableCollection<Cita>();
-		public V_Citas ()
+        Cita v_CitaNotif = new Cita();
+		public V_Citas (bool _tiene, Cita _nuevaCita)
 		{
 			InitializeComponent ();
-
+            if(_tiene)
+            {
+                v_CitaNotif = _nuevaCita;
+                Fn_Notif(_nuevaCita);                
+            }
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Fn_GetCitas();
+            if(v_CitaNotif.v_estado=="-1")
+            {
+                Fn_GetCitas();
+            }
+        }
+        protected override void OnDisappearing()
+        {
+            if(v_CitaNotif.v_estado!="-1")
+            {
+                v_CitaNotif = new Cita();
+            }
+            base.OnDisappearing();
+        }
+        public async void Fn_Notif(Cita _nuevacita)
+        {
+            await Navigation.PushAsync(new V_NCita(_nuevacita, false));
+
         }
         public async void Fn_SelectCita(object sender,ItemTappedEventArgs _Args)
         {
@@ -51,7 +72,7 @@ namespace TratoMedi.Views
         {
             HttpClient _client = new HttpClient();
             L_Error.IsVisible = true;
-            L_Error.Text = "Procesando Informacion";
+            L_Error.Text = "Procesando Información";
             Cita _cita = new Cita(App.v_membresia, "1");
             string _json = JsonConvert.SerializeObject(_cita);
             string _DirEnviar = "http://tratoespecial.com/get_citas.php";
@@ -77,7 +98,7 @@ namespace TratoMedi.Views
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("Error", ex.Message.ToString(), "Aceptar");
+                await DisplayAlert("Error, Se mostrará la ultima información guardada", ex.Message+" \n "+App.v_citas.Count, "Aceptar");
                 if (App.v_citas.Count > 0)
                 {
                     v_citas = App.v_citas;

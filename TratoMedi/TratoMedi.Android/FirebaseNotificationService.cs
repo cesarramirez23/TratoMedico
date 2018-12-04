@@ -19,6 +19,7 @@ using Android.Graphics;
 using TratoMedi.Varios;
 
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 
 
@@ -91,6 +92,9 @@ namespace TratoMedi.Droid
             if (message.Data.ContainsKey("estado"))//tiene la info para la cita
             {
                 _minotif.v_titulo+="--  "+(EstadoCita) int.Parse(message.Data["estado"]);
+                // SendNotification(_minotif.v_cuerpo, _minotif.v_titulo);
+                Cita _citaActual = new Cita(message.Data["estado"]);
+                App.Fn_SetCita(_citaActual);
                 SendNotification(_minotif.v_cuerpo, _minotif.v_titulo);
 
             }
@@ -163,19 +167,19 @@ namespace TratoMedi.Droid
         //}
             
         }
-
-        void SendNotification(string messageBody, string _titulo)
+         void SendNotification(string messageBody, string _titulo, Cita _citaActual)
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
 
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+            
 
-            Bitmap largeIcon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.ICONOAPP);
+            //Bitmap largeIcon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.Logo_RedondoGRIS_512x512);//color
 
             var notificationBuilder = new Android.Support.V4.App.NotificationCompat.Builder(this)
-                .SetSmallIcon(Resource.Drawable.HOME_icon)
-                .SetLargeIcon(largeIcon)
+                .SetSmallIcon(Resource.Drawable.Notif_Blanco)//blanco
+                                                             // .SetLargeIcon(largeIcon)
                 .SetContentTitle(_titulo)
                 .SetContentText(messageBody)
                 .SetContentIntent(pendingIntent)
@@ -183,7 +187,31 @@ namespace TratoMedi.Droid
                 .SetStyle(new NotificationCompat.BigTextStyle().BigText(messageBody))
                 .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
                 .SetPriority(1)
-                .SetAutoCancel(true);
+                .SetAutoCancel(false);//false el icono de la notif se queda siempre arriba aunque ya la abriste,  true se quita
+
+            var notificationManager = NotificationManager.FromContext(this);
+            notificationManager.Notify(0, notificationBuilder.Build());
+        }
+        void SendNotification(string messageBody, string _titulo)
+        {
+            var intent = new Intent(this, typeof(MainActivity));
+            intent.AddFlags(ActivityFlags.ClearTop);
+
+            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+
+            //Bitmap largeIcon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.Logo_RedondoGRIS_512x512);//color
+
+            var notificationBuilder = new Android.Support.V4.App.NotificationCompat.Builder(this)
+                .SetSmallIcon(Resource.Drawable.Notif_Blanco)//blanco
+               // .SetLargeIcon(largeIcon)
+                .SetContentTitle(_titulo)
+                .SetContentText(messageBody)
+                .SetContentIntent(pendingIntent)
+                .SetColor(40150209)
+                .SetStyle(new NotificationCompat.BigTextStyle().BigText(messageBody))
+                .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
+                .SetPriority(1)
+                .SetAutoCancel(true);//false el icono de la notif se queda siempre arriba aunque ya la abriste,  true se quita
             
             var notificationManager = NotificationManager.FromContext(this);
             notificationManager.Notify(0, notificationBuilder.Build());

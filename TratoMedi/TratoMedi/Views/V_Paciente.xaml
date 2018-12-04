@@ -164,47 +164,62 @@
                     </ListView>
                 </StackLayout>
 
-                <ListView x:Name="ListaCita" HasUnevenRows="True" IsVisible="False"
-                             ItemTapped="Fn_SelectCita" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout BackgroundColor="{Binding v_color}">
-                                    <Label  FontSize="Medium">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Nombre del paciente: " TextColor="{StaticResource NavigationPrimary}" />
-                                                <Span Text="{Binding v_nombrePaciente}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label FontSize="Medium" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                <Span Text="{Binding v_fecha}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label FontSize="Medium" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Estado: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                <Span Text="{Binding v_Estadocita}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+
+                    <StackLayout x:Name="StackListaCita">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Volver al Lector" Style="{StaticResource Buton2}" Clicked="Fn_Volver" Grid.Column="0"/>
+                            <Button Text="Continuar sin Cita" Style="{StaticResource Buton2}" Clicked="Fn_NoCita" Grid.Column="1"/>
+                        </Grid>
+                        <ListView x:Name="ListaCita" HasUnevenRows="True" IsVisible="True"
+                                 ItemTapped="Fn_SelectCita" VerticalOptions="FillAndExpand" HeaderTemplate="">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout BackgroundColor="{Binding v_color}">
+                                            <Label  FontSize="Medium">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Nombre del paciente: " TextColor="{StaticResource NavigationPrimary}" />
+                                                        <Span Text="{Binding v_nombrePaciente}" TextColor="Black"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label FontSize="Medium" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
+                                                        <Span Text="{Binding v_fecha}" TextColor="Black"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label FontSize="Medium" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Estado: " TextColor="{StaticResource NavigationPrimary}"/>
+                                                        <Span Text="{Binding v_Estadocita}" TextColor="Black"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
 
             </StackLayout>
         </StackLayout>
     </ContentPage>
         <ContentPage x:Name="Cont2">
             <StackLayout Margin="10,0">
+                <Label Text="Historial de citas y medicamentos" Style="{StaticResource AzulMedLbl}"/>
                 <ListView x:Name="ListaHisto" HasUnevenRows="True" ItemTapped="Fn_SelectNota">
                     <ListView.ItemTemplate>
                         <DataTemplate>

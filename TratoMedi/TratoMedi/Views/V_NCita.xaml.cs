@@ -37,6 +37,7 @@ namespace TratoMedi.Views
             v_estado.Text = ((EstadoCita)_a).ToString();
             v_nombre.Text = v_cita.v_nombrePaciente;
             Fn_Botones(v_cita.v_estado);
+            App.Fn_Borra();
         }
         public async void Fn_Actu(object sender, EventArgs _args)
         {
@@ -155,7 +156,7 @@ namespace TratoMedi.Views
         /// <param name="_nuevoestado"></param>
         private async void Fn_ActualizarInfo(string _nuevoestado)
         {
-            Fn_Botones("4");
+            Fn_Botones("4");//apaga todos los botones
             Cita _cita = new Cita(_nuevoestado, v_fecha.Date, v_hora.Time, v_cita.v_idCita);
             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
             // await DisplayAlert("Enviar", _json, "aceptar");
@@ -171,19 +172,20 @@ namespace TratoMedi.Views
                     if (_respuesta == "1")
                     {
                         await DisplayAlert("Exito", "Cambios generados correctamente", "Aceptar");
-                        await Navigation.PopAsync();
+                        await Navigation.PopAsync();//se hacen los cambios y se regresa una pantalla
                     }
                     else
                     {
                         await DisplayAlert("Error", "No se pudo agendar tu cita, intentalo mas tarde", "Aceptar");
+                        Fn_Botones(v_cita.v_estado);//regresar al ultimo estadoo
                     }
                 }
             }
             catch (HttpRequestException ex)
             {
                 await DisplayAlert("Error", ex.Message, "Aceptar");
+                Fn_Botones(v_cita.v_estado);//regresar al ultimo estadoo
             }
-            Fn_Botones("1");
         }
         private void Fn_Acep(object sender, EventArgs _Args)
         {

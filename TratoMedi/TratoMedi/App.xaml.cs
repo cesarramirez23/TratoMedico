@@ -25,7 +25,10 @@ namespace TratoMedi
         public static C_Medico v_perfil;
         public static ObservableCollection<Cita> v_citas;
         #endregion
-
+        /// <summary>
+        /// la cita desde la notif
+        /// </summary>
+        public static Cita v_nueva;
 
         #region PARA LA CONSULTA
         public static Cita v_citaInd;
@@ -38,11 +41,12 @@ namespace TratoMedi
         public static string[] v_paciente = { "","",""};
         public static ObservableCollection<C_NotaMed> v_notasMed = new ObservableCollection<C_NotaMed>();
         #endregion
+
+        #region Estados de la app
         public App()
         {
             InitializeComponent();
         }
-
         protected override void OnStart()
         {
             // Handle when your app starts
@@ -113,6 +117,9 @@ namespace TratoMedi
         {
             // Handle when your app resumes
         }
+        #endregion
+
+        #region Cargar Datos
         async void Fn_CrearKey()
         {
             if (!Properties.ContainsKey(NombresAux.v_medicamentos))
@@ -166,6 +173,19 @@ namespace TratoMedi
                 v_citaInd = new Cita();
                 string _json = JsonConvert.SerializeObject(v_citaInd);
                 Current.Properties.Add(NombresAux.v_citaInd, _json);
+            }
+            if (!Current.Properties.ContainsKey(NombresAux.v_citas))
+            {
+                v_citas = new ObservableCollection<Cita> ();
+                string _json = JsonConvert.SerializeObject(v_citas);
+                Current.Properties.Add(NombresAux.v_citas, _json);
+            }
+            //CIta para la notif
+            if (!Properties.ContainsKey(NombresAux.v_citaNot))
+            {
+                v_nueva = new Cita();
+                string _json = JsonConvert.SerializeObject(v_nueva);
+                Properties.Add(NombresAux.v_citaNot, _json);
             }
             await Current.SavePropertiesAsync();
 
@@ -227,6 +247,18 @@ namespace TratoMedi
                 string _json = Current.Properties[NombresAux.v_medicamentos] as string;
                 v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_json);
             }
+            if (!Current.Properties.ContainsKey(NombresAux.v_citas))
+            {
+                v_citas = new ObservableCollection<Cita>();
+                string _json = JsonConvert.SerializeObject(v_citas);
+                Current.Properties.Add(NombresAux.v_citas, "");
+                Current.Properties[NombresAux.v_citas] = _json;
+            }
+            else
+            {
+                string _json = Current.Properties[NombresAux.v_citas] as string;
+                v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_json);
+            }
             if (!Current.Properties.ContainsKey(NombresAux.v_NotasMed))
             {
                 v_notasMed = new ObservableCollection<C_NotaMed>();
@@ -266,10 +298,13 @@ namespace TratoMedi
 
             await Task.Delay(100);
         }
-       /// <summary>
-       /// guardaa 1 si esta en consulta
-       /// </summary>
-       /// <param name="_paci"></param>
+        #endregion
+       
+        #region Guardar Datos
+        /// <summary>
+        /// guardaa 1 si esta en consulta
+        /// </summary>
+        /// <param name="_paci"></param>
         public static async void Fn_GuardarDatos(string[] _paci)
         {
             v_paciente = _paci;
@@ -398,6 +433,8 @@ namespace TratoMedi
             Fn_CargarDatos();
             await Task.Delay(100);
         }
+        #endregion
+
         public async static void Fn_Terminaconsullta()
         {
             v_paciente = new string[3] { "0","","0"};
@@ -410,6 +447,11 @@ namespace TratoMedi
             v_citaInd = new Cita();
             _json = JsonConvert.SerializeObject(v_citaInd);
             Current.Properties[NombresAux.v_citaInd]= _json;
+
+            v_citas = new ObservableCollection<Cita>();
+            _json = JsonConvert.SerializeObject(v_citas);
+            Current.Properties[NombresAux.v_citas] = _json;
+
 
 
             v_pergen = new C_PerfilGen();
@@ -473,6 +515,9 @@ namespace TratoMedi
             _json = JsonConvert.SerializeObject(v_notasMed, Formatting.Indented);
             Current.Properties[NombresAux.v_NotasMed] = _json;
 
+            v_citas = new ObservableCollection<Cita>();
+            _json = JsonConvert.SerializeObject(v_citas);
+            Current.Properties[NombresAux.v_citas] = _json;
 
 
             await Current.SavePropertiesAsync();
@@ -487,30 +532,6 @@ namespace TratoMedi
             else
             {
                 return _valor;
-            }
-        }
-        public static async void Fn_SetToken(string _token)
-        {
-            if (Current.Properties.ContainsKey(NombresAux.v_token))
-            {
-                Current.Properties[NombresAux.v_token] = _token;
-            }
-            else
-            {
-                Current.Properties.Add(NombresAux.v_token, "");
-                Current.Properties[NombresAux.v_token] = _token;
-            }
-            await Current.SavePropertiesAsync();
-        }
-        public static string Fn_GEtToken()
-        {
-            if (Current.Properties.ContainsKey(NombresAux.v_token))
-            {
-                return Current.Properties[NombresAux.v_token].ToString();
-            }
-            else
-            {
-                return "a";
             }
         }
         public static ObservableCollection<Cita> Fn_GetCitas(string _idpaciente)
@@ -536,5 +557,85 @@ namespace TratoMedi
             }
             return _ret;
         }
+
+
+        #region Para las Notificaciones
+       
+        /// <summary>
+        /// cuando lo pones desde la notif
+        /// </summary>
+        public static async void Fn_SetCita(Cita _nueva)
+        {
+            v_nueva = _nueva;
+            string _json = JsonConvert.SerializeObject(v_nueva);
+            if(Current.Properties.ContainsKey(NombresAux.v_citaNot))
+            {
+            Current.Properties[NombresAux.v_citaNot] = _json;
+            }
+            else
+            {
+                Current.Properties.Add(NombresAux.v_citaNot, "");
+                Current.Properties[NombresAux.v_citaNot] = _json;
+            }
+            await Current.SavePropertiesAsync();
+            await Task.Delay(100);
+        }
+        /// <summary>
+        /// get cita de la notif
+        /// </summary>
+        /// <returns></returns>
+        public static bool Fn_GetCita()
+        {
+            if(Current.Properties.ContainsKey(NombresAux.v_citaNot))
+            {
+                string _json = Current.Properties[NombresAux.v_citaNot] as string;
+                v_nueva=JsonConvert.DeserializeObject<Cita>(_json);
+                if(v_nueva.v_estado!="-1")//tiene valores
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async static void Fn_Borra()
+        {
+            v_nueva = new Cita();
+            string _json = JsonConvert.SerializeObject(v_nueva);
+            Current.Properties[NombresAux.v_citaNot] = _json;
+            await Current.SavePropertiesAsync();
+        }
+        public static async void Fn_SetToken(string _token)
+        {
+            if (Current.Properties.ContainsKey(NombresAux.v_token))
+            {
+                Current.Properties[NombresAux.v_token] = _token;
+            }
+            else
+            {
+                Current.Properties.Add(NombresAux.v_token, "");
+                Current.Properties[NombresAux.v_token] = _token;
+            }
+            await Current.SavePropertiesAsync();
+        }
+        public static string Fn_GEtToken()
+        {
+            if (Current.Properties.ContainsKey(NombresAux.v_token))
+            {
+                return Current.Properties[NombresAux.v_token].ToString();
+            }
+            else
+            {
+                return "a";
+            }
+        }
+        #endregion
+
     }
 }

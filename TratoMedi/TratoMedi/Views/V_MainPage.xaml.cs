@@ -12,7 +12,7 @@ namespace TratoMedi.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class V_MainPage : ContentPage
 	{
-        public List<Banner> v_mostrar = new List<Banner>();
+        //public List<Banner> v_mostrar = new List<Banner>();
         int v_actual = 0;
         /// <summary>
         /// 1 informaion, 2 contacto,  otro principal con banner
@@ -46,7 +46,7 @@ namespace TratoMedi.Views
             }
             
         }
-        public async void FN_Red()
+        /*public async void FN_Red()
         {
             //HttpClient _cliente = new HttpClient();
             //string url = " s";
@@ -94,6 +94,6 @@ namespace TratoMedi.Views
         {
             Uri _url = new Uri(v_mostrar[v_actual].v_sitio);
             Device.OpenUri(_url);
-        }
+        }*/
     }
 }

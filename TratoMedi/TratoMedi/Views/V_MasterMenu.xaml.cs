@@ -24,17 +24,38 @@ namespace TratoMedi.Views
             {
                 StackLog.IsVisible = true;
                 App.Fn_CargarDatos();
-                Detail.Title = _title;
                 StackPrin.IsVisible = false;
                 Fn_GetCitas();
+                if(App.Fn_GetCita())
+                {
+                    string _json = App.Current.Properties[NombresAux.v_citaNot] as string;
+                    App.v_nueva = JsonConvert.DeserializeObject<Cita>(_json);
+                    IsPresented = false;
+                    Detail = new NavigationPage(new V_Citas(true, App.v_nueva) { Title = "Citas" });
+                }
+                else
+                {
+                    IsPresented = false;
+                   // Detail.Title = "Bienvenido "+ App.v_perfil.v_Nombre;
+                    Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+                }
             }
             else
             {
                 StackPrin.IsVisible = true;
                 StackLog.IsVisible = false;
             }
-            IsPresented = false;
-            Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+            //   IsPresented = false;
+            //Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if(App.v_log=="1")
+            {
+                Fn_GetCitas();
+                await Task.Delay(100);
+            }
         }
         private async void Fn_GetCitas()
         {
@@ -50,20 +71,29 @@ namespace TratoMedi.Views
                 {
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     ObservableCollection<Cita> v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
-                    Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
+                   // Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
                     App.Fn_GuardarCitas(v_citas);
                 }
             }
             catch (HttpRequestException ex)
             {
-                await DisplayAlert("Error buscando tus citas", ex.Message.ToString(), "Aceptar");
+               // await DisplayAlert("Error buscando tus citas", ex.Message.ToString(), "Aceptar");
             }
         }
 
         public void Fn_Inicio(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_MainPage(0) { Title = "Bienvenido" });
+            string _titl="";
+            if (App.v_log == "1")
+            {
+                _titl = "Bienvenido " + App.v_perfil.v_Nombre;
+            }
+            else
+            {
+                _titl = "Bienvenido a Trato Especial";
+            }
+            Detail = new NavigationPage(new V_MainPage(0) { Title = _titl });
         }
         public void Fn_Info(object sender, EventArgs _args)
         {
@@ -88,33 +118,81 @@ namespace TratoMedi.Views
         public void Fn_Citas(object sender, EventArgs _args)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new V_Citas() { Title ="Citas"});
+            Detail = new NavigationPage(new V_Citas(false,null) { Title ="Citas"});
         }
         public void Fn_Opciones(object sender, EventArgs _args)
         {
             IsPresented = false;
             Detail = new NavigationPage(new V_Opciones() { Title = "Cuenta" });
         }
+
+
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
             //if (App.v_paciente=="0")
             if (App.v_paciente[0]=="0")
             {
-            Detail = new NavigationPage(new V_Paciente(true) );
+            Detail = new NavigationPage(new V_Paciente(true,null) );
             }
             //else if(App.v_paciente=="1")
             else if (App.v_paciente[0] == "1")
             {
-            Detail = new NavigationPage(new V_Paciente(false) );
+            Detail = new NavigationPage(new V_Paciente(false,null) );
             }
         }
         public async void Fn_CerraSesion(object sender, EventArgs _args)
         {
-            IsPresented = false;
-            App.Fn_CerrarSesion();
-            await Task.Delay(100);
-            App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
+
+            string prime = App.v_membresia.Split('-')[0];
+            string _membre = "";///los 4 numeros de la mebresia sin laletra
+            for (int i = 0; i < prime.Length - 1; i++)
+            {
+                _membre += prime[i];
+            }
+            string letra = prime[prime.Length - 1].ToString();
+            string _conse = App.v_membresia.Split('-')[1];
+            TratoMedi.Personas.C_Login _login = new TratoMedi.Personas.C_Login(_membre, letra, _conse, App.Fn_GEtToken());
+            string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
+            string _DirEnviar = "http://tratoespecial.com/token_notification.php";
+            StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+            Console.WriteLine(" infosss " + _jsonLog);
+
+            //crear el cliente
+            HttpClient _client = new HttpClient();
+
+            try
+            {
+                //mandar el json con el post
+                HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                if (_respuesta == "1")
+                {
+                    IsPresented = false;
+                    App.Fn_CerrarSesion();
+                    App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudo cerrar sesion", "Aceptar");
+                    IsPresented = false;
+                }
+
+            }
+            catch
+            {
+                bool _elige = await DisplayAlert("Error", "No se pudo cerrar sesion Correctamente,\n ¿Cerrar sesión de forma local?", "Si", "No");
+                if (_elige)
+                {
+                    IsPresented = false;
+                    App.Fn_CerrarSesion();
+                    App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                }
+                else
+                {
+                    IsPresented = false;
+                }
+            }
         }
     }
 }

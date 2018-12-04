@@ -24,7 +24,7 @@ namespace TratoMedi.Views
             App.Fn_CargarDatos();
 
             C_Membre.Text = App.v_membresia;
-            C_fecha.Text = App.v_perfil.v_vig;
+            //C_fecha.Text = App.v_perfil.v_vig;
             //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
             regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
         }
@@ -110,6 +110,9 @@ namespace TratoMedi.Views
                         catch (HttpRequestException exception)
                         {
                             await DisplayAlert("Error", exception.Message, "Aceptar");
+                            P_but.IsEnabled = false;
+                            P_actual.Text = "";
+                            P_Nueva.Text = "";
                         }
                     }
                 }

@@ -27,6 +27,11 @@ namespace TratoMedi
         /// </summary>
         public const string v_NotasMed = "NotaMed";
 
+        /// <summary>
+        /// Cita de notificacion
+        /// </summary>
+        public const string v_citaNot = "Notif";
+
 
     }
 }

@@ -23,6 +23,8 @@ namespace TratoMedi.Views
         public void Fn_Reintento(object sender, EventArgs _args)
         {
             StackMen.IsVisible = false;
+            Mensajes_over.Text = "";
+            Reinten.IsVisible = false;
         }
         public async void Fn_Login(object sender, EventArgs _args)
         {
@@ -68,7 +70,43 @@ namespace TratoMedi.Views
                                 _nuePer.Fn_SetEspecTitulo();
                                 App.Fn_GuardarDatos(_nuePer);
                                 StackMen.IsVisible = false;
-                                Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido "+  App.v_perfil.v_Nombre );
+                                //el token
+
+                                string prime = L_usu.Text.Split('-')[0];
+                                string _membre = "";///los 4 numeros de la mebresia sin laletra
+                                for (int i = 0; i < prime.Length - 1; i++)
+                                {
+                                    _membre += prime[i];
+                                }
+                                string letra = prime[prime.Length - 1].ToString();
+                                string _conse = L_usu.Text.Split('-')[1];
+
+                                _login = new C_Login(_membre, letra,_conse, App.Fn_GEtToken());
+                                //crear el json
+                                _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
+                                _DirEnviar = "http://tratoespecial.com/token_notification.php";
+                                _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                                Console.WriteLine(" infosss " + _jsonLog);
+                                try
+                                {
+                                    //mandar el json con el post
+                                    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                                    if (_respuesta == "1")
+                                    {
+                                        Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido " + App.v_perfil.v_Nombre);
+                                    }
+                                    else
+                                    {
+                                        Mensajes_over.Text = "Error";
+                                        Reinten.IsVisible = true;
+                                    }
+                                }
+                                catch (HttpRequestException exception)
+                                {
+                                    await DisplayAlert("Error", exception.Message, "Aceptar");
+                                    Reinten.IsVisible = true;
+                                }//el token
                             }
                             catch (HttpRequestException ex)
                             {
