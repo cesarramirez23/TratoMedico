@@ -262,7 +262,11 @@ namespace TratoMedi.Personas
         public ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
      
         public string[] _tituArr;
-
+        /// <summary>
+        /// 1 activado 0   NO
+        /// </summary>
+        [JsonProperty("citas")]
+        public string v_cita;
 
         public void Fn_SetEspecTitulo()
         {//v_Especialidad tiene 0&5&4&2

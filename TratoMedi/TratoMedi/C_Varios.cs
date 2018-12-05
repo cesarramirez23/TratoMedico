@@ -182,13 +182,13 @@ namespace TratoMedi.Varios
             v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
         }
         /// <summary>
-        /// para el update
+        /// para el update, tipo al que se le envia
         /// </summary>
         /// <param name="_estado"></param>
         /// <param name="_fecha"></param>
         /// <param name="_hora"></param>
         /// <param name="_idcita"></param>
-        public Cita( string _estado, DateTime _fecha, TimeSpan _hora, string _idcita)
+        public Cita( string _estado, DateTime _fecha, TimeSpan _hora, string _idcita, string _tipo)
         {
             v_idCita = _idcita;
             v_estado = _estado;
@@ -212,6 +212,8 @@ namespace TratoMedi.Varios
                 _day = _fecha.Day.ToString();
             }
             v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
+
+            v_tipo = _tipo;
         }
 
         /// <summary>

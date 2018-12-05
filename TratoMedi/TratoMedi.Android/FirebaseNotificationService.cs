@@ -89,13 +89,34 @@ namespace TratoMedi.Droid
                 _minotif = new C_Notificacion(message.GetNotification().Title, message.GetNotification().Body);
             }
 
-            if (message.Data.ContainsKey("estado"))//tiene la info para la cita
+            if (message.Data.ContainsKey("data"))//tiene la info para la cita
             {
-                _minotif.v_titulo+="--  "+(EstadoCita) int.Parse(message.Data["estado"]);
-                // SendNotification(_minotif.v_cuerpo, _minotif.v_titulo);
-                Cita _citaActual = new Cita(message.Data["estado"]);
+                Cita _citaActual = JsonConvert.DeserializeObject<Cita>(message.Data["data"]);
+                _citaActual.Fn_SetValores();
                 App.Fn_SetCita(_citaActual);
-                SendNotification(_minotif.v_cuerpo, _minotif.v_titulo);
+                string _titulo = "";
+                string _mensaje = "";
+                if (_citaActual.v_estado == "1")
+                {
+                    _titulo = "Aviso de cita";
+                    _mensaje = "Se ha solicitado una nueva cita, presiona para más información";
+                }
+                else if (_citaActual.v_estado == "2")
+                {
+                    _titulo = "Aviso de cita";
+                    _mensaje = "Se ha reagendado una cita" ;
+                }
+                else if (_citaActual.v_estado == "3")
+                {
+                    _titulo = "Aviso de cita";
+                    _mensaje = "Se ha aceptado una cita";
+                }
+                else if (_citaActual.v_estado == "4")
+                {
+                    _titulo = "Aviso de cita";
+                    _mensaje = "Se ha cancelado una cita";
+                }
+                SendNotification(_mensaje, _titulo);
 
             }
             else//es una nootif normal, solo mensaje y titulo

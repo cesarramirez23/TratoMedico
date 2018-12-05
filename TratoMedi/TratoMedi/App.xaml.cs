@@ -25,10 +25,7 @@ namespace TratoMedi
         public static C_Medico v_perfil;
         public static ObservableCollection<Cita> v_citas;
         #endregion
-        /// <summary>
-        /// la cita desde la notif
-        /// </summary>
-        public static Cita v_nueva;
+       
 
         #region PARA LA CONSULTA
         public static Cita v_citaInd;
@@ -560,7 +557,10 @@ namespace TratoMedi
 
 
         #region Para las Notificaciones
-       
+        /// <summary>
+        /// la cita desde la notif
+        /// </summary>
+        public static Cita v_nueva;
         /// <summary>
         /// cuando lo pones desde la notif
         /// </summary>

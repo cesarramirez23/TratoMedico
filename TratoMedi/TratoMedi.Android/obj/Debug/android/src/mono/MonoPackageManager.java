@@ -110,6 +110,8 @@ class MonoPackageManager_Resources {
 		"FastAndroidCamera.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Calendars.Abstractions.dll",
+		"Plugin.Calendars.dll",
 		"TratoMedi.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

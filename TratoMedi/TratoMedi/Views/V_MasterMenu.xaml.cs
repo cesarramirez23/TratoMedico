@@ -44,9 +44,10 @@ namespace TratoMedi.Views
             {
                 StackPrin.IsVisible = true;
                 StackLog.IsVisible = false;
+                IsPresented = false;
+                // Detail.Title = "Bienvenido "+ App.v_perfil.v_Nombre;
+                Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
             }
-            //   IsPresented = false;
-            //Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
         }
         protected override async void OnAppearing()
         {

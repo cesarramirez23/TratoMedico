@@ -237,7 +237,7 @@ namespace TratoMedi.Views
                         {
                             await DisplayAlert("Exito", "Medicamentos Agregador correctamente", "Continuar");//aca termina el actulizado del estado de la cita
                             ///actualizar  el estado de la cita
-                            Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita);
+                            Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita,"0");
                             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                              _client = new HttpClient();
                              _DirEnviar = "http://tratoespecial.com/update_citas.php";

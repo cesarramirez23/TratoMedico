@@ -75,7 +75,7 @@ namespace TratoMedi.Views
             }
             else//aca actualizar el estado de la cita
             {
-                Cita _cita = new Cita("2", v_fecha.Date, v_hora.Time, v_cita.v_idCita);
+                Cita _cita = new Cita("2", v_fecha.Date, v_hora.Time, v_cita.v_idCita,"1");
                 string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                // Console.Write("Info cita " + _json);
                 //await DisplayAlert("Enviar", _json, "aceptar");
@@ -157,7 +157,7 @@ namespace TratoMedi.Views
         private async void Fn_ActualizarInfo(string _nuevoestado)
         {
             Fn_Botones("4");//apaga todos los botones
-            Cita _cita = new Cita(_nuevoestado, v_fecha.Date, v_hora.Time, v_cita.v_idCita);
+            Cita _cita = new Cita(_nuevoestado, v_fecha.Date, v_hora.Time, v_cita.v_idCita,"1");
             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
             // await DisplayAlert("Enviar", _json, "aceptar");
             HttpClient _client = new HttpClient();

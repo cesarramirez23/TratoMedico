@@ -34,14 +34,14 @@ namespace TratoMedi.Views
         {
             base.OnAppearing();
             Fn_CargaPerfil();
-            P_Swi.IsToggled = v_cita;
-            P_StackCita.IsVisible = false;
+           // P_Swi.IsToggled = v_cita;
+            //P_StackCita.IsVisible = false;
             await Task.Delay(100);
         }
         public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
         {
             v_cita = _args.Value;
-            P_StackCita.IsVisible = v_cita;
+            //P_StackCita.IsVisible = v_cita;
         }
         void Fn_SoloNumero(object sender, TextChangedEventArgs _args)
         {
@@ -84,6 +84,7 @@ namespace TratoMedi.Views
                 P_Tel.IsEnabled = true;
                 P_Corr.IsEnabled = true;
                 P_Descrip.IsEnabled = true;
+                P_Swi.IsEnabled = true;
 
                 await Task.Delay(100);
             }
@@ -104,7 +105,7 @@ namespace TratoMedi.Views
                 P_Tel.IsEnabled = false;
                 P_Corr.IsEnabled = false;
                 P_Descrip.IsEnabled = false;
-
+                P_Swi.IsEnabled = false;
                 App.Fn_CargarDatos();
                 v_espec = App.v_perfil.v_especs;
                 PickTitulo.ItemsSource = App.v_perfil._tituArr;
@@ -167,7 +168,15 @@ namespace TratoMedi.Views
             json += "correo:'" + App.Fn_Vacio(P_Corr.Text) + "',\n";
             json += "cedula:'" + App.Fn_Vacio(P_Ced.Text) + "',\n";
             json += "descrip:'" + App.Fn_Vacio(P_Descrip.Text) + "',\n";
-            json += "idsexo:'" + P_sexoPick.SelectedIndex + "'\n";
+            json += "idsexo:'" + P_sexoPick.SelectedIndex + "',\n";
+            if(v_cita)
+            {
+                json += "citas:'" + "1" + "'\n";
+            }
+            else
+            {
+                json += "citas:'" + "0" + "'\n";
+            }
             json += "}";
 
             //await DisplayAlert("Envia", json.ToString(), "Aceptar");
@@ -294,6 +303,15 @@ namespace TratoMedi.Views
                 }
             }
 
+            if(App.v_perfil.v_cita=="1")
+            {
+                v_cita = true;
+            }
+            else
+            {
+                v_cita = false;
+            }
+            P_Swi.IsToggled = v_cita;
             //  P_Ced.Text = App.v_perfil.v_cedula;
             P_hor.Text = App.v_perfil.v_horario;
             P_dom.Text = App.v_perfil.v_Domicilio;

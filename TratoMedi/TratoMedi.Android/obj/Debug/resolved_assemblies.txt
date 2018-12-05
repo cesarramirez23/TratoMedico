@@ -5,6 +5,8 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Mono.Android.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\mscorlib.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Newtonsoft.Json.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.Abstractions.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Core.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Xml.dll
@@ -75,8 +77,8 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Security.SecureString.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Web.Services.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Xml.XPath.XDocument.dll
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Mono.Security.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Threading.Tasks.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Mono.Security.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Text.Encoding.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.IO.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Text.RegularExpressions.dll

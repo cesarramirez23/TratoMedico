@@ -77,12 +77,12 @@
                 <Editor   Style="{StaticResource Editor}" IsEnabled="False" x:Name="P_Descrip"></Editor>
 
                 <Label Text="Solicitar citas desde este medio" HorizontalOptions="StartAndExpand" Style="{StaticResource lblSty}"/>
-                <Switch IsToggled="False" Toggled="Fn_ActivarCita" x:Name="P_Swi"/>
-
+                <Switch IsToggled="False" Toggled="Fn_ActivarCita" x:Name="P_Swi" IsEnabled="False"/>
+<!--
                 <StackLayout x:Name="P_StackCita" IsVisible="False">
                     <Label Text="Tiempo Estimado por consulta, en minutos" Style="{StaticResource lblSty}"/>
                     <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="P_tiempo"></Entry>
-                </StackLayout>
+                </StackLayout>-->
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
                     <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton}" HorizontalOptions="Start" Clicked="Fn_Editar"></Button>
