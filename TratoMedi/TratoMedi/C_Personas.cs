@@ -228,13 +228,22 @@ namespace TratoMedi.Personas
         public string v_Apellido { get; set; }
         [JsonProperty("dom")]
         public string v_Domicilio { get; set; }
+        /// <summary>
+        /// horario   HH-mm / HH-mm
+        /// </summary>
         [JsonProperty("horario")]
         public string v_horario;
+
+        #region LOSO DATOS PARA LA CIUDAD
         /// <summary>
         /// este lo necesito yo para el filtro
         /// </summary>
         [JsonProperty("ciudad")]
         public string v_Ciudad { get; set; }
+        [JsonProperty("ubicacion")]
+        public ObservableCollection<C_EspeTitu> v_ciudades = new ObservableCollection<C_EspeTitu>();
+        #endregion
+
         [JsonProperty("tel")]
         public string v_Tel { get; set; }
         [JsonProperty("correo")]
@@ -260,7 +269,7 @@ namespace TratoMedi.Personas
         /// </summary>
         [JsonProperty("titulos")]
         public ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
-     
+
         public string[] _tituArr;
         /// <summary>
         /// 1 activado 0   NO
@@ -268,6 +277,11 @@ namespace TratoMedi.Personas
         [JsonProperty("citas")]
         public string v_cita;
 
+        public string[] _ciuArr;
+
+        /// <summary>
+        /// crea kis arreglos de titulo ciudad y especialidad
+        /// </summary>
         public void Fn_SetEspecTitulo()
         {//v_Especialidad tiene 0&5&4&2
             //int _val =0;
@@ -285,12 +299,17 @@ namespace TratoMedi.Personas
                 v_especs[i].v_visible = false;
             }
             _tituArr = new string[v_titulos.Count];
-            for (int i = 0; i <v_titulos.Count; i++)
+            for (int i = 0; i < v_titulos.Count; i++)
             {
                 _tituArr[i] = v_titulos[i].v_nombreTitulo;
                 v_titulos[i].v_visible = false;
             }
             
+            _ciuArr = new string[v_ciudades.Count];
+            for (int i = 0; i < v_ciudades.Count; i++)
+            {
+                _ciuArr[i] = v_ciudades[i].v_ciudad;
+            }
             //int length = v_idEspe.Length;
             //C_Espec _nueEsp = new C_Espec();
             //v_especs.Clear();
@@ -312,7 +331,19 @@ namespace TratoMedi.Personas
             //{ return false; }
             return true;
         }
-        
+
+        public int Fn_GetCiudades()
+        {
+            int _a = -1;
+            for(int i=0;i< _ciuArr.Length; i++)
+            {
+                if(_ciuArr[i]==v_Ciudad)
+                {
+                    _a = i;
+                }
+            }
+            return _a;
+        }
         public string v_img { get; set; }
         [JsonIgnore]
         public string v_completo { get; set; }

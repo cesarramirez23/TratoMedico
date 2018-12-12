@@ -188,53 +188,38 @@ namespace TratoMedi.Droid
         //}
             
         }
-         void SendNotification(string messageBody, string _titulo, Cita _citaActual)
-        {
-            var intent = new Intent(this, typeof(MainActivity));
-            intent.AddFlags(ActivityFlags.ClearTop);
-
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-            
-
-            //Bitmap largeIcon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.Logo_RedondoGRIS_512x512);//color
-
-            var notificationBuilder = new Android.Support.V4.App.NotificationCompat.Builder(this)
-                .SetSmallIcon(Resource.Drawable.Notif_Blanco)//blanco
-                                                             // .SetLargeIcon(largeIcon)
-                .SetContentTitle(_titulo)
-                .SetContentText(messageBody)
-                .SetContentIntent(pendingIntent)
-                .SetColor(40150209)
-                .SetStyle(new NotificationCompat.BigTextStyle().BigText(messageBody))
-                .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
-                .SetPriority(1)
-                .SetAutoCancel(false);//false el icono de la notif se queda siempre arriba aunque ya la abriste,  true se quita
-
-            var notificationManager = NotificationManager.FromContext(this);
-            notificationManager.Notify(0, notificationBuilder.Build());
-        }
         void SendNotification(string messageBody, string _titulo)
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
-
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+            var notificationManager = NotificationManager.FromContext(this);
 
             //Bitmap largeIcon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.Logo_RedondoGRIS_512x512);//color
-
             var notificationBuilder = new Android.Support.V4.App.NotificationCompat.Builder(this)
-                .SetSmallIcon(Resource.Drawable.Notif_Blanco)//blanco
-               // .SetLargeIcon(largeIcon)
-                .SetContentTitle(_titulo)
-                .SetContentText(messageBody)
-                .SetContentIntent(pendingIntent)
-                .SetColor(40150209)
-                .SetStyle(new NotificationCompat.BigTextStyle().BigText(messageBody))
-                .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
-                .SetPriority(1)
-                .SetAutoCancel(true);//false el icono de la notif se queda siempre arriba aunque ya la abriste,  true se quita
-            
-            var notificationManager = NotificationManager.FromContext(this);
+            .SetSmallIcon(Resource.Drawable.Notif_Blanco)//blanco
+                                                         // .SetLargeIcon(largeIcon)
+            .SetContentTitle(_titulo)
+            .SetContentText(messageBody)
+            .SetContentIntent(pendingIntent)
+            .SetColor(40150209)
+            .SetStyle(new NotificationCompat.BigTextStyle().BigText(messageBody))
+            .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
+            .SetPriority(1)
+            .SetAutoCancel(true);//false el icono de la notif se queda siempre arriba aunque ya la abriste,  true se quita
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                // The id of the channel.    ----The user-visible name of the channel.
+                NotificationChannel mChannel = new NotificationChannel("channelTEServicios", "Canal Visible", NotificationImportance.High);
+                // Configure the notification channel.
+                mChannel.Description = messageBody;
+                mChannel.EnableLights(true);
+                mChannel.LightColor = Color.Red;
+                mChannel.SetShowBadge(true);
+                notificationBuilder.SetChannelId("channelTEServicios");
+                notificationManager.CreateNotificationChannel(mChannel);
+            }
             notificationManager.Notify(0, notificationBuilder.Build());
         }
     }

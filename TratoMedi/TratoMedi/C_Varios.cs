@@ -37,6 +37,12 @@ namespace TratoMedi.Varios
         [JsonProperty("nombre_titulo")]
         public string v_nombreTitulo { get; set; }
 
+        [JsonProperty("ID_ubicacion")]
+        public string v_idUbicacion { get; set; }
+        [JsonProperty("nombre_ciudad")]
+        public string v_ciudad { get; set; }
+
+
         public bool v_visible { get; set; }
 
     }
@@ -106,6 +112,9 @@ namespace TratoMedi.Varios
         /// el string que se le manda a la lista
         /// </summary>
         public string v_Estadocita { get; set; }
+        [JsonProperty("idcalendario")]
+        public string v_idCalendar { get; set; }
+
 
         public Cita() { v_estado = "-1";}
         /// <summary>
@@ -180,6 +189,7 @@ namespace TratoMedi.Varios
                 _day = _fecha.Day.ToString();
             }
             v_fecha = _fecha.Year.ToString() + "-" + _month + "-" + _day;
+            v_fechaDate = _fecha;
         }
         /// <summary>
         /// para el update, tipo al que se le envia
@@ -262,6 +272,8 @@ namespace TratoMedi.Varios
             /*if (v_fechaDate== null)
             {
             }*/
+
+
             string[] _fecha = v_fecha.Split('-');//month day year
             v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
                                        v_hora.Hours, v_hora.Minutes, v_hora.Seconds);

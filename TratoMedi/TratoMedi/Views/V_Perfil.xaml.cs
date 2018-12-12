@@ -21,14 +21,13 @@ namespace TratoMedi.Views
         string v_especId = "";
 
         ObservableCollection<C_EspeTitu> v_espec = new ObservableCollection<C_EspeTitu>();
+        ObservableCollection<C_EspeTitu> v_ciudades = new ObservableCollection<C_EspeTitu>();
         bool v_Selec = false;
         bool v_editar = false;
         bool v_cita = false;
         public V_Perfil ()
         {
             InitializeComponent();
-          
-           
         }
         protected override async void OnAppearing()
         {
@@ -68,7 +67,7 @@ namespace TratoMedi.Views
             v_editar = !v_editar;
             if (v_editar)
             {
-               
+
                 P_Editar.Text = "Cancelar";
                 P_Guardar.IsVisible = true;
 
@@ -78,9 +77,10 @@ namespace TratoMedi.Views
                 P_sexoPick.IsEnabled = true;
                 P_Esp.IsEnabled = true;
                 P_Ced.IsEnabled = true;
-                P_hor.IsEnabled = true;
+                Pick1.IsEnabled = true;
+                Pick2.IsEnabled = true;
                 P_dom.IsEnabled = true;
-                P_Ciu.IsEnabled = true;
+                PickCiudad.IsEnabled = true;
                 P_Tel.IsEnabled = true;
                 P_Corr.IsEnabled = true;
                 P_Descrip.IsEnabled = true;
@@ -99,9 +99,11 @@ namespace TratoMedi.Views
                 P_sexoPick.IsEnabled = false;
                 P_Esp.IsEnabled = false;
                 P_Ced.IsEnabled = false;
-                P_hor.IsEnabled = false;
+                Pick1.IsEnabled = false;
+                Pick2.IsEnabled = false;
+
                 P_dom.IsEnabled = false;
-                P_Ciu.IsEnabled = false;
+                PickCiudad.IsEnabled = false;
                 P_Tel.IsEnabled = false;
                 P_Corr.IsEnabled = false;
                 P_Descrip.IsEnabled = false;
@@ -139,9 +141,21 @@ namespace TratoMedi.Views
                     }
                 }
                 //  P_Ced.Text = App.v_perfil.v_cedula;
-                P_hor.Text = App.v_perfil.v_horario;
+                if (string.IsNullOrEmpty(App.v_perfil.v_horario))
+                {
+                    App.v_perfil.v_horario = "10-50/12-10";
+                }
+                string[] _split = App.v_perfil.v_horario.Split('/');
+                TimeSpan _span = new TimeSpan(int.Parse(_split[0].Split('-')[0]), int.Parse(_split[0].Split('-')[1]), 0);
+                Pick1.Time = _span;
+                _span = new TimeSpan(int.Parse(_split[1].Split('-')[0]), int.Parse(_split[1].Split('-')[1]), 0);
+                Pick2.Time = _span;
+                texHor.Text = "";
+
                 P_dom.Text = App.v_perfil.v_Domicilio;
-                P_Ciu.Text = App.v_perfil.v_Ciudad;
+                v_ciudades = App.v_perfil.v_ciudades;
+                PickCiudad.ItemsSource = App.v_perfil._ciuArr;
+                PickCiudad.SelectedIndex = App.v_perfil.Fn_GetCiudades();
                 P_Tel.Text = App.v_perfil.v_Tel;
                 P_Corr.Text = App.v_perfil.v_Correo;
                 P_Descrip.Text = App.v_perfil.v_descripcion;
@@ -152,7 +166,9 @@ namespace TratoMedi.Views
             Button _buton = (Button)sender;
             _buton.IsEnabled = false;
             //se crea el json con la clase mas lel folio y membresia
-            
+
+            string _hor = Pick1.Time.Hours + "-" + Pick1.Time.Minutes + "/" +
+                            Pick2.Time.Hours + "-" + Pick2.Time.Minutes;
            
 
             string json = @"{";
@@ -162,8 +178,8 @@ namespace TratoMedi.Views
             json += "ape:'" + App.Fn_Vacio(P_Ape.Text) + "',\n";
             json += "espe:'" + App.Fn_Vacio(v_especId) + "',\n";
             json += "dom:'" + App.Fn_Vacio(P_dom.Text) + "',\n";
-            json += "horario:'" + App.Fn_Vacio(P_hor.Text) + "',\n";
-            json += "ciudad:'" + App.Fn_Vacio(P_Ciu.Text) + "',\n";
+            json += "horario:'" + _hor + "',\n";
+            json += "ciudad:'" + PickCiudad.SelectedItem.ToString() + "',\n";
             json += "tel:'" + App.Fn_Vacio(P_Tel.Text) + "',\n";
             json += "correo:'" + App.Fn_Vacio(P_Corr.Text) + "',\n";
             json += "cedula:'" + App.Fn_Vacio(P_Ced.Text) + "',\n";
@@ -257,6 +273,7 @@ namespace TratoMedi.Views
                 //mandar el json con el post
                 HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                 string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                //await DisplayAlert("Llega ", _respuesta, "aceptar");
                 C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_respuesta);
                 Console.Write("perfil" + _nuePer.FN_GetInfo());
                 ////cargar la nueva pagina de perfil
@@ -273,7 +290,6 @@ namespace TratoMedi.Views
             App.Fn_CargarDatos();
             v_espec = App.v_perfil.v_especs;
             PickTitulo.ItemsSource = App.v_perfil._tituArr;
-
             P_Nom.Text = App.v_perfil.v_Nombre;
             P_Ape.Text = App.v_perfil.v_Apellido;
             PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
@@ -302,7 +318,6 @@ namespace TratoMedi.Views
                     v_espec[val - 1].v_visible = true;
                 }
             }
-
             if(App.v_perfil.v_cita=="1")
             {
                 v_cita = true;
@@ -313,12 +328,25 @@ namespace TratoMedi.Views
             }
             P_Swi.IsToggled = v_cita;
             //  P_Ced.Text = App.v_perfil.v_cedula;
-            P_hor.Text = App.v_perfil.v_horario;
+
+            if(string.IsNullOrEmpty( App.v_perfil.v_horario))
+            {
+                App.v_perfil.v_horario = "10-50/12-10";
+            }
+            string[] _split = App.v_perfil.v_horario.Split('/');
+            TimeSpan _span = new TimeSpan(int.Parse(_split[0].Split('-')[0]), int.Parse(_split[0].Split('-')[1]), 0);
+            Pick1.Time = _span;
+            _span = new TimeSpan(int.Parse(_split[1].Split('-')[0]), int.Parse(_split[1].Split('-')[1]), 0);
+            Pick2.Time = _span;
             P_dom.Text = App.v_perfil.v_Domicilio;
-            P_Ciu.Text = App.v_perfil.v_Ciudad;
+            
             P_Tel.Text = App.v_perfil.v_Tel;
             P_Corr.Text = App.v_perfil.v_Correo;
             P_Descrip.Text = App.v_perfil.v_descripcion;
+
+            v_ciudades = App.v_perfil.v_ciudades;
+            PickCiudad.ItemsSource = App.v_perfil._ciuArr;
+            PickCiudad.SelectedIndex = App.v_perfil.Fn_GetCiudades();
         }
         private void Fn_Setespe(object sender, EventArgs e)
         {
@@ -399,5 +427,10 @@ namespace TratoMedi.Views
             Fn_Setespe(sender, _arg);
         }
 
+        private void Fn_Unfocused(object sender, FocusEventArgs e)
+        {
+            texHor.Text = "De " + Pick1.Time.Hours+":"+Pick1.Time.Minutes + " a " + 
+                Pick2.Time.Hours+":"+Pick2.Time.Minutes;
+        }
     }
 }

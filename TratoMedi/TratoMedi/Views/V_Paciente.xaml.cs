@@ -26,10 +26,10 @@ namespace TratoMedi.Views
         ObservableCollection<C_NotaMed> v_histo = new ObservableCollection<C_NotaMed>();
         int v_editando = -1;
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            if (App.v_paciente[0] == "0")//ya eligio su cita
+            if (App.v_paciente[0] == "0")//abrir el lector
             {
                 Title = "Lector";
                 Fn_CAmbioStack(false, false, false);
@@ -37,7 +37,8 @@ namespace TratoMedi.Views
                 Scanner.IsVisible = true;
                 Scanner.IsScanning = true;
                 OverlayScan.IsVisible = true;
-
+                Cont1.Title = "Lector";
+                Cont2.Title = "Historial";
                 Cont2.IsVisible = false;
                 // ListaCita.IsVisible = false;
                 StackListaCita.IsVisible = false;
@@ -52,7 +53,6 @@ namespace TratoMedi.Views
                 GridLEctor.IsVisible = false;
                 OverlayScan.IsVisible = false;
                 Scanner.IsVisible = false;
-                Scanner.IsScanning = false;
                 aaaa.IsVisible = true;
                 CargarGen();
                 CargarMed();
@@ -62,7 +62,7 @@ namespace TratoMedi.Views
                     //ListaCita.IsVisible = false;
                     StackListaCita.IsVisible = false;
                     Fn_CAmbioStack(true, false, false);
-                    Fn_CargarMedica();
+                    await Fn_CargarMedica();
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace TratoMedi.Views
                 StackListaCita.IsVisible = false;
                 aaaa.IsVisible = false;
                 Cont1.Title = "Lector";
-                Cont2.Title = "Historial NADA";
+                Cont2.Title = "Historial";
 
 
             }
@@ -105,7 +105,6 @@ namespace TratoMedi.Views
                 GridLEctor.IsVisible = false;
                 OverlayScan.IsVisible = false;
                 Scanner.IsVisible = false;
-                Scanner.IsScanning = false;
                 aaaa.IsVisible = true;
                 if(_info!= null)
                 {
@@ -237,7 +236,7 @@ namespace TratoMedi.Views
                         {
                             await DisplayAlert("Exito", "Medicamentos Agregador correctamente", "Continuar");//aca termina el actulizado del estado de la cita
                             ///actualizar  el estado de la cita
-                            Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita,"0");
+                            Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita,"1");
                             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                              _client = new HttpClient();
                              _DirEnviar = "http://tratoespecial.com/update_citas.php";
@@ -612,6 +611,7 @@ namespace TratoMedi.Views
                     App.Fn_GuardarDatos(new string[] {"1", _selec.v_pacienteId, "1" },v_cita);
                     await Fn_CargarMedica();
                     Fn_CAmbioStack(true, false, false);
+                    Title = v_cita.v_idCita;
                 }
             }
             else
@@ -630,13 +630,13 @@ namespace TratoMedi.Views
         public async void Fn_Volver(object sender, EventArgs _args)
         {
             App.Fn_GuardarDatos(new string[3] { "0", "", "0" });
-            await Navigation.PopToRootAsync();
-            //await Navigation.PushAsync(new V_Paciente(true, null));
-            //V_MasterMenu.Fn_Lector(null, null);
+            Navigation.RemovePage(this);
+            await DisplayAlert("Aviso", "vuelve a presionar desde el menu lateral", "aceptar");
+            await Navigation.PushAsync(new V_Paciente(true, null));
         }
         public async void Fn_NoCita(object sender, EventArgs _args)
         {
-            Cita _citaTemp = new Cita(v_Info.v_membre, App.v_membresia, v_Info.v_fol, "3", DateTime.Now.Date,
+            Cita _citaTemp = new Cita(App.v_membresia,v_Info.v_membre, v_Info.v_fol, "3", DateTime.Now.Date,
                 DateTime.Now.TimeOfDay, App.Fn_GEtToken());
             string _json = JsonConvert.SerializeObject(_citaTemp, Formatting.Indented);
             Console.Write("Info cita " + _json);
@@ -650,14 +650,16 @@ namespace TratoMedi.Views
                 if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                    if (_respuesta == "1")
+                    if (_respuesta != "0")
                     {
                         v_cita = _citaTemp;
+                        v_cita.v_idCita = _respuesta;
                         StackListaCita.IsVisible = false;
                         App.Fn_GuardarDatos(new string[] { "1", v_cita.v_pacienteId, "1" }, v_cita);
                         await Fn_CargarMedica();
+                        await DisplayAlert("Exito", "Cita generada correctamente, espera la respuesta de tu doctor", "Aceptar");
                         Fn_CAmbioStack(true, false, false);
-                        //await DisplayAlert("Exito", "Cita generada correctamente, espera la respuesta de tu doctor", "Aceptar");
+                        Title = v_cita.v_idCita;
                         //await Navigation.PopAsync();
                     }
                     else

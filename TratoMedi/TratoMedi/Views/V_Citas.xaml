@@ -25,6 +25,9 @@
                                         <FormattedString>
                                             <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
                                             <Span Text="{Binding v_fecha}" TextColor="Black"/>
+                                            <Span Text=" Hora:" TextColor="{StaticResource NavigationPrimary}"/>
+                                            <Span Text="{Binding v_hora.Hours,StringFormat='{0:00}'}" TextColor="Black"/>
+                                            <Span Text="{Binding v_hora.Minutes,StringFormat=': {0:00}'}" TextColor="Black"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

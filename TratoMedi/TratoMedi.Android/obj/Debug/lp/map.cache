@@ -1,6 +1,8 @@
 FastAndroidCamera
 FormsViewGroup
 Newtonsoft.Json
+Plugin.Calendars.Abstractions
+Plugin.Calendars
 System.Runtime
 TratoMedi
 Xamarin.Android.Arch.Core.Common
@@ -37,5 +39,3 @@ ZXing.Net.Mobile.Forms
 zxing.portable
 ZXingNetMobile
 netstandard
-Plugin.Calendars.Abstractions
-Plugin.Calendars

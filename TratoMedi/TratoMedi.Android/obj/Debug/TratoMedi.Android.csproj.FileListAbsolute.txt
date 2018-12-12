@@ -162,8 +162,14 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\R.cs.flag
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\R.txt
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\uploadflags.txt
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios.apk
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios-Signed.apk
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\bin\com.alsain.teservicios.apk
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\res\drawable\logo_redondogris_512x512.png
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\res\drawable\notif_blanco.png
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\Mono.Android.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\mscorlib.pdb
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\Plugin.Calendars.Abstractions.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\System.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\System.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\System.Xml.pdb
@@ -183,6 +189,7 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\Mono.Security.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\Mono.Android.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\mscorlib.pdb
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\Plugin.Calendars.Abstractions.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\System.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\System.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\System.Xml.pdb
@@ -213,6 +220,7 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Mono.Android.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Mono.Security.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\mscorlib.pdb
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.Abstractions.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.ComponentModel.Composition.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Data.pdb
@@ -230,14 +238,6 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\TratoMedi.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios.apk
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios-Signed.apk
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\bin\com.alsain.teservicios.apk
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\res\drawable\logo_redondogris_512x512.png
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\res\drawable\notif_blanco.png
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\Plugin.Calendars.Abstractions.pdb
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\Plugin.Calendars.Abstractions.pdb
-C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.Abstractions.pdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\TratoMedi.Android.dll.mdb
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

@@ -9,6 +9,10 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+//para agregar loos eventos al calendario
+//using Plugin.Calendars;
+//using Plugin.Calendars.Abstractions;
+//para agregar loos eventos al calendario
 
 //casa compila con com.alsain.TratoMed     com.alsain.TratoMedicos
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
@@ -24,6 +28,7 @@ namespace TratoMedi
         public static string v_log = "";
         public static C_Medico v_perfil;
         public static ObservableCollection<Cita> v_citas;
+        //public static string v_IdCalendar ="";
         #endregion
        
 
@@ -95,14 +100,13 @@ namespace TratoMedi
                     MainPage = new V_MasterMenu(false, v_log);
                 }
             }
-            else
+            else//la primera vez que se abre la app
             {
                 v_log = "0";
                 v_membresia = "";
                 v_perfil = new C_Medico();
                 v_medicamentos = new ObservableCollection<Medicamentos>();
                 Fn_CrearKey();
-
                 App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
             }
         }
@@ -184,6 +188,23 @@ namespace TratoMedi
                 string _json = JsonConvert.SerializeObject(v_nueva);
                 Properties.Add(NombresAux.v_citaNot, _json);
             }
+            //if(!Properties.ContainsKey(NombresAux.v_IdCalendar))
+            //{
+            //    v_IdCalendar = "";
+            //    var TodosCalen = await CrossCalendars.Current.GetCalendarsAsync();
+            //    Calendar _nuevoCal = new Calendar()
+            //    {
+            //        AccountName = "Trato Especial",
+            //        Name = "Trato Especial",
+            //        Color = "2896D1"
+            //    };
+            //    if (!TodosCalen.Contains(_nuevoCal))
+            //    {
+            //        await CrossCalendars.Current.AddOrUpdateCalendarAsync(_nuevoCal);
+            //        v_IdCalendar = _nuevoCal.ExternalID;
+            //        Current.Properties.Add(NombresAux.v_IdCalendar, v_IdCalendar);
+            //    }
+            //}
             await Current.SavePropertiesAsync();
 
             await Task.Delay(100);
@@ -292,7 +313,28 @@ namespace TratoMedi
                 v_citaInd = JsonConvert.DeserializeObject<Cita>(_json);
 
             }
-
+            //ID DEL CALENDARIO
+            //if (!Current.Properties.ContainsKey(NombresAux.v_IdCalendar))
+            //{
+            //    v_IdCalendar = "";
+            //    var TodosCalen = await CrossCalendars.Current.GetCalendarsAsync();
+            //    Calendar _nuevoCal = new Calendar()
+            //    {
+            //        AccountName = "Trato Especial",
+            //        Name = "Trato Especial",
+            //        Color = "2896D1"
+            //    };
+            //    if (!TodosCalen.Contains(_nuevoCal))
+            //    {
+            //        await CrossCalendars.Current.AddOrUpdateCalendarAsync(_nuevoCal);
+            //        v_IdCalendar = _nuevoCal.ExternalID;
+            //        Current.Properties.Add(NombresAux.v_IdCalendar, v_IdCalendar);
+            //    }
+            //}
+            //else
+            //{
+            //    v_IdCalendar = Current.Properties[NombresAux.v_IdCalendar] as string;
+            //}
             await Task.Delay(100);
         }
         #endregion
