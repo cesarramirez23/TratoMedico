@@ -22,6 +22,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
@@ -245,6 +254,7 @@
         "dependencies": {
           "CClarke.Plugin.Calendars": "1.0.0",
           "Newtonsoft.Json": "11.0.2",
+          "Plugin.Permissions": "3.0.0.12",
           "Xamarin.Forms": "3.2.0.871581",
           "ZXing.Net.Mobile": "2.4.1",
           "ZXing.Net.Mobile.Forms": "2.4.1"
@@ -278,6 +288,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
@@ -501,6 +520,7 @@
         "dependencies": {
           "CClarke.Plugin.Calendars": "1.0.0",
           "Newtonsoft.Json": "11.0.2",
+          "Plugin.Permissions": "3.0.0.12",
           "Xamarin.Forms": "3.2.0.871581",
           "ZXing.Net.Mobile": "2.4.1",
           "ZXing.Net.Mobile.Forms": "2.4.1"
@@ -534,6 +554,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
@@ -757,6 +786,7 @@
         "dependencies": {
           "CClarke.Plugin.Calendars": "1.0.0",
           "Newtonsoft.Json": "11.0.2",
+          "Plugin.Permissions": "3.0.0.12",
           "Xamarin.Forms": "3.2.0.871581",
           "ZXing.Net.Mobile": "2.4.1",
           "ZXing.Net.Mobile.Forms": "2.4.1"
@@ -790,6 +820,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Plugin.Permissions/3.0.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/Plugin.Permissions.dll": {}
+        }
+      },
       "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
@@ -1013,6 +1052,7 @@
         "dependencies": {
           "CClarke.Plugin.Calendars": "1.0.0",
           "Newtonsoft.Json": "11.0.2",
+          "Plugin.Permissions": "3.0.0.12",
           "Xamarin.Forms": "3.2.0.871581",
           "ZXing.Net.Mobile": "2.4.1",
           "ZXing.Net.Mobile.Forms": "2.4.1"
@@ -1084,6 +1124,28 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.11.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "Plugin.Permissions/3.0.0.12": {
+      "sha512": "R8Rlzfci1byoPBGOiJfCMzu0HhhN6Q4Vq4YizlF41W946NEmoL/Mb8U5caP5t5KfSbdPQpzdQ9JfM8fxPG8pfw==",
+      "type": "package",
+      "path": "plugin.permissions/3.0.0.12",
+      "files": [
+        ".signature.p7s",
+        "lib/monoandroid71/Plugin.Permissions.dll",
+        "lib/monoandroid71/Plugin.Permissions.xml",
+        "lib/netstandard1.0/Plugin.Permissions.dll",
+        "lib/netstandard1.0/Plugin.Permissions.xml",
+        "lib/netstandard2.0/Plugin.Permissions.dll",
+        "lib/netstandard2.0/Plugin.Permissions.xml",
+        "lib/uap10.0.10240/Plugin.Permissions.dll",
+        "lib/uap10.0.10240/Plugin.Permissions.pri",
+        "lib/uap10.0.10240/Plugin.Permissions.xml",
+        "lib/xamarinios10/Plugin.Permissions.dll",
+        "lib/xamarinios10/Plugin.Permissions.xml",
+        "plugin.permissions.3.0.0.12.nupkg.sha512",
+        "plugin.permissions.nuspec",
+        "readme.txt"
       ]
     },
     "Xamarin.Build.Download/0.4.11": {
@@ -1352,6 +1414,7 @@
     "Xamarin.iOS,Version=v1.0": [
       "CClarke.Plugin.Calendars >= 1.0.0",
       "Newtonsoft.Json >= 11.0.2",
+      "Plugin.Permissions >= 3.0.0.12",
       "TratoMedi >= 1.0.0",
       "Xamarin.Firebase.iOS.Analytics >= 5.1.4",
       "Xamarin.Firebase.iOS.CloudMessaging >= 3.1.2",
@@ -1405,6 +1468,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[11.0.2, )"
+          },
+          "Plugin.Permissions": {
+            "target": "Package",
+            "version": "[3.0.0.12, )"
           },
           "Xamarin.Firebase.iOS.Analytics": {
             "target": "Package",

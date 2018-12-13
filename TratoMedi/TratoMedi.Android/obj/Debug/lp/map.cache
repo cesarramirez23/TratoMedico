@@ -39,3 +39,5 @@ ZXing.Net.Mobile.Forms
 zxing.portable
 ZXingNetMobile
 netstandard
+Plugin.CurrentActivity
+Plugin.Permissions

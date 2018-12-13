@@ -13,7 +13,7 @@ using Firebase;
 using Android.Util;
 using Android.Gms.Common;
 using Android.Content;
-
+using Plugin.Permissions;
 namespace TratoMedi.Droid
 {
     [Activity(Label = "TE Servicios", Icon = "@drawable/Logo_RedondoGRIS_512x512", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -28,6 +28,7 @@ namespace TratoMedi.Droid
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
+            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);//para pedir los permisos cross plat
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
 
@@ -35,7 +36,12 @@ namespace TratoMedi.Droid
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
         }
     }
 }

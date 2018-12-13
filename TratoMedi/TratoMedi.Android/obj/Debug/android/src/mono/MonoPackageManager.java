@@ -112,6 +112,8 @@ class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"Plugin.Calendars.Abstractions.dll",
 		"Plugin.Calendars.dll",
+		"Plugin.CurrentActivity.dll",
+		"Plugin.Permissions.dll",
 		"TratoMedi.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

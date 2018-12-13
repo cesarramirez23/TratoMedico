@@ -7,6 +7,8 @@ C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\D
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Newtonsoft.Json.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.Abstractions.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Calendars.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.CurrentActivity.dll
+C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\Plugin.Permissions.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Core.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.dll
 C:\Users\AlsainVR\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\android\assets\System.Xml.dll
