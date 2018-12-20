@@ -244,6 +244,13 @@ namespace TratoMedi.Varios
             v_nombrePaciente = "Prueba notif paciente";
         }
 
+        public string Fn_GetInfo()
+        {
+            string _ret = v_doctorId + "   " +  "  " + v_pacienteId + " " + v_folio + " " + v_estado + " " + v_fecha + " " +
+                v_fechaDate + " " + v_hora + " " + v_nombreDR + " " + v_nombrePaciente + " " + v_tokenDR + " " +
+                v_tokenPaciente + " " + v_tipo + " " + v_idCita;
+            return _ret;
+        }
 
         /// <summary>
         /// para cambiar el color dentro de la lista visible, cambia estado cita, y formato de la fecha

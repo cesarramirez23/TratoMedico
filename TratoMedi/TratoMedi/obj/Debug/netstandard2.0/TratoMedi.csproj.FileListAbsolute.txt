@@ -37,7 +37,6 @@ C:/Users/AlsainVR/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/net
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.deps.json
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.pdb
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/App.xaml.g.cs
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Citas.xaml.g.cs
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Login.xaml.g.cs
@@ -54,3 +53,4 @@ C:/Users/AlsainVR/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/net
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/XamlC.stamp
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.pdb
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache

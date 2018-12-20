@@ -23,20 +23,32 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>TratoMedi</string>
+	<string>TE Servicios</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.alsain.tratoespecialmedico</string>
+	<string>com.alsain.teservicios</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleName</key>
-	<string>TratoMedi</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>AppTEServicios.xcassets/AppTEServicios.appiconset</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>CFBundleName</key>
+	<string>TE Servicios</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Lector de Tarjeta virtual</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Agregar eventos y recordatorios</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Lecto de Tarjeta Virtual</string>
 </dict>
 </plist>
