@@ -146,6 +146,12 @@
     <ImageAsset Include="AppTEServicios.xcassets\AppTEServicios.appiconset\167.png" />
     <ImageAsset Include="AppTEServicios.xcassets\AppTEServicios.appiconset\1024.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <BundleResource Include="Resources\tab_Medicamentos.png" />
+    <BundleResource Include="Resources\tab_QR.png" />
+    <BundleResource Include="Resources\tab_Medicamentos%402x.png" />
+    <BundleResource Include="Resources\tab_QR%402x.png" />
+    <BundleResource Include="Resources\tab_Medicamentos%403x.png" />
+    <BundleResource Include="Resources\tab_QR%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

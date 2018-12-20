@@ -56,6 +56,12 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/bin/iPhone/Debug/ZXing.Net.Mobile.Forms.iOS.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/bin/iPhone/Debug/TratoMedi.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/bin/iPhone/Debug/TratoMedi.pdb
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csprojAssemblyReference.cache
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csproj.CoreCompileInputs.cache
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/XamlC.stamp
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csproj.CopyComplete
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.exe
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.pdb
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/ibtool/_BundleResourceWithLogicalName.items
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/actool/_PartialAppManifest.items
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/actool/_BundleResourceWithLogicalName.items
@@ -70,6 +76,12 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/xamarin_logo.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/xamarin_logo@2x.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/xamarin_logo@3x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_Medicamentos.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_QR.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_Medicamentos@2x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_QR@2x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_Medicamentos@3x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/tab_QR@3x.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/Citas.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/HOME_icon.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/ICONOAPP.png
@@ -82,9 +94,3 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/QR.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/GoogleService-Info.plist
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csprojAssemblyReference.cache
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csproj.CoreCompileInputs.cache
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/XamlC.stamp
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.csproj.CopyComplete
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.exe
-/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/TratoMedi.iOS.pdb

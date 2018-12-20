@@ -142,7 +142,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		oHPFafM0clFqCTYkDOVoHwLF4M4=
+		uy0xX7cpJovJKnNlUQDVLDAhHLU=
 		</data>
 		<key>Citas.png</key>
 		<data>
@@ -174,7 +174,7 @@
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher</key>
 		<data>
-		VMAKN8XZeq5xFYjfaPDv2z19NMs=
+		CAEzKkyVz4ba8JzHHWeMRawHhfc=
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/Headers/GTMGatherInputStream.h</key>
 		<data>
@@ -222,7 +222,7 @@
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/GoogleToolboxForMac</key>
 		<data>
-		eThM92pHGCrP0fB9qOcAKucDw9Y=
+		DgTsOsZ8OO+VL1Pti1+JWKPDZYE=
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/Headers/GTMDebugSelectorValidation.h</key>
 		<data>
@@ -290,7 +290,7 @@
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/GoogleUtilities</key>
 		<data>
-		v3I/rSXnaYGoqUMMnL+GgpWo2yM=
+		so5bHgy5OAM0Ga8DveJ1il3gdZc=
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/Headers/GULLoggerCodes.h</key>
 		<data>
@@ -546,7 +546,7 @@
 		</data>
 		<key>Frameworks/Protobuf.framework/Protobuf</key>
 		<data>
-		x1023vfAHIOomdEvUp9iSuD0gPE=
+		BjQLbRJnny1u/FaEMmscnLWc/1o=
 		</data>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -626,7 +626,7 @@
 		</data>
 		<key>Frameworks/leveldb.framework/leveldb</key>
 		<data>
-		RJL+KvUI80JnnyIX0sZPSwnyhdg=
+		6ysZAd+H5XnWF2fshTWR0NQK7jY=
 		</data>
 		<key>Frameworks/nanopb.framework/Headers/nanopb-umbrella.h</key>
 		<data>
@@ -662,7 +662,7 @@
 		</data>
 		<key>Frameworks/nanopb.framework/nanopb</key>
 		<data>
-		6ORlLav57A41j9VfOlUCghn0Rio=
+		cGJpKhJIpftoYAgOKPFt4+PAe9I=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
@@ -918,27 +918,27 @@
 		</data>
 		<key>TratoMedi.aotdata.arm64</key>
 		<data>
-		CCcT0TOKYFNj7fbISCIuyp67duM=
+		bc6zbx7CdQHNkRJgGfXpzYnuP2s=
 		</data>
 		<key>TratoMedi.dll</key>
 		<data>
-		gMGMFPKcPkuAWYV5sN1PLWRuCj4=
+		0m7XwO9jbEyAOxhK9pjbyl6KJ+4=
 		</data>
 		<key>TratoMedi.iOS.aotdata.arm64</key>
 		<data>
-		wnqhXk8E58ZNTZqE4JYmALKtiN4=
+		lhLjh/2EjpQ/MeD61GnqRtMrRmg=
 		</data>
 		<key>TratoMedi.iOS.exe</key>
 		<data>
-		CwDWOT8adH70fFgImWF6oNEOiKc=
+		B/yOIgjBzOyZII4GIf5ivJJDiWU=
 		</data>
 		<key>TratoMedi.iOS.pdb</key>
 		<data>
-		ktw3mZA4kmhXD7mB3Js3oHY4Gig=
+		AGREJdg7j2DxNs+i5UOJu8de4pE=
 		</data>
 		<key>TratoMedi.pdb</key>
 		<data>
-		JN2n8g1dE9qJr3GZ9B4ImyYOcVc=
+		2FqiDjxCpDq//lnVzeTwjZZqUQY=
 		</data>
 		<key>Xamarin.Forms.Core.aotdata.arm64</key>
 		<data>
@@ -1159,6 +1159,30 @@
 		<key>sv/Xamarin.Forms.Platform.iOS.resources.dll</key>
 		<data>
 		+WiGRGpSyll1f5RAMFk1sR8nLc4=
+		</data>
+		<key>tab_Medicamentos.png</key>
+		<data>
+		Q1V9Up4U0tOMi7neNd31rQx/q8g=
+		</data>
+		<key>tab_Medicamentos@2x.png</key>
+		<data>
+		BPu3mnCca1yw75hccvMGJBOVPCo=
+		</data>
+		<key>tab_Medicamentos@3x.png</key>
+		<data>
+		cvNvs3YhBb8MP1W6TcRYw8BnJ1s=
+		</data>
+		<key>tab_QR.png</key>
+		<data>
+		uD2joSLs5k6RAiguTq1+ej/MypA=
+		</data>
+		<key>tab_QR@2x.png</key>
+		<data>
+		bJi84x9EmL0CM0294PDsyqRSVKk=
+		</data>
+		<key>tab_QR@3x.png</key>
+		<data>
+		XzLBkT11Q7V8Jbij81S4abqVW0g=
 		</data>
 		<key>tab_about.png</key>
 		<data>
@@ -1613,11 +1637,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oHPFafM0clFqCTYkDOVoHwLF4M4=
+			uy0xX7cpJovJKnNlUQDVLDAhHLU=
 			</data>
 			<key>hash2</key>
 			<data>
-			CbDsyJ9YJMbW7gR0eyldZRP5B4e+9wBgjKIXjJAtqaY=
+			B/t/G7Kx8xTui+KoIg/PfpK/UylHlXt42W3vneTgX0s=
 			</data>
 		</dict>
 		<key>Citas.png</key>
@@ -1701,11 +1725,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VMAKN8XZeq5xFYjfaPDv2z19NMs=
+			CAEzKkyVz4ba8JzHHWeMRawHhfc=
 			</data>
 			<key>hash2</key>
 			<data>
-			FJkcSdQzsG486KeUXEiIuIMMB2vnuRY8xWqIRXnz0Go=
+			parAjf6Etfwg22Pd2SuQQCTNlUpIMy0WLOd+4p7ULaU=
 			</data>
 		</dict>
 		<key>Frameworks/GTMSessionFetcher.framework/Headers/GTMGatherInputStream.h</key>
@@ -1833,11 +1857,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			eThM92pHGCrP0fB9qOcAKucDw9Y=
+			DgTsOsZ8OO+VL1Pti1+JWKPDZYE=
 			</data>
 			<key>hash2</key>
 			<data>
-			2cw4eN9c1/u4+s9mROaxIsDyIXYs4rBiKXk+ELNhZm8=
+			EZvIfRa/EjhIb6+yqfdvuV3A8LOtMnpRHGSOkfg0AiE=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleToolboxForMac.framework/Headers/GTMDebugSelectorValidation.h</key>
@@ -2020,11 +2044,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v3I/rSXnaYGoqUMMnL+GgpWo2yM=
+			so5bHgy5OAM0Ga8DveJ1il3gdZc=
 			</data>
 			<key>hash2</key>
 			<data>
-			66Z2rhlRgv/smQijSGr3xGmu4c41oBLlDXGTOa9MWFU=
+			R+Yjocf/M1SVtzGiEwgO4pi45y/Kn7HqAElMsg6urtU=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleUtilities.framework/Headers/GULLoggerCodes.h</key>
@@ -2724,11 +2748,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			x1023vfAHIOomdEvUp9iSuD0gPE=
+			BjQLbRJnny1u/FaEMmscnLWc/1o=
 			</data>
 			<key>hash2</key>
 			<data>
-			Bv+lhvnPeBJ9yKUcWAZca2sXytGcsGbJ2mqYL5cAGig=
+			7qXzOL3+D2WkwJERCaCJa96K3twK+UkRSYf6nPVBqsA=
 			</data>
 		</dict>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
@@ -2944,11 +2968,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RJL+KvUI80JnnyIX0sZPSwnyhdg=
+			6ysZAd+H5XnWF2fshTWR0NQK7jY=
 			</data>
 			<key>hash2</key>
 			<data>
-			FrQ7ECO2ivbGUSyyMC12lwfQPpX2O8IctjXeo2za93o=
+			GR+CSwMt+oNYgG953AtP/7qz4KifWDnypfkwEcFyFhQ=
 			</data>
 		</dict>
 		<key>Frameworks/nanopb.framework/Headers/nanopb-umbrella.h</key>
@@ -3043,11 +3067,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6ORlLav57A41j9VfOlUCghn0Rio=
+			cGJpKhJIpftoYAgOKPFt4+PAe9I=
 			</data>
 			<key>hash2</key>
 			<data>
-			thW1cNu4YQK9MEwyA/Usjt2XtBXpykyP6brcosfX64s=
+			GexukN9JPcwDKw46AZvY7LjkQpYw5qqkHQge0IYYXGA=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
@@ -3725,66 +3749,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CCcT0TOKYFNj7fbISCIuyp67duM=
+			bc6zbx7CdQHNkRJgGfXpzYnuP2s=
 			</data>
 			<key>hash2</key>
 			<data>
-			LkKJ1n0lMOvultwYYKj8W1eQSKk85ZYM8M6VnHpN0xw=
+			mmx8a9PMhLzg26GxWkVS6GxYocSqqQk6nrXI4shmaXg=
 			</data>
 		</dict>
 		<key>TratoMedi.dll</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gMGMFPKcPkuAWYV5sN1PLWRuCj4=
+			0m7XwO9jbEyAOxhK9pjbyl6KJ+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Rru2QFzpSoWqao/y5JmBEe25+u66Wj44T06UWj9dG6s=
+			nxZaPUrL8a2eNqbrXx29s4EZBrUOd+Y/n9pKMnCi3j8=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.aotdata.arm64</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wnqhXk8E58ZNTZqE4JYmALKtiN4=
+			lhLjh/2EjpQ/MeD61GnqRtMrRmg=
 			</data>
 			<key>hash2</key>
 			<data>
-			RgeyZi7ck6PnoYeabSFyVJrgQKoZiq+e+EOFAapkGOY=
+			7e37kQMsdkivvExIWJXhlfpcdrO83sHCeTnloAvaZ1E=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.exe</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CwDWOT8adH70fFgImWF6oNEOiKc=
+			B/yOIgjBzOyZII4GIf5ivJJDiWU=
 			</data>
 			<key>hash2</key>
 			<data>
-			r0i4n5a1nIoORphhyUSFQi16CcBJvKESkBjp+I8MBpQ=
+			D7EFwlc5HKzQoxgZsuVXwBsdmcEGGD67AbrjHXtP8yU=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.pdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ktw3mZA4kmhXD7mB3Js3oHY4Gig=
+			AGREJdg7j2DxNs+i5UOJu8de4pE=
 			</data>
 			<key>hash2</key>
 			<data>
-			fmQahcpFwNhAufQlcDu4ySPtwJyJIjxmedZ88nHIPsk=
+			evZHp1zvfreKw96w3XUJDAj1xsc533aUxPagTXmF/m4=
 			</data>
 		</dict>
 		<key>TratoMedi.pdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JN2n8g1dE9qJr3GZ9B4ImyYOcVc=
+			2FqiDjxCpDq//lnVzeTwjZZqUQY=
 			</data>
 			<key>hash2</key>
 			<data>
-			FPqSFGoQMvcpNGQggovFheHEPyml/+Gj0ksbF2hgLis=
+			W0KxMm7vccDtV0ab/Dt8+VNFa4UjswRuzrOtF1WbyCM=
 			</data>
 		</dict>
 		<key>Xamarin.Forms.Core.aotdata.arm64</key>
@@ -4390,6 +4414,72 @@
 			<key>hash2</key>
 			<data>
 			tN0DKTXK7u6JZpHnG8FzrkdTQZRtpXFHmk4ZodVXq9A=
+			</data>
+		</dict>
+		<key>tab_Medicamentos.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Q1V9Up4U0tOMi7neNd31rQx/q8g=
+			</data>
+			<key>hash2</key>
+			<data>
+			Y2T/T9l1Pnhicfrx2oW6DQ/6yzwO+SsjbgbRZxvZyys=
+			</data>
+		</dict>
+		<key>tab_Medicamentos@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BPu3mnCca1yw75hccvMGJBOVPCo=
+			</data>
+			<key>hash2</key>
+			<data>
+			NLU+7neuLuaL1pylmw8H9h0udMIs519T2O/5bPr82dI=
+			</data>
+		</dict>
+		<key>tab_Medicamentos@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cvNvs3YhBb8MP1W6TcRYw8BnJ1s=
+			</data>
+			<key>hash2</key>
+			<data>
+			btRZIZbBYo55hDBn75Ftu1jXEn7WWBDyo7/9fNSNABY=
+			</data>
+		</dict>
+		<key>tab_QR.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uD2joSLs5k6RAiguTq1+ej/MypA=
+			</data>
+			<key>hash2</key>
+			<data>
+			YVWd3nLJq7DyfOqTk0MgSEshEomgN+wiEHKXtVoWncY=
+			</data>
+		</dict>
+		<key>tab_QR@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bJi84x9EmL0CM0294PDsyqRSVKk=
+			</data>
+			<key>hash2</key>
+			<data>
+			BW3Lt+q/wg/HCpyiep7qBEognjOfGhplxRbW7db9dmY=
+			</data>
+		</dict>
+		<key>tab_QR@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			XzLBkT11Q7V8Jbij81S4abqVW0g=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nn+fk5KHX9FqGWVlT7VCiuCG37UY9Q2PViU0OKTLJYA=
 			</data>
 		</dict>
 		<key>tab_about.png</key>
