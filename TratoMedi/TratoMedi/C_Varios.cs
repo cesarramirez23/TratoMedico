@@ -7,6 +7,35 @@ using Xamarin.Forms;
 
 namespace TratoMedi.Varios
 {
+    public class Filtro
+    {
+        public string v_texto { get; set; }
+        public bool v_visible { get; set; }
+
+        public Filtro()
+        {
+            v_texto = "";
+            //v_color = new Color(.15686274509, 0.58823529411, 0.81960784313);
+        }
+        public Filtro(string _texto)
+        {
+            v_texto = _texto;
+          //  v_color = new Color(.15686274509, 0.58823529411, 0.81960784313);
+        }
+        //public Filtro(string _texto, bool _Activo)
+        //{
+        //    v_texto = _texto;
+        //    if (_Activo)
+        //    {
+        //        v_color = Color.Red;
+        //    }
+        //    else
+        //    {
+        //        v_color = new Color(.15686274509, 0.58823529411, 0.81960784313);
+        //    }
+        //}
+    }
+
     public class Banner
     {
         [JsonProperty("img")]
@@ -51,9 +80,16 @@ namespace TratoMedi.Varios
     {
         Terminada = 0,
         Nueva = 1,
-        Pendiente = 2,
+        /// <summary>
+        /// esperando respuesta del paciente
+        /// </summary>
+        Pendiente_respuesta_del_paciente = 2,
         Aceptada = 3,
-        Cancelada = 4
+        Cancelada = 4,
+        /// <summary>
+        /// esperando respuyesta del medico
+        /// </summary>
+        Pendiente_respuesta_del_medico  = 5
     }
     public class Cita
     {
@@ -267,7 +303,7 @@ namespace TratoMedi.Varios
                 v_color = Color.White;
             }
             int _a = int.Parse(v_estado);
-            v_Estadocita = ((EstadoCita)_a).ToString();
+            v_Estadocita =  ((EstadoCita)_a).ToString().Replace('_',' ');
             string[] _fecha = v_fecha.Split('-');
             v_fechaDate = new DateTime(int.Parse(_fecha[0]), int.Parse(_fecha[1]), int.Parse(_fecha[2]),
                                        v_hora.Hours, v_hora.Minutes, v_hora.Seconds);
@@ -275,7 +311,7 @@ namespace TratoMedi.Varios
         public void Fn_SetValores()
         {
             int _a = int.Parse(v_estado);
-            v_Estadocita = ((EstadoCita)_a).ToString();
+            v_Estadocita = ((EstadoCita)_a).ToString().Replace('_', ' ');
             /*if (v_fechaDate== null)
             {
             }*/
@@ -426,5 +462,4 @@ namespace TratoMedi.Varios
 
 
     }
-
 }

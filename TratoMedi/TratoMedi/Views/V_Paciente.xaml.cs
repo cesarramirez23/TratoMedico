@@ -657,9 +657,9 @@ namespace TratoMedi.Views
                         StackListaCita.IsVisible = false;
                         App.Fn_GuardarDatos(new string[] { "1", v_cita.v_pacienteId, "1" }, v_cita);
                         await Fn_CargarMedica();
-                        await DisplayAlert("Exito", "Cita generada correctamente, espera la respuesta de tu doctor", "Aceptar");
+                        //await DisplayAlert("Exito", "Cita generada correctamente, espera la respuesta de tu doctor", "Aceptar");
                         Fn_CAmbioStack(true, false, false);
-                        Title = v_cita.v_idCita;
+                        //Title = v_cita.v_idCita;
                         //await Navigation.PopAsync();
                     }
                     else
@@ -668,7 +668,7 @@ namespace TratoMedi.Views
                     }
                 }
             }
-            catch (HttpRequestException ex)
+            catch 
             {
                 await DisplayAlert("" +
                     "Error","No se puede crear nueva cita en este momento, intentalo más tarde", "Aceptar");

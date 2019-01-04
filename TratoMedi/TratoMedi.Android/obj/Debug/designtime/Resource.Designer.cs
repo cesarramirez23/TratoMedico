@@ -3167,17 +3167,20 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F09005B
 			public const int design_snackbar_background = 2131296347;
 			
+			// aapt resource value: 0x7F010003
+			public const int Filtro = 2130771971;
+			
 			// aapt resource value: 0x1
 			public const int googleg_disabled_color_18 = 1;
 			
 			// aapt resource value: 0x1
 			public const int googleg_standard_color_18 = 1;
 			
-			// aapt resource value: 0x7F010003
-			public const int HOME_icon = 2130771971;
-			
 			// aapt resource value: 0x7F010004
-			public const int ICONOAPP = 2130771972;
+			public const int HOME_icon = 2130771972;
+			
+			// aapt resource value: 0x7F010005
+			public const int ICONOAPP = 2130771973;
 			
 			// aapt resource value: 0x7F090054
 			public const int ic_audiotrack_dark = 2131296340;
@@ -3722,23 +3725,23 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F090104
 			public const int ic_vol_type_tv_light = 2131296516;
 			
-			// aapt resource value: 0x7F010005
-			public const int INFO_icon = 2130771973;
-			
 			// aapt resource value: 0x7F010006
-			public const int LOGOTRATOESPECIAL = 2130771974;
+			public const int INFO_icon = 2130771974;
 			
 			// aapt resource value: 0x7F010007
-			public const int LogOut = 2130771975;
+			public const int LOGOTRATOESPECIAL = 2130771975;
 			
 			// aapt resource value: 0x7F010008
-			public const int Logo_RedondoGRIS_512x512 = 2130771976;
+			public const int LogOut = 2130771976;
 			
 			// aapt resource value: 0x7F010009
-			public const int Logo_Redondo_512 = 2130771977;
+			public const int Logo_RedondoGRIS_512x512 = 2130771977;
 			
 			// aapt resource value: 0x7F010010
-			public const int mail_icon = 2130771984;
+			public const int Logo_Redondo_512 = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int mail_icon = 2130771985;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;
@@ -3839,14 +3842,14 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010011
-			public const int Notif_Blanco = 2130771985;
-			
 			// aapt resource value: 0x7F010012
-			public const int Opciones = 2130771986;
+			public const int Notif_Blanco = 2130771986;
 			
 			// aapt resource value: 0x7F010013
-			public const int Perfil = 2130771987;
+			public const int Opciones = 2130771987;
+			
+			// aapt resource value: 0x7F010014
+			public const int Perfil = 2130771988;
 			
 			// aapt resource value: 0x1
 			public const int places_ic_clear = 1;
@@ -3860,8 +3863,8 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x1
 			public const int powered_by_google_light = 1;
 			
-			// aapt resource value: 0x7F010014
-			public const int QR = 2130771988;
+			// aapt resource value: 0x7F010015
+			public const int QR = 2130771989;
 			
 			// aapt resource value: 0x1
 			public const int quantum_ic_art_track_grey600_48 = 1;
@@ -3992,8 +3995,8 @@ namespace TratoMedi.Droid
 			// aapt resource value: 0x7F09006A
 			public const int tooltip_frame_light = 2131296362;
 			
-			// aapt resource value: 0x7F010015
-			public const int xamarin_logo = 2130771989;
+			// aapt resource value: 0x7F010016
+			public const int xamarin_logo = 2130771990;
 			
 			static Drawable()
 			{

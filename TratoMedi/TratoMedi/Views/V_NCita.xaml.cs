@@ -41,7 +41,7 @@ namespace TratoMedi.Views
             v_hora.Time = v_cita.v_hora;
             _esta = v_cita.v_estado;
             int _a = int.Parse(v_cita.v_estado);
-            v_estado.Text = ((EstadoCita)_a).ToString();
+            v_estado.Text = ((EstadoCita)_a).ToString().Replace('_', ' ');
             v_nombre.Text = v_cita.v_nombrePaciente;
             Fn_Botones(v_cita.v_estado);
             App.Fn_Borra();
@@ -113,7 +113,7 @@ namespace TratoMedi.Views
             }
         }
         /// <summary>
-        /// Terminada = 0,  Nueva = 1, Pendiente = 2, Aceptada = 3, Cancelada = 4
+        ///Terminada = 0,  Nueva = 1, Pendiente esperando paciente = 2, Aceptada = 3, Cancelada = 4, esperando al doctor  5
         /// </summary>
         /// <param name="_valor"></param>
         private void Fn_Botones(string _valor)
@@ -134,10 +134,10 @@ namespace TratoMedi.Views
                         v_botRec.IsEnabled = true;
                     }
                     break;
-                case "2"://pendiente
+                case "2"://pendiente esperando paciente
                     {
-                        v_botAcep.IsEnabled = true;
-                        v_botCambio.IsEnabled = true;
+                        v_botAcep.IsEnabled = false;
+                        v_botCambio.IsEnabled = false;
                         v_botRec.IsEnabled = true;
                     }
                     break;
@@ -156,10 +156,18 @@ namespace TratoMedi.Views
                         v_botRec.IsEnabled = false;
                     }
                     break;
+                case "5"://esperando al doctor
+                    {
+                        v_botAcep.IsEnabled = true;
+                        v_botCambio.IsEnabled = true;
+                        v_botRec.IsEnabled = true;
+                    }
+                    break;
+                    
             }
         }
         /// <summary>
-        /// Terminada = 0,  Nueva = 1, Pendiente = 2, Aceptada = 3, Cancelada = 4
+        /// Terminada = 0,  Nueva = 1, Pendiente esperando paciente = 2, Aceptada = 3, Cancelada = 4, esperando al doctor  5
         /// </summary>
         /// <param name="_nuevoestado"></param>
         private async void Fn_ActualizarInfo(string _nuevoestado)
