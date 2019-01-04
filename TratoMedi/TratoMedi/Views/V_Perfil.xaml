@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TratoMedi.Views.V_Perfil">
@@ -23,7 +23,7 @@
     </ContentPage.Resources>
 
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,10,20,20">
             <StackLayout>
                 <Label Text="Titulo" Style="{StaticResource lblSty}"></Label>
                 <Picker x:Name="PickTitulo" TextColor="Black" Title="Titulo" IsEnabled="False"></Picker>
@@ -97,10 +97,23 @@
                     <Label Text="Tiempo Estimado por consulta, en minutos" Style="{StaticResource lblSty}"/>
                     <Entry Keyboard="Numeric" TextChanged="Fn_SoloNumero" x:Name="P_tiempo"></Entry>
                 </StackLayout>-->
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton}" HorizontalOptions="Start" Clicked="Fn_Editar"></Button>
-                    <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton}" HorizontalOptions="End" Clicked="Fn_Guardar" IsVisible="False"></Button>
-                </StackLayout>
+                
+                
+                <Grid><!--row 1   column 2-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                     <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton2}" Grid.ColumnSpan="1" Clicked="Fn_Editar"></Button>
+                    <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton2}" Grid.Column="1" Grid.ColumnSpan="1" Clicked="Fn_Guardar" IsVisible="False"></Button>
+                 </Grid>
+                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="Red">
+                    <Button x:Name="P_Editar" Text="Editar" Style="{StaticResource Buton2}" HorizontalOptions="StartAndExpand" Clicked="Fn_Editar"></Button>
+                    <Button x:Name="P_Guardar" Text="Guardar" Style="{StaticResource Buton2}" HorizontalOptions="EndAndExpand" Clicked="Fn_Guardar" IsVisible="False"></Button>
+                </StackLayout>-->
             </StackLayout>
         </ScrollView>
 

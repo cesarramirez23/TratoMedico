@@ -32,10 +32,12 @@ namespace TratoMedi.Views
             InitializeComponent();
             v_nueva = _nueva;
             v_cita = _cita;
-           // v_cita.Fn_SetValores();
+            // v_cita.Fn_SetValores();
+
+            v_fecha.MinimumDate = DateTime.MinValue;
             v_fecha.Date = v_cita.v_fechaDate;
-            v_fecha.MinimumDate = DateTime.Now;
-            v_fecha.MaximumDate = v_fecha.MinimumDate.AddMonths(1);
+            v_fecha.MaximumDate =DateTime.Now.AddMonths(1);
+
             v_fecha.IsEnabled = false;
             v_hora.IsEnabled = false;
             v_hora.Time = v_cita.v_hora;
@@ -222,6 +224,8 @@ namespace TratoMedi.Views
         /// <param name="_Args"></param>
         private void Fn_Cambios(object sender, EventArgs _Args)
         {
+            v_fecha.MinimumDate = DateTime.Now;
+            v_fecha.MaximumDate = DateTime.Now.AddMonths(1);
             v_fecha.IsEnabled = true;
             v_hora.IsEnabled = true;
             StackPendiente.IsVisible = true;
@@ -238,6 +242,7 @@ namespace TratoMedi.Views
         }
         private void Fn_CancelCambio(object sender, EventArgs _args)
         {
+            v_fecha.MinimumDate = DateTime.MinValue;
             v_fecha.Date = v_cita.v_fechaDate;
             v_fecha.IsEnabled = false;
             v_hora.Time = v_cita.v_hora;

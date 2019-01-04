@@ -13,7 +13,7 @@
 namespace TratoMedi.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\V_Opciones.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/V_Opciones.xaml")]
     public partial class V_Opciones : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

@@ -94,3 +94,4 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/QR.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/GoogleService-Info.plist
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/device-builds/ipad4.1-11.4.1/optimized/Filtro.png

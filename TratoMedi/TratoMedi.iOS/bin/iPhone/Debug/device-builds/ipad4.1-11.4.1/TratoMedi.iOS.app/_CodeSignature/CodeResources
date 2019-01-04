@@ -148,6 +148,10 @@
 		<data>
 		P7A9BJdg3hiT+oT/EBjfgdrgDBM=
 		</data>
+		<key>Filtro.png</key>
+		<data>
+		eeWZKjqerY6Y5lfjiR2DWx4D7GY=
+		</data>
 		<key>Firebase.CloudMessaging.aotdata.arm64</key>
 		<data>
 		34zxahaZoWUVesUo1KqHmbMUJRY=
@@ -174,7 +178,7 @@
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher</key>
 		<data>
-		CAEzKkyVz4ba8JzHHWeMRawHhfc=
+		Rw4TyYA/fzrOf3MRBmtodhv7ClA=
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/Headers/GTMGatherInputStream.h</key>
 		<data>
@@ -222,7 +226,7 @@
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/GoogleToolboxForMac</key>
 		<data>
-		DgTsOsZ8OO+VL1Pti1+JWKPDZYE=
+		3DQPP+usT2Ola9QSlHFm+VOlMBc=
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/Headers/GTMDebugSelectorValidation.h</key>
 		<data>
@@ -290,7 +294,7 @@
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/GoogleUtilities</key>
 		<data>
-		so5bHgy5OAM0Ga8DveJ1il3gdZc=
+		8ws+OXcj3am6S5/Ubmrv2Z67A7o=
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/Headers/GULLoggerCodes.h</key>
 		<data>
@@ -546,7 +550,7 @@
 		</data>
 		<key>Frameworks/Protobuf.framework/Protobuf</key>
 		<data>
-		BjQLbRJnny1u/FaEMmscnLWc/1o=
+		Zrz/MWobnprlfZoqu6014rjDBhs=
 		</data>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -626,7 +630,7 @@
 		</data>
 		<key>Frameworks/leveldb.framework/leveldb</key>
 		<data>
-		6ysZAd+H5XnWF2fshTWR0NQK7jY=
+		U7A8ZSIFbb9NH9JGyA1OFsDtkB0=
 		</data>
 		<key>Frameworks/nanopb.framework/Headers/nanopb-umbrella.h</key>
 		<data>
@@ -662,7 +666,7 @@
 		</data>
 		<key>Frameworks/nanopb.framework/nanopb</key>
 		<data>
-		cGJpKhJIpftoYAgOKPFt4+PAe9I=
+		Lx3i3mOV71P7spxH8MOzSKQE9sQ=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
@@ -918,27 +922,27 @@
 		</data>
 		<key>TratoMedi.aotdata.arm64</key>
 		<data>
-		bc6zbx7CdQHNkRJgGfXpzYnuP2s=
+		0lPXjs80kLnLTlRg99+iW0IVhiI=
 		</data>
 		<key>TratoMedi.dll</key>
 		<data>
-		0m7XwO9jbEyAOxhK9pjbyl6KJ+4=
+		EyIzK+Pcyk5kYmhyf68REmtmgzI=
 		</data>
 		<key>TratoMedi.iOS.aotdata.arm64</key>
 		<data>
-		lhLjh/2EjpQ/MeD61GnqRtMrRmg=
+		YfwwyQUzQbY5ohP4P41OBuJsozI=
 		</data>
 		<key>TratoMedi.iOS.exe</key>
 		<data>
-		B/yOIgjBzOyZII4GIf5ivJJDiWU=
+		BtY5qdOz9aUQUtmZBJQ9yZwkRzI=
 		</data>
 		<key>TratoMedi.iOS.pdb</key>
 		<data>
-		AGREJdg7j2DxNs+i5UOJu8de4pE=
+		VoNrz2gQi6/B+6BcMvXfwGUlB2E=
 		</data>
 		<key>TratoMedi.pdb</key>
 		<data>
-		2FqiDjxCpDq//lnVzeTwjZZqUQY=
+		M4Q8isB/ql/4q56qQCvcdHylcT8=
 		</data>
 		<key>Xamarin.Forms.Core.aotdata.arm64</key>
 		<data>
@@ -1655,6 +1659,17 @@
 			2gJuJImRIuyiBBlYF1dgkZCXSnAUNuBw+imINkNUMzw=
 			</data>
 		</dict>
+		<key>Filtro.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eeWZKjqerY6Y5lfjiR2DWx4D7GY=
+			</data>
+			<key>hash2</key>
+			<data>
+			cz5tNJes4NYGUY21PrfWw0GYOIlrUBiAq/nA5eUHIMo=
+			</data>
+		</dict>
 		<key>Firebase.CloudMessaging.aotdata.arm64</key>
 		<dict>
 			<key>hash</key>
@@ -1725,11 +1740,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CAEzKkyVz4ba8JzHHWeMRawHhfc=
+			Rw4TyYA/fzrOf3MRBmtodhv7ClA=
 			</data>
 			<key>hash2</key>
 			<data>
-			parAjf6Etfwg22Pd2SuQQCTNlUpIMy0WLOd+4p7ULaU=
+			IsOLhC+9iBfwJXeF7DFZjSz/G3VHQo/QZy4sK1pXu30=
 			</data>
 		</dict>
 		<key>Frameworks/GTMSessionFetcher.framework/Headers/GTMGatherInputStream.h</key>
@@ -1857,11 +1872,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DgTsOsZ8OO+VL1Pti1+JWKPDZYE=
+			3DQPP+usT2Ola9QSlHFm+VOlMBc=
 			</data>
 			<key>hash2</key>
 			<data>
-			EZvIfRa/EjhIb6+yqfdvuV3A8LOtMnpRHGSOkfg0AiE=
+			HzKm5KhQwq/zuF/f7sacN1j9cKVNt8GHS68rJZG30pk=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleToolboxForMac.framework/Headers/GTMDebugSelectorValidation.h</key>
@@ -2044,11 +2059,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			so5bHgy5OAM0Ga8DveJ1il3gdZc=
+			8ws+OXcj3am6S5/Ubmrv2Z67A7o=
 			</data>
 			<key>hash2</key>
 			<data>
-			R+Yjocf/M1SVtzGiEwgO4pi45y/Kn7HqAElMsg6urtU=
+			vwsGId4OX/LxbpgLRANBWMEjHPbLtOwpTTaF8/bfoVY=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleUtilities.framework/Headers/GULLoggerCodes.h</key>
@@ -2748,11 +2763,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BjQLbRJnny1u/FaEMmscnLWc/1o=
+			Zrz/MWobnprlfZoqu6014rjDBhs=
 			</data>
 			<key>hash2</key>
 			<data>
-			7qXzOL3+D2WkwJERCaCJa96K3twK+UkRSYf6nPVBqsA=
+			sHjjk49gqINoWxSlTuoWT2GPDVVkhP6OOW/Qr9+75TY=
 			</data>
 		</dict>
 		<key>Frameworks/Protobuf.framework/_CodeSignature/CodeResources</key>
@@ -2968,11 +2983,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6ysZAd+H5XnWF2fshTWR0NQK7jY=
+			U7A8ZSIFbb9NH9JGyA1OFsDtkB0=
 			</data>
 			<key>hash2</key>
 			<data>
-			GR+CSwMt+oNYgG953AtP/7qz4KifWDnypfkwEcFyFhQ=
+			+q3uaODDyj5vBeUe7CgrO+u8R3zHj046n5CIdNa35Ow=
 			</data>
 		</dict>
 		<key>Frameworks/nanopb.framework/Headers/nanopb-umbrella.h</key>
@@ -3067,11 +3082,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cGJpKhJIpftoYAgOKPFt4+PAe9I=
+			Lx3i3mOV71P7spxH8MOzSKQE9sQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			GexukN9JPcwDKw46AZvY7LjkQpYw5qqkHQge0IYYXGA=
+			mKMPXadcwvp85HhGk+9gb6TMPSVNILK+L0LPRrtF6zc=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
@@ -3749,66 +3764,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bc6zbx7CdQHNkRJgGfXpzYnuP2s=
+			0lPXjs80kLnLTlRg99+iW0IVhiI=
 			</data>
 			<key>hash2</key>
 			<data>
-			mmx8a9PMhLzg26GxWkVS6GxYocSqqQk6nrXI4shmaXg=
+			0AqvaILufXkxjahNpo/wuaJpfLxO0wphCd6UrGrBpvM=
 			</data>
 		</dict>
 		<key>TratoMedi.dll</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0m7XwO9jbEyAOxhK9pjbyl6KJ+4=
+			EyIzK+Pcyk5kYmhyf68REmtmgzI=
 			</data>
 			<key>hash2</key>
 			<data>
-			nxZaPUrL8a2eNqbrXx29s4EZBrUOd+Y/n9pKMnCi3j8=
+			kE3q5mklLWibI8YNS7438amPw7MP+CBwIZFB1+0XzT4=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.aotdata.arm64</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lhLjh/2EjpQ/MeD61GnqRtMrRmg=
+			YfwwyQUzQbY5ohP4P41OBuJsozI=
 			</data>
 			<key>hash2</key>
 			<data>
-			7e37kQMsdkivvExIWJXhlfpcdrO83sHCeTnloAvaZ1E=
+			Zs8tGmgB04DaXAcZ0ctwsctUYx4be0GvLvWD9nnDX/I=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.exe</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			B/yOIgjBzOyZII4GIf5ivJJDiWU=
+			BtY5qdOz9aUQUtmZBJQ9yZwkRzI=
 			</data>
 			<key>hash2</key>
 			<data>
-			D7EFwlc5HKzQoxgZsuVXwBsdmcEGGD67AbrjHXtP8yU=
+			mz4aXOJSw8n8ygsAdAJM6Bv9/w1RZeUDf5pDk3J8pSI=
 			</data>
 		</dict>
 		<key>TratoMedi.iOS.pdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AGREJdg7j2DxNs+i5UOJu8de4pE=
+			VoNrz2gQi6/B+6BcMvXfwGUlB2E=
 			</data>
 			<key>hash2</key>
 			<data>
-			evZHp1zvfreKw96w3XUJDAj1xsc533aUxPagTXmF/m4=
+			kT5GkCXmC2HlEszhzJvygsBJscmOAsZDXwK6AjLwwCY=
 			</data>
 		</dict>
 		<key>TratoMedi.pdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2FqiDjxCpDq//lnVzeTwjZZqUQY=
+			M4Q8isB/ql/4q56qQCvcdHylcT8=
 			</data>
 			<key>hash2</key>
 			<data>
-			W0KxMm7vccDtV0ab/Dt8+VNFa4UjswRuzrOtF1WbyCM=
+			QWoTnWnxoGaUwBPFH9s7MmMMZZFrCgTTNNq02CadZjg=
 			</data>
 		</dict>
 		<key>Xamarin.Forms.Core.aotdata.arm64</key>
