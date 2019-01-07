@@ -390,6 +390,7 @@ namespace TratoMedi.Views
         }
         private void Fn_Cancel(object sender, EventArgs _arg)
         {
+            pickEspe.ItemsSource = null;
             for (int i = 0; i < v_espec.Count; i++)//apaga todo
             {
                 v_espec[i].v_visible = false;
