@@ -120,8 +120,9 @@
         <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
                          x:Name="StackOver" IsVisible="False" BackgroundColor="White">
             <StackLayout Margin="0,20" VerticalOptions="Center" HorizontalOptions="Center" >
-                <ListView x:Name="pickEspe" Margin="5,10" IsVisible="False" ItemTapped="pickEspe_ItemTapped">
-                    <ListView.ItemTemplate>
+
+                <ListView x:Name="pickEspe" Margin="5,10" BackgroundColor="White" IsVisible="False" ItemTapped="pickEspe_ItemTapped">
+                        <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">

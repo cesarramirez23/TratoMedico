@@ -6,29 +6,58 @@
         <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0">
 
-                <Label Text="Nombre de usuario" HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}" ></Label>
+                <Label Text="Membresía" HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}" ></Label>
                 <Entry Placeholder="0000D-0000" x:Name="L_usu" HorizontalOptions="FillAndExpand"/>
                 <!--="1808D-0008" ></Entry>-->
                 <Label Text="Ingresa tu contraseña" Style="{StaticResource AzulMedLbl}"></Label>
                 <Entry x:Name="L_pass" IsPassword="True"/>
                 <!--="Cesar1234"></Entry>-->
-                <Button Style="{StaticResource Buton}"  Text="Login" Clicked="Fn_Login"></Button>
-                
+                <Button Style="{StaticResource Buton}"  Text="INICIAS SESIÓN" Clicked="Fn_Login"></Button>
+                <Label Text="Recuperar Contraseña" Style="{StaticResource AzulMedLbl}" FontAttributes="Bold" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Fn_Reenviar" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+
             </StackLayout>
             <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="StackMen" IsVisible="False" BackgroundColor="LightGray">
                 <StackLayout Margin="20,20" VerticalOptions="Center" HorizontalOptions="Center">
                     <Label x:Name="Mensajes_over" Text="Cargando Formulario de registro" VerticalOptions="Center" HorizontalOptions="Center" ></Label>
                      <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>  <ColumnDefinition Width="*"/>  <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition/>  <ColumnDefinition />  <ColumnDefinition /> <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
-                         <Button Text="Reintentar" Style="{StaticResource Buton}" x:Name="Reinten" Clicked="Fn_Reintento" 
+                         <Button Text="Reintentar" Style="{StaticResource Buton2}" x:Name="Reinten" Clicked="Fn_Reintento" 
                                Grid.Column="1" Grid.ColumnSpan="2"   IsVisible="False"></Button>
                         </Grid>
+                </StackLayout>
+            </ContentView>
+
+            <ContentView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="StackContra" IsVisible="False" BackgroundColor="LightGray">
+                <StackLayout Margin="10,0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="El correo se enviará al titular de la membresia" Style="{StaticResource AzulMedLbl}"/>
+                    <Label Style="{StaticResource AzulMedLbl}" Text="Correo del titular de la membresia"/>
+                    <Entry Style="{StaticResource StyEntry}"   x:Name="PassCorreo" Placeholder="correo@algo.com"/>
+
+                    <Label Style="{StaticResource AzulMedLbl}" Text="Membresia completa del titular"/>
+                    <Entry Style="{StaticResource StyEntry}"  Placeholder="0000D-0000" x:Name="PassMembre"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90"/>
+                        </Grid.RowDefinitions>
+                        <Button Text="Cancelar" Style="{StaticResource Buton2}" Clicked="Fn_APagaPass" 
+                                Grid.Column="0" Grid.ColumnSpan="1"></Button>
+                        <Button Text="Recuperar Contraseña" Style="{StaticResource Buton2}" Clicked="Fn_CambioPass"
+                                Grid.Column="1" Grid.ColumnSpan="1"></Button>
+                    </Grid>
                 </StackLayout>
             </ContentView>
         </AbsoluteLayout>

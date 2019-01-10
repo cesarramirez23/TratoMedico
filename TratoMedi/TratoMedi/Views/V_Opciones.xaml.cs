@@ -77,6 +77,7 @@ namespace TratoMedi.Views
                         json += "password:'" + P_actual.Text + "',\n";
                         json += "newpassword:'" + P_Nueva.Text + "',\n";
                         json += "}";
+                        //await DisplayAlert("Aviso", json, "Aceptar");
                         JObject jsonPer = JObject.Parse(json);
                         StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
                         HttpClient _client = new HttpClient();
@@ -105,6 +106,10 @@ namespace TratoMedi.Views
                             else if (_result == "10")
                             {
                                 await DisplayAlert("respuesta", "Usuario no encontrado, por favor intentalo mas tarde ", "Aceptar");
+                            }
+                            else
+                            {
+                                await DisplayAlert("respuesta",_result, "Aceptar");
                             }
                         }
                         catch (HttpRequestException exception)

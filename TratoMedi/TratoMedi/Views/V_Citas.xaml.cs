@@ -32,7 +32,8 @@ namespace TratoMedi.Views
             if (_tiene)
             {
                 v_CitaNotif = _nuevaCita;
-                Fn_Notif(_nuevaCita);                
+                Fn_Notif(_nuevaCita);
+                ToolbarItems.Clear();
             }
         }
         protected override void OnAppearing()

@@ -611,7 +611,7 @@ namespace TratoMedi.Views
                     App.Fn_GuardarDatos(new string[] {"1", _selec.v_pacienteId, "1" },v_cita);
                     await Fn_CargarMedica();
                     Fn_CAmbioStack(true, false, false);
-                    Title = v_cita.v_idCita;
+                   // Title = v_cita.v_idCita;
                 }
             }
             else

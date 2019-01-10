@@ -116,6 +116,8 @@ namespace TratoMedi.Views
                 P_Ape.Text = App.v_perfil.v_Apellido;
                 PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
                 P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
+                IEnumerable<C_EspeTitu> _temp = v_espec.OrderBy(x => x.v_nombreEspec);
+                v_espec = new ObservableCollection<C_EspeTitu>(_temp);
                 pickEspe.ItemsSource = v_espec;
 
                 P_Esp.Text = App.v_perfil.v_Especialidad;
@@ -167,8 +169,9 @@ namespace TratoMedi.Views
             _buton.IsEnabled = false;
             //se crea el json con la clase mas lel folio y membresia
 
-            string _hor = Pick1.Time.Hours + "-" + Pick1.Time.Minutes + "/" +
-                            Pick2.Time.Hours + "-" + Pick2.Time.Minutes;
+            // Pick1.Time.Hours + "-" + Pick1.Time.Minutes "/" +Pick2.Time.Hours + "-" + Pick2.Time.Minutes;
+            string _hor = Pick1.Time.ToString(@"hh\-mm") + "/" +
+                            Pick2.Time.ToString(@"hh\-mm");
            
 
             string json = @"{";
@@ -294,6 +297,8 @@ namespace TratoMedi.Views
             P_Ape.Text = App.v_perfil.v_Apellido;
             PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
             P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
+            IEnumerable<C_EspeTitu> _temp = v_espec.OrderBy(x => x.v_nombreEspec);
+            v_espec = new ObservableCollection<C_EspeTitu>(_temp);
             pickEspe.ItemsSource = v_espec;
 
             P_Esp.Text = App.v_perfil.v_Especialidad;
@@ -329,15 +334,6 @@ namespace TratoMedi.Views
             P_Swi.IsToggled = v_cita;
             //  P_Ced.Text = App.v_perfil.v_cedula;
 
-            if(string.IsNullOrEmpty( App.v_perfil.v_horario))
-            {
-                App.v_perfil.v_horario = "10-50/12-10";
-            }
-            string[] _split = App.v_perfil.v_horario.Split('/');
-            TimeSpan _span = new TimeSpan(int.Parse(_split[0].Split('-')[0]), int.Parse(_split[0].Split('-')[1]), 0);
-            Pick1.Time = _span;
-            _span = new TimeSpan(int.Parse(_split[1].Split('-')[0]), int.Parse(_split[1].Split('-')[1]), 0);
-            Pick2.Time = _span;
             P_dom.Text = App.v_perfil.v_Domicilio;
             
             P_Tel.Text = App.v_perfil.v_Tel;
@@ -347,6 +343,18 @@ namespace TratoMedi.Views
             v_ciudades = App.v_perfil.v_ciudades;
             PickCiudad.ItemsSource = App.v_perfil._ciuArr;
             PickCiudad.SelectedIndex = App.v_perfil.Fn_GetCiudades();
+
+            #region EL HORARIO Y CONVERSION PORQUE HICE CAMBIOS 
+            if (string.IsNullOrEmpty(App.v_perfil.v_horario))
+            {
+                App.v_perfil.v_horario = "00-00/00-00";
+            }
+            string[] _split = App.v_perfil.v_horario.Split('/');//el original es con   -   cambiar a :
+            TimeSpan _span = new TimeSpan(int.Parse(_split[0].Split('-')[0]), int.Parse(_split[0].Split('-')[1]), 0);
+            Pick1.Time = _span;
+            _span = new TimeSpan(int.Parse(_split[1].Split('-')[0]), int.Parse(_split[1].Split('-')[1]), 0);
+            Pick2.Time = _span;
+            #endregion
         }
         private void Fn_Setespe(object sender, EventArgs e)
         {
@@ -405,6 +413,8 @@ namespace TratoMedi.Views
                     v_espec[val-1].v_visible = true;
                 }
             }
+            IEnumerable<C_EspeTitu> _temp = v_espec.OrderBy(x => x.v_nombreEspec);
+            v_espec =new ObservableCollection<C_EspeTitu> (_temp);
             pickEspe.ItemsSource = v_espec;
             Fn_Setespe(sender, _arg);
         }

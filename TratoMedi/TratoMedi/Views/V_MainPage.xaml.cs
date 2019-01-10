@@ -3,9 +3,13 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Net.Http;
+using System.Threading;
 using TratoMedi.Varios;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TratoMedi.Personas;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TratoMedi.Views
 {
@@ -45,6 +49,50 @@ namespace TratoMedi.Views
 
             }
             
+        }
+        protected async override void OnAppearing()
+        {
+            if(App.v_log=="1")
+            {
+                Token();
+                await Task.Delay(100);
+            }
+        }
+        public async void Token()
+        {
+            string prime = App.v_membresia.Split('-')[0];
+            string _membre = "";///los 4 numeros de la mebresia sin laletra
+            for (int i = 0; i < prime.Length - 1; i++)//-1 para no agarrar la letra
+            {
+                _membre += prime[i];
+            }
+            string _conse = App.v_membresia.Split('-')[1];
+            C_Login _login = new C_Login(_membre,"D", _conse, App.Fn_GEtToken());
+            //crear el json
+            string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
+            string _DirEnviar = "http://tratoespecial.com/token_notification.php";
+            StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+            HttpClient _client = new HttpClient();
+           // Console.WriteLine(" infosss " + _jsonLog);
+            try
+            {
+                //mandar el json con el post
+                HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                if (_respuesta == "1")
+                {
+                    Console.Write("token 1");
+                }
+                else
+                {
+                    Console.WriteLine("token no 1");
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("error token");
+            }
         }
         /*public async void FN_Red()
         {
