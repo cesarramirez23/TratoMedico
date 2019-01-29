@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "7422fd804f0d9b692822ff841724dc03d5d70de2"
+    "signature": "230adba29d6a8cb4e7d2e2dc7a78ed7cb90943fe"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,7 +10,7 @@
       "TratoMedi/1.0.0": {
         "dependencies": {
           "CClarke.Plugin.Calendars": "1.0.0",
-          "NETStandard.Library": "2.0.1",
+          "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "11.0.2",
           "Plugin.Permissions": "3.0.0.12",
           "Xamarin.Forms": "3.2.0.871581",
@@ -23,38 +23,68 @@
       },
       "CClarke.Plugin.Calendars/1.0.0": {
         "runtime": {
-          "lib/netstandard1.0/Plugin.Calendars.Abstractions.dll": {},
-          "lib/netstandard1.0/Plugin.Calendars.dll": {}
+          "lib/netstandard1.0/Plugin.Calendars.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard1.0/Plugin.Calendars.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
       "Newtonsoft.Json/11.0.2": {
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.2.21924"
+          }
         }
       },
       "Plugin.Permissions/3.0.0.12": {
         "runtime": {
-          "lib/netstandard2.0/Plugin.Permissions.dll": {}
+          "lib/netstandard2.0/Plugin.Permissions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Xamarin.Forms/3.2.0.871581": {
         "runtime": {
-          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
         }
       },
       "ZXing.Net.Mobile/2.4.1": {
         "runtime": {
-          "lib/netstandard1.0/ZXing.Net.Mobile.Core.dll": {},
-          "lib/netstandard1.0/ZXingNetMobile.dll": {},
-          "lib/netstandard1.0/zxing.portable.dll": {}
+          "lib/netstandard1.0/ZXing.Net.Mobile.Core.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.0"
+          },
+          "lib/netstandard1.0/ZXingNetMobile.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.0"
+          },
+          "lib/netstandard1.0/zxing.portable.dll": {
+            "assemblyVersion": "0.16.2.0",
+            "fileVersion": "0.16.2.0"
+          }
         }
       },
       "ZXing.Net.Mobile.Forms/2.4.1": {
@@ -63,7 +93,10 @@
           "ZXing.Net.Mobile": "2.4.1"
         },
         "runtime": {
-          "lib/netstandard1.0/ZXing.Net.Mobile.Forms.dll": {}
+          "lib/netstandard1.0/ZXing.Net.Mobile.Forms.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.0"
+          }
         }
       }
     }
@@ -88,12 +121,12 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
-    "NETStandard.Library/2.0.1": {
+    "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
-      "path": "netstandard.library/2.0.1",
-      "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "Newtonsoft.Json/11.0.2": {
       "type": "package",

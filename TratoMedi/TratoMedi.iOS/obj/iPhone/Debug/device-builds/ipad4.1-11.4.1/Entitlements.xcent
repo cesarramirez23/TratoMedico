@@ -5,9 +5,9 @@
 	<key>get-task-allow</key>
 	<true/>
 	<key>application-identifier</key>
-	<string>7W483QRYYP.com.alsain.teservicios</string>
+	<string>45C945Z924.com.alsain.teservicio</string>
 	<key>com.apple.developer.team-identifier</key>
-	<string>7W483QRYYP</string>
+	<string>45C945Z924</string>
 	<key>aps-environment</key>
 	<string>development</string>
 </dict>

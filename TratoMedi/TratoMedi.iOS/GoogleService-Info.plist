@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1034988257710-okapj9j5lgnntkvigqhbl25ill51j7fi.apps.googleusercontent.com</string>
+	<string>1034988257710-gi94j0hmc64ajsfpjjjobhviqavgno7u.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1034988257710-okapj9j5lgnntkvigqhbl25ill51j7fi</string>
+	<string>com.googleusercontent.apps.1034988257710-gi94j0hmc64ajsfpjjjobhviqavgno7u</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCsrjJUtQI2oznsSt9VPLqS-RtiOSkm29o</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alsain.teservicios</string>
+	<string>com.alsain.teservicio</string>
 	<key>PROJECT_ID</key>
 	<string>trato-especial-medicos-3b5cd</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1034988257710:ios:1f6363ac04524fba</string>
+	<string>1:1034988257710:ios:a990745edcaa72fd</string>
 	<key>DATABASE_URL</key>
 	<string>https://trato-especial-medicos-3b5cd.firebaseio.com</string>
 </dict>

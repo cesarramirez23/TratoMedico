@@ -74225,7 +74225,7 @@ _mono_aot_file_info:
 	.long 832,19048,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 119,213,217,180,197,40,195,90,38,87,201,185,234,34,216,170
+	.byte 222,43,18,198,81,201,7,118,29,175,85,134,117,202,36,181
 	.globl _mono_aot_module_Plugin_Calendars_info
 	.align 3
 _mono_aot_module_Plugin_Calendars_info:

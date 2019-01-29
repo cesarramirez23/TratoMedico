@@ -38903,7 +38903,7 @@ _mono_aot_file_info:
 	.long 456,6816,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 96,193,81,12,233,251,174,181,133,126,20,218,81,153,144,236
+	.byte 89,127,26,124,30,91,214,52,18,203,237,243,75,0,94,15
 	.globl _mono_aot_module_System_Numerics_info
 	.align 3
 _mono_aot_module_System_Numerics_info:

@@ -26048,7 +26048,7 @@ _mono_aot_file_info:
 	.long 360,5464,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 66,170,41,245,253,58,183,56,100,144,22,133,155,107,195,223
+	.byte 44,101,186,220,41,153,41,107,195,30,163,92,179,120,159,53
 	.globl _mono_aot_module_Firebase_CloudMessaging_info
 	.align 3
 _mono_aot_module_Firebase_CloudMessaging_info:
