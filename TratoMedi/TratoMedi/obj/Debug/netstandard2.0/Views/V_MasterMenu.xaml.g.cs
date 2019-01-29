@@ -13,7 +13,7 @@
 namespace TratoMedi.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/V_MasterMenu.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\V_MasterMenu.xaml")]
     public partial class V_MasterMenu : global::Xamarin.Forms.MasterDetailPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
