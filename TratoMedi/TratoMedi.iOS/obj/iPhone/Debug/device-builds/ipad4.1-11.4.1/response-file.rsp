@@ -4,7 +4,7 @@
 --debug
 --linksdkonly
 --sdkroot=/Applications/Xcode.app/Contents/Developer
---sdk=11.4
+--sdk=12.1
 --targetver=8.0
 --aot-options=-O=-float32
 --http-message-handler=HttpClientHandler
