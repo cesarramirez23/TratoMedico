@@ -106,9 +106,9 @@ namespace TratoMedi.Views
                     }
                 }
             }
-            catch (HttpRequestException ex)
+            catch 
             {
-                await DisplayAlert("Error, Se mostrará la ultima información guardada", ex.Message+" \n "+App.v_citas.Count, "Aceptar");
+                await DisplayAlert("Error", "Se mostrará la ultima información guardada", "Aceptar");
                 if (App.v_citas.Count > 0)
                 {
                     v_citas = App.v_citas;

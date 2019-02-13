@@ -252,9 +252,9 @@ namespace TratoMedi.Views
 
                 }
             }
-            catch (HttpRequestException ex)
+            catch 
             {
-                await DisplayAlert("Error en actualizar", ex.Message.ToString(), "Aceptar");
+                await DisplayAlert("ERROR","Error en actualizar",  "Aceptar");
             }
            
             _buton.IsEnabled = true;
@@ -285,9 +285,9 @@ namespace TratoMedi.Views
 
                 await Task.Delay(100);
             }
-            catch (HttpRequestException ex)
+            catch 
             {
-                await DisplayAlert("Error en actualizar, Se Cargará la ultima informacion guardada", ex.Message.ToString(), "Aceptar");
+                await DisplayAlert("Error en actualizar", "Se Cargará la ultima informacion guardada", "Aceptar");
             }
 
             App.Fn_CargarDatos();

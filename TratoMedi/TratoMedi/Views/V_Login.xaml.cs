@@ -73,7 +73,6 @@ namespace TratoMedi.Views
                                     App.v_membresia = L_usu.Text;
                                     _nuePer.Fn_SetEspecTitulo();
                                     App.Fn_GuardarDatos(_nuePer);
-                                    StackMen.IsVisible = false;
                                     //el token
 
                                     string prime = L_usu.Text.Split('-')[0];

@@ -26,13 +26,11 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.alsain.teservicio</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>XSAppIconAssets</key>
 	<string>AppTEServicios.xcassets/AppTEServicios.appiconset</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>UIBackgroundModes</key>
@@ -49,5 +47,7 @@
 	<string>Agregar eventos y recordatorios</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Lecto de Tarjeta Virtual</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2</string>
 </dict>
 </plist>
