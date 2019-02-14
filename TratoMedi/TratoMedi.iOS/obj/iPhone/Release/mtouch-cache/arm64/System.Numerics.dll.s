@@ -38770,7 +38770,7 @@ _mono_aot_file_info:
 	.long 456,6544,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 53,144,196,38,54,208,237,76,83,24,55,232,132,250,88,42
+	.byte 116,133,54,243,50,71,184,23,37,251,107,37,229,96,61,5
 	.globl _mono_aot_module_System_Numerics_info
 	.align 3
 _mono_aot_module_System_Numerics_info:

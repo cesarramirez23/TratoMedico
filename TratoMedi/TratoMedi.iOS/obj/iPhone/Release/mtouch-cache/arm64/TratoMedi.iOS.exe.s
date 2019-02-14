@@ -1819,7 +1819,7 @@ _mono_aot_file_info:
 	.long 56,1360,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 81,237,76,189,230,221,13,86,133,196,67,243,7,2,122,51
+	.byte 227,184,105,113,234,178,222,126,77,160,182,88,73,232,139,162
 	.globl _mono_aot_module_TratoMedi_iOS_info
 	.align 3
 _mono_aot_module_TratoMedi_iOS_info:
