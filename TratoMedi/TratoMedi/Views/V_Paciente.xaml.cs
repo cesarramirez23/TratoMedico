@@ -18,7 +18,7 @@ using System.Collections.ObjectModel;
 namespace TratoMedi.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)] 
-	public partial class V_Paciente : TabbedPage
+	public partial class V_Paciente : ContentPage
 	{
         Cita v_cita;
         Perf v_Info = new Perf();
@@ -26,121 +26,291 @@ namespace TratoMedi.Views
         ObservableCollection<C_NotaMed> v_histo = new ObservableCollection<C_NotaMed>();
         int v_editando = -1;
 
-        protected async override void OnAppearing()
+        protected  override void OnAppearing()
         {
             base.OnAppearing();
-            if (App.v_paciente[0] == "0")//abrir el lector
-            {
-                Title = "Lector";
-                Fn_CAmbioStack(false, false, false);
+            Scanner.IsScanning = true;
+            //if (App.v_paciente[0] == "0")//abrir el lector
+            //{
+            //    Title = "Lector";
+            //    Fn_CAmbioStack(false, false, false);
 
-                Scanner.IsVisible = true;
-                Scanner.IsScanning = true;
-                OverlayScan.IsVisible = true;
-                Cont1.Title = "Lector";
-                Cont2.Title = "Historial";
-                Cont2.IsVisible = false;
-                // ListaCita.IsVisible = false;
-                StackListaCita.IsVisible = false;
-                aaaa.IsVisible = false;
-            }
-            else
-            {
-                Title = "En consulta";
-                Cont2.IsVisible = true;
-                Cont1.Title = "Consulta";
-                Cont2.Title = "Historial";
-                GridLEctor.IsVisible = false;
-                OverlayScan.IsVisible = false;
-                Scanner.IsVisible = false;
-                aaaa.IsVisible = true;
-                CargarGen();
-                CargarMed();
-                if (App.v_paciente[2] == "1")//ya eligio su cita
-                {
-                    Fn_CargaCita();
-                    //ListaCita.IsVisible = false;
-                    StackListaCita.IsVisible = false;
-                    Fn_CAmbioStack(true, false, false);
-                    await Fn_CargarMedica();
-                }
-                else
-                {
-                    //ListaCita.IsVisible = true;
-                    StackListaCita.IsVisible = true;
-                    Fn_CAmbioStack(false, false, false);
-                    //las citas no descarga nada, busca en las guardadas de cada doctor
-                    ListaCita.ItemsSource = App.Fn_GetCitas(App.v_paciente[1]);
-                }
-            }
+            //    Scanner.IsVisible = true;
+            //    Scanner.IsScanning = true;
+            //    OverlayScan.IsVisible = true;
+            //    Cont1.Title = "Lector";
+            //    Cont2.Title = "Historial";
+            //    Cont2.IsVisible = false;
+            //    // ListaCita.IsVisible = false;
+            //    StackListaCita.IsVisible = false;
+            //    aaaa.IsVisible = false;
+            //}
+            //else
+            //{
+            //    Title = "En consulta";
+            //    Cont2.IsVisible = true;
+            //    Cont1.Title = "Consulta";
+            //    Cont2.Title = "Historial";
+            //    GridLEctor.IsVisible = false;
+            //    OverlayScan.IsVisible = false;
+            //    Scanner.IsVisible = false;
+            //    aaaa.IsVisible = true;
+            //    CargarGen();
+            //    CargarMed();
+            //    if (App.v_paciente[2] == "1")//ya eligio su cita
+            //    {
+            //        Fn_CargaCita();
+            //        //ListaCita.IsVisible = false;
+            //        StackListaCita.IsVisible = false;
+            //        Fn_CAmbioStack(true, false, false);
+            //        await Fn_CargarMedica();
+            //    }
+            //    else
+            //    {
+            //        //ListaCita.IsVisible = true;
+            //        StackListaCita.IsVisible = true;
+            //        Fn_CAmbioStack(false, false, false);
+            //        //las citas no descarga nada, busca en las guardadas de cada doctor
+            //        ListaCita.ItemsSource = App.Fn_GetCitas(App.v_paciente[1]);
+            //    }
+            //}
 
         }
-        public  V_Paciente (bool _scan, Perf _info )
+        public  V_Paciente ()//(bool _scan, Perf _info  )
 		{
 			InitializeComponent ();
-            if(_scan )
-            {
-                Title = "Lector";
-                Fn_CAmbioStack(false, false, false);
+            //if(_scan )
+            //{
+            //    Title = "Lector";
+            //    Fn_CAmbioStack(false, false, false);
                 
-                Scanner.IsVisible = true;
-                Scanner.IsScanning = true;
-                OverlayScan.IsVisible = true;
+            //    Scanner.IsVisible = true;
+            //    Scanner.IsScanning = true;
+            //    OverlayScan.IsVisible = true;
 
-                Cont2.IsVisible = false;
-                // ListaCita.IsVisible = false;
-                StackListaCita.IsVisible = false;
-                aaaa.IsVisible = false;
-                Cont1.Title = "Lector";
-                Cont2.Title = "Historial";
-
-
-            }
-            else
-            {
-                Title = "En consulta";
-                Cont2.IsVisible = true;
-                Cont1.Title = "Consulta";
-                Cont2.Title = "Historial";
-                GridLEctor.IsVisible = false;
-                OverlayScan.IsVisible = false;
-                Scanner.IsVisible = false;
-                aaaa.IsVisible = true;
-                if(_info!= null)
-                {
-                v_Info = _info;
-                }
+            //    Cont2.IsVisible = false;
+            //    // ListaCita.IsVisible = false;
+            //    StackListaCita.IsVisible = false;
+            //    aaaa.IsVisible = false;
+            //    Cont1.Title = "Lector";
+            //    Cont2.Title = "Historial";
 
 
-                CargarGen();
-                CargarMed();
-                if (App.v_paciente[2] == "1")//ya eligio su cita
-                {
-                    Fn_CargaCita();
-                    //ListaCita.IsVisible = false;
-                    StackListaCita.IsVisible = false;
-                    Fn_CAmbioStack(true, false, false);
-                    Fn_CargarMedica();
-                }
-                else
-                {
-                    //ListaCita.IsVisible = true;
-                    StackListaCita.IsVisible = true;
-                    Fn_CAmbioStack(false, false, false);
-                    //las citas no descarga nada, busca en las guardadas de cada doctor
-                    var _temp = App.Fn_GetCitas(App.v_paciente[1]);
-                    if (_temp.Count > 0)
-                    {
-                        ListaCita.ItemsSource = _temp;
-                    }
-                    else
-                    {
-                        ListaCita.Header = "No se Encontraron citas";
-                    }
+            //}
+            //else
+            //{
+            //    Title = "En consulta";
+            //    Cont2.IsVisible = true;
+            //    Cont1.Title = "Consulta";
+            //    Cont2.Title = "Historial";
+            //    GridLEctor.IsVisible = false;
+            //    OverlayScan.IsVisible = false;
+            //    Scanner.IsVisible = false;
+            //    aaaa.IsVisible = true;
+            //    if(_info!= null)
+            //    {
+            //    v_Info = _info;
+            //    }
+
+
+            //    CargarGen();
+            //    CargarMed();
+            //    if (App.v_paciente[2] == "1")//ya eligio su cita
+            //    {
+            //        Fn_CargaCita();
+            //        //ListaCita.IsVisible = false;
+            //        StackListaCita.IsVisible = false;
+            //        Fn_CAmbioStack(true, false, false);
+            //        Fn_CargarMedica();
+            //    }
+            //    else
+            //    {
+            //        //ListaCita.IsVisible = true;
+            //        StackListaCita.IsVisible = true;
+            //        Fn_CAmbioStack(false, false, false);
+            //        //las citas no descarga nada, busca en las guardadas de cada doctor
+            //        var _temp = App.Fn_GetCitas(App.v_paciente[1]);
+            //        if (_temp.Count > 0)
+            //        {
+            //            ListaCita.ItemsSource = _temp;
+            //        }
+            //        else
+            //        {
+            //            ListaCita.Header = "No se Encontraron citas";
+            //        }
                     
-                }
-            }
+            //    }
+            //}
+
         }
+        private async void Fn_Scan(ZXing.Result result)
+        {
+            //deja de escanear
+            //Scanner.IsScanning = false;
+            //crear el cliente
+            HttpClient _client = new HttpClient();
+            string _DirEnviar = "";
+
+            string _decrypt = NombresAux.DecryptString(result.Text, "PassCesar123TE");
+            Console.Write(" _decrypt " + _decrypt);
+
+            Perf _info = new Perf();
+
+            try
+            {
+                _info = JsonConvert.DeserializeObject<Perf>(_decrypt);
+                Device.BeginInvokeOnMainThread(async () =>
+                {//no poner el scaneer en false
+                    await Navigation. PushAsync(new V_Info( _info));
+                });
+            }
+            catch
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Error de lectura", "Error buscando información", "Aceptar");
+                });
+            }
+
+            /*
+            try
+            {
+                _info = JsonConvert.DeserializeObject<Perf>(_decrypt);
+                if (_info.v_fol != "0")//si no es el titular, mostrar algo de informacion del titular
+                {
+                    Console.Write("No es el titular, descargar perfil del principal");
+                }
+                ///descargar la info del que escanean su codigo
+                ///
+                //StringContent _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
+                StringContent _content = new StringContent(_decrypt, Encoding.UTF8, "application/json");
+                string _respuesta;
+                HttpResponseMessage _respuestaphp;
+                try
+                {
+                    //baja la info de perfil general
+                    _DirEnviar = "http://tratoespecial.com/query_perfil.php";
+                    //mandar el json con el post
+                    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                    C_PerfilGen _nuePer = JsonConvert.DeserializeObject<C_PerfilGen>(_respuesta);
+                    Console.Write("perfilgeneral " + _nuePer.Fn_GetDatos());
+                    App.Fn_GuardarDatos(_nuePer);
+                    try
+                    {
+                        _DirEnviar = "http://tratoespecial.com/query_perfil_medico.php";
+                        _content = new StringContent(_decrypt, Encoding.UTF8, "application/json");
+                        //mandar el json con el post
+                        _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                        _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                        C_PerfilMed _nuePerMEd = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
+                        Console.Write("perfilmedico " + _nuePerMEd.Fn_Info());
+                        App.Fn_GuardarDatos(_nuePerMEd);
+
+
+                        ///cargar el historial de medicamentos 
+                        _client = new HttpClient();
+                        Cita _cita = new Cita(_info.v_membre, _info.v_fol, "0");
+                        string _json = JsonConvert.SerializeObject(_cita);
+                        _DirEnviar = "http://tratoespecial.com/get_medicamentos.php";
+                        // await DisplayAlert("ENVIA PARA medicamentos", _json, "acep");
+                        _content = new StringContent(_json, Encoding.UTF8, "application/json");
+                        try
+                        {
+                            _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                            if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                                // await DisplayAlert("LLega get medicamentos", _respuesta, "acep");
+                                v_histo = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_respuesta);
+                                Console.Write("historial " + v_histo.Count);
+                                for (int i = 0; i < v_histo.Count; i++)
+                                {
+                                    v_histo[i].Fn_SetEspe();
+                                }
+                                App.Fn_GuardarDatos(v_histo);
+                                //ListaHisto.ItemsSource = v_histo;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    App.Fn_GuardarDatos(new string[] { "1", _info.v_membre, "0" });
+                                    Scanner.IsScanning = false;
+                                    await Task.Delay(100);
+
+                                    //Scanner.IsScanning = false;
+                                    await Navigation.PushAsync(new V_Info(_nuePer, _nuePerMEd, _info, v_histo));
+
+                                    //MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
+                                    await Navigation.PopAsync();
+                                    await Navigation.PushAsync(new V_Paciente(false, _info) { Title = App.v_pergen.v_Nombre });
+                                });
+                            }
+                        }
+                        catch 
+                        {
+                            if (App.v_notasMed.Count > 0)
+                            {
+                                v_histo = App.v_notasMed;
+                                ListaHisto.ItemsSource = v_histo;
+                            }
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await Navigation.PopAsync();
+                                //await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                                await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
+                                // StackPerfil.IsVisible = true;
+                                Scanner.IsScanning = true;
+                                Scanner.IsVisible = true;
+                            });
+                            App.Fn_GuardarDatos(new string[] { "0", "", "0" });
+                        }
+                    }
+                    catch
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //await Navigation.PopAsync();
+                            //await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                            await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
+                            // StackPerfil.IsVisible = true; 
+                            Scanner.IsVisible = true;
+                            Scanner.IsScanning = true;
+                            OverlayScan.IsVisible = true;
+                        });
+                        App.Fn_GuardarDatos(new string[] { "0", "", "0" });
+                    }
+                }
+                catch 
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //await Navigation.PopAsync();
+                        //await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                        await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
+                        // StackPerfil.IsVisible = true;
+                        Scanner = new ZXingScannerView();
+                        Scanner.IsVisible = true;
+                        Scanner.IsScanning = true;
+                        OverlayScan.IsVisible = true;
+                    });
+                    App.Fn_GuardarDatos(new string[] { "0", "", "0" });
+                }//primer intento de buscar info
+            }
+            catch
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await Navigation.PopAsync();
+                    //await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    await DisplayAlert("Error", "Error al leer la tarjeta virtual ", "Aceptar");
+                    // StackPerfil.IsVisible = true;
+                    Scanner.IsScanning = true;
+                    Scanner.IsVisible = true;
+                });
+            }
+            */
+        }
+
+        /*
         public void Fn_CancelMedi(object sender, EventArgs _Args)
         {
             Fn_Limpiar();
@@ -335,142 +505,6 @@ namespace TratoMedi.Views
             Medicamentos _item = _args.Item as Medicamentos;
             await DisplayAlert("Medicamento", _item.Fn_Info(),"Aceptar");
         }
-        private async void Fn_Scan(ZXing.Result result)
-        {
-            //deja de escanear
-            //Scanner.IsScanning = false;
-            //crear el cliente
-            HttpClient _client = new HttpClient();
-            string _DirEnviar = "";
-
-            string _decrypt = NombresAux.DecryptString(result.Text, "PassCesar123TE");
-            Perf _info = new Perf();
-            try
-            {
-                _info = JsonConvert.DeserializeObject<Perf>(_decrypt);
-                if (_info.v_fol != "0")//si no es el titular, mostrar algo de informacion del titular
-                {
-                    Console.Write("No es el titular, descargar perfil del principal");
-                }
-                ///descargar la info del que escanean su codigo
-                StringContent _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
-                string _respuesta;
-                HttpResponseMessage _respuestaphp;
-                try
-                {
-                    //baja la info de perfil general
-                    _DirEnviar = "http://tratoespecial.com/query_perfil.php";
-                    //mandar el json con el post
-                    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                    C_PerfilGen _nuePer = JsonConvert.DeserializeObject<C_PerfilGen>(_respuesta);
-                    App.Fn_GuardarDatos(_nuePer);
-                    try
-                    {
-                        _DirEnviar = "http://tratoespecial.com/query_perfil_medico.php";
-                        _content = new StringContent(result.Text, Encoding.UTF8, "application/json");
-                        //mandar el json con el post
-                        _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                        _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                        C_PerfilMed _nuePerMEd = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
-                        App.Fn_GuardarDatos(_nuePerMEd);
-
-
-                        ///cargar el historial de medicamentos 
-                        _client = new HttpClient();
-                        Cita _cita = new Cita(_info.v_membre, _info.v_fol, "0");
-                        string _json = JsonConvert.SerializeObject(_cita);
-                        _DirEnviar = "http://tratoespecial.com/get_medicamentos.php";
-                        // await DisplayAlert("ENVIA PARA medicamentos", _json, "acep");
-                        _content = new StringContent(_json, Encoding.UTF8, "application/json");
-                        try
-                        {
-                            _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                            if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
-                            {
-                                _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                                // await DisplayAlert("LLega get medicamentos", _respuesta, "acep");
-                                v_histo = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_respuesta);
-                                for (int i = 0; i < v_histo.Count; i++)
-                                {
-                                    v_histo[i].Fn_SetEspe();
-                                }
-                                App.Fn_GuardarDatos(v_histo);
-                                //ListaHisto.ItemsSource = v_histo;
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    App.Fn_GuardarDatos(new string[] { "1", _info.v_membre, "0" });
-                                    Scanner.IsScanning = false;
-                                    await Task.Delay(100);
-                                    //MessagingCenter.Send<V_Paciente, string>(this, "Fn_Paci", "1");
-                                    await Navigation.PopAsync();
-                                    await Navigation.PushAsync(new V_Paciente(false, _info) { Title = App.v_pergen.v_Nombre });
-                                });
-                            }
-                        }
-                        catch 
-                        {
-                            if (App.v_notasMed.Count > 0)
-                            {
-                                v_histo = App.v_notasMed;
-                                ListaHisto.ItemsSource = v_histo;
-                            }
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                //await Navigation.PopAsync();
-                                //await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                                await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
-                                // StackPerfil.IsVisible = true;
-                                Scanner.IsScanning = true;
-                                Scanner.IsVisible = true;
-                            });
-                            App.Fn_GuardarDatos(new string[] { "0", "", "0" });
-                        }
-                    }
-                    catch
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            //await Navigation.PopAsync();
-                            //await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                            await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
-                            // StackPerfil.IsVisible = true; 
-                            Scanner.IsVisible = true;
-                            Scanner.IsScanning = true;
-                            OverlayScan.IsVisible = true;
-                        });
-                        App.Fn_GuardarDatos(new string[] { "0", "", "0" });
-                    }
-                }
-                catch 
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //await Navigation.PopAsync();
-                        //await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                        await DisplayAlert("Error", "Error en tarjeta virtual", "Aceptar");
-                        // StackPerfil.IsVisible = true;
-                        Scanner = new ZXingScannerView();
-                        Scanner.IsVisible = true;
-                        Scanner.IsScanning = true;
-                        OverlayScan.IsVisible = true;
-                    });
-                    App.Fn_GuardarDatos(new string[] { "0", "", "0" });
-                }//primer intento de buscar info
-            }
-            catch
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    //await Navigation.PopAsync();
-                    //await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    await DisplayAlert("Error", "Error al leer la tarjeta virtual ", "Aceptar");
-                    // StackPerfil.IsVisible = true;
-                    Scanner.IsScanning = true;
-                    Scanner.IsVisible = true;
-                });
-            }
-        }
         public void Fn_NullEntry(Label _lbl, string _textos)
         {
             if (string.IsNullOrEmpty(_textos))
@@ -650,7 +684,7 @@ namespace TratoMedi.Views
             App.Fn_GuardarDatos(new string[3] { "0", "", "0" });
             Navigation.RemovePage(this);
             await DisplayAlert("Aviso", "vuelve a presionar desde el menu lateral", "aceptar");
-            await Navigation.PushAsync(new V_Paciente(true, null));
+           // await Navigation.PushAsync(new V_Paciente(true, null));
         }
         public async void Fn_NoCita(object sender, EventArgs _args)
         {
@@ -692,5 +726,6 @@ namespace TratoMedi.Views
                     "Error","No se puede crear nueva cita en este momento, intentalo más tarde", "Aceptar");
             }
         }
+         */
     }
 }

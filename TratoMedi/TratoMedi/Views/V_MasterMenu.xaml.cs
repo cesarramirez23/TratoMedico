@@ -134,12 +134,12 @@ namespace TratoMedi.Views
             //if (App.v_paciente=="0")
             if (App.v_paciente[0]=="0")
             {
-            Detail = new NavigationPage(new V_Paciente(true,null) );
+                Detail = new NavigationPage(new V_Paciente());//true,null) );
             }
             //else if(App.v_paciente=="1")
             else if (App.v_paciente[0] == "1")
             {
-            Detail = new NavigationPage(new V_Paciente(false,null) );
+                Detail = new NavigationPage(new V_Consulta() );
             }
         }
         public async void Fn_CerraSesion(object sender, EventArgs _args)

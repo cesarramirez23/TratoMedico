@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"  
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TratoMedi.Views.V_Paciente"
              xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
-    <TabbedPage.Resources>
+    <ContentPage.Resources>
         <Style x:Key="Editor" TargetType="Editor">
             <Setter Property="AutoSize" Value="TextChanges"></Setter>
             <Setter Property="TextColor" Value="Black"/>
@@ -18,11 +18,8 @@
             <Setter Property="TextColor" Value="Black"></Setter>
             <Setter Property="FontSize" Value="Medium"/>
         </Style>
-    </TabbedPage.Resources>
-    <TabbedPage.Children>
-        
-    <ContentPage x:Name="Cont1" Icon="tab_QR.png">
-        <StackLayout>
+    </ContentPage.Resources>
+    <StackLayout>
             <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="GridLEctor">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -31,13 +28,14 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <forms:ZXingScannerView x:Name="Scanner" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                    OnScanResult="Fn_Scan" IsScanning="False" IsTorchOn="False" > 
-            </forms:ZXingScannerView>
+                                    OnScanResult="Fn_Scan" IsScanning="False" IsTorchOn="False" >
+                </forms:ZXingScannerView>
                 <forms:ZXingDefaultOverlay HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                  x:Name="OverlayScan" TopText="Apunta a la tarjeta virtual del paciente"  >
                 </forms:ZXingDefaultOverlay>
             </Grid>
 
+<!--
             <StackLayout x:Name="aaaa" IsVisible="False" VerticalOptions="FillAndExpand">
                 <StackLayout  x:Name="StackPerfiles" Margin="20,0" VerticalOptions="FillAndExpand" >
                     <Grid>
@@ -52,8 +50,9 @@
                         <Button Text="Agregar Medicamento" Style="{StaticResource Buton2}" Clicked="Fn_NuevoMed" Grid.Column="1"></Button>
                         <Button Text="Ver Medicamentos" Style="{StaticResource Buton2}" Clicked="Fn_MostrarMed" Grid.Column="2"></Button>
                     </Grid>
-                    <!--<Button Text="Terminar Cita" Clicked="Fn_Terminar" Style="{StaticResource Buton}"></Button>-->
-
+        -->
+     
+<!--
                     <ScrollView Margin="2,10">
                         <StackLayout >
                             <Label Text="Datos Generales" Style="{StaticResource AzulMedLbl}" HorizontalOptions="Center"></Label>
@@ -134,7 +133,8 @@
                         <Button Text="Cancelar" Style="{StaticResource Buton2}" Clicked="Fn_CancelMedi" Grid.Column="0"></Button>
                     </Grid>
                     <Label Style="{StaticResource AzulMedLbl}" Text="Receta Médica" HorizontalOptions="Center"/>
-                    <!-- MUESTRA TODOS LOS MEDICAMENTOS -->
+                  -->
+        <!--
                     <ListView x:Name="Todos" ItemTapped="Fn_TApMedi" SelectionMode="None" VerticalOptions="FillAndExpand"
                                   SeparatorColor="Black" SeparatorVisibility="Default" RowHeight="300" Margin="0,10">
                         <ListView.ItemTemplate>
@@ -165,101 +165,59 @@
                 </StackLayout>
 
 
-                    <StackLayout x:Name="StackListaCita">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Text="Volver al Lector" Style="{StaticResource Buton2}" Clicked="Fn_Volver" Grid.Column="0"/>
-                            <Button Text="Continuar sin Cita" Style="{StaticResource Buton2}" Clicked="Fn_NoCita" Grid.Column="1"/>
-                        </Grid>
-                        <ListView x:Name="ListaCita" HasUnevenRows="True" IsVisible="True"
+                <StackLayout x:Name="StackListaCita">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Volver al Lector" Style="{StaticResource Buton2}" Clicked="Fn_Volver" Grid.Column="0"/>
+                        <Button Text="Continuar sin Cita" Style="{StaticResource Buton2}" Clicked="Fn_NoCita" Grid.Column="1"/>
+                    </Grid>
+                    <ListView x:Name="ListaCita" HasUnevenRows="True" IsVisible="True"
                                  ItemTapped="Fn_SelectCita" VerticalOptions="FillAndExpand" HeaderTemplate="">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout BackgroundColor="{Binding v_color}">
-                                            <Label  FontSize="Medium">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Nombre del paciente: " TextColor="{StaticResource NavigationPrimary}" />
-                                                        <Span Text="{Binding v_nombrePaciente}" TextColor="Black"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label FontSize="Medium" >
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                        <Span Text="{Binding v_fecha}" TextColor="Black"/>
-                                                        <Span Text=" Hora:" TextColor="{StaticResource NavigationPrimary}"/>
-                                                        <Span Text="{Binding v_hora.Hours,StringFormat=' {0:00}'}" TextColor="Black"/>
-                                                        <Span Text="{Binding v_hora.Minutes,StringFormat=': {0:00}'}" TextColor="Black"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label FontSize="Medium" >
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Estado: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                        <Span Text="{Binding v_Estadocita}" TextColor="Black"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout BackgroundColor="{Binding v_color}">
+                                        <Label  FontSize="Medium">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Nombre del paciente: " TextColor="{StaticResource NavigationPrimary}" />
+                                                    <Span Text="{Binding v_nombrePaciente}" TextColor="Black"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="Medium" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
+                                                    <Span Text="{Binding v_fecha}" TextColor="Black"/>
+                                                    <Span Text=" Hora:" TextColor="{StaticResource NavigationPrimary}"/>
+                                                    <Span Text="{Binding v_hora.Hours,StringFormat=' {0:00}'}" TextColor="Black"/>
+                                                    <Span Text="{Binding v_hora.Minutes,StringFormat=': {0:00}'}" TextColor="Black"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="Medium" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Estado: " TextColor="{StaticResource NavigationPrimary}"/>
+                                                    <Span Text="{Binding v_Estadocita}" TextColor="Black"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
 
             </StackLayout>
+        -->
         </StackLayout>
     </ContentPage>
-        <ContentPage x:Name="Cont2" Icon="tab_Medicamentos.png">
-            <StackLayout Margin="10,0">
-                <Label Text="Historial de citas y medicamentos" Style="{StaticResource AzulMedLbl}"/>
-                <ListView x:Name="ListaHisto" HasUnevenRows="True" ItemTapped="Fn_SelectNota">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout >
-                                    <Label  FontSize="Medium">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Nombre del médico: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                <Span Text="{Binding v_titulo, StringFormat=' {0}  '}" TextColor="Black"/>
-                                                <Span Text="{Binding v_nombreDr}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label  FontSize="Medium">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Especialidad: " TextColor="{StaticResource NavigationPrimary}" />
-                                                <Span Text="{Binding v_especialidad}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label FontSize="Medium" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Fecha: " TextColor="{StaticResource NavigationPrimary}"/>
-                                                <Span Text="{Binding v_fecha}" TextColor="Black"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </ContentPage>
-    </TabbedPage.Children>
-
-</TabbedPage>

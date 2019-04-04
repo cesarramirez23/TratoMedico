@@ -86,6 +86,7 @@ namespace TratoMedi
                     v_paciente = JsonConvert.DeserializeObject<string[]>(_arrPaci);
 
                     string _medi = Properties[NombresAux.v_medicamentos] as string;
+                    Console.Write("medi " + _medi);
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
 
                     string _Notas = Properties[NombresAux.v_NotasMed] as string;
@@ -578,7 +579,8 @@ namespace TratoMedi
             ObservableCollection<Cita> _ret = new ObservableCollection<Cita>();
             for(int i=0; i<v_citas.Count; i++)
             {
-                if(v_citas[i].v_pacienteId== _idpaciente && v_citas[i].v_estado=="3")
+                    Console.Write("id paciente" + v_citas[i].v_pacienteId+ "estado "+ v_citas[i].v_estado);
+                if (v_citas[i].v_pacienteId == _idpaciente && v_citas[i].v_estado == "3")
                 {
                     _ret.Add(v_citas[i]);
                 }

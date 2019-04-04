@@ -6,7 +6,7 @@
         <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20,0">
 
-                <Label Text="Membresía" HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}" ></Label>
+                <Label Text="Usuario" HorizontalOptions="Start" Style="{StaticResource AzulMedLbl}" ></Label>
                 <Entry Placeholder="0000D-0000" x:Name="L_usu" HorizontalOptions="FillAndExpand"/>
                 <!--="1808D-0008" ></Entry>-->
                 <Label Text="Ingresa tu contraseña" Style="{StaticResource AzulMedLbl}"></Label>

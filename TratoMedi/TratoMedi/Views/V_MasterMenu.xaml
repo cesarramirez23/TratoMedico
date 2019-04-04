@@ -23,7 +23,7 @@
     <MasterDetailPage.Master>
         <ContentPage  BackgroundColor="LightGray" Title="Menú">
             <ContentPage.Content>
-                <ScrollView>
+                <ScrollView Margin="0,30,0,0">
                     <StackLayout>
                         <StackLayout x:Name="StackPrin" HorizontalOptions="FillAndExpand" IsVisible="True">
                             <Image Source="HOME_icon" Style="{StaticResource imgBoton}">

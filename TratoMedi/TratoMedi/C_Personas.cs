@@ -129,6 +129,8 @@ namespace TratoMedi.Personas
         public string v_Cp { get; set; }
         [JsonProperty("correo")]
         public string v_Correo { get; set; }
+        [JsonProperty("fecha_vig")]
+        public string v_vig;
 
         public C_PerfilGen()
         {
@@ -148,6 +150,7 @@ namespace TratoMedi.Personas
             v_municipio = "";
             v_Estado = "";
             v_Cp = "";
+            v_vig = "0000-00-00";
             v_Correo = "";
         }
         public C_PerfilGen(string _nom, string _rfc, DateTime _fechnac, string _lugnac, string _ocu, int _idsexo, string _tel, string _cel,
