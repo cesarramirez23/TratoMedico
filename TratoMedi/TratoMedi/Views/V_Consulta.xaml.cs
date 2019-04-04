@@ -23,6 +23,35 @@ namespace TratoMedi.Views
         public V_Consulta (Cita _cita)
 		{
 			InitializeComponent ();
+            grid.RowDefinitions.Clear();
+            grid.ColumnDefinitions.Clear();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+                Grid.SetColumn(Btn_Ter, 0);   //terminar cita
+
+                Grid.SetColumn(Btn_Nue, 1);  //nuevo medicamento
+
+                Grid.SetColumn(Btn_Med, 2); //medicamentos actuales
+            }
+            else if (Device.RuntimePlatform == Device.iOS)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = 50 });
+                grid.RowDefinitions.Add(new RowDefinition { Height = 50 });
+                grid.RowDefinitions.Add(new RowDefinition { Height = 50 });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+                Grid.SetRow(Btn_Ter, 0); Grid.SetRowSpan(Btn_Ter, 1); Grid.SetColumnSpan(Btn_Ter, 1); //terminar cita
+
+                Grid.SetRow(Btn_Nue, 1); Grid.SetRowSpan(Btn_Nue, 1); Grid.SetColumnSpan(Btn_Nue, 1);   //nuevo medicamento
+
+                Grid.SetRow(Btn_Med, 2); Grid.SetRowSpan(Btn_Med, 1); Grid.SetColumnSpan(Btn_Med, 1);   //medicamentos actuales
+            }
+
             Title = "En consulta";
             v_cita = _cita;
 
@@ -37,14 +66,16 @@ namespace TratoMedi.Views
             //{
             //}
         }
-        protected override void OnAppearing()
+        public V_Consulta()
         {
-            base.OnAppearing();
-
+            InitializeComponent();
+            Console.Write("inicio");
+            grid.RowDefinitions.Clear();
+            grid.ColumnDefinitions.Clear();
             if (Device.RuntimePlatform == Device.Android)
             {
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width =  new GridLength(1, GridUnitType.Star) });
+                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
@@ -54,25 +85,19 @@ namespace TratoMedi.Views
 
                 Grid.SetColumn(Btn_Med, 2); //medicamentos actuales
             }
-            else if(Device.RuntimePlatform == Device.iOS)
+            else if (Device.RuntimePlatform == Device.iOS)
             {
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-                 Grid.SetRow(Btn_Ter, 0); Grid.SetRowSpan(Btn_Ter,1 );  //terminar cita
+                Grid.SetRow(Btn_Ter, 0); Grid.SetRowSpan(Btn_Ter, 1);  //terminar cita
 
-                 Grid.SetRow(Btn_Nue, 1);  Grid.SetRowSpan(Btn_Nue, 1);  //nuevo medicamento
+                Grid.SetRow(Btn_Nue, 1); Grid.SetRowSpan(Btn_Nue, 1);  //nuevo medicamento
 
-                 Grid.SetRow(Btn_Med, 2); Grid.SetRowSpan(Btn_Med, 1);  //medicamentos actuales
+                Grid.SetRow(Btn_Med, 2); Grid.SetRowSpan(Btn_Med, 1);  //medicamentos actuales
             }
-
-        }
-        public V_Consulta()
-        {
-            InitializeComponent();
-            Console.Write("inicio");
 
             Title = "En consulta";
             

@@ -13,7 +13,7 @@
 namespace TratoMedi.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\V_Consulta.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/V_Consulta.xaml")]
     public partial class V_Consulta : global::Xamarin.Forms.TabbedPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -71,7 +71,7 @@ namespace TratoMedi.Views {
         private global::Xamarin.Forms.Label Nue_Error;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Editor N_nombre;
+        private global::Xamarin.Forms.Entry N_nombre;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Entry N_Perio;
@@ -115,7 +115,7 @@ namespace TratoMedi.Views {
             M_Medicamentos = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "M_Medicamentos");
             StackNuevo = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ScrollView>(this, "StackNuevo");
             Nue_Error = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "Nue_Error");
-            N_nombre = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "N_nombre");
+            N_nombre = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "N_nombre");
             N_Perio = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "N_Perio");
             N_Tiem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "N_Tiem");
             N_Dosis = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "N_Dosis");

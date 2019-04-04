@@ -6318,7 +6318,7 @@ _mono_aot_file_info:
 	.long 96,2352,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 36,35,231,239,18,196,114,183,181,74,126,86,107,77,21,224
+	.byte 235,6,113,140,166,155,165,245,180,117,70,129,99,47,39,238
 	.globl _mono_aot_module_ZXing_Net_Mobile_Forms_iOS_info
 	.align 3
 _mono_aot_module_ZXing_Net_Mobile_Forms_iOS_info:

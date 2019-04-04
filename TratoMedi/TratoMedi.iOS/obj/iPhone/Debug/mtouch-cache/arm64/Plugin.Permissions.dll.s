@@ -50482,7 +50482,7 @@ _mono_aot_file_info:
 	.long 480,12544,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0,0
-	.byte 225,170,48,181,176,70,54,79,25,191,69,74,119,61,108,243
+	.byte 18,145,214,44,138,130,242,241,46,241,107,71,68,163,109,30
 	.globl _mono_aot_module_Plugin_Permissions_info
 	.align 3
 _mono_aot_module_Plugin_Permissions_info:

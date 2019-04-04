@@ -82,6 +82,9 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_QR@2x.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_Medicamentos@3x.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_QR@3x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_Citas.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_Citas@2x.png
+/Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/tab_Citas@3x.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/Citas.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/HOME_icon.png
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi.iOS/obj/iPhone/Debug/optimized/ICONOAPP.png

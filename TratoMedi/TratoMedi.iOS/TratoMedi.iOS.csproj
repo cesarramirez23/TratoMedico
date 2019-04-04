@@ -187,6 +187,9 @@
     <BundleResource Include="Resources\tab_Medicamentos%403x.png" />
     <BundleResource Include="Resources\tab_QR%403x.png" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\tab_Citas.png" />
+    <BundleResource Include="Resources\tab_Citas%402x.png" />
+    <BundleResource Include="Resources\tab_Citas%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
