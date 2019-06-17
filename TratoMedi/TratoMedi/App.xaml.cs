@@ -72,7 +72,7 @@ namespace TratoMedi
                     //v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
 
 
-                    MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                    MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, "Bienvenido a Trato Especial");
                 }//si esta logeado
                 else if (v_log == "1")
                 {
@@ -94,11 +94,11 @@ namespace TratoMedi
 
                     Fn_CargarDatos();
 
-                    MainPage = new V_MasterMenu(true, "Bienvenido " +v_perfil.v_Nombre);
+                    MainPage = new NavigationPage(new V_Registro());//new V_MasterMenu(true, "Bienvenido " +v_perfil.v_Nombre);
                 }
                 else
                 {
-                    MainPage = new V_MasterMenu(false, v_log);
+                    MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, v_log);
                 }
             }
             else//la primera vez que se abre la app
@@ -108,7 +108,7 @@ namespace TratoMedi
                 v_perfil = new C_Medico();
                 v_medicamentos = new ObservableCollection<Medicamentos>();
                 Fn_CrearKey();
-                App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                App.Current.MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, "Bienvenido a Trato Especial");
             }
         }
         protected override void OnSleep()

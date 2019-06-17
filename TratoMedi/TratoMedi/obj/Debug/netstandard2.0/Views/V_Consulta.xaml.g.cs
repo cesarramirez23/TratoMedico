@@ -13,7 +13,7 @@
 namespace TratoMedi.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/V_Consulta.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\V_Consulta.xaml")]
     public partial class V_Consulta : global::Xamarin.Forms.TabbedPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

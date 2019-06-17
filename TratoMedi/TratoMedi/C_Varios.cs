@@ -56,26 +56,30 @@ namespace TratoMedi.Varios
     }
     public class C_EspeTitu
     {
+        public C_EspeTitu()
+        {
+            v_idespecial = string.Empty;
+            v_nombreEspec = string.Empty;
+            v_idtitulo = string.Empty;
+            v_nombreTitulo = string.Empty;
+            v_idUbicacion = string.Empty;
+            v_ciudad = string.Empty;
+            v_visible = false;
+        }
         [JsonProperty("ID_especialidad")]
         public string v_idespecial { get; set; }
         [JsonProperty("nombre_especialidad")]
         public string v_nombreEspec { get; set; }
-
         [JsonProperty("ID_titulo")]
         public string v_idtitulo { get; set; }
         [JsonProperty("nombre_titulo")]
         public string v_nombreTitulo { get; set; }
-
         [JsonProperty("ID_ubicacion")]
         public string v_idUbicacion { get; set; }
         [JsonProperty("nombre_ciudad")]
         public string v_ciudad { get; set; }
-
-
         public bool v_visible { get; set; }
-
     }
-
     public enum EstadoCita
     {
         Terminada = 0,
