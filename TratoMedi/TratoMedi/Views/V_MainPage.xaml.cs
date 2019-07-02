@@ -21,7 +21,6 @@ namespace TratoMedi.Views
         /// <summary>
         /// 1 informaion, 2 contacto,  otro principal con banner
         /// </summary>
-        /// <param name="_valor"></param>
         public V_MainPage(int _valor)
         {
             InitializeComponent();
@@ -42,13 +41,10 @@ namespace TratoMedi.Views
                     {
                         StackPrin.IsVisible = true;
                         //TExtoken.Text = App.Fn_GEtToken();
-                        Console.WriteLine("token refre " + App.Fn_GEtToken());
                         //FN_Red();
                     }
                     break;
-
             }
-            
         }
         protected async override void OnAppearing()
         {
@@ -70,10 +66,9 @@ namespace TratoMedi.Views
             C_Login _login = new C_Login(_membre,"D", _conse, App.Fn_GEtToken());
             //crear el json
             string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
-            string _DirEnviar = "http://tratoespecial.com/token_notification.php";
+            string _DirEnviar = NombresAux.BASE_URL + "token_notification.php";
             StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
             HttpClient _client = new HttpClient();
-           // Console.WriteLine(" infosss " + _jsonLog);
             try
             {
                 //mandar el json con el post

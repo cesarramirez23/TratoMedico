@@ -39,30 +39,26 @@ namespace TratoMedi.Views
                 try
                 {
                     //baja la info de perfil general
-                    string _DirEnviar = "http://tratoespecial.com/query_perfil.php";
+                    string _DirEnviar = NombresAux.BASE_URL + "query_perfil.php";
                     //mandar el json con el post
                     _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                     _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     v_general = JsonConvert.DeserializeObject<C_PerfilGen>(_respuesta);
-                    Console.Write("perfilgeneral " + v_general.Fn_GetDatos());
                     App.Fn_GuardarDatos(v_general);
                     try
                     {
-                        _DirEnviar = "http://tratoespecial.com/query_perfil_medico.php";
+                        _DirEnviar = NombresAux.BASE_URL + "query_perfil_medico.php";
                         _content = new StringContent(_json, Encoding.UTF8, "application/json");
                         //mandar el json con el post
                         _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                         _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                         v_medico = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
-                        Console.Write("perfilmedico " + v_medico.Fn_Info());
                         App.Fn_GuardarDatos(v_medico);
-
-
                         ///cargar el historial de medicamentos 
                         _client = new HttpClient();
                         Cita _cita = new Cita(v_perf.v_membre,v_perf.v_fol, "0");
                          _json = JsonConvert.SerializeObject(_cita);
-                        _DirEnviar = "http://tratoespecial.com/get_medicamentos.php";
+                        _DirEnviar = NombresAux.BASE_URL + "get_medicamentos.php";
                         // await DisplayAlert("ENVIA PARA medicamentos", _json, "acep");
                         _content = new StringContent(_json, Encoding.UTF8, "application/json");
                         try
@@ -73,14 +69,12 @@ namespace TratoMedi.Views
                                 _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                                 // await DisplayAlert("LLega get medicamentos", _respuesta, "acep");
                                 v_historial = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_respuesta);
-                                Console.Write("historial " + v_historial.Count);
                                 for (int i = 0; i < v_historial.Count; i++)
                                 {
                                     v_historial[i].Fn_SetEspe();
                                 }
                                 App.Fn_GuardarDatos(v_historial);
                                 //ListaHisto.ItemsSource = v_histo;
-
                                 v_Nom.Text = v_general.v_Nombre;
                                 v_Mem.Text = v_perf.v_membre;
                                 v_fol.Text = "  Folio: " + v_perf.v_fol;
@@ -148,10 +142,9 @@ namespace TratoMedi.Views
             Cita _citaTemp = new Cita(App.v_membresia, v_perf.v_membre, v_perf.v_fol, "3", DateTime.Now.Date,
                 DateTime.Now.TimeOfDay, App.Fn_GEtToken());
             string _json = JsonConvert.SerializeObject(_citaTemp, Formatting.Indented);
-            Console.Write("Info cita " + _json);
             //await DisplayAlert("Enviar", _json, "aceptar");
             HttpClient _client = new HttpClient();
-            string _DirEnviar = "http://tratoespecial.com/set_citas.php";
+            string _DirEnviar = NombresAux.BASE_URL + "set_citas.php";
             StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
             try
             {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);
@@ -164,9 +157,6 @@ namespace TratoMedi.Views
                         v_cita = _citaTemp;
                         v_cita.v_idCita = _respuesta;
                         //StackListaCita.IsVisible = false;
-                        Console.Write("navigation ");
-
-
                         App.Fn_GuardarDatos(v_general);
                         App.Fn_GuardarDatos(v_medico);
                         App.Fn_GuardarDatos(v_historial);///el historial de consultas

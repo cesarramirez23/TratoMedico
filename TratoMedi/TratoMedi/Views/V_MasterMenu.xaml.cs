@@ -17,6 +17,46 @@ namespace TratoMedi.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class V_MasterMenu : MasterDetailPage
     {
+        public V_MasterMenu(int _logeado, string _title)
+        {
+            InitializeComponent();
+            if (_logeado==1)
+            {
+                StackProm.IsVisible = false;
+                StackLog.IsVisible = true;
+                App.Fn_CargarDatos();
+                StackPrin.IsVisible = false;
+                Fn_GetCitas();
+                if (App.Fn_GetCita())
+                {
+                    string _json = App.Current.Properties[NombresAux.v_citaNot] as string;
+                    App.v_nueva = JsonConvert.DeserializeObject<Cita>(_json);
+                    IsPresented = false;
+                    Detail = new NavigationPage(new V_Citas(true, App.v_nueva) { Title = "Citas" });
+                }
+                else
+                {
+                    IsPresented = false;
+                    Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+                }
+            }
+            else if(_logeado==2)
+            {
+                StackProm.IsVisible = true;
+                StackPrin.IsVisible = false;
+                StackLog.IsVisible = false;
+                IsPresented = false;
+                Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+            }
+            else if(_logeado==0)
+            {
+                StackProm.IsVisible = false;
+                StackPrin.IsVisible = true;
+                StackLog.IsVisible = false;
+                IsPresented = false;
+                Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
+            }
+        }
         public V_MasterMenu(bool _logeado, string _title)
         {
             InitializeComponent();
@@ -36,7 +76,6 @@ namespace TratoMedi.Views
                 else
                 {
                     IsPresented = false;
-                   // Detail.Title = "Bienvenido "+ App.v_perfil.v_Nombre;
                     Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
                 }
             }
@@ -45,7 +84,6 @@ namespace TratoMedi.Views
                 StackPrin.IsVisible = true;
                 StackLog.IsVisible = false;
                 IsPresented = false;
-                // Detail.Title = "Bienvenido "+ App.v_perfil.v_Nombre;
                 Detail = new NavigationPage(new V_MainPage(0) { Title = _title });
             }
         }
@@ -63,7 +101,7 @@ namespace TratoMedi.Views
             HttpClient _client = new HttpClient();
             Cita _cita = new Cita(App.v_membresia, "1");
             string _json = JsonConvert.SerializeObject(_cita);
-            string _DirEnviar = "http://tratoespecial.com/get_citas.php";
+            string _DirEnviar = NombresAux.BASE_URL + "get_citas.php";
             StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
             try
             {
@@ -72,16 +110,14 @@ namespace TratoMedi.Views
                 {
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     ObservableCollection<Cita> v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
-                   // Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
                     App.Fn_GuardarCitas(v_citas);
                 }
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-               // await DisplayAlert("Error buscando tus citas", ex.Message.ToString(), "Aceptar");
+                Fn_GetCitas();
             }
         }
-
         public void Fn_Inicio(object sender, EventArgs _args)
         {
             IsPresented = false;
@@ -89,6 +125,10 @@ namespace TratoMedi.Views
             if (App.v_log == "1")
             {
                 _titl = "Bienvenido " + App.v_perfil.v_Nombre;
+            }
+            else if (App.v_log == "2")
+            {
+                _titl = "Bienvenido ";// + App.v_perfProm.v_Nombre;
             }
             else
             {
@@ -126,12 +166,9 @@ namespace TratoMedi.Views
             IsPresented = false;
             Detail = new NavigationPage(new V_Opciones() { Title = "Cuenta" });
         }
-
-
         public void Fn_Lector(object sender, EventArgs _args)
         {
             IsPresented = false;
-            //if (App.v_paciente=="0")
             if (App.v_paciente[0]=="0")
             {
                 Detail = new NavigationPage(new V_Paciente());//true,null) );
@@ -144,7 +181,6 @@ namespace TratoMedi.Views
         }
         public async void Fn_CerraSesion(object sender, EventArgs _args)
         {
-
             string prime = App.v_membresia.Split('-')[0];
             string _membre = "";///los 4 numeros de la mebresia sin laletra
             for (int i = 0; i < prime.Length - 1; i++)
@@ -155,16 +191,11 @@ namespace TratoMedi.Views
             string _conse = App.v_membresia.Split('-')[1];
             TratoMedi.Personas.C_Login _login = new TratoMedi.Personas.C_Login(_membre, letra, _conse, App.Fn_GEtToken());
             string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
-            string _DirEnviar = "http://tratoespecial.com/token_notification.php";
+            string _DirEnviar = NombresAux.BASE_URL + "token_notification.php";
             StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-            Console.WriteLine(" infosss " + _jsonLog);
-
-            //crear el cliente
             HttpClient _client = new HttpClient();
-
             try
             {
-                //mandar el json con el post
                 HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                 string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                 if (_respuesta == "1")
@@ -178,7 +209,6 @@ namespace TratoMedi.Views
                     await DisplayAlert("Error", "No se pudo cerrar sesion", "Aceptar");
                     IsPresented = false;
                 }
-
             }
             catch
             {
@@ -194,6 +224,11 @@ namespace TratoMedi.Views
                     IsPresented = false;
                 }
             }
+        }
+        private void Fn_PerfilPromotor(object sender, EventArgs e)
+        {
+            IsPresented = false;
+            Detail = new NavigationPage(new v_PerfilProm() { Title = "Perfil" });
         }
     }
 }

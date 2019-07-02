@@ -23,9 +23,7 @@ namespace TratoMedi.Views
             v_nota = _nota;
             fecha.Text = v_nota.v_fecha + "      " + v_nota.v_hora;
             v_medicamentos = v_nota.v_medic;
-
             v_nota.Fn_SetEspe();
-
             nombre.Text = v_nota.v_nombreDr + "  " + v_nota.v_especialidad;
             if (v_medicamentos.Count > 0)
             {

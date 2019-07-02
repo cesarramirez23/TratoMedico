@@ -14,5 +14,7 @@ namespace TratoMedi.Models
         public ObservableCollection<C_EspeTitu> v_espe { get; set; }
         [JsonProperty("titulos")]
         public ObservableCollection<C_EspeTitu> v_titulos { get; set; }
+        [JsonProperty("estado")]
+        public ObservableCollection<C_EspeTitu> v_estados { get; set; }
     }
 }

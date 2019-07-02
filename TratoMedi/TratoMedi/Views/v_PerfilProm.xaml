@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TratoMedi.Views.v_PerfilProm">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <!--<Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Nombre: " FontSize="Medium" TextColor="{StaticResource NavigationPrimary}"/>
+                            <Span Text="{Binding v_Nombre}" TextColor="{StaticResource LetrCol}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                -->
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Dinero en cuenta: " FontSize="Medium"  TextColor="{StaticResource NavigationPrimary}"/>
+                            <Span Text="{Binding v_monto, StringFormat=' {0:F2} MXN' }" TextColor="{StaticResource LetrCol}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Mis ventas: " FontSize="Medium"  TextColor="{StaticResource NavigationPrimary}"/>
+                            <Span Text="{Binding v_propio, StringFormat=' {0:F2} MXN' }" TextColor="{StaticResource LetrCol}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <StackLayout Margin="0,10,0,5" x:Name="StackHijos">
+                
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

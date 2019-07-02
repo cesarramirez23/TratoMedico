@@ -10,19 +10,18 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using TratoMedi.Varios;
 using TratoMedi.Models;
+
 namespace TratoMedi.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class V_Registro : ContentPage
 	{
         c_RegOpciones v_opciones = new c_RegOpciones();
-        //ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
-        //ObservableCollection<C_EspeTitu> v_especialidad = new ObservableCollection<C_EspeTitu>();
-        //ObservableCollection<C_EspeTitu> v_ciudades = new ObservableCollection<C_EspeTitu>();
         VisualElement _el;
         string[] v_TitArr;
         string[] v_EspeArr;
         string[] v_CiudArr;
+        string[] v_EstArr;
 		public V_Registro ()
 		{
 			InitializeComponent ();            
@@ -61,6 +60,13 @@ namespace TratoMedi.Views
                     v_EspeArr[i] = v_opciones.v_espe[i].v_nombreEspec;
                 }
                 PickEspe.ItemsSource = v_EspeArr;
+
+                v_EstArr = new string[v_opciones.v_estados.Count];
+                for (int i = 0; i < v_opciones.v_estados.Count; i++)
+                {
+                    v_EstArr[i] = v_opciones.v_estados[i].v_estado;
+                }
+                PickEstado.ItemsSource = v_EstArr;
             }
             catch (Exception _ex)
             {
@@ -81,12 +87,13 @@ namespace TratoMedi.Views
         }
         private async void Fn_Avanzar(object sender, EventArgs e)
         {
-            if(Fn_Condiciones())
+            if (Fn_Condiciones())
             {
                 //especialidad   mandarle el index
                 int _idTit = -1;
                 int _idciud = -1;
                 int _idEsp = -1;
+                int _idEstado = -1;
                 for (int i = 0; i < v_opciones.v_titulos.Count; i++)
                 {
                     if (PickTitulo.SelectedItem.ToString() == v_opciones.v_titulos[i].v_nombreTitulo)
@@ -102,8 +109,37 @@ namespace TratoMedi.Views
                     if (PickEspe.SelectedItem.ToString() == v_opciones.v_espe[i].v_nombreEspec)
                         _idEsp = i;
                 }
+                for (int i = 0; i < v_opciones.v_estados.Count; i++)
+                {
+                    if (PickEstado.SelectedItem.ToString() == v_opciones.v_estados[i].v_estado)
+                        _idEstado = i;
+                }
+                string _hor = PickInicio.Time.ToString(@"hh\-mm") + "/" + PickFin.Time.ToString(@"hh\-mm");
                 C_MedRegistro _reg = new C_MedRegistro(EntNombre.Text, EntApe.Text, PickSexo.SelectedIndex, _idTit.ToString(), _idEsp.ToString(),
-                    EntDom.Text, _idciud.ToString(), EntCedula.Text);
+                    EntDom.Text, _idciud.ToString(), EntCedula.Text, EntTel.Text, EntCorreo.Text, _hor, _idEstado.ToString());
+                string _json = JsonConvert.SerializeObject(_reg);
+                try
+                {
+                    HttpClient _client = new HttpClient();
+                    StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage _respuestaphp = await _client.PostAsync("https://tratoespecial.com/registro_dr.php", _content);
+                    string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                    c_Mensaje _mensaje = JsonConvert.DeserializeObject<c_Mensaje>(_respuesta);
+                    if (_mensaje.v_code=="1")
+                    {
+                        await DisplayAlert("Exito", "Registrado correctamente", "Aceptar");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Error al registrar, Reintentarlo", "Aceptar");
+                    }
+
+                //registro_dr   
+                }
+                catch(Exception _ex)
+                {
+                    await DisplayAlert("Error", "Error al registrar, Reintentarlo", "Aceptar");
+                }
             }
             else
             {
@@ -114,7 +150,26 @@ namespace TratoMedi.Views
         {
             int _cont = 0;
             _el = null;
-
+            if (string.IsNullOrEmpty(EntCorreo.Text) || string.IsNullOrWhiteSpace(EntCorreo.Text))
+            {
+                EntCorreo.BackgroundColor = Color.Red;
+                _el = EntCorreo;
+                _cont++;
+            }
+            else
+            {
+                EntCorreo.BackgroundColor = Color.Transparent;
+            }
+            if (string.IsNullOrEmpty(EntTel.Text) || string.IsNullOrWhiteSpace(EntTel.Text))
+            {
+                EntTel.BackgroundColor = Color.Red;
+                _el = EntTel;
+                _cont++;
+            }
+            else
+            {
+                EntTel.BackgroundColor = Color.Transparent;
+            }
             if (string.IsNullOrEmpty(EntCedula.Text) || string.IsNullOrWhiteSpace(EntCedula.Text))
             {
                 EntCedula.BackgroundColor = Color.Red;
@@ -175,6 +230,16 @@ namespace TratoMedi.Views
             {
                 PickSexo.BackgroundColor = Color.Transparent;
             }
+            if (PickEstado.SelectedIndex == -1)
+            {
+                PickEstado.BackgroundColor = Color.Red;
+                _el = PickEstado;
+                _cont++;
+            }
+            else
+            {
+                PickEstado.BackgroundColor = Color.Transparent;
+            }
             if (string.IsNullOrEmpty(EntApe.Text) || string.IsNullOrWhiteSpace(EntApe.Text))
             {
                 EntApe.BackgroundColor = Color.Red;
@@ -195,6 +260,7 @@ namespace TratoMedi.Views
             {
                 EntNombre.BackgroundColor = Color.Transparent;
             }
+            
             if (_cont > 0)
                 return false;
             else

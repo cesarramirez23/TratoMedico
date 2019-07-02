@@ -78,6 +78,10 @@ namespace TratoMedi.Varios
         public string v_idUbicacion { get; set; }
         [JsonProperty("nombre_ciudad")]
         public string v_ciudad { get; set; }
+        [JsonProperty("ID_estado")]
+        public string v_idEstado { get; set; }
+        [JsonProperty("nombre_estado")]
+        public string v_estado { get; set; }
         public bool v_visible { get; set; }
     }
     public enum EstadoCita

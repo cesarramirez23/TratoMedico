@@ -79,3 +79,4 @@ C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\bin\Debug
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.pdb
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\v_PerfilProm.xaml.g.cs

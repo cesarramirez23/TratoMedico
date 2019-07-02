@@ -89,7 +89,6 @@ namespace TratoMedi.iOS
             });
             //Firebase.InstanceID.InstanceId.TokenRefreshNotification;
             //debugAlert(UIApplication.SharedApplication.IsRegisteredForRemoteNotifications.ToString(),"sdas","Aceptar");
-            // Console.WriteLine(" token device " + V_Token);
             //https://github.com/codercampos/FirebaseXF-XamarinLatino/blob/master/src/FirebaseXL/FirebaseXL.iOS/AppDelegate.cs        // blog.xamarians.com/blog/2017/9/18/firebase-cloud-messaging
 
             return base.FinishedLaunching(app, options);
@@ -100,13 +99,11 @@ namespace TratoMedi.iOS
         {
             var title = notification.Request.Content.Title;
             var body = notification.Request.Content.Body;
-            Console.Write("infooo" + title + "   " + body);
             var UserINfo = notification.Request.Content.UserInfo;
             if (UserINfo.ContainsKey(new NSString("data")))
             {
                 var _data = UserINfo.ValueForKey(new NSString("data")) as NSDictionary;//jala la cita
                 Cita _citaActual = JsonConvert.DeserializeObject<Cita>((UserINfo["data"]).ToString());
-                Console.Write("info cita" + _citaActual.Fn_GetInfo());
                 _citaActual.Fn_SetValores();
                 App.Fn_SetCita(_citaActual);
                 string _titulo = "";
@@ -162,12 +159,10 @@ namespace TratoMedi.iOS
             var _alert = aps_d["alert"] as NSDictionary;
             var body = _alert["body"] as NSString;//keys
             var title = _alert["title"] as NSString;
-            Console.Write("infooo" + title + "   " + body);
             if (_alert.ContainsKey(new NSString("data")))
             {
                 var _data = _alert.ValueForKey(new NSString("data")) as NSDictionary;//jala la cita
                 Cita _citaActual = JsonConvert.DeserializeObject<Cita>((_alert["data"]).ToString());
-                Console.Write("info cita" + _citaActual.Fn_GetInfo());
                 _citaActual.Fn_SetValores();
                 App.Fn_SetCita(_citaActual);
                 string _titulo = "";
@@ -212,7 +207,7 @@ namespace TratoMedi.iOS
             {
                 //v_deviceToken = _devTemp;
                 Console.Write("token device " );
-                //App.Fn_SetToken(v_deviceToken);
+               // App.Fn_SetToken(v_deviceToken);
             }
         }
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)

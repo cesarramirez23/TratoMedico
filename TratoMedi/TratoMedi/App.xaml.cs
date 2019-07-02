@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using TratoMedi.Models;
 //para agregar loos eventos al calendario
 //using Plugin.Calendars;
 //using Plugin.Calendars.Abstractions;
@@ -20,17 +21,20 @@ namespace TratoMedi
 {
     public partial class App : Application
     {
-        #region COSAS PROPIAS DEL DOCTOR 
         /// <summary>
         /// membresia completa 1808D-0008 del doctor
         /// </summary>
         public static string v_membresia = "";
         public static string v_log = "";
+
+        public static C_PerfProm v_perfProm;
+
+        #region COSAS PROPIAS DEL DOCTOR 
         public static C_Medico v_perfil;
         public static ObservableCollection<Cita> v_citas;
         //public static string v_IdCalendar ="";
+        public static c_RegOpciones v_opcion = new c_RegOpciones();
         #endregion
-       
 
         #region PARA LA CONSULTA
         public static Cita v_citaInd;
@@ -51,7 +55,6 @@ namespace TratoMedi
         }
         protected override void OnStart()
         {
-            // Handle when your app starts
             //Properties.Clear();
             if (Properties.ContainsKey(NombresAux.v_log))
             {
@@ -61,44 +64,34 @@ namespace TratoMedi
                 {//no esta logeado
                     v_log = "0";
                     v_membresia = "";
-
                     Properties[NombresAux.v_membre] = v_membresia;
                     string _json = JsonConvert.SerializeObject(v_perfil);
                     Properties[NombresAux.v_perfilPropio] = _json;
-
                     Fn_CargarDatos();
-
-                    //string _medi = Properties[NombresAux.v_medicamentos] as string;
-                    //v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
-
-
-                    MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                    MainPage =new V_MasterMenu(false, "Bienvenido a Trato Especial");
                 }//si esta logeado
                 else if (v_log == "1")
                 {
-                    v_membresia = Properties[NombresAux.v_membre] as string;
-                    
+                    v_membresia = Properties[NombresAux.v_membre] as string;                    
                     string _json = Properties[NombresAux.v_perfilPropio] as string;
                     v_perfil = JsonConvert.DeserializeObject<C_Medico>(_json);
-
-
                     string _arrPaci = Properties[NombresAux.v_paciente] as string;
                     v_paciente = JsonConvert.DeserializeObject<string[]>(_arrPaci);
-
                     string _medi = Properties[NombresAux.v_medicamentos] as string;
-                    Console.Write("medi " + _medi);
                     v_medicamentos = JsonConvert.DeserializeObject<ObservableCollection<Medicamentos>>(_medi);
-
                     string _Notas = Properties[NombresAux.v_NotasMed] as string;
                     v_notasMed = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_Notas);
-
                     Fn_CargarDatos();
-
-                    MainPage = new NavigationPage(new V_Registro());//new V_MasterMenu(true, "Bienvenido " +v_perfil.v_Nombre);
+                    MainPage = new V_MasterMenu(1, "Bienvenido " +v_perfil.v_Nombre);
+                }
+                else if(v_log=="2")//promotor logeado
+                {
+                    Fn_CargarDatos();
+                    MainPage = new V_MasterMenu(2, "Bienvenido ");//+v_perfProm.v_Nombre);
                 }
                 else
                 {
-                    MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, v_log);
+                    MainPage = new V_MasterMenu(false, v_log);
                 }
             }
             else//la primera vez que se abre la app
@@ -108,17 +101,9 @@ namespace TratoMedi
                 v_perfil = new C_Medico();
                 v_medicamentos = new ObservableCollection<Medicamentos>();
                 Fn_CrearKey();
-                App.Current.MainPage = new NavigationPage(new V_Registro());// new V_MasterMenu(false, "Bienvenido a Trato Especial");
+                App.Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
             }
-        }
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
+        }    
         #endregion
 
         #region Cargar Datos
@@ -158,6 +143,12 @@ namespace TratoMedi
                 string _json = JsonConvert.SerializeObject(v_perfil);
                 Properties.Add(NombresAux.v_perfilPropio, _json);
             }
+            if (!Properties.ContainsKey(NombresAux.v_PerfPromo))
+            {
+                v_perfProm = new C_PerfProm();
+                string _json = JsonConvert.SerializeObject(v_perfProm);
+                Properties.Add(NombresAux.v_PerfPromo, _json);
+            }
             if (!Properties.ContainsKey(NombresAux.v_perfilMed))
             {
                 v_perMed = new C_PerfilMed();
@@ -188,6 +179,12 @@ namespace TratoMedi
                 v_nueva = new Cita();
                 string _json = JsonConvert.SerializeObject(v_nueva);
                 Properties.Add(NombresAux.v_citaNot, _json);
+            }
+            if (!Properties.ContainsKey(NombresAux.v_Opciones))
+            {
+                v_opcion = new c_RegOpciones();
+                string _json = JsonConvert.SerializeObject(v_opcion);
+                Properties.Add(NombresAux.v_Opciones, _json);
             }
             //if(!Properties.ContainsKey(NombresAux.v_IdCalendar))
             //{
@@ -231,6 +228,17 @@ namespace TratoMedi
             {
                 string _json = Current.Properties[NombresAux.v_perfilPropio] as string;
                 v_perfil = JsonConvert.DeserializeObject<C_Medico>(_json);
+            }
+            if (!Current.Properties.ContainsKey(NombresAux.v_PerfPromo))
+            {
+                v_perfProm = new C_PerfProm();
+                string _json = JsonConvert.SerializeObject(v_perfProm);
+                Current.Properties.Add(NombresAux.v_PerfPromo, _json);
+            }
+            else
+            {
+                string _json = Current.Properties[NombresAux.v_PerfPromo] as string;
+                v_perfProm = JsonConvert.DeserializeObject<C_PerfProm>(_json);
             }
             if (!Current.Properties.ContainsKey(NombresAux.v_perfilMed))
             {
@@ -314,6 +322,18 @@ namespace TratoMedi
                 v_citaInd = JsonConvert.DeserializeObject<Cita>(_json);
 
             }
+            if (!Current.Properties.ContainsKey(NombresAux.v_Opciones))
+            {
+                v_opcion = new c_RegOpciones();
+                string _json = JsonConvert.SerializeObject(v_opcion);
+                Current.Properties.Add(NombresAux.v_Opciones, _json);
+            }
+            else
+            {
+                string _json = Current.Properties[NombresAux.v_Opciones] as string;
+                v_opcion = JsonConvert.DeserializeObject<c_RegOpciones>(_json);
+
+            }
             //ID DEL CALENDARIO
             //if (!Current.Properties.ContainsKey(NombresAux.v_IdCalendar))
             //{
@@ -344,28 +364,31 @@ namespace TratoMedi
         /// <summary>
         /// guardaa 1 si esta en consulta
         /// </summary>
-        /// <param name="_paci"></param>
         public static async void Fn_GuardarDatos(string[] _paci)
         {
             v_paciente = _paci;
             string _json = JsonConvert.SerializeObject(v_paciente);
             Current.Properties[NombresAux.v_paciente] = _json;
-
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             await Current.SavePropertiesAsync();
             await Task.Delay(100);
+        }
+        public static async void Fn_GuardaOpciones(c_RegOpciones _opc)
+        {
+            v_opcion = _opc;
+            string _json = JsonConvert.SerializeObject(v_opcion);
+            Current.Properties[NombresAux.v_paciente] = _json;
+            await Current.SavePropertiesAsync();
         }
         public static async void Fn_GuardarDatos(string[] _paci,Cita _cita)
         {
             v_paciente = _paci;
             string _json = JsonConvert.SerializeObject(v_paciente);
             Current.Properties[NombresAux.v_paciente] = _json;
-
             v_citaInd = _cita;
             _json = JsonConvert.SerializeObject(v_citaInd);
             Current.Properties[NombresAux.v_citaInd] = _json;
-
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             await Current.SavePropertiesAsync();
@@ -374,16 +397,13 @@ namespace TratoMedi
         /// <summary>
         /// guarda el propioo perfil
         /// </summary>
-        /// <param name="_perfil"></param>
         public static async void Fn_GuardarDatos(C_Medico _perfil)
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
-
             v_perfil = _perfil;
             string _json = JsonConvert.SerializeObject(_perfil);
             Current.Properties[NombresAux.v_perfilPropio] = _json;
-
             await Current.SavePropertiesAsync();
             Fn_CargarDatos();
             await Task.Delay(100);
@@ -391,17 +411,13 @@ namespace TratoMedi
         /// <summary>
         /// guardaa perfil medico del paciente
         /// </summary>
-        /// <param name="_med"></param>
         public static async void Fn_GuardarDatos(C_PerfilMed _med)
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
-
             v_perMed = _med;
             string _jsonPerMed = JsonConvert.SerializeObject(v_perMed, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilMed] = _jsonPerMed;
-
-
             await Current.SavePropertiesAsync();
             Fn_CargarDatos();
             await Task.Delay(100);
@@ -409,7 +425,6 @@ namespace TratoMedi
         /// <summary>
         /// guarda todas las citas
         /// </summary>
-        /// <param name="_citas"></param>
         public static async void Fn_GuardarCitas(ObservableCollection<Cita> _citas)
         {
             v_citas = _citas;
@@ -420,19 +435,15 @@ namespace TratoMedi
         /// <summary>
         /// guarda perfil genereal del paciente
         /// </summary>
-        /// <param name="_gen"></param>
         public static async void Fn_GuardarDatos(C_PerfilGen _gen)
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             string _json = JsonConvert.SerializeObject(v_paciente);
             Current.Properties[NombresAux.v_paciente] = _json;
-
             v_pergen = _gen;
             string _jsonGen = JsonConvert.SerializeObject(v_pergen, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilGen] = _jsonGen;
-
-
             await Current.SavePropertiesAsync();
             Fn_CargarDatos();
             await Task.Delay(100);
@@ -440,8 +451,7 @@ namespace TratoMedi
         /// <summary>
         /// guarda los medicamentos en laa consulta actual
         /// </summary>
-        /// <param name="_medi"></param>
-        public static async  void Fn_GuardarDatos(ObservableCollection<Medicamentos> _medi)
+        public static async void Fn_GuardarDatos(ObservableCollection<Medicamentos> _medi)
         {
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
@@ -473,8 +483,16 @@ namespace TratoMedi
             Fn_CargarDatos();
             await Task.Delay(100);
         }
+        public static async void Fn_GuardarDatos(C_PerfProm _prom)
+        {
+            Current.Properties[NombresAux.v_log] = v_log;
+            Current.Properties[NombresAux.v_membre] = v_membresia;
+            v_perfProm = _prom;
+            string _json = JsonConvert.SerializeObject(v_perfProm);
+            Current.Properties[NombresAux.v_PerfPromo] = _json;
+            await Current.SavePropertiesAsync();
+        }
         #endregion
-
         public async static void Fn_Terminaconsullta()
         {
             v_paciente = new string[3] { "0","","0"};
@@ -483,33 +501,23 @@ namespace TratoMedi
             v_perMed = new C_PerfilMed();
             string _json = JsonConvert.SerializeObject(v_perMed);
             Current.Properties[NombresAux.v_perfilMed]= _json;
-
             v_citaInd = new Cita();
             _json = JsonConvert.SerializeObject(v_citaInd);
             Current.Properties[NombresAux.v_citaInd]= _json;
-
             v_citas = new ObservableCollection<Cita>();
             _json = JsonConvert.SerializeObject(v_citas);
             Current.Properties[NombresAux.v_citas] = _json;
-
-
-
             v_pergen = new C_PerfilGen();
             _json = JsonConvert.SerializeObject(v_pergen);
             Current.Properties[NombresAux.v_perfilGen]=_json;
-
             v_medicamentos = new ObservableCollection<Medicamentos>();
             _json = JsonConvert.SerializeObject(v_medicamentos);
             Current.Properties[NombresAux.v_medicamentos] = _json;
-
             v_notasMed = new ObservableCollection<C_NotaMed>();
             _json = JsonConvert.SerializeObject(v_notasMed);
             Current.Properties[NombresAux.v_NotasMed] = _json;
-
             await  Current.SavePropertiesAsync();
-
             Fn_CargarDatos();
-
             if (v_log == "0")
             {//no esta logeado
                Current.MainPage = new V_MasterMenu(false, "Bienvenido a Trato Especial");
@@ -519,20 +527,15 @@ namespace TratoMedi
                
                 Current.MainPage = new V_MasterMenu(true, "Bienvenido " + v_perfil.v_Nombre);
             }
-            else
-            {
-                Current.MainPage =new V_MasterMenu(false, v_log);
-            }
-
         }
         public static async void Fn_CerrarSesion()
         {
             v_membresia = "";
             v_log = "0";
             v_citaInd = new Cita();
+            v_perfProm = new C_PerfProm();
             v_medicamentos = new ObservableCollection<Medicamentos>();
             v_notasMed = new ObservableCollection<C_NotaMed>();
-
             Current.Properties[NombresAux.v_log] = v_log;
             Current.Properties[NombresAux.v_membre] = v_membresia;
             v_paciente = new string[3] { "0", "", "0" };
@@ -541,25 +544,21 @@ namespace TratoMedi
             v_perfil = new C_Medico();
             string _json = JsonConvert.SerializeObject(v_perfil, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilPropio] = _json;
+            _json = JsonConvert.SerializeObject(v_perfProm, Formatting.Indented);
+            Current.Properties[NombresAux.v_PerfPromo] = _json;
             _json = JsonConvert.SerializeObject(v_pergen, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilGen] = _json;
             _json = JsonConvert.SerializeObject(v_perMed, Formatting.Indented);
             Current.Properties[NombresAux.v_perfilMed] = _json;
-
             _json = JsonConvert.SerializeObject(v_citaInd, Formatting.Indented);
             Current.Properties[NombresAux.v_citaInd] = _json;
-
             _json = JsonConvert.SerializeObject(v_medicamentos, Formatting.Indented);
             Current.Properties[NombresAux.v_medicamentos] = _json;
-
             _json = JsonConvert.SerializeObject(v_notasMed, Formatting.Indented);
             Current.Properties[NombresAux.v_NotasMed] = _json;
-
             v_citas = new ObservableCollection<Cita>();
             _json = JsonConvert.SerializeObject(v_citas);
             Current.Properties[NombresAux.v_citas] = _json;
-
-
             await Current.SavePropertiesAsync();
             await Task.Delay(100);
         }
@@ -579,7 +578,6 @@ namespace TratoMedi
             ObservableCollection<Cita> _ret = new ObservableCollection<Cita>();
             for(int i=0; i<v_citas.Count; i++)
             {
-                    Console.Write("id paciente" + v_citas[i].v_pacienteId+ "estado "+ v_citas[i].v_estado);
                 if (v_citas[i].v_pacienteId == _idpaciente && v_citas[i].v_estado == "3")
                 {
                     _ret.Add(v_citas[i]);
@@ -598,7 +596,6 @@ namespace TratoMedi
             }
             return _ret;
         }
-
 
         #region Para las Notificaciones
         /// <summary>
@@ -680,6 +677,5 @@ namespace TratoMedi
             }
         }
         #endregion
-
     }
 }

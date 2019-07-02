@@ -6,15 +6,13 @@
         <ScrollView>
             <StackLayout>
                 <Label x:Name="v_nombre" Style="{StaticResource AzulMedLbl}"/>
-                
-                <Label Text="Fecha de la cita" Style="{StaticResource AzulMedLbl}"></Label>
-                <DatePicker  Format="D" x:Name="v_fecha"></DatePicker>
-                
-                <Label Text="Hora de la cita" Style="{StaticResource AzulMedLbl}"></Label>
-                <TimePicker x:Name="v_hora"></TimePicker>
-             
-                <Label Text="Estado: " Style="{StaticResource AzulMedLbl}"></Label>
-                <Label x:Name="v_estado"  Style="{StaticResource AzulMedLbl}"></Label>
+                <Label Text="Fecha de la cita" Style="{StaticResource AzulMedLbl}"/>
+                <DatePicker  Format="D" x:Name="v_fecha"/>
+                <Label Text="Hora de la cita" Style="{StaticResource AzulMedLbl}"/>
+                <TimePicker x:Name="v_hora"/>
+
+                <Label Text="Estado: " Style="{StaticResource AzulMedLbl}"/>
+                <Label x:Name="v_estado"  Style="{StaticResource AzulMedLbl}"/>
 
                 <Grid  x:Name="StackTre">
                     <Grid.ColumnDefinitions>
@@ -32,7 +30,6 @@
                     <Button Text="Reagendar Cita" Clicked="Fn_Cambios" x:Name="v_botCambio" Grid.ColumnSpan="1" 
                             Style="{StaticResource Buton2}"  Grid.Column="2"/>
                 </Grid>
-
                 <Grid x:Name="StackPendiente" IsVisible="False">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -47,7 +44,6 @@
                     <Button Text="Cancelar" Clicked="Fn_CancelCambio" 
                             Style="{StaticResource Buton2}"  Grid.Column="1" Grid.ColumnSpan="1" />
                 </Grid>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

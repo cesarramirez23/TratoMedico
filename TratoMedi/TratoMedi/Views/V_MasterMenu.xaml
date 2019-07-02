@@ -18,8 +18,6 @@
             <Setter Property="VerticalTextAlignment" Value="Center"/>
         </Style>
     </MasterDetailPage.Resources>
-
-
     <MasterDetailPage.Master>
         <ContentPage  BackgroundColor="LightGray" Title="Menú">
             <ContentPage.Content>
@@ -71,7 +69,7 @@
                         </StackLayout>
 
                         <StackLayout x:Name="StackLog" HorizontalOptions="FillAndExpand" IsVisible="True">
-                            
+
                             <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Inicio"/>
@@ -85,37 +83,34 @@
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Citas" Style="{StaticResource LblBoton}" />
-                         
+
                             <Image Source="QR" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Lector"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Lector Tarjeta Virtual" Style="{StaticResource LblBoton}"/>
-                            
+
                             <Image Source="Perfil" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Perfil"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Perfil" Style="{StaticResource LblBoton}"/>
-                            
+
                             <Image Source="Opciones" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Opciones"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="Cuenta" Style="{StaticResource LblBoton}"/>
-
-
                             <!--    
                             <Image Source="mail_icon" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Contacto" />
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label Text="Contacto" Style="{StaticResource LblBoton}" />
--->
+                            <Label Text="Contacto" Style="{StaticResource LblBoton}" />-->
                             <Image Source="LogOut" Style="{StaticResource imgBoton}">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_CerraSesion"/>
@@ -124,12 +119,42 @@
                             <Label Text="Salir" Style="{StaticResource LblBoton}"/>
                         </StackLayout>
 
+                        <StackLayout x:Name="StackProm" HorizontalOptions="FillAndExpand" IsVisible="False">
+
+                            <Image Source="HOME_icon" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Inicio"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Inicio" Style="{StaticResource LblBoton}"/>
+
+                            <Image Source="Perfil" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_PerfilPromotor"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Perfil" Style="{StaticResource LblBoton}"/>
+
+                            <Image Source="Opciones" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_Opciones"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Cuenta" Style="{StaticResource LblBoton}"/>
+                           
+                            <Image Source="LogOut" Style="{StaticResource imgBoton}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fn_CerraSesion"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Salir" Style="{StaticResource LblBoton}"/>
+                        </StackLayout>
+                        
                     </StackLayout>
                 </ScrollView>
             </ContentPage.Content>
         </ContentPage>
     </MasterDetailPage.Master>
-
     <MasterDetailPage.Detail>
         <NavigationPage>
         </NavigationPage>

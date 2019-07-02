@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using TratoMedi.Personas;
-
+using TratoMedi.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
@@ -23,6 +23,7 @@ namespace TratoMedi.Views
 		}
         public void Fn_Reintento(object sender, EventArgs _args)
         {
+            StackTodo.IsVisible = true;
             StackMen.IsVisible = false;
             Mensajes_over.Text = "";
             Reinten.IsVisible = false;
@@ -31,6 +32,7 @@ namespace TratoMedi.Views
         {
             if (Fn_Condiciones())
             {
+                StackTodo.IsVisible = false;
                 StackMen.IsVisible = true;
                 Regex MembreRegex = new Regex(@"^([0-9]){4}([A-Z]){1}-([0-9]){4}$");
                 if (MembreRegex.IsMatch(L_usu.Text))
@@ -43,15 +45,20 @@ namespace TratoMedi.Views
                     //Mensajes_over.Text += _jsonLog;
                     //crear el cliente
                     HttpClient _client = new HttpClient();
-                    string _DirEnviar = "http://tratoespecial.com/login_dr.php";
-                    StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-                    //mandar el json con el post
-                    try
+                    string _DirEnviar = "";
+                    HttpResponseMessage _respuestaphp;
+                    string _respuesta;
+                    StringContent _content;
+
+                    if (L_usu.Text.Contains("P"))
                     {
-                        HttpResponseMessage _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                        if (_respuestaphp.StatusCode == System.Net.HttpStatusCode.OK)
+                        _DirEnviar = NombresAux.BASE_URL + "login_promotor.php";
+                        _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                        //mandar el json con el post
+                        try
                         {
-                            string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                            _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                            _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                             if (_respuesta == "0")
                             {
                                 Mensajes_over.Text += "\n Error en los datos";
@@ -59,8 +66,63 @@ namespace TratoMedi.Views
                             }
                             else if (_respuesta == "1" || _respuesta == "2")
                             {
-                                _DirEnviar = "http://tratoespecial.com/query_perfil_dr.php";
-                                //Console.Write(_jsonLog);
+                                App.v_log = "2";
+                                App.v_membresia = L_usu.Text;
+                                C_PerfProm _prom = new C_PerfProm() ;
+                                App.Fn_GuardarDatos(_prom);
+                                Application.Current.MainPage = new V_MasterMenu(2, "Bienvenido ");//+ App.v_perfProm.v_Nombre);
+
+
+                                //_DirEnviar = NombresAux.BASE_URL + "query_perfil_promotor.php";
+                                //_content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                                //try
+                                //{
+                                //    //mandar el json con el post
+                                //    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                                //    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                                //    _prom = JsonConvert.DeserializeObject<C_PerfProm>(_respuesta);
+                                //    ////cargar la nueva pagina de perfil
+                                //    App.v_log = "2";
+                                //    App.v_membresia = L_usu.Text;
+                                //    //_nuePer.Fn_SetEspecTitulo();
+                                //    App.Fn_GuardarDatos(_prom);
+                                //    Application.Current.MainPage = new V_MasterMenu(2, "Bienvenido " + App.v_perfProm.v_Nombre);
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    Mensajes_over.Text = "Error de conexion";
+                                //    Reinten.IsVisible = true;
+                                //}
+                            }
+                            else
+                            {
+                                Mensajes_over.Text = "Error de conexion";
+                                Reinten.IsVisible = true;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Mensajes_over.Text = "Error de conexion";
+                            Reinten.IsVisible = true;
+                        }
+                    }
+                    else if(L_usu.Text.Contains("D"))
+                    {
+                        _DirEnviar = NombresAux.BASE_URL + "login_dr.php";
+                        _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                        //mandar el json con el post
+                        try
+                        {
+                            _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
+                            _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                            if (_respuesta == "0")
+                            {
+                                Mensajes_over.Text += "\n Error en los datos";
+                                Reinten.IsVisible = true;
+                            }
+                            else if (_respuesta == "1" || _respuesta == "2")//login correcto, desgara perfil doctor
+                            {
+                                _DirEnviar = NombresAux.BASE_URL + "query_perfil_dr.php";
                                 _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
                                 try
                                 {
@@ -71,7 +133,7 @@ namespace TratoMedi.Views
                                     ////cargar la nueva pagina de perfil
                                     App.v_log = "1";
                                     App.v_membresia = L_usu.Text;
-                                    _nuePer.Fn_SetEspecTitulo();
+                                    //_nuePer.Fn_SetEspecTitulo();
                                     App.Fn_GuardarDatos(_nuePer);
                                     //el token
 
@@ -87,9 +149,8 @@ namespace TratoMedi.Views
                                     _login = new C_Login(_membre, letra, _conse, App.Fn_GEtToken());
                                     //crear el json
                                     _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
-                                    _DirEnviar = "http://tratoespecial.com/token_notification.php";
+                                    _DirEnviar = NombresAux.BASE_URL + "token_notification.php";
                                     _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-                                    Console.WriteLine(" infosss " + _jsonLog);
                                     try
                                     {
                                         //mandar el json con el post
@@ -97,7 +158,8 @@ namespace TratoMedi.Views
                                         _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                                         if (_respuesta == "1")
                                         {
-                                            Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido " + App.v_perfil.v_Nombre);
+                                            //Application.Current.MainPage = new V_MasterMenu(true, "Bienvenido " + App.v_perfil.v_Nombre);
+                                            Application.Current.MainPage = new V_MasterMenu(1, "Bienvenido " + App.v_perfil.v_Nombre);
                                         }
                                         else
                                         {
@@ -105,41 +167,40 @@ namespace TratoMedi.Views
                                             Reinten.IsVisible = true;
                                         }
                                     }
-                                    catch (HttpRequestException exception)
+                                    catch (Exception exception)
                                     {
-                                        await DisplayAlert("Error", exception.Message, "Aceptar");
+                                        Mensajes_over.Text = "Error de conexion";
                                         Reinten.IsVisible = true;
                                     }//el token
                                 }
-                                catch (HttpRequestException ex)
+                                catch (Exception ex)
                                 {
-                                    Mensajes_over.Text = ex.Message.ToString();
+                                    Mensajes_over.Text = "Error de conexion";
                                     Reinten.IsVisible = true;
                                 }
-
                             }
-                            else
+                            else//no es 1  2
                             {
-                                Mensajes_over.Text = "no 1 y 2  " + _respuesta;
+                                Mensajes_over.Text = "Error de conexion";
                                 Reinten.IsVisible = true;
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
+                            Mensajes_over.Text = "Error de conexion";
                             Reinten.IsVisible = true;
-                            Mensajes_over.Text = "Error de Conexion";
                         }
                     }
-                    catch (HttpRequestException ex)
+                    else
                     {
-                        Mensajes_over.Text = ex.Message.ToString();
-                        Reinten.IsVisible = true;
+
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Error", "No contiene el formato de membresia\n 0000D-0000", "Aceptar");
+                    await DisplayAlert("Error", "No contiene el formato de membresia\n 0000D-0000\n 0000P-0000", "Aceptar");
                     StackMen.IsVisible = false;
+                    StackTodo.IsVisible = true;
                 }
             }
         }
@@ -168,7 +229,6 @@ namespace TratoMedi.Views
             {
                 L_pass.BackgroundColor = Color.Transparent;
             }
-
             if (_conta > 0)
             {
                 return false;
@@ -177,19 +237,18 @@ namespace TratoMedi.Views
             {
                 return true;
             }
-
         }
-
         #region CAMBIO PASS
-
-
+        public async void Fn_Registro(object sender, EventArgs _args)
+        {
+            await Navigation.PushAsync(new V_Registro());
+        }
         /// <summary>
         /// mostrar panel pass
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="_args"></param>
+        /// </summary>        
         public void Fn_Reenviar(object sender, EventArgs _args)
         {
+            StackTodo.IsVisible = false;
             StackContra.IsVisible = true;
             //  PassCorreo.Text = "";
             // PassMembre.Text = "";
@@ -197,11 +256,10 @@ namespace TratoMedi.Views
         /// <summary>
         /// apaga el panel de contraseña
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="_args"></param>
         public void Fn_APagaPass(object sender, EventArgs _args)
         {
             StackContra.IsVisible = false;
+            StackTodo.IsVisible = true;
         }
         private async void Fn_CambioPass(object sender, EventArgs _args)
         {
@@ -237,7 +295,7 @@ namespace TratoMedi.Views
                     //   json += "consecutivo:'" + App.Fn_Vacio(_conse) + "',\n";
                     json += "}";
                     JObject jsonper = JObject.Parse(json);
-                    string _DirEnviar = "http://tratoespecial.com/restore_pass_dr.php";
+                    string _DirEnviar = NombresAux.BASE_URL + "restore_pass_dr.php";
                     StringContent _content = new StringContent(jsonper.ToString(), Encoding.UTF8, "application/json");
                     //await DisplayAlert("Envia", jsonper.ToString(), "Envia");
                     HttpClient _client = new HttpClient();
@@ -264,9 +322,9 @@ namespace TratoMedi.Views
                             await DisplayAlert("Error", _respuesta, "Aceptar");
                         }
                     }
-                    catch (HttpRequestException exception)
+                    catch (Exception exception)
                     {
-                        await DisplayAlert("Error", exception.Message, "Aceptar");
+                        await DisplayAlert("Error","Error, reintentarlo mas tarde", "Aceptar");
                         Reinten.IsVisible = true;
                     }
                 }

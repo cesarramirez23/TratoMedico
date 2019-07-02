@@ -71,19 +71,19 @@ namespace TratoMedi.Personas
         /// <summary>
         /// login,  membre y password
         /// </summary>
-        /// <param name="_membr"></param>
-        /// <param name="_pass"></param>
         public C_Login(string _membr, string _pass)
         {
             this.v_membre = _membr;
             this.v_pass = _pass;
         }
+        public C_Login(string _membr)
+        {
+            v_membre = _membr;
+        }
+
         /// <summary>
         /// para el token
         /// </summary>
-        /// <param name="_membr"></param>
-        /// <param name="_token"></param>
-        /// <param name="_a"></param>
         public C_Login(string _membr,string _letra,string _conse,string _token)
         {
             this.v_membre = _membr;
@@ -215,12 +215,16 @@ namespace TratoMedi.Personas
         [JsonProperty("ID_DR")]
         public string v_membre { get; set; }
 
-
         [JsonProperty("titulo")]
         public string v_titulo { get; set; }
+        [JsonProperty("ciudad")]
+        public string v_ciudad { get; set; }
+        [JsonProperty("espec")]
+        public List<string> v_EspecTex { get; set; }
         [JsonProperty("espe")]
         public string v_Especialidad { get; set; }
-
+        [JsonProperty("estado")]
+        public string v_estado { get; set; }
 
         [JsonProperty("nombre")]
         public string v_Nombre { get; set; }
@@ -235,53 +239,29 @@ namespace TratoMedi.Personas
         /// horario   HH-mm / HH-mm
         /// </summary>
         [JsonProperty("horario")]
-        public string v_horario;
-
-        #region LOSO DATOS PARA LA CIUDAD
-        /// <summary>
-        /// este lo necesito yo para el filtro
-        /// </summary>
-        [JsonProperty("ciudad")]
-        public string v_Ciudad { get; set; }
-        [JsonProperty("ubicacion")]
-        public ObservableCollection<C_EspeTitu> v_ciudades = new ObservableCollection<C_EspeTitu>();
-        #endregion
-
+        public string v_horario { get; set; }
         [JsonProperty("tel")]
         public string v_Tel { get; set; }
         [JsonProperty("correo")]
         public string v_Correo { get; set; }
-        //[JsonProperty("cedula")]
-        //public string v_cedula { get; set; }
         [JsonProperty("descrip")]
         public string v_descripcion { get; set; }
         [JsonProperty("idsexo")]
         public int v_idsexo { get; set; }
-
         [JsonProperty("activado")]
         public string v_activo { get; set; }
         [JsonProperty("fecha_vig")]
         public string v_vig { get; set; }
         /// <summary>
-        /// LISTA QUE NO CAMBIA SON LOS VALORES DE LA WEB
-        /// </summary>
-        [JsonProperty("especialidad")]
-        public ObservableCollection<C_EspeTitu> v_especs = new ObservableCollection<C_EspeTitu>();
-        /// <summary>
-        /// LISTA QUE NO CAMBIA SON LOS VALORES DE LA WEB
-        /// </summary>
-        [JsonProperty("titulos")]
-        public ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
-
-        public string[] _tituArr;
-        /// <summary>
         /// 1 activado 0   NO
         /// </summary>
         [JsonProperty("citas")]
-        public string v_cita;
-
+        public string v_cita { get; set; }
+        [JsonProperty("cedula")]
+        public string v_cedula { get; set; }
+        /*
         public string[] _ciuArr;
-
+        public string[] _tituArr;
         /// <summary>
         /// crea kis arreglos de titulo ciudad y especialidad
         /// </summary>
@@ -301,18 +281,20 @@ namespace TratoMedi.Personas
             {
                 v_especs[i].v_visible = false;
             }
-            _tituArr = new string[v_titulos.Count];
+            _tituArr = new string[v_titulos.Count+1];
             for (int i = 0; i < v_titulos.Count; i++)
             {
                 _tituArr[i] = v_titulos[i].v_nombreTitulo;
                 v_titulos[i].v_visible = false;
             }
-            
-            _ciuArr = new string[v_ciudades.Count];
+            _tituArr[v_titulos.Count + 1] = "Otra";
+
+            _ciuArr = new string[v_ciudades.Count+1];
             for (int i = 0; i < v_ciudades.Count; i++)
             {
                 _ciuArr[i] = v_ciudades[i].v_ciudad;
             }
+            _ciuArr[v_ciudades.Count + 1] = "Otra";
             //int length = v_idEspe.Length;
             //C_Espec _nueEsp = new C_Espec();
             //v_especs.Clear();
@@ -334,7 +316,14 @@ namespace TratoMedi.Personas
             //{ return false; }
             return true;
         }
-
+        #region LOSO DATOS PARA LA CIUDAD
+        /// <summary>
+        /// este lo necesito yo para el filtro
+        /// </summary>
+        [JsonProperty("ciudad")]
+        public string v_Ciudad { get; set; }
+        [JsonProperty("ubicacion")]
+        public ObservableCollection<C_EspeTitu> v_ciudades = new ObservableCollection<C_EspeTitu>();
         public int Fn_GetCiudades()
         {
             int _a = -1;
@@ -347,15 +336,55 @@ namespace TratoMedi.Personas
             }
             return _a;
         }
+        #endregion
+        #region ESPECIALIDADES Y TITULOS
+        /// <summary>
+        /// LISTA QUE NO CAMBIA SON LOS VALORES DE LA WEB
+        /// </summary>
+        [JsonProperty("especialidad")]
+        public ObservableCollection<C_EspeTitu> v_especs = new ObservableCollection<C_EspeTitu>();
+        /// <summary>
+        /// LISTA QUE NO CAMBIA SON LOS VALORES DE LA WEB
+        /// </summary>
+        [JsonProperty("titulos")]
+        public ObservableCollection<C_EspeTitu> v_titulos = new ObservableCollection<C_EspeTitu>();
+        #endregion
+        */
         public string v_img { get; set; }
         [JsonIgnore]
         public string v_completo { get; set; }
 
-
+        public void Fn_Init()
+        {
+            v_Especialidad = string.Empty;
+            for(int i=0; i<v_EspecTex.Count; i++)
+            {
+                if (i == 0)
+                {
+                    v_Especialidad += new string(v_EspecTex[i].ToCharArray());
+                }
+                else
+                {
+                    v_Especialidad += "&" + new string(v_EspecTex[i].ToCharArray());
+                }
+            }
+        }
+        public void Fn_SetEspec(string _espe)
+        {
+            v_EspecTex.Clear();
+            string[] _st = _espe.Split(',');           
+            for(int i=0; i<_st.Length; i++)
+            {
+                if(!string.IsNullOrEmpty( _st[i])|| !string.IsNullOrWhiteSpace(_st[i]) )
+                {
+                    v_EspecTex.Add(_st[i]);
+                }
+            }
+        }
         public string FN_GetInfo()
         {
             string _ret;
-            _ret = "tit " + v_titulo + "nom " + v_Nombre + " ape " + v_Apellido + " espe " + v_Especialidad + " dom " + v_Domicilio + " ciu " + v_Ciudad +
+            _ret = "tit " + v_titulo + "nom " + v_Nombre + " ape " + v_Apellido + " espe " + v_Especialidad + " dom " + v_Domicilio + " ciu " + v_ciudad +
                 " tel " + v_Tel + " corr " +
                 //v_Correo + " horario" + v_horario + " ced " + v_cedula + 
                 " des " + v_descripcion +

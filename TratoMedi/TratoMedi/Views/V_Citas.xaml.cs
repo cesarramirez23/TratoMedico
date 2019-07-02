@@ -27,7 +27,7 @@ namespace TratoMedi.Views
             {
                 v_estados.Add(new Filtro() { v_texto = ((EstadoCita)i).ToString().Replace('_', ' '), v_visible = false });
             }
-            List_Fil.ItemsSource = v_estados;
+            stackOver.ItemsSource = v_estados;
 
             if (_tiene)
             {
@@ -85,7 +85,7 @@ namespace TratoMedi.Views
             L_Error.Text = "Procesando Información";
             Cita _cita = new Cita(App.v_membresia, "1");
             string _json = JsonConvert.SerializeObject(_cita);
-            string _DirEnviar = "http://tratoespecial.com/get_citas.php";
+            string _DirEnviar =NombresAux.BASE_URL+ "get_citas.php";
             StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
             try
             {
@@ -95,7 +95,6 @@ namespace TratoMedi.Views
                     string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     v_citas = JsonConvert.DeserializeObject<ObservableCollection<Cita>>(_respuesta);
                     L_Error.IsVisible = false;
-                    //Console.WriteLine("cuantos " + v_citas.Count + "json citaa " + _respuesta);
                     Ordenar();
                     App.Fn_GuardarCitas(v_citas);
                     ListaCita.ItemsSource = v_citas;
@@ -149,8 +148,6 @@ namespace TratoMedi.Views
         /// </summary>
         ObservableCollection<Filtro> v_estados = new ObservableCollection<Filtro>();
         bool v_visible = false;
-
-
         private void Fn_ToolFil(object sender, EventArgs e)
         {
             v_visible = !v_visible;
@@ -187,12 +184,12 @@ namespace TratoMedi.Views
         }
         private void Fn_Borrar(object sender, EventArgs e)
         {
-            List_Fil.ItemsSource = null;
+            stackOver.ItemsSource = null;
             for (int i = 0; i < v_estados.Count; i++)//prende o apaga la imagen
             {
                 v_estados[i].v_visible = false;
             }
-            List_Fil.ItemsSource = v_estados;
+            stackOver.ItemsSource = v_estados;
             _filTexto.Clear();
             v_indiceTap.Clear();
             v_visible =false;

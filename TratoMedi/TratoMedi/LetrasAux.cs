@@ -18,13 +18,19 @@ namespace TratoMedi
     public static class NombresAux
     {
         public const string v_log = "log";
-        public const string v_membre = "membre";       
+        public const string v_membre = "membre";
+        public const string v_token = "token";
+
+        #region COSAS DEL PROMOTOR
+        public const string v_PerfPromo = "PerfilPromotor";
+        #endregion
+
+        #region COSAS ESPECIFICAS DEL DOCTOR
         public const string v_perfilPropio = "perfil";
         public const string v_perfilGen = "perfGen";
         public const string v_perfilMed = "perfMed";
         public const string v_medicamentos = "medicamentos";
         public const string v_paciente = "paciente";
-        public const string v_token = "token";
         /// <summary>
         /// todas la citas que tiene con ese usuario
         /// </summary>
@@ -37,15 +43,14 @@ namespace TratoMedi
         /// El historial de citas y medicamentos que ya terminaron
         /// </summary>
         public const string v_NotasMed = "NotaMed";
-
         /// <summary>
         /// Cita de notificacion
         /// </summary>
         public const string v_citaNot = "Notif";
-        /// <summary>
-        /// ID PARA GUARDAR LOS EVENTOS
-        /// </summary>
-        /// public const string v_IdCalendar = "IdCalendar";
+        public const string v_Opciones = "v_Opciones";  
+        #endregion
+
+        public const string BASE_URL = "https://tratoespecial.com/";  
 
 
 

@@ -14,12 +14,10 @@ namespace TratoMedi.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class V_Consulta : TabbedPage
 	{
-
         Cita v_cita;
         ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
         ObservableCollection<C_NotaMed> v_histo = new ObservableCollection<C_NotaMed>();
         int v_editando = -1;
-
         public V_Consulta (Cita _cita)
 		{
 			InitializeComponent ();
@@ -44,21 +42,14 @@ namespace TratoMedi.Views
                 grid.RowDefinitions.Add(new RowDefinition { Height = 50 });
                 grid.RowDefinitions.Add(new RowDefinition { Height = 50 });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-
                 Grid.SetRow(Btn_Ter, 0); Grid.SetRowSpan(Btn_Ter, 1); Grid.SetColumnSpan(Btn_Ter, 1); //terminar cita
-
                 Grid.SetRow(Btn_Nue, 1); Grid.SetRowSpan(Btn_Nue, 1); Grid.SetColumnSpan(Btn_Nue, 1);   //nuevo medicamento
-
                 Grid.SetRow(Btn_Med, 2); Grid.SetRowSpan(Btn_Med, 1); Grid.SetColumnSpan(Btn_Med, 1);   //medicamentos actuales
             }
-
             Title = "En consulta";
             v_cita = _cita;
-
-
             CargarGen();
             CargarMed();
-            Console.Write("elige cita " + App.v_paciente[2]);
                 Fn_CargaCita();
                 Fn_CAmbioStack(true, false, false);
                 Fn_CargarMedica();
@@ -69,7 +60,6 @@ namespace TratoMedi.Views
         public V_Consulta()
         {
             InitializeComponent();
-            Console.Write("inicio");
             grid.RowDefinitions.Clear();
             grid.ColumnDefinitions.Clear();
             if (Device.RuntimePlatform == Device.Android)
@@ -78,11 +68,8 @@ namespace TratoMedi.Views
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-
                 Grid.SetColumn(Btn_Ter, 0);   //terminar cita
-
                 Grid.SetColumn(Btn_Nue, 1);  //nuevo medicamento
-
                 Grid.SetColumn(Btn_Med, 2); //medicamentos actuales
             }
             else if (Device.RuntimePlatform == Device.iOS)
@@ -91,19 +78,13 @@ namespace TratoMedi.Views
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
                 grid.RowDefinitions.Add(new RowDefinition { Height = 80 });
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-
                 Grid.SetRow(Btn_Ter, 0); Grid.SetRowSpan(Btn_Ter, 1);  //terminar cita
-
                 Grid.SetRow(Btn_Nue, 1); Grid.SetRowSpan(Btn_Nue, 1);  //nuevo medicamento
-
                 Grid.SetRow(Btn_Med, 2); Grid.SetRowSpan(Btn_Med, 1);  //medicamentos actuales
             }
-
             Title = "En consulta";
-            
             CargarGen();
             CargarMed();
-            Console.Write("elige cita " + App.v_paciente);
                 Fn_CargaCita();
                 Fn_CAmbioStack(true, false, false);
                 Fn_CargarMedica();
@@ -115,15 +96,13 @@ namespace TratoMedi.Views
         {
             Fn_CargaCita();
             C_NotaMed _nota = new C_NotaMed(v_cita.v_pacienteId, v_cita.v_folio, v_cita.v_idCita, v_medicamentos.Count.ToString(), v_medicamentos);
-
             string _jsonNota = JsonConvert.SerializeObject(_nota, Formatting.Indented);
             // await DisplayAlert("Envia", _jsonNota, "aa");
-
             bool _sel = await DisplayAlert("Terminar Consulta?", "Seguro de terminar ahora?", "Sí", "No");
             if (_sel)
             {
                 HttpClient _client = new HttpClient();
-                string _DirEnviar = "http://tratoespecial.com/set_medicamentos.php";
+                string _DirEnviar = NombresAux.BASE_URL + "set_medicamentos.php";
                 StringContent _content = new StringContent(_jsonNota, Encoding.UTF8, "application/json");
                 try
                 {
@@ -138,7 +117,7 @@ namespace TratoMedi.Views
                             Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita, "1");
                             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                             _client = new HttpClient();
-                            _DirEnviar = "http://tratoespecial.com/update_citas.php";
+                            _DirEnviar = NombresAux.BASE_URL + "update_citas.php";
                             _content = new StringContent(_json, Encoding.UTF8, "application/json");
                             try
                             {
@@ -157,7 +136,7 @@ namespace TratoMedi.Views
                                     }
                                 }
                             }
-                            catch (HttpRequestException ex)
+                            catch (Exception ex)
                             {
                                 await DisplayAlert("Error", ex.Message, "Aceptar");
                             }
@@ -168,7 +147,7 @@ namespace TratoMedi.Views
                         }
                     }
                 }
-                catch (HttpRequestException ex)
+                catch (Exception ex)
                 {
                     await DisplayAlert("Error", ex.Message, "Aceptar");
                 }
@@ -205,9 +184,6 @@ namespace TratoMedi.Views
         /// <summary>
         /// perfil nuevo nota
         /// </summary>
-        /// <param name="_perfil"></param>
-        /// <param name="_nuevo"></param>
-        /// <param name="_nota"></param>
         void Fn_CAmbioStack(bool _perfil, bool _nuevo, bool _nota)
         {
             StackPerfiles.IsVisible = _perfil;
@@ -242,24 +218,19 @@ namespace TratoMedi.Views
         {
             Fn_Limpiar();
             Fn_CAmbioStack(true, false, false);
-
         }
         public async void CargarGen()
         {
-            Console.Write("nombre");
             G_Nombre.Text = App.v_pergen.v_Nombre;
-            Console.Write("nac");
             if (string.IsNullOrEmpty(App.v_pergen.v_FecNaci))
             {
                 G_fecha.Text = "N/A";
             }
             else
             {
-                Console.Write("fecha "+ App.v_pergen.v_FecNaci);
                 string[] fecha = App.v_pergen.v_FecNaci.Split('-');
                 G_fecha.Text = fecha[2] + " - " + fecha[1] + " - " + fecha[0];
             }
-            Console.Write("ocu ");
             Fn_NullEntry(G_Ocu, App.v_pergen.v_Ocup);
             // Fn_NullEntry(G_Tel, App.v_perfil.v_Tel);
             //Fn_NullEntry(G_Cel, App.v_perfil.v_Cel);
@@ -267,13 +238,10 @@ namespace TratoMedi.Views
         }
         public async void CargarMed()
         {
-            Console.Write("sangre");
             Personas.C_PerfilMed _temp = App.v_perMed;
             Fn_NullEntry(M_Sangre, App.v_perMed.v_sangre);
-                Console.Write("sexo");
             if ((App.v_perMed.v_sexo < 0) || (App.v_perMed.v_sexo > 1))
             {
-                Console.Write("sexo if");
                 if (App.v_perMed.v_sexo == 1)
                 {
                     M_sexoPick.Text = "Femenino";
@@ -293,7 +261,6 @@ namespace TratoMedi.Views
             }
             else
             {
-                Console.Write("sexo else");
                 if (App.v_perMed.v_sexo == 1)
                 {
                     M_sexoPick.Text = "Femenino";
@@ -310,7 +277,6 @@ namespace TratoMedi.Views
                     M_sexolbl.Text = "";
                 }
             }
-            Console.Write("alergias");
             Fn_NullEntry(M_Alergias, App.v_perMed.v_alergias);
             //if (string.IsNullOrEmpty(App.v_perMed.v_alergias))
             //{
@@ -321,9 +287,7 @@ namespace TratoMedi.Views
             //    M_Alergias.IsVisible = true;
             //    Fn_NullEntry(M_Alergias, App.v_perMed.v_alergias);
             //}
-            Console.Write("operaciones");
             Fn_NullEntry(M_Operaciones, App.v_perMed.v_operaciones);
-            Console.Write("enfermedades");
             Fn_NullEntry(M_Enferme, App.v_perMed.v_enfer);
             //if (string.IsNullOrEmpty(App.v_perMed.v_enfer))
             //{
@@ -334,7 +298,6 @@ namespace TratoMedi.Views
             //    M_Enferme.IsVisible = true;
             //    Fn_NullEntry(M_Enferme, App.v_perMed.v_enfer);
             //}
-            Console.Write("mediocamen");
             Fn_NullEntry(M_Medicamentos, App.v_perMed.v_medica);
             await Task.Delay(100);
         }

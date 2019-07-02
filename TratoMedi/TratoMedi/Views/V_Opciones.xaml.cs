@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 using System.Net.Http;
-
 namespace TratoMedi.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -22,8 +15,12 @@ namespace TratoMedi.Views
         {
             InitializeComponent();
             App.Fn_CargarDatos();
-
             C_Membre.Text = App.v_membresia;
+
+            if(App.v_membresia.Contains("P"))
+            {
+                BtnPass.IsVisible = false;
+            }
             //C_fecha.Text = App.v_perfil.v_vig;
             //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
             regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
@@ -71,17 +68,22 @@ namespace TratoMedi.Views
                     }
                     else
                     {
+                        //if (App.v_membresia.Contains("P"))
+                        //{
+                        //}
+                        //else if (App.v_membresia.Contains("D"))
+                        //{
+                        //}
                         P_mensaje.IsVisible = false;
                         string json = @"{";
                         json += "membre:'" + App.v_membresia + "',\n";
                         json += "password:'" + P_actual.Text + "',\n";
                         json += "newpassword:'" + P_Nueva.Text + "',\n";
                         json += "}";
-                        //await DisplayAlert("Aviso", json, "Aceptar");
                         JObject jsonPer = JObject.Parse(json);
                         StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
                         HttpClient _client = new HttpClient();
-                        string _url = "http://tratoespecial.com/password_change_dr.php";
+                        string _url = NombresAux.BASE_URL + "password_change_dr.php";
                         try
                         {
                             HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
@@ -112,9 +114,9 @@ namespace TratoMedi.Views
                                 await DisplayAlert("respuesta",_result, "Aceptar");
                             }
                         }
-                        catch (HttpRequestException exception)
+                        catch (Exception exception)
                         {
-                            await DisplayAlert("Error", exception.Message, "Aceptar");
+                            await DisplayAlert("Error", "Error de conexión, por favor intentalo mas tarde", "Aceptar");
                             P_but.IsEnabled = false;
                             P_actual.Text = "";
                             P_Nueva.Text = "";
@@ -126,15 +128,6 @@ namespace TratoMedi.Views
                     P_mensaje.IsVisible = true;
                 }
             }
-            //if (Fn_validar(P_actual.Text, P_Nueva.Text))
-            //{
-            //    await DisplayAlert("bien", "bien", "bien");
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Error", v_validar, "Aceptar");
-
-            //}
         }
         public bool Fn_validar(string _actual, string _nueva)
         {
@@ -145,7 +138,6 @@ namespace TratoMedi.Views
             }
             else
             {
-
                 if (!regex.IsMatch(_nueva))
                 {
                     P_mensaje.Text = "Debe contener al menos una mayuscula,una minuscula y un numero, minimo 8 de longitud";

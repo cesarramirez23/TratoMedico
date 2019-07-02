@@ -150,10 +150,7 @@ namespace TratoMedi.Views
             //crear el cliente
             HttpClient _client = new HttpClient();
             string _DirEnviar = "";
-
             string _decrypt = NombresAux.DecryptString(result.Text, "PassCesar123TE");
-            Console.Write(" _decrypt " + _decrypt);
-
             Perf _info = new Perf();
 
             try
@@ -189,22 +186,20 @@ namespace TratoMedi.Views
                 try
                 {
                     //baja la info de perfil general
-                    _DirEnviar = "http://tratoespecial.com/query_perfil.php";
+                    _DirEnviar = NombresAux.BASE_URL+ "query_perfil.php";
                     //mandar el json con el post
                     _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                     _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                     C_PerfilGen _nuePer = JsonConvert.DeserializeObject<C_PerfilGen>(_respuesta);
-                    Console.Write("perfilgeneral " + _nuePer.Fn_GetDatos());
                     App.Fn_GuardarDatos(_nuePer);
                     try
                     {
-                        _DirEnviar = "http://tratoespecial.com/query_perfil_medico.php";
+                        _DirEnviar = NombresAux.BASE_URL+ "query_perfil_medico.php";
                         _content = new StringContent(_decrypt, Encoding.UTF8, "application/json");
                         //mandar el json con el post
                         _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
                         _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                         C_PerfilMed _nuePerMEd = JsonConvert.DeserializeObject<C_PerfilMed>(_respuesta);
-                        Console.Write("perfilmedico " + _nuePerMEd.Fn_Info());
                         App.Fn_GuardarDatos(_nuePerMEd);
 
 
@@ -212,7 +207,7 @@ namespace TratoMedi.Views
                         _client = new HttpClient();
                         Cita _cita = new Cita(_info.v_membre, _info.v_fol, "0");
                         string _json = JsonConvert.SerializeObject(_cita);
-                        _DirEnviar = "http://tratoespecial.com/get_medicamentos.php";
+                        _DirEnviar = NombresAux.BASE_URL+ "get_medicamentos.php";
                         // await DisplayAlert("ENVIA PARA medicamentos", _json, "acep");
                         _content = new StringContent(_json, Encoding.UTF8, "application/json");
                         try
@@ -223,7 +218,6 @@ namespace TratoMedi.Views
                                 _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                                 // await DisplayAlert("LLega get medicamentos", _respuesta, "acep");
                                 v_histo = JsonConvert.DeserializeObject<ObservableCollection<C_NotaMed>>(_respuesta);
-                                Console.Write("historial " + v_histo.Count);
                                 for (int i = 0; i < v_histo.Count; i++)
                                 {
                                     v_histo[i].Fn_SetEspe();
@@ -394,7 +388,7 @@ namespace TratoMedi.Views
             if(_sel)
             {
                 HttpClient _client = new HttpClient();
-                string _DirEnviar = "http://tratoespecial.com/set_medicamentos.php";
+                string _DirEnviar = NombresAux.BASE_URL+ "set_medicamentos.php";
                 StringContent _content = new StringContent(_jsonNota, Encoding.UTF8, "application/json");
                 try
                 {
@@ -409,7 +403,7 @@ namespace TratoMedi.Views
                             Cita _cita = new Cita("0", v_cita.v_fechaDate.Date, v_cita.v_hora, v_cita.v_idCita,"1");
                             string _json = JsonConvert.SerializeObject(_cita, Formatting.Indented);
                              _client = new HttpClient();
-                             _DirEnviar = "http://tratoespecial.com/update_citas.php";
+                             _DirEnviar = NombresAux.BASE_URL+ "update_citas.php";
                              _content = new StringContent(_json, Encoding.UTF8, "application/json");
                             try
                             {
@@ -691,10 +685,9 @@ namespace TratoMedi.Views
             Cita _citaTemp = new Cita(App.v_membresia,v_Info.v_membre, v_Info.v_fol, "3", DateTime.Now.Date,
                 DateTime.Now.TimeOfDay, App.Fn_GEtToken());
             string _json = JsonConvert.SerializeObject(_citaTemp, Formatting.Indented);
-            Console.Write("Info cita " + _json);
             //await DisplayAlert("Enviar", _json, "aceptar");
             HttpClient _client = new HttpClient();
-            string _DirEnviar = "http://tratoespecial.com/set_citas.php";
+            string _DirEnviar = NombresAux.BASE_URL+ "set_citas.php";
             StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
             try
             {  //getting exception in the following line    //HttpResponseMessage upd_now_playing = await cli.PostAsync(new Uri("http://ws.audioscrobbler.com/2.0/", UriKind.RelativeOrAbsolute), tunp);

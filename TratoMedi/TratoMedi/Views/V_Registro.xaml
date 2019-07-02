@@ -1,32 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TratoMedi.Views.V_Registro" Title="Registro">
+             x:Class="TratoMedi.Views.V_Registro" Title="Registro a Red Medica">
     <ContentPage.Content>
-        <ScrollView x:Name="ScrollTodo">
+        <ScrollView x:Name="ScrollTodo" Margin="2,5">
             <StackLayout>
-                <Label Text="Nombres"/>
+                <Label Text="Nombres:" Style="{StaticResource AzulMedLbl}"/>
                 <Entry x:Name="EntNombre"/>
-                <Label Text="Apellido"/>
+                <Label Text="Apellidos:" Style="{StaticResource AzulMedLbl}"/>
                 <Entry x:Name="EntApe"/>
-                <Label Text="Sexo"/>
-                <Picker x:Name="PickSexo">
+                <Label Text="Sexo:" Style="{StaticResource AzulMedLbl}"/>
+                <Picker x:Name="PickSexo" Title="Elige tu Sexo">
                     <Picker.Items>
                         <x:String>Masculino</x:String>
                         <x:String>Femenino</x:String>
                     </Picker.Items>
                 </Picker>
-                <Label Text="Titulo"/>
+                <Label Text="Titulo:" Style="{StaticResource AzulMedLbl}"/>
                 <Picker x:Name="PickTitulo" Title="Titulos sugeridos"/>
-                <Label Text="Especialidad"/>
+                <Label Text="Especialidad:" Style="{StaticResource AzulMedLbl}"/>
                 <Picker x:Name="PickEspe" Title="Especialidades sugeridas"/>
-                <Label Text="Domicilio para realizar consultas"/>
+                <Label Text="Domicilio para realizar consultas:" Style="{StaticResource AzulMedLbl}"/>
                 <Entry x:Name="EntDom"/>
-                <Label Text="Ciudad"/>
+                <Label Text="Ciudad:" Style="{StaticResource AzulMedLbl}"/>
                 <Picker x:Name="PickCiudad" Title="Ciudades sugeridas"/>
-                <Label Text="Cédula profesional"/>
+                <Label Text="Estado:" Style="{StaticResource AzulMedLbl}"/>
+                <Picker x:Name="PickEstado" Title="Estados sugeridos"/>
+                <Label Text="Horario disponible para citas:" Style="{StaticResource AzulMedLbl}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TimePicker x:Name="PickInicio" />
+                    <TimePicker Grid.Column="1" x:Name="PickFin"/>
+                </Grid>
+                <Label Text="Cédula profesional:" Style="{StaticResource AzulMedLbl}"/>
                 <Entry x:Name="EntCedula" />
-                <Button Text="Revisar Información" Clicked="Fn_Avanzar"/>
+                <Label Text="Número telefónico:" Style="{StaticResource AzulMedLbl}"/>
+                <Entry x:Name="EntTel" Keyboard="Numeric"/>
+                <Label Text="Correo Electronico:" Style="{StaticResource AzulMedLbl}"/>
+                <Entry x:Name="EntCorreo" Keyboard="Email" />
+                <Button Text="Revisar Información" Clicked="Fn_Avanzar" Style="{StaticResource Buton}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

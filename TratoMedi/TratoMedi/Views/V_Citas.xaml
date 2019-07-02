@@ -5,15 +5,16 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem  Name="filtros" Text="Filtrar" Clicked="Fn_ToolFil" Order="Primary" Priority="0"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
-        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-            <StackLayout Margin="5,10,5,10" x:Name="StackPrin" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                
-                <Label Text="Error de Conexión" FontSize="Large" x:Name="L_Error" IsVisible="False"></Label>
-                <ListView x:Name="ListaCita" HasUnevenRows="True" IsPullToRefreshEnabled="True"
+        <StackLayout>
+            <!--<StackLayout Margin="5,10,5,10" x:Name="StackPrin" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">-->
+            <ListView x:Name="ListaCita" HasUnevenRows="True" IsPullToRefreshEnabled="True" Margin="5,10,5,10"
                           Refreshing="ListaCita_Refreshing" ItemTapped="Fn_SelectCita"  VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
+                <ListView.Header>
+                    <Label Text="Error de Conexión" FontSize="Large" x:Name="L_Error" IsVisible="False"></Label>
+                </ListView.Header>
+                <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout BackgroundColor="{Binding v_color}">
@@ -50,41 +51,44 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+            </ListView>
+            <!--
             </StackLayout>
-            
             <ContentView x:Name="stackOver"  AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" 
                          IsVisible="False" BackgroundColor="{StaticResource White}" Padding="10, 0">
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical">-->
+            <ListView x:Name="stackOver" ItemTapped="Fn_TapFiltro"  VerticalOptions="FillAndExpand"
+                              IsVisible="False" BackgroundColor="{StaticResource White}" Margin="5,0">
+                <ListView.Header>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-                        <Button Text="Buscar" Clicked="Fn_Buscar" Style="{StaticResource Buton2}"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Button Text="Buscar" Clicked="Fn_Buscar" Style="{StaticResource Buton2}"
                                 Grid.Column="0" Grid.ColumnSpan="1"></Button>
-                        <Button Text="Borrar" Clicked="Fn_Borrar" Style="{StaticResource Buton2}"
+                                <Button Text="Borrar" Clicked="Fn_Borrar" Style="{StaticResource Buton2}"
                                 Grid.Column="1" Grid.ColumnSpan="1"></Button>
-                    </Grid>
-                    <ListView x:Name="List_Fil" ItemTapped="Fn_TapFiltro">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding v_texto }" TextColor="{StaticResource NavigationPrimary}"
-                                           HorizontalOptions="StartAndExpand"></Label>
-                                        <Image Source="INFO_icon.png" IsVisible="{Binding v_visible}"
-                                           HorizontalOptions="End" Aspect="AspectFit"></Image>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </ContentView>
-        </AbsoluteLayout>
+                            </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding v_texto }" TextColor="{StaticResource NavigationPrimary}"
+                                           HorizontalOptions="StartAndExpand"/>
+                                <Image Source="INFO_icon.png" IsVisible="{Binding v_visible}"
+                                       HorizontalOptions="End" Aspect="AspectFit"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+           <!-- </ContentView>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
