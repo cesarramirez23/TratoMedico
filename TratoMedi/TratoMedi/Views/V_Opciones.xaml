@@ -7,6 +7,16 @@
             <StackLayout >
                 <Label Style="{StaticResource AzulMedLbl}" Text="Membresía"/>
                 <Label Text="" FontSize="Medium" TextColor="Black" x:Name="C_Membre"/>
+                <StackLayout>
+                    <Label x:Name="StackCodigo" IsVisible="False">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Codigo: " FontSize="Medium"  TextColor="{StaticResource NavigationPrimary}"/>
+                                <Span x:Name="lblCodigo" FontSize="Medium" TextColor="{StaticResource LetrCol}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
                 
                 <Button Text="Mostrar cambio de contraseña" Clicked="MostrarPass" x:Name="BtnPass"  Style="{StaticResource Buton}"/>
                 <StackLayout x:Name="StackPass" IsVisible="False">

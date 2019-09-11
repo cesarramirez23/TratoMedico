@@ -23,7 +23,6 @@ namespace TratoMedi.Views
         #region ESPECIALIDADES, CIUDADES, TODO ESO DESCRAGADO
         c_RegOpciones v_opciones = new c_RegOpciones();
         string[] v_TitArr;
-        //string[] v_EspeArr;
         string[] v_CiudArr;
         string[] v_EstadoArr;
         #endregion
@@ -40,21 +39,16 @@ namespace TratoMedi.Views
         }
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-           //await Fn_GetIdsTitulo();
-            Fn_CargaPerfil();
-           // P_Swi.IsToggled = v_cita;
-            //P_StackCita.IsVisible = false;
+            base.OnAppearing();//await Fn_GetIdsTitulo();
+            Fn_CargaPerfil(); // P_Swi.IsToggled = v_cita; //P_StackCita.IsVisible = false;
             await Task.Delay(100);
         }
         public void Fn_ActivarCita(object sender, ToggledEventArgs _args)
         {
-            v_cita = _args.Value;
-            //P_StackCita.IsVisible = v_cita;
+            v_cita = _args.Value;  //P_StackCita.IsVisible = v_cita;
         }
         void Fn_SoloNumero(object sender, TextChangedEventArgs _args)
-        {
-            //-  ,  _  .
+        {//-  ,  _  .
             Entry _entry = (Entry)sender;
             if (_entry.Text.Length > 0)
             {
@@ -79,10 +73,7 @@ namespace TratoMedi.Views
             {
                 P_Editar.Text = "Cancelar";
                 P_Guardar.IsVisible = true;
-
-                PickTitulo.IsEnabled = true;
-                P_Nom.IsEnabled = true;
-                P_Ape.IsEnabled = true;
+                PickTitulo.IsEnabled = true;//P_Nom.IsEnabled = true;// P_Ape.IsEnabled = true;
                 P_sexoPick.IsEnabled = true;
                 P_Esp.IsEnabled = true;
                 P_Ced.IsEnabled = true;
@@ -95,14 +86,12 @@ namespace TratoMedi.Views
                 P_Descrip.IsEnabled = true;
                 P_Swi.IsEnabled = true;
                 PickEstado.IsEnabled = true;
-
                 await Task.Delay(100);
             }
             else
             {
                 P_Editar.Text = "Editar";
                 P_Guardar.IsVisible = false;
-
                 PickTitulo.IsEnabled = false;
                 P_Nom.IsEnabled = false;
                 P_Ape.IsEnabled = false;
@@ -111,7 +100,6 @@ namespace TratoMedi.Views
                 P_Ced.IsEnabled = false;
                 Pick1.IsEnabled = false;
                 Pick2.IsEnabled = false;
-
                 P_dom.IsEnabled = false;
                 PickCiudad.IsEnabled = false;
                 P_Tel.IsEnabled = false;
@@ -120,40 +108,28 @@ namespace TratoMedi.Views
                 P_Swi.IsEnabled = false;
                 PickEstado.IsEnabled = false;
                 App.Fn_CargarDatos();
-
-                //v_espec = App.v_perfil.v_especs;
-                //PickTitulo.ItemsSource = App.v_perfil._tituArr;
-
                 P_Nom.Text = App.v_perfil.v_Nombre;
                 P_Ape.Text = App.v_perfil.v_Apellido;
                 PickTitulo.SelectedIndex = int.Parse(App.v_perfil.v_titulo);
                 P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
-                //IEnumerable<C_EspeTitu> _temp = v_opciones.v_espe.OrderBy(x => x.v_nombreEspec);
-                //v_espec = new ObservableCollection<C_EspeTitu>(_temp);
                 pickEspe.ItemsSource = v_espec;
-
                 P_Esp.Text = App.v_perfil.v_Especialidad;
                 v_especId = App.v_perfil.v_Especialidad;
-                int val = -1;
-                string[] _arr = v_especId.Split('&');
+                int[] _idesp = Fn_GetIdEsp(v_especId, v_opciones.v_espe);
                 P_Esp.Text = "";
-                for (int i = 0; i < _arr.Length; i++)//prende soloo unos
+                for (int i = 0; i < _idesp.Length; i++)//prende soloo unos
                 {
-                    val = int.Parse(_arr[i]);
                     if (i == 0)
                     {
-
-                        P_Esp.Text += v_espec[val - 1].v_nombreEspec;
-                        v_espec[val - 1].v_visible = true;
+                        P_Esp.Text += v_espec[_idesp[i]].v_nombreEspec;
+                        v_espec[_idesp[i]].v_visible = true;
                     }
                     else
-                    {
-                        //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
-                        P_Esp.Text += "," + v_espec[val - 1].v_nombreEspec;
-                        v_espec[val - 1].v_visible = true;
+                    {   //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
+                        P_Esp.Text += "," + v_espec[_idesp[i]].v_nombreEspec;
+                        v_espec[_idesp[i]].v_visible = true;
                     }
-                }
-                //  P_Ced.Text = App.v_perfil.v_cedula;
+                }    //  P_Ced.Text = App.v_perfil.v_cedula;
                 if (string.IsNullOrEmpty(App.v_perfil.v_horario))
                 {
                     App.v_perfil.v_horario = "10-50/12-10";
@@ -181,75 +157,72 @@ namespace TratoMedi.Views
             }
             else
             {
-                string _Ad = P_Esp.Text;
-                v_perfil.Fn_SetEspec( _Ad);
-                v_perfil.v_membre = App.v_membresia;
-                v_perfil.v_Nombre = App.Fn_Vacio(P_Nom.Text);
-                v_perfil.v_Apellido = App.Fn_Vacio(P_Ape.Text);
-                v_perfil.v_Domicilio = App.Fn_Vacio(P_dom.Text);
-                v_perfil.v_horario = (Pick1.Time.ToString(@"hh\-mm") + "/" + Pick2.Time.ToString(@"hh\-mm")).ToString();
-                v_perfil.v_Tel = App.Fn_Vacio(P_Tel.Text);
-                v_perfil.v_Correo = App.Fn_Vacio(P_Corr.Text);
-                v_perfil.v_cedula = App.Fn_Vacio(P_Ced.Text);
-                v_perfil.v_descripcion = App.Fn_Vacio(P_Descrip.Text);
-                v_perfil.v_idsexo = P_sexoPick.SelectedIndex;
-                if (v_cita)
+                if (string.IsNullOrEmpty(P_Esp.Text) || string.IsNullOrWhiteSpace(P_Esp.Text))
                 {
-                    v_perfil.v_cita = "1";
+                    await DisplayAlert("Error", "Es necesario elegir al menos una especialidad", "Aceptar");
                 }
                 else
                 {
-                    v_perfil.v_cita = "0";
-                }
-                string _json = JsonConvert.SerializeObject(v_perfil);
-                StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
-                HttpClient _client = new HttpClient();
-                string _url = NombresAux.BASE_URL + "update_perfil_dr.php";
-                try
-                {
-                    HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
-                    string _result = _respuestphp.Content.ReadAsStringAsync().Result;
-                    if (_result == "1")
+                    v_perfil.Fn_SetEspec(P_Esp.Text);
+                    v_perfil.v_membre = App.v_membresia;
+                    v_perfil.v_Nombre = App.Fn_Vacio(P_Nom.Text);
+                    v_perfil.v_Apellido = App.Fn_Vacio(P_Ape.Text);
+                    v_perfil.v_Domicilio = App.Fn_Vacio(P_dom.Text);
+                    v_perfil.v_horario = (Pick1.Time.ToString(@"hh\-mm") + "/" + Pick2.Time.ToString(@"hh\-mm")).ToString();
+                    v_perfil.v_Tel = App.Fn_Vacio(P_Tel.Text);
+                    v_perfil.v_Correo = App.Fn_Vacio(P_Corr.Text);
+                    v_perfil.v_cedula = App.Fn_Vacio(P_Ced.Text);
+                    v_perfil.v_descripcion = App.Fn_Vacio(P_Descrip.Text);
+                    v_perfil.v_idsexo = P_sexoPick.SelectedIndex;
+                    if (v_cita)
                     {
-                        await Fn_GetIdsTitulo();
-                        await DisplayAlert("Actualizado", "Informacion Guardado con éxito", "Aceptar");
-                        //volver a cargar la informacion
-                        //_json = @"{";
-                        //_json += "membre:'" + App.v_membresia + "',\n";
-                        //_json += "}";
-                        _client = new HttpClient();
-                        C_Login _login = new C_Login(App.v_membresia, "");
-                        string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
-                        _url = NombresAux.BASE_URL + "query_perfil_dr.php";
-                        _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-                        try
+                        v_perfil.v_cita = "1";
+                    }
+                    else
+                    {
+                        v_perfil.v_cita = "0";
+                    }
+                    string _json = JsonConvert.SerializeObject(v_perfil);
+                    StringContent _content = new StringContent(_json, Encoding.UTF8, "application/json");
+                    HttpClient _client = new HttpClient();
+                    string _url = NombresAux.BASE_URL + "update_perfil_dr.php";
+                    try
+                    {
+                        HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);
+                        string _result = _respuestphp.Content.ReadAsStringAsync().Result;
+                        if (_result == "1")
                         {
-                            _respuestphp = await _client.PostAsync(_url, _content);
-                            _result = await _respuestphp.Content.ReadAsStringAsync();
-                            C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_result);
-                            _nuePer.Fn_Init();
-                            //_nuePer.Fn_SetEspecTitulo();
-                            App.Fn_GuardarDatos(_nuePer);
-                            Fn_Editar(sender, _args);
-                            Fn_CargaPerfil();
+                            await Fn_GetIdsTitulo();
+                            await DisplayAlert("Actualizado", "Informacion Guardado con éxito", "Aceptar");
+                            _client = new HttpClient();
+                            C_Login _login = new C_Login(App.v_membresia, "");
+                            string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
+                            _url = NombresAux.BASE_URL + "query_perfil_dr.php";
+                            _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                            try
+                            {
+                                _respuestphp = await _client.PostAsync(_url, _content);
+                                _result = await _respuestphp.Content.ReadAsStringAsync();
+                                C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_result);
+                                _nuePer.Fn_Init();
+                                App.Fn_GuardarDatos(_nuePer);
+                                Fn_Editar(sender, _args);
+                                Fn_CargaPerfil();
+                            }
+                            catch (Exception ex)
+                            {
+                                await DisplayAlert("Error en actualizar", "Error en actualizar informacion", "Aceptar");
+                            }
                         }
-                        catch (Exception ex)
+                        else if (_result == "0")
                         {
                             await DisplayAlert("Error en actualizar", "Error en actualizar informacion", "Aceptar");
                         }
                     }
-                    else if (_result == "0")
+                    catch (Exception _ex)
                     {
-                        await DisplayAlert("Error en actualizar", _result, "Aceptar");
+                        await DisplayAlert("ERROR", "Error en actualizar", "Aceptar");
                     }
-                    else
-                    {
-                        await DisplayAlert("NO 0 NI 1", _result, "Aceptar");
-                    }
-                }
-                catch (Exception _ex)
-                {
-                    await DisplayAlert("ERROR", "Error en actualizar", "Aceptar");
                 }
             }
             _buton.IsEnabled = true;
@@ -257,7 +230,6 @@ namespace TratoMedi.Views
         async  void Fn_CargaPerfil()
         {
             C_Login _login = new C_Login(App.v_membresia, "");
-            //crear el json
             string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
             string _DirEnviar = NombresAux.BASE_URL + "query_perfil_dr.php";
             StringContent _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
@@ -268,7 +240,6 @@ namespace TratoMedi.Views
                 string _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
                 C_Medico _nuePer = JsonConvert.DeserializeObject<C_Medico>(_respuesta);
                 _nuePer.Fn_Init();
-                //_nuePer.Fn_SetEspecTitulo();
                 App.Fn_GuardarDatos(_nuePer);
                 await Task.Delay(100);
                 await Fn_GetIdsTitulo();
@@ -276,14 +247,12 @@ namespace TratoMedi.Views
             catch (Exception _ex)
             {
                 Fn_CargaPerfil();
-               // await DisplayAlert("Error en actualizar", "Se Cargará la ultima informacion guardada", "Aceptar");
             }
         }
         async Task  Fn_GetIdsTitulo()
         {
             try
             {
-                //titulo solo 0
                 HttpClient _client = new HttpClient();
                 HttpResponseMessage _respuestaphp;
                 _respuestaphp = await _client.PostAsync(NombresAux.BASE_URL + "queries_titulos.php", null);
@@ -294,8 +263,6 @@ namespace TratoMedi.Views
                 v_opciones.v_estados.Add(new C_EspeTitu() { v_estado = "Otro" });
                 IEnumerable<C_EspeTitu> _temp = v_opciones.v_espe.OrderBy(x => x.v_nombreEspec);
                 v_opciones.v_espe = new ObservableCollection<C_EspeTitu>(_temp);
-                v_opciones.v_espe.Add(new C_EspeTitu() { v_nombreEspec = "Otra" });
-                
                 #region CREA LOS ARREGLOS PARA EL PICKERd
                 v_TitArr = new string[v_opciones.v_titulos.Count];
                 for (int i = 0; i < v_opciones.v_titulos.Count; i++)
@@ -303,63 +270,50 @@ namespace TratoMedi.Views
                     v_TitArr[i] = v_opciones.v_titulos[i].v_nombreTitulo;
                 }
                 PickTitulo.ItemsSource = v_TitArr;
-                //PickTitulo.SelectedIndex =int.Parse( App.v_perfil.v_titulo);
                 v_CiudArr = new string[v_opciones.v_ciudad.Count];
                 for (int i = 0; i < v_opciones.v_ciudad.Count; i++)
                 {
                     v_CiudArr[i] = v_opciones.v_ciudad[i].v_ciudad;
                 }
                 PickCiudad.ItemsSource = v_CiudArr;
-                //PickCiudad.SelectedIndex =int.Parse( App.v_perfil.v_ciudad)-1;
                 v_EstadoArr = new string[v_opciones.v_estados.Count];
                 for (int i = 0; i < v_opciones.v_estados.Count; i++)
                 {
                     v_EstadoArr[i] = v_opciones.v_estados[i].v_estado;
                 }
                 PickEstado.ItemsSource = v_EstadoArr;
-                //PickEstado.SelectedIndex =int.Parse( App.v_perfil.v_estado)-1;
                 #endregion
-
                 App.Fn_CargarDatos();
                 v_espec = v_opciones.v_espe;
                 P_Nom.Text = App.v_perfil.v_Nombre;
                 P_Ape.Text = App.v_perfil.v_Apellido;
                 P_sexoPick.SelectedIndex = App.v_perfil.v_idsexo;
-                //v_espec = new ObservableCollection<C_EspeTitu>(_temp);
                 pickEspe.ItemsSource = v_espec;
                 v_perfil.v_EspecTex = App.v_perfil.v_EspecTex;
                 v_perfil.Fn_Init();//agrega los &
                 App.v_perfil.Fn_Init();//agrega los &
                 v_especId = App.v_perfil.v_Especialidad;
-                
                 int[] _idesp = Fn_GetIdEsp(v_especId, v_opciones.v_espe) ;
                 int _idc = Fn_GetIdCiu(App.v_perfil.v_ciudad, v_opciones.v_ciudad) ;
                 int _idt = Fn_GetIdTitulo(App.v_perfil.v_titulo, v_opciones.v_titulos) ;
                 int _idEst = Fn_GetIdEst(App.v_perfil.v_estado, v_opciones.v_estados) ;
-
                 PickEstado.SelectedIndex =_idEst;
                 PickTitulo.SelectedIndex =_idt;
                 PickCiudad.SelectedIndex = _idc;
-
                 P_Esp.Text = "";
                 for (int i = 0; i < _idesp.Length; i++)//prende soloo unos
                 {
                     if (i == 0)
                     {
-
                         P_Esp.Text += v_espec[_idesp[i]].v_nombreEspec;
                         v_espec[_idesp[i]].v_visible = true;
                     }
                     else
                     {
-                        //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
                         P_Esp.Text += "," + v_espec[_idesp[i]].v_nombreEspec;
                         v_espec[_idesp[i]].v_visible = true;
                     }
                 }
-
-
-
                 if (App.v_perfil.v_cita == "1")
                 {
                     v_cita = true;
@@ -370,17 +324,10 @@ namespace TratoMedi.Views
                 }
                 P_Swi.IsToggled = v_cita;
                 P_Ced.Text = App.v_perfil.v_cedula;
-
                 P_dom.Text = App.v_perfil.v_Domicilio;
-
                 P_Tel.Text = App.v_perfil.v_Tel;
                 P_Corr.Text = App.v_perfil.v_Correo;
                 P_Descrip.Text = App.v_perfil.v_descripcion;
-
-                //v_ciudades = App.v_perfil.v_ciudades;
-                //PickCiudad.ItemsSource = App.v_perfil._ciuArr;
-                //PickCiudad.SelectedIndex = App.v_perfil.Fn_GetCiudades();
-
                 #region EL HORARIO Y CONVERSION PORQUE HICE CAMBIOS 
                 if (string.IsNullOrEmpty(App.v_perfil.v_horario))
                 {
@@ -400,27 +347,21 @@ namespace TratoMedi.Views
         }
         private void Fn_Setespe(object sender, EventArgs e)
         {
-            //IEnumerable<C_EspeTitu> _temp = v_opciones.v_espe.OrderBy(x => x.v_nombreEspec);
-            //v_espec = new ObservableCollection<C_EspeTitu>(_temp);
-
             int[] _idesp = Fn_GetIdEsp(v_especId, v_opciones.v_espe);
             P_Esp.Text = "";
             for (int i = 0; i < _idesp.Length; i++)//prende soloo unos
             {
                 if (i == 0)
                 {
-
                     P_Esp.Text += v_espec[_idesp[i]].v_nombreEspec;
                     v_espec[_idesp[i]].v_visible = true;
                 }
                 else
                 {
-                    //  P_Esp.Text += "&" + v_espec[val-1].v_nombreEspec;
                     P_Esp.Text += "," + v_espec[_idesp[i]].v_nombreEspec;
                     v_espec[_idesp[i]].v_visible = true;
                 }
             }
-
             if (string.IsNullOrEmpty( P_Esp.Text))
             {
                 P_Esp.Text += v_NuevaEsp;
@@ -455,17 +396,6 @@ namespace TratoMedi.Views
             {
                 v_espec[i].v_visible = false;
             }
-            /*int val = -1;
-            string[] _arr = v_especId.Split('&');
-            for(int i=0;i<_arr.Length; i++)//prende soloo unos
-            {
-                if (_arr[i] != "")
-                {
-                    val = int.Parse(_arr[i]);
-                    v_espec[val-1].v_visible = true;
-                }
-            }*/
-
             IEnumerable<C_EspeTitu> _temp = v_opciones.v_espe.OrderBy(x => x.v_nombreEspec);
             v_espec =new ObservableCollection<C_EspeTitu> (_temp);
             int[] _idesp = Fn_GetIdEsp(v_especId, v_opciones.v_espe);
@@ -485,7 +415,6 @@ namespace TratoMedi.Views
                     v_espec[_idesp[i]].v_visible = true;
                 }
             }
-
             pickEspe.ItemsSource = v_espec;
             Fn_Setespe(sender, _arg);
         }
@@ -508,7 +437,6 @@ namespace TratoMedi.Views
                     _str += v_espec[i].v_idespecial+"&";
                 }
             }
-
             v_NuevaEsp = "";
             if(!string.IsNullOrEmpty(P_NueEsp.Text) && !string.IsNullOrWhiteSpace(P_NueEsp.Text))
             {
@@ -563,7 +491,6 @@ namespace TratoMedi.Views
             else
             {
                 v_perfil.v_estado = PickEstado.SelectedItem.ToString();
-                //v_perfil.v_estado = PickEstado.Items[PickEstado.SelectedIndex].ToString();
             }
             return _ret;
         }

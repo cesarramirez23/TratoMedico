@@ -6,11 +6,14 @@ using Foundation;
 using UIKit;
 using Firebase.CloudMessaging;
 using UserNotifications;
-
+using Plugin.DownloadManager;
 
 
 using TratoMedi.Varios;
 using Newtonsoft.Json;
+using Plugin.DownloadManager.Abstractions;
+using System.IO;
+
 namespace TratoMedi.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -90,7 +93,7 @@ namespace TratoMedi.iOS
             //Firebase.InstanceID.InstanceId.TokenRefreshNotification;
             //debugAlert(UIApplication.SharedApplication.IsRegisteredForRemoteNotifications.ToString(),"sdas","Aceptar");
             //https://github.com/codercampos/FirebaseXF-XamarinLatino/blob/master/src/FirebaseXL/FirebaseXL.iOS/AppDelegate.cs        // blog.xamarians.com/blog/2017/9/18/firebase-cloud-messaging
-
+            Downloaded();
             return base.FinishedLaunching(app, options);
         }
         // iOS mayor 9, fire when recieve notification foreground
@@ -151,7 +154,21 @@ namespace TratoMedi.iOS
             alert.Show();
 
         }
-
+        /**
+ * Save the completion-handler we get when the app opens from the background.
+ * This method informs iOS that the app has finished all internal processing and can sleep again.
+ */
+        public override void HandleEventsForBackgroundUrl(UIApplication application, string sessionIdentifier, Action completionHandler)
+        {
+            CrossDownloadManager.BackgroundSessionCompletionHandler = completionHandler;
+        }
+        public void Downloaded()
+        {
+            CrossDownloadManager.Current.PathNameForDownloadedFile = new System.Func<IDownloadFile, string>(file => {
+                string fileName = (new NSUrl(file.Url, false)).LastPathComponent;
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName);
+            });
+        }
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
             Console.Write("infooo" + userInfo.ToString());
@@ -186,6 +203,11 @@ namespace TratoMedi.iOS
                 {
                     _titulo = "Aviso de cita";
                     _mensaje = "Se ha cancelado una cita";
+                }
+                else
+                {
+                    _titulo = string.Empty;
+                    _mensaje = string.Empty;
                 }
                 debugAlert(title, body, "Revisar");
             }

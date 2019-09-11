@@ -3,3 +3,7 @@
 .vs/TratoMedi/v15/.suo
 .vs/TratoMedi/v15/Server/sqlite3/storage.ide
 .vs/TratoMedi/v15/Server/sqlite3/storage.ide-shm
+*.ide
+*.ide
+*.ide-shm
+*.ide-wal

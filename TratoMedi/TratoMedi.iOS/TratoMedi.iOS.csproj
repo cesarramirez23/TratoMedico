@@ -267,4 +267,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\Filtro.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\flecha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Palomita.png" />
+  </ItemGroup>
 </Project>

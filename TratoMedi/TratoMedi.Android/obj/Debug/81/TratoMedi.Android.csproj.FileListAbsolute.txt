@@ -1,5 +1,12 @@
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.pdb
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios.apk
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios-Signed.apk
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.dll
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.pdb
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\MonoAndroid,Version=v8.1.AssemblyAttributes.cs
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\TratoMedi.Android.nuget.stamp
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\TratoMedi.Android.csprojAssemblyReference.cache
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\Xamarin.Firebase.Common.dll.stamp
@@ -11,13 +18,6 @@ C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\o
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\1f4fd9cc.proguard.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\d9f2c52f.proguard.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\XbdMerge\04db0838.proguard.stamp
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.dll
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.Android.pdb
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios.apk
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\com.alsain.teservicios-Signed.apk
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.dll
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\bin\Debug\TratoMedi.pdb
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\TratoMedi.Android.csprojAssemblyReference.cache
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\libraryimports.cache.stamp
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\googsvcsjson\values\goog_svcs_json.xml
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res.flag
@@ -58,6 +58,8 @@ C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\o
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res\drawable\logo_redondogris_512x512.png
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res\drawable\notif_blanco.png
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res\drawable\filtro.png
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res\drawable\flecha.png
+C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\res\drawable\palomita.png
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\R.cs.flag
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\R.txt
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi.Android\obj\Debug\81\uploadflags.txt

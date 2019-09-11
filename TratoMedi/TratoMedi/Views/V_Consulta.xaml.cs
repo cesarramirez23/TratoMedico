@@ -338,13 +338,6 @@ namespace TratoMedi.Views
             v_cita = App.v_citaInd;
             await Task.Delay(100);
         }
-        public async void Fn_SelectNota(object sender, ItemTappedEventArgs _args)
-        {
-            C_NotaMed _selec = _args.Item as C_NotaMed;
-            await Navigation.PushAsync(new V_Medicamentos(_selec));
-            ListaHisto.SelectedItem = null;
-
-        }
         public void Fn_Editar(object sender, EventArgs _args)
         {
             Button button = sender as Button;
@@ -391,8 +384,7 @@ namespace TratoMedi.Views
             _but.IsEnabled = false;
             if(!Fn_MedNull())
             {
-                Medicamentos _nuevo = new Medicamentos();
-                _nuevo.v_nombre = App.Fn_Vacio(N_nombre.Text);
+                Medicamentos _nuevo = new Medicamentos() { v_nombre = App.Fn_Vacio(N_nombre.Text) };
                 //tiene que ser un numero no vacio
                 if (string.IsNullOrEmpty(N_Perio.Text) || string.IsNullOrWhiteSpace(N_Perio.Text))
                 {

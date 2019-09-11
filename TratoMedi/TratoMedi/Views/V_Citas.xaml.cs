@@ -18,22 +18,19 @@ namespace TratoMedi.Views
 	{
         ObservableCollection<Cita> v_citas= new ObservableCollection<Cita>();
         Cita v_CitaNotif = new Cita();
-     
         public V_Citas (bool _tiene, Cita _nuevaCita)
 		{
 			InitializeComponent ();
-
             for (int i = 0; i < 6; i++)
             {
                 v_estados.Add(new Filtro() { v_texto = ((EstadoCita)i).ToString().Replace('_', ' '), v_visible = false });
             }
             stackOver.ItemsSource = v_estados;
-
             if (_tiene)
             {
                 v_CitaNotif = _nuevaCita;
-                Fn_Notif(_nuevaCita);
                 ToolbarItems.Clear();
+                Fn_Notif(_nuevaCita);
             }
         }
         protected override void OnAppearing()
@@ -56,23 +53,20 @@ namespace TratoMedi.Views
         public async void Fn_Notif(Cita _nuevacita)
         {
             await Navigation.PushAsync(new V_NCita(_nuevacita, false));
-
         }
         public async void Fn_SelectCita(object sender,ItemTappedEventArgs _Args)
         {
             Cita _selec = _Args.Item as Cita;
             await Navigation.PushAsync(new V_NCita(_selec,false));
         }
-
         public void Ordenar()
         {
             for (int i = 0; i < v_citas.Count; i++)
             {
                 v_citas[i].Fn_SetValores();
             }
-            IEnumerable<Cita> _temp = v_citas.OrderBy(x => x.v_fechaDate);
+            IEnumerable<Cita> _temp = v_citas.OrderByDescending(x => x.v_fechaDate);
             v_citas = new ObservableCollection<Cita>(_temp);
-
             for (int i = 0; i < v_citas.Count; i++)
             {
                 v_citas[i].Fn_CAmbioCol(i);
@@ -105,7 +99,7 @@ namespace TratoMedi.Views
                     }
                 }
             }
-            catch 
+            catch (Exception _ex)
             {
                 await DisplayAlert("Error", "Se mostrará la ultima información guardada", "Aceptar");
                 if (App.v_citas.Count > 0)
@@ -122,17 +116,14 @@ namespace TratoMedi.Views
                 ListaCita.ItemsSource = v_citas;
             }
         }
-
         private async void ListaCita_Refreshing(object sender, EventArgs e)
         {
             var list = (ListView)sender;
             Fn_Borrar(null, null);
             Fn_GetCitas();
             await Task.Delay(100);
-            //cancelar la actualizacion
             list.IsRefreshing = false;
         }
-
         #region FILTROOO
         /// <summary>
         /// Lista que el usuario elige cada  vez que le pica
@@ -142,7 +133,6 @@ namespace TratoMedi.Views
         /// lista de inidices que eliges
         /// </summary>
         List<int> v_indiceTap = new List<int>();
-
         /// <summary>
         /// textos que se agregan a la lista visible
         /// </summary>
@@ -152,6 +142,8 @@ namespace TratoMedi.Views
         {
             v_visible = !v_visible;
             stackOver.IsVisible = v_visible;
+            ListaCita.IsVisible = !v_visible;
+            //L_Error.IsVisible = !v_visible;
             if(!v_visible)
             {
                 Fn_Borrar(null,null);
@@ -172,6 +164,7 @@ namespace TratoMedi.Views
             }
             v_visible = false;
             stackOver.IsVisible = v_visible;
+            ListaCita.IsVisible = !v_visible;
             if(_tempCita.Count<1)
             {
                 await DisplayAlert("Aviso", "No se encontraron coincidencias", "Aceptar");
@@ -193,12 +186,12 @@ namespace TratoMedi.Views
             _filTexto.Clear();
             v_indiceTap.Clear();
             v_visible =false;
-            stackOver.IsVisible = v_visible;
             ListaCita.ItemsSource = v_citas;
+            stackOver.IsVisible = v_visible;
+            ListaCita.IsVisible = !v_visible;
         }
         void Fn_TapFiltro(object sender, ItemTappedEventArgs _Args)
         {
-            //para mostrar un cambio en la lista la estoy haciendo null y despues volviendo a llenar
             var list = (ListView)sender;
             list.ItemsSource = null;
             var _valor = _Args.Item as Filtro;
@@ -224,7 +217,5 @@ namespace TratoMedi.Views
             list.ItemsSource = v_estados;
         }
         #endregion
-
-      
     }
 }

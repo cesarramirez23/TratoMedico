@@ -12,11 +12,15 @@ namespace TratoMedi.Models
         public string v_id { get; set; }
         [JsonProperty("comision")]
         public float v_monto { get; set; }
-
-        C_PromHijo()
+        [JsonProperty("nivel")]
+        public int v_nivel { get; set; }
+        [JsonProperty("Name")]
+        public string v_Nombre { get; set; }
+        public C_PromHijo()
         {
             v_id = string.Empty;
             v_monto = 0.0f;
+            v_nivel = -1;
         }
     }
 }

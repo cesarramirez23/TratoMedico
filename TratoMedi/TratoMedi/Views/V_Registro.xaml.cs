@@ -133,7 +133,6 @@ namespace TratoMedi.Views
                     {
                         await DisplayAlert("Error", "Error al registrar, Reintentarlo", "Aceptar");
                     }
-
                 //registro_dr   
                 }
                 catch(Exception _ex)

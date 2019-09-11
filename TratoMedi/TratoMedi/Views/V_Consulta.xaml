@@ -22,7 +22,7 @@
     <TabbedPage.Children>
         <ContentPage Title="Información" Icon="tab_about.png">
             <StackLayout>
-                <StackLayout  x:Name="StackPerfiles" Margin="20,0" VerticalOptions="FillAndExpand" >
+                <StackLayout  x:Name="StackPerfiles" Margin="5,0" VerticalOptions="FillAndExpand" >
                     <Grid x:Name="grid">
                         <!--<Grid.RowDefinitions>
                             <RowDefinition Height="80"/>
@@ -82,7 +82,7 @@
                     </ScrollView>
                 </StackLayout>
 
-                <ScrollView Margin="20,0" x:Name="StackNuevo" VerticalOptions="FillAndExpand" IsVisible="False">
+                <ScrollView Margin="5,0" x:Name="StackNuevo" VerticalOptions="FillAndExpand" IsVisible="False">
                     <StackLayout >
                         <Label x:Name="Nue_Error" Text="Datos vacios" Style="{StaticResource AzulMedLbl}" IsVisible="False"/>
                         <Label Text="Medicamento" Style="{StaticResource LblNeg}"></Label>
@@ -156,7 +156,7 @@
         <ContentPage Title="Historial" Icon="tab_Citas.png">
             <StackLayout Margin="10,0">
                 <Label Text="Historial de citas terminadas y medicamentos" Style="{StaticResource AzulMedLbl}"/>
-                <ListView x:Name="ListaHisto" HasUnevenRows="True" ItemTapped="Fn_SelectNota">
+                <ListView x:Name="ListaHisto" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

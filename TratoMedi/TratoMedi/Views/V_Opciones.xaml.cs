@@ -19,7 +19,8 @@ namespace TratoMedi.Views
 
             if(App.v_membresia.Contains("P"))
             {
-                BtnPass.IsVisible = false;
+                StackCodigo.IsVisible = true;
+                lblCodigo.Text = App.v_perfProm.v_codigo;
             }
             //C_fecha.Text = App.v_perfil.v_vig;
             //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
@@ -83,7 +84,15 @@ namespace TratoMedi.Views
                         JObject jsonPer = JObject.Parse(json);
                         StringContent _content = new StringContent(jsonPer.ToString(), Encoding.UTF8, "application/json");
                         HttpClient _client = new HttpClient();
-                        string _url = NombresAux.BASE_URL + "password_change_dr.php";
+                        string _url = "";
+                        if(App.v_membresia.Contains("P"))
+                        {
+                            _url = NombresAux.BASE_URL + "password_change_promotor.php";
+                        }
+                        else
+                        {
+                            _url = NombresAux.BASE_URL + "password_change_dr.php";
+                        }
                         try
                         {
                             HttpResponseMessage _respuestphp = await _client.PostAsync(_url, _content);

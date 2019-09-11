@@ -26,16 +26,13 @@ namespace TratoMedi
         /// </summary>
         public static string v_membresia = "";
         public static string v_log = "";
-
         public static C_PerfProm v_perfProm;
-
         #region COSAS PROPIAS DEL DOCTOR 
         public static C_Medico v_perfil;
         public static ObservableCollection<Cita> v_citas;
         //public static string v_IdCalendar ="";
         public static c_RegOpciones v_opcion = new c_RegOpciones();
         #endregion
-
         #region PARA LA CONSULTA
         public static Cita v_citaInd;
         public static C_PerfilGen v_pergen;
@@ -47,7 +44,6 @@ namespace TratoMedi
         public static string[] v_paciente = { "","",""};
         public static ObservableCollection<C_NotaMed> v_notasMed = new ObservableCollection<C_NotaMed>();
         #endregion
-
         #region Estados de la app
         public App()
         {
@@ -87,7 +83,7 @@ namespace TratoMedi
                 else if(v_log=="2")//promotor logeado
                 {
                     Fn_CargarDatos();
-                    MainPage = new V_MasterMenu(2, "Bienvenido ");//+v_perfProm.v_Nombre);
+                    MainPage = new V_MasterMenu(2, "Bienvenido "+v_perfProm.v_Nombre);
                 }
                 else
                 {
@@ -105,7 +101,6 @@ namespace TratoMedi
             }
         }    
         #endregion
-
         #region Cargar Datos
         async void Fn_CrearKey()
         {
@@ -359,7 +354,6 @@ namespace TratoMedi
             await Task.Delay(100);
         }
         #endregion
-       
         #region Guardar Datos
         /// <summary>
         /// guardaa 1 si esta en consulta
@@ -529,7 +523,7 @@ namespace TratoMedi
             }
         }
         public static async void Fn_CerrarSesion()
-        {
+        {            
             v_membresia = "";
             v_log = "0";
             v_citaInd = new Cita();
@@ -596,7 +590,6 @@ namespace TratoMedi
             }
             return _ret;
         }
-
         #region Para las Notificaciones
         /// <summary>
         /// la cita desde la notif

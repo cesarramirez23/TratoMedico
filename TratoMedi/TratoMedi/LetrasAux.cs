@@ -50,7 +50,8 @@ namespace TratoMedi
         public const string v_Opciones = "v_Opciones";  
         #endregion
 
-        public const string BASE_URL = "https://tratoespecial.com/";  
+        public const string BASE_URL = "https://www.tratoespecial.com/";  
+        //public const string BASE_URL = "http://192.168.0.126/trato_especial/";  
 
 
 

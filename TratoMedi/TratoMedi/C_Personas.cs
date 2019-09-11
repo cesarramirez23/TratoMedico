@@ -357,28 +357,46 @@ namespace TratoMedi.Personas
         public void Fn_Init()
         {
             v_Especialidad = string.Empty;
-            for(int i=0; i<v_EspecTex.Count; i++)
+            if (v_EspecTex == null)
             {
-                if (i == 0)
+                v_Especialidad = "";
+            }
+            else
+            {
+                for(int i=0; i<v_EspecTex.Count; i++)
                 {
-                    v_Especialidad += new string(v_EspecTex[i].ToCharArray());
-                }
-                else
-                {
-                    v_Especialidad += "&" + new string(v_EspecTex[i].ToCharArray());
+                    if (i == 0)
+                    {
+                        v_Especialidad += new string(v_EspecTex[i].ToCharArray());
+                    }
+                    else
+                    {
+                        v_Especialidad += "&" + new string(v_EspecTex[i].ToCharArray());
+                    }
                 }
             }
         }
         public void Fn_SetEspec(string _espe)
         {
-            v_EspecTex.Clear();
-            string[] _st = _espe.Split(',');           
-            for(int i=0; i<_st.Length; i++)
+            if (v_EspecTex != null)
+                v_EspecTex.Clear();
+            else
+                v_EspecTex = new List<string>();
+
+            if(! string.IsNullOrEmpty(_espe)  ||  !string.IsNullOrWhiteSpace(_espe))
             {
-                if(!string.IsNullOrEmpty( _st[i])|| !string.IsNullOrWhiteSpace(_st[i]) )
+                string[] _st = _espe.Split(',');           
+                for(int i=0; i<_st.Length; i++)
                 {
-                    v_EspecTex.Add(_st[i]);
+                    if(!string.IsNullOrEmpty( _st[i])|| !string.IsNullOrWhiteSpace(_st[i]) )
+                    {
+                        v_EspecTex.Add(_st[i]);
+                    }
                 }
+            }
+            else
+            {
+                v_EspecTex = new List<string>();
             }
         }
         public string FN_GetInfo()

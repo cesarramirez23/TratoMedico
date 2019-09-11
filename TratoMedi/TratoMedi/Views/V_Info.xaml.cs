@@ -103,7 +103,7 @@ namespace TratoMedi.Views
 
                             }
                         }
-                        catch
+                        catch(Exception _ex)
                         {
                             if (App.v_notasMed.Count > 0)
                             {
@@ -112,19 +112,19 @@ namespace TratoMedi.Views
                             App.Fn_GuardarDatos(new string[] { "0", "", "0" });
                         }
                     }
-                    catch
+                    catch (Exception _ex)
                     {
 
                         App.Fn_GuardarDatos(new string[] { "0", "", "0" });
                     }
                 }
-                catch
+                catch (Exception _ex)
                 {
 
                     App.Fn_GuardarDatos(new string[] { "0", "", "0" });
                 }//primer intento de buscar info
             }
-            catch
+            catch (Exception _ex)
             {
 
             }
@@ -176,7 +176,7 @@ namespace TratoMedi.Views
                     }
                 }
             }
-            catch
+            catch (Exception _ex)
             {
                 await DisplayAlert( "Error", "No se puede crear nueva cita en este momento, intentalo más tarde", "Aceptar");
                 _buton.IsEnabled = true;

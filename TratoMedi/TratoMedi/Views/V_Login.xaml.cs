@@ -39,22 +39,18 @@ namespace TratoMedi.Views
                 {
                     Mensajes_over.Text = " Comprobando informacion\n";
                     C_Login _login = new C_Login(L_usu.Text, L_pass.Text);
-                    //crear el json
                     string _jsonLog = JsonConvert.SerializeObject(_login, Formatting.Indented);
                     //mostrar la pantalla con mensajes
                     //Mensajes_over.Text += _jsonLog;
-                    //crear el cliente
                     HttpClient _client = new HttpClient();
                     string _DirEnviar = "";
                     HttpResponseMessage _respuestaphp;
                     string _respuesta;
                     StringContent _content;
-
                     if (L_usu.Text.Contains("P"))
                     {
                         _DirEnviar = NombresAux.BASE_URL + "login_promotor.php";
                         _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-                        //mandar el json con el post
                         try
                         {
                             _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
@@ -66,33 +62,24 @@ namespace TratoMedi.Views
                             }
                             else if (_respuesta == "1" || _respuesta == "2")
                             {
-                                App.v_log = "2";
-                                App.v_membresia = L_usu.Text;
-                                C_PerfProm _prom = new C_PerfProm() ;
-                                App.Fn_GuardarDatos(_prom);
-                                Application.Current.MainPage = new V_MasterMenu(2, "Bienvenido ");//+ App.v_perfProm.v_Nombre);
-
-
-                                //_DirEnviar = NombresAux.BASE_URL + "query_perfil_promotor.php";
-                                //_content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
-                                //try
-                                //{
-                                //    //mandar el json con el post
-                                //    _respuestaphp = await _client.PostAsync(_DirEnviar, _content);
-                                //    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
-                                //    _prom = JsonConvert.DeserializeObject<C_PerfProm>(_respuesta);
-                                //    ////cargar la nueva pagina de perfil
-                                //    App.v_log = "2";
-                                //    App.v_membresia = L_usu.Text;
-                                //    //_nuePer.Fn_SetEspecTitulo();
-                                //    App.Fn_GuardarDatos(_prom);
-                                //    Application.Current.MainPage = new V_MasterMenu(2, "Bienvenido " + App.v_perfProm.v_Nombre);
-                                //}
-                                //catch (Exception ex)
-                                //{
-                                //    Mensajes_over.Text = "Error de conexion";
-                                //    Reinten.IsVisible = true;
-                                //}
+                                _content = new StringContent(_jsonLog, Encoding.UTF8, "application/json");
+                                try
+                                {
+                                    string _url = NombresAux.BASE_URL + "perfil_promotor.php";
+                                    _respuestaphp = await _client.PostAsync(_url, _content);
+                                    _respuesta = await _respuestaphp.Content.ReadAsStringAsync();
+                                    C_PerfProm v_perfil = JsonConvert.DeserializeObject<C_PerfProm>(_respuesta);
+                                    v_perfil.Fn_Init();
+                                    App.v_log = "2";
+                                    App.v_membresia = L_usu.Text;
+                                    App.Fn_GuardarDatos(v_perfil);
+                                    Application.Current.MainPage = new V_MasterMenu(2, "Bienvenido "+ v_perfil.v_Nombre);
+                                }
+                                catch (Exception _ex)
+                                {
+                                    Mensajes_over.Text = "Error de conexion";
+                                    Reinten.IsVisible = true;
+                                }
                             }
                             else
                             {
@@ -191,10 +178,7 @@ namespace TratoMedi.Views
                             Reinten.IsVisible = true;
                         }
                     }
-                    else
-                    {
-
-                    }
+                    else{}
                 }
                 else
                 {
@@ -275,8 +259,7 @@ namespace TratoMedi.Views
                 await DisplayAlert("Error", "Error en Membresia", "Reintentar");
             }
             else
-            {
-                                                //4 numeros  1 letra  guion   4 numeros o mas
+            {//4 numeros  1 letra  guion   4 numeros o mas
                 Regex MembreRegex = new Regex(@"^([0-9]){4}([A-Z]){1}-([0-9]){4}$");
                 if(MembreRegex.IsMatch(PassMembre.Text))
                 {

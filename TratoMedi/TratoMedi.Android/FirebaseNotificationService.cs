@@ -77,8 +77,6 @@ namespace TratoMedi.Droid
             //954999819863          1538664774942      2419200
             //   message.From+"   "+ message.SentTime+"   " +message.To+"   "+message.Ttl);
 
-
-
             C_Notificacion _minotif = new C_Notificacion() ;
             if (message.GetNotification() == null)//LLEGA DESDE EL PHP
             {
@@ -117,7 +115,6 @@ namespace TratoMedi.Droid
                     _mensaje = "Se ha cancelado una cita";
                 }
                 SendNotification(_mensaje, _titulo);
-
             }
             else//es una nootif normal, solo mensaje y titulo
             {

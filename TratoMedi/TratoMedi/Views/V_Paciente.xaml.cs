@@ -20,11 +20,11 @@ namespace TratoMedi.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)] 
 	public partial class V_Paciente : ContentPage
 	{
-        Cita v_cita;
+        //Cita v_cita;
         Perf v_Info = new Perf();
-        ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
-        ObservableCollection<C_NotaMed> v_histo = new ObservableCollection<C_NotaMed>();
-        int v_editando = -1;
+        //ObservableCollection<Medicamentos> v_medicamentos = new ObservableCollection<Medicamentos>();
+        //ObservableCollection<C_NotaMed> v_histo = new ObservableCollection<C_NotaMed>();
+        //int v_editando = -1;
 
         protected  override void OnAppearing()
         {
@@ -143,13 +143,13 @@ namespace TratoMedi.Views
             //}
 
         }
-        private async void Fn_Scan(ZXing.Result result)
+        private void Fn_Scan(ZXing.Result result)
         {
             //deja de escanear
             //Scanner.IsScanning = false;
             //crear el cliente
             HttpClient _client = new HttpClient();
-            string _DirEnviar = "";
+            //string _DirEnviar = "";
             string _decrypt = NombresAux.DecryptString(result.Text, "PassCesar123TE");
             Perf _info = new Perf();
 

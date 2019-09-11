@@ -28,6 +28,5 @@ namespace TratoMedi.Droid
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
             App.Fn_SetToken(refreshedToken);
         }
-
     }
 }
