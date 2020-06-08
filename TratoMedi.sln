@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TratoMedi.Android", "TratoMedi\TratoMedi.Android\TratoMedi.Android.csproj", "{C12EF87B-0618-4E41-A2F3-FAB91A5A8CC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TratoMedi.iOS", "TratoMedi\TratoMedi.iOS\TratoMedi.iOS.csproj", "{85B9C11F-A0FD-41C8-97B9-93579057E57A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TratoMedi", "TratoMedi\TratoMedi\TratoMedi.csproj", "{C55C2428-D540-4224-B78F-0FFF2F0CB4E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TratoMedi", "TratoMedi\TratoMedi\TratoMedi.csproj", "{C55C2428-D540-4224-B78F-0FFF2F0CB4E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,7 +38,6 @@ Global
 		{C12EF87B-0618-4E41-A2F3-FAB91A5A8CC3}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{C12EF87B-0618-4E41-A2F3-FAB91A5A8CC3}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{85B9C11F-A0FD-41C8-97B9-93579057E57A}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
-		{85B9C11F-A0FD-41C8-97B9-93579057E57A}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{85B9C11F-A0FD-41C8-97B9-93579057E57A}.Debug|Any CPU.Deploy.0 = Debug|iPhoneSimulator
 		{85B9C11F-A0FD-41C8-97B9-93579057E57A}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{85B9C11F-A0FD-41C8-97B9-93579057E57A}.Debug|iPhone.Build.0 = Debug|iPhone

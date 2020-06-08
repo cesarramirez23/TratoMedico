@@ -5,61 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CClarke.Plugin.Calendars" Version="1.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
-    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
-    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />  
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />  
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\V_Citas.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Consulta.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Info.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Login.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_MasterMenu.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Medicamentos.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_NCita.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Opciones.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Paciente.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Perfil.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\v_PerfilProm.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\V_Registro.xaml">
+    <EmbeddedResource Update="Views\Inicio.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\V_MainPage.xaml.cs">
-      <DependentUpon>V_MainPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 </Project>

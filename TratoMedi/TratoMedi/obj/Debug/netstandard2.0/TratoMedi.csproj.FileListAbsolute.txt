@@ -80,3 +80,14 @@ C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.pdb
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
 C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\Inicio.xaml.g.cs
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfoInputs.cache
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfo.cs
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.deps.json
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.dll
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.pdb
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.dll
+C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.pdb

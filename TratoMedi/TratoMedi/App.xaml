@@ -8,73 +8,12 @@
              //xmlns:view="clr-namespace:TratoMedi.Views"
             -->
             <!--Global Styles              rgb 40,150,209 -->
+            <Color x:Key="AzulPrincipal">#2796ce</Color>
             <Color x:Key="NavigationPrimary">#2896D1</Color>
             <Color x:Key="LetrCol" >#000000</Color>
             <Color x:Key="Lightgray">#FFD3D3D3</Color>
             <Color x:Key="White" >#FFFFFF</Color>
 
-            <Style TargetType="ScrollView">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-            <Style TargetType="StackLayout">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-            <Style TargetType="Frame">
-                <Setter  Property="BackgroundColor" Value="White"/>
-                <Setter Property="Margin" Value="20,6"/>
-                <Setter Property="CornerRadius" Value="4"/>
-                <Setter Property="BorderColor" Value="{StaticResource Lightgray}"/>
-            </Style>
-            <Style TargetType="ListView">
-                <Setter Property="SeparatorVisibility" Value="Default"/>
-                <Setter Property="SeparatorColor" Value="{StaticResource NavigationPrimary}"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-            <Style TargetType="ContentPage">
-                <Setter  Property="BackgroundColor" Value="{StaticResource White}"/>
-            </Style>
-            <Style TargetType="TabbedPage">
-                <Setter  Property="BackgroundColor" Value="{StaticResource White}"/>
-            </Style>
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
-            <Style x:Key="Buton" TargetType="Button">
-                <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource NavigationPrimary}"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BorderRadius" Value="10"/>
-                <Setter Property="BorderColor" Value="{StaticResource Lightgray}"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="30,0"/>
-            </Style>
-            <Style x:Key="Buton2" TargetType="Button">
-                <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource NavigationPrimary}"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BorderRadius" Value="10"/>
-                <Setter Property="BorderColor" Value="{StaticResource Lightgray}"/>
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="2,0"/>
-            </Style>
-            <Style x:Key="StyEntry" TargetType="Entry">
-                <Setter Property="TextColor" Value="Gray"/>
-                <Setter Property="PlaceholderColor" Value="Gray"></Setter>
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-            </Style>
-            <Style x:Key="AzulMedLbl" TargetType="Label">
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="TextColor" Value="{StaticResource NavigationPrimary}"/>
-            </Style>
-            <Style x:Key="StyLbl" TargetType="Label">
-                <Setter Property="TextColor" Value="Gray"/>
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

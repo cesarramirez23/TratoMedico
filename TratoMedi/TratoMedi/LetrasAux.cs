@@ -10,8 +10,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
 using System.Net.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace TratoMedi
 {
