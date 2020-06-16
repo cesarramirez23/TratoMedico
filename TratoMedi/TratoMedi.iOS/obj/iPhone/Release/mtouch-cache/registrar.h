@@ -1,26 +1,21 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #pragma clang diagnostic ignored "-Wtypedef-redefinition"
 #pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
 #include <stdarg.h>
 #include <objc/objc.h>
 #include <objc/runtime.h>
 #include <objc/message.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <Speech/Speech.h>
-#import <UserNotifications/UserNotifications.h>
-#import <Photos/Photos.h>
-#import <MediaPlayer/MediaPlayer.h>
 #import <GLKit/GLKit.h>
-#import <EventKit/EventKit.h>
 #import <CoreSpotlight/CoreSpotlight.h>
-#import <CoreMotion/CoreMotion.h>
-#import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
-#import <AVFoundation/AVFoundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
 @class UIApplicationDelegate;
+@class Xamarin_Forms_Platform_iOS_FormsApplicationDelegate;
+@class AppDelegate;
 @class GLKViewDelegate;
 @class UIKit_UIControlEventProxy;
 @class UIActionSheetDelegate;
@@ -38,12 +33,7 @@
 @class Foundation_NSAsyncDispatcher;
 @class __MonoMac_NSAsyncActionDispatcher;
 @class __MonoMac_NSAsyncSynchronizationContextDispatcher;
-@class AVCaptureMetadataOutputObjectsDelegate;
-@class AVCaptureVideoDataOutputSampleBufferDelegate;
-@class Xamarin_Forms_Platform_iOS_FormsApplicationDelegate;
-@class AppDelegate;
 @class GLKit_GLKView__GLKViewDelegate;
-@class CoreLocation_CLLocationManager__CLLocationManagerDelegate;
 @class UIKit_UIBarButtonItem_Callback;
 @class UIKit_UIView_UIViewAppearance;
 @class UIKit_UIControl_UIControlAppearance;
@@ -137,30 +127,36 @@
 @class Xamarin_Forms_Platform_iOS_NavigationMenuRenderer_DataSource;
 @class Xamarin_Forms_Platform_iOS_NavigationRenderer_SecondaryToolbar;
 @class Xamarin_Forms_Platform_iOS_NavigationRenderer_ParentingViewController;
-@class OpenTK_Platform_iPhoneOS_CADisplayLinkTimeSource;
-@class OpenTK_Platform_iPhoneOS_iPhoneOSGameView;
-@class FIRMessagingMessageInfo;
-@protocol FIRMessagingDelegate;
-@class ApiDefinition__Firebase_CloudMessaging_MessagingDelegate;
-@class FIRMessagingRemoteMessage;
-@class FIRMessaging;
-@class FIRApp;
-@class FIRAnalyticsConfiguration;
-@class FIRConfiguration;
-@class FIROptions;
-@class FIRInstanceID;
-@class ZXing_Net_Mobile_Forms_iOS_ZXingScannerViewRenderer;
-@class ZXing_Net_Mobile_Forms_iOS_ZXingBarcodeImageViewRenderer;
-@class ZXing_Mobile_CaptureDelegate;
-@class ZXing_Mobile_AVCaptureScannerViewController;
-@class ZXing_Mobile_ZXingScannerViewController;
-@class ZXing_Mobile_AVCaptureScannerView;
-@class ZXing_Mobile_ZXingDefaultOverlayView;
-@class ZXing_Mobile_ZXingScannerView_OutputRecorder;
-@class ZXing_Mobile_ZXingScannerView;
 
 @interface UIApplicationDelegate : NSObject<UIApplicationDelegate> {
 }
+	-(id) init;
+@end
+
+@interface Xamarin_Forms_Platform_iOS_FormsApplicationDelegate : NSObject<UIApplicationDelegate> {
+}
+	-(void) release;
+	-(id) retain;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
+	-(UIWindow *) window;
+	-(void) setWindow:(UIWindow *)p0;
+	-(BOOL) application:(UIApplication *)p0 continueUserActivity:(NSUserActivity *)p1 restorationHandler:(void (^)(id *))p2;
+	-(void) applicationDidEnterBackground:(UIApplication *)p0;
+	-(BOOL) application:(UIApplication *)p0 didFinishLaunchingWithOptions:(NSDictionary *)p1;
+	-(void) applicationDidBecomeActive:(UIApplication *)p0;
+	-(void) applicationWillResignActive:(UIApplication *)p0;
+	-(void) application:(UIApplication *)p0 didUpdateUserActivity:(NSUserActivity *)p1;
+	-(void) applicationWillEnterForeground:(UIApplication *)p0;
+	-(BOOL) application:(UIApplication *)p0 willFinishLaunchingWithOptions:(NSDictionary *)p1;
+	-(void) applicationWillTerminate:(UIApplication *)p0;
+	-(BOOL) conformsToProtocol:(void *)p0;
+	-(id) init;
+@end
+
+@interface AppDelegate : Xamarin_Forms_Platform_iOS_FormsApplicationDelegate<UIApplicationDelegate> {
+}
+	-(BOOL) application:(UIApplication *)p0 didFinishLaunchingWithOptions:(NSDictionary *)p1;
 	-(id) init;
 @end
 
@@ -204,53 +200,12 @@
 	-(id) init;
 @end
 
-@interface AVCaptureMetadataOutputObjectsDelegate : NSObject<AVCaptureMetadataOutputObjectsDelegate> {
-}
-	-(id) init;
-@end
-
-@interface AVCaptureVideoDataOutputSampleBufferDelegate : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate> {
-}
-	-(id) init;
-@end
-
-@interface Xamarin_Forms_Platform_iOS_FormsApplicationDelegate : NSObject<UIApplicationDelegate> {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(UIWindow *) window;
-	-(void) setWindow:(UIWindow *)p0;
-	-(BOOL) application:(UIApplication *)p0 continueUserActivity:(NSUserActivity *)p1 restorationHandler:(id)p2;
-	-(void) applicationDidEnterBackground:(UIApplication *)p0;
-	-(BOOL) application:(UIApplication *)p0 didFinishLaunchingWithOptions:(NSDictionary *)p1;
-	-(void) applicationDidBecomeActive:(UIApplication *)p0;
-	-(void) applicationWillResignActive:(UIApplication *)p0;
-	-(void) application:(UIApplication *)p0 didUpdateUserActivity:(NSUserActivity *)p1;
-	-(void) applicationWillEnterForeground:(UIApplication *)p0;
-	-(BOOL) application:(UIApplication *)p0 willFinishLaunchingWithOptions:(NSDictionary *)p1;
-	-(void) applicationWillTerminate:(UIApplication *)p0;
-	-(BOOL) conformsToProtocol:(void *)p0;
-	-(id) init;
-@end
-
-@interface AppDelegate : Xamarin_Forms_Platform_iOS_FormsApplicationDelegate<UIApplicationDelegate> {
-}
-	-(BOOL) application:(UIApplication *)p0 didFinishLaunchingWithOptions:(NSDictionary *)p1;
-	-(void) userNotificationCenter:(UNUserNotificationCenter *)p0 willPresentNotification:(UNNotification *)p1 withCompletionHandler:(id)p2;
-	-(void) application:(UIApplication *)p0 didReceiveRemoteNotification:(NSDictionary *)p1;
-	-(void) application:(UIApplication *)p0 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)p1;
-	-(void) application:(UIApplication *)p0 didFailToRegisterForRemoteNotificationsWithError:(NSError *)p1;
-	-(id) init;
-@end
-
 @interface UIKit_UIView_UIViewAppearance : NSObject {
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(UIColor *) tintColor;
 	-(BOOL) conformsToProtocol:(void *)p0;
 @end
@@ -270,8 +225,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(BOOL) conformsToProtocol:(void *)p0;
 	-(id) init;
 @end
@@ -292,8 +247,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(UIColor *) backgroundColor;
 	-(void) setBackgroundColor:(UIColor *)p0;
 	-(CGSize) sizeThatFits:(CGSize)p0;
@@ -318,8 +273,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(BOOL) conformsToProtocol:(void *)p0;
 @end
 
@@ -355,8 +310,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(BOOL) isHidden;
 	-(void) setHidden:(BOOL)p0;
 	-(void) beginRefreshing;
@@ -373,8 +328,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) layoutSubviews;
 	-(BOOL) conformsToProtocol:(void *)p0;
 	-(id) init;
@@ -400,8 +355,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(UITableViewCell *) tableView:(UITableView *)p0 cellForRowAtIndexPath:(NSIndexPath *)p1;
 	-(CGFloat) tableView:(UITableView *)p0 heightForHeaderInSection:(NSInteger)p1;
 	-(UIView *) tableView:(UITableView *)p0 viewForHeaderInSection:(NSInteger)p1;
@@ -441,8 +396,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) didRotateFromInterfaceOrientation:(NSInteger)p0;
 	-(void) viewDidAppear:(BOOL)p0;
 	-(void) viewDidDisappear:(BOOL)p0;
@@ -484,8 +439,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) didRotateFromInterfaceOrientation:(NSInteger)p0;
 	-(NSArray *) popToRootViewControllerAnimated:(BOOL)p0;
 	-(UIViewController *) popViewControllerAnimated:(BOOL)p0;
@@ -503,8 +458,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) viewSafeAreaInsetsDidChange;
 	-(void) viewDidAppear:(BOOL)p0;
 	-(void) viewDidDisappear:(BOOL)p0;
@@ -520,8 +475,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) viewDidAppear:(BOOL)p0;
 	-(void) viewDidDisappear:(BOOL)p0;
 	-(void) viewDidLayoutSubviews;
@@ -547,8 +502,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(UIViewController *) selectedViewController;
 	-(void) setSelectedViewController:(UIViewController *)p0;
 	-(void) didRotateFromInterfaceOrientation:(NSInteger)p0;
@@ -564,8 +519,8 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) viewDidAppear:(BOOL)p0;
 	-(void) viewDidDisappear:(BOOL)p0;
 	-(void) viewDidLayoutSubviews;
@@ -587,218 +542,9 @@
 }
 	-(void) release;
 	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
+	-(uint32_t) xamarinGetGCHandle;
+	-(void) xamarinSetGCHandle: (uint32_t) gchandle;
 	-(void) layoutSubviews;
-	-(BOOL) conformsToProtocol:(void *)p0;
-	-(id) init;
-@end
-
-@interface OpenTK_Platform_iPhoneOS_iPhoneOSGameView : UIView {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	+(Class) layerClass;
-	-(void) layoutSubviews;
-	-(void) willMoveToWindow:(UIWindow *)p0;
-	-(BOOL) conformsToProtocol:(void *)p0;
-	-(id) initWithCoder:(NSCoder *)p0;
-	-(id) initWithFrame:(CGRect)p0;
-@end
-
-@interface FIRMessagingMessageInfo : NSObject {
-}
-	-(NSInteger) status;
-	-(id) init;
-@end
-
-@protocol FIRMessagingDelegate
-	@optional -(void) messaging:(id)p0 didReceiveRegistrationToken:(NSString *)p1;
-	@optional -(void) messaging:(id)p0 didReceiveMessage:(id)p1;
-@end
-
-@interface ApiDefinition__Firebase_CloudMessaging_MessagingDelegate : NSObject<FIRMessagingDelegate> {
-}
-	-(void) messaging:(id)p0 didReceiveMessage:(id)p1;
-	-(void) messaging:(id)p0 didReceiveRegistrationToken:(NSString *)p1;
-	-(id) init;
-@end
-
-@interface FIRMessagingRemoteMessage : NSObject {
-}
-	-(NSDictionary *) appData;
-@end
-
-@interface FIRMessaging : NSObject {
-}
-	-(id) appDidReceiveMessage:(NSDictionary *)p0;
-	-(void) connectWithCompletion:(id)p0;
-	-(void) deleteFCMTokenForSenderID:(NSString *)p0 completion:(id)p1;
-	-(void) disconnect;
-	-(void) retrieveFCMTokenForSenderID:(NSString *)p0 completion:(id)p1;
-	-(void) sendMessage:(NSDictionary *)p0 to:(NSString *)p1 withMessageID:(NSString *)p2 timeToLive:(long long)p3;
-	-(void) setAPNSToken:(NSData *)p0 type:(NSInteger)p1;
-	-(void) subscribeToTopic:(NSString *)p0;
-	-(void) subscribeToTopic:(NSString *)p0 completion:(id)p1;
-	-(void) unsubscribeFromTopic:(NSString *)p0;
-	-(void) unsubscribeFromTopic:(NSString *)p0 completion:(id)p1;
-	-(NSData *) APNSToken;
-	-(void) setAPNSToken:(NSData *)p0;
-	-(BOOL) isAutoInitEnabled;
-	-(void) setAutoInitEnabled:(BOOL)p0;
-	-(id) delegate;
-	-(void) setDelegate:(id)p0;
-	-(NSString *) FCMToken;
-	-(BOOL) isDirectChannelEstablished;
-	-(BOOL) shouldEstablishDirectChannel;
-	-(void) setShouldEstablishDirectChannel:(BOOL)p0;
-@end
-
-@interface FIRApp : NSObject {
-}
-	-(void) deleteApp:(id)p0;
-	-(BOOL) isDataCollectionDefaultEnabled;
-	-(void) setDataCollectionDefaultEnabled:(BOOL)p0;
-	-(NSString *) name;
-	-(id) options;
-@end
-
-@interface FIRAnalyticsConfiguration : NSObject {
-}
-	-(void) setAnalyticsCollectionEnabled:(BOOL)p0;
-	-(void) setMinimumSessionInterval:(double)p0;
-	-(void) setSessionTimeoutInterval:(double)p0;
-@end
-
-@interface FIRConfiguration : NSObject {
-}
-	-(void) setLoggerLevel:(NSInteger)p0;
-	-(id) analyticsConfiguration;
-	-(void) setAnalyticsConfiguration:(id)p0;
-@end
-
-@interface FIROptions : NSObject {
-}
-	-(NSObject *) copyWithZone:(id)p0;
-	-(NSString *) androidClientID;
-	-(void) setAndroidClientID:(NSString *)p0;
-	-(NSString *) APIKey;
-	-(void) setAPIKey:(NSString *)p0;
-	-(NSString *) bundleID;
-	-(void) setBundleID:(NSString *)p0;
-	-(NSString *) clientID;
-	-(void) setClientID:(NSString *)p0;
-	-(NSString *) databaseURL;
-	-(void) setDatabaseURL:(NSString *)p0;
-	-(NSString *) deepLinkURLScheme;
-	-(void) setDeepLinkURLScheme:(NSString *)p0;
-	-(NSString *) GCMSenderID;
-	-(void) setGCMSenderID:(NSString *)p0;
-	-(NSString *) googleAppID;
-	-(void) setGoogleAppID:(NSString *)p0;
-	-(NSString *) projectID;
-	-(void) setProjectID:(NSString *)p0;
-	-(NSString *) storageBucket;
-	-(void) setStorageBucket:(NSString *)p0;
-	-(NSString *) trackingID;
-	-(void) setTrackingID:(NSString *)p0;
-	-(id) initWithContentsOfFile:(NSString *)p0;
-	-(id) initWithGoogleAppID:(NSString *)p0 GCMSenderID:(NSString *)p1;
-@end
-
-@interface FIRInstanceID : NSObject {
-}
-	-(void) deleteIDWithHandler:(id)p0;
-	-(void) deleteTokenWithAuthorizedEntity:(NSString *)p0 scope:(NSString *)p1 handler:(id)p2;
-	-(void) getIDWithHandler:(id)p0;
-	-(void) tokenWithAuthorizedEntity:(NSString *)p0 scope:(NSString *)p1 options:(NSDictionary *)p2 handler:(id)p3;
-	-(NSString *) token;
-@end
-
-@interface ZXing_Net_Mobile_Forms_iOS_ZXingScannerViewRenderer : Xamarin_Forms_Platform_iOS_ViewRenderer_2 {
-}
-	-(void) touchesEnded:(NSSet *)p0 withEvent:(UIEvent *)p1;
-	-(void) layoutSubviews;
-	-(id) init;
-@end
-
-@interface ZXing_Net_Mobile_Forms_iOS_ZXingBarcodeImageViewRenderer : Xamarin_Forms_Platform_iOS_ViewRenderer_2 {
-}
-	-(id) init;
-@end
-
-@interface ZXing_Mobile_AVCaptureScannerViewController : UIViewController {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(void) viewDidLoad;
-	-(void) viewDidAppear:(BOOL)p0;
-	-(void) viewDidDisappear:(BOOL)p0;
-	-(void) viewWillDisappear:(BOOL)p0;
-	-(void) didRotateFromInterfaceOrientation:(NSInteger)p0;
-	-(BOOL) shouldAutorotate;
-	-(NSUInteger) supportedInterfaceOrientations;
-	-(BOOL) conformsToProtocol:(void *)p0;
-@end
-
-@interface ZXing_Mobile_ZXingScannerViewController : UIViewController {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(void) viewDidLoad;
-	-(void) viewDidAppear:(BOOL)p0;
-	-(void) viewDidDisappear:(BOOL)p0;
-	-(void) viewWillDisappear:(BOOL)p0;
-	-(void) didRotateFromInterfaceOrientation:(NSInteger)p0;
-	-(BOOL) shouldAutorotate;
-	-(NSUInteger) supportedInterfaceOrientations;
-	-(BOOL) shouldAutorotateToInterfaceOrientation:(NSInteger)p0;
-	-(BOOL) conformsToProtocol:(void *)p0;
-@end
-
-@interface ZXing_Mobile_AVCaptureScannerView : UIView {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(BOOL) conformsToProtocol:(void *)p0;
-	-(id) init;
-@end
-
-@interface ZXing_Mobile_ZXingDefaultOverlayView : UIView {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(void) layoutSubviews;
-	-(BOOL) conformsToProtocol:(void *)p0;
-@end
-
-@interface ZXing_Mobile_ZXingScannerView_OutputRecorder : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate> {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
-	-(void) captureOutput:(AVCaptureOutput *)p0 didDropSampleBuffer:(id)p1 fromConnection:(AVCaptureConnection *)p2;
-	-(void) captureOutput:(AVCaptureOutput *)p0 didOutputSampleBuffer:(id)p1 fromConnection:(AVCaptureConnection *)p2;
-	-(BOOL) conformsToProtocol:(void *)p0;
-@end
-
-@interface ZXing_Mobile_ZXingScannerView : UIView {
-}
-	-(void) release;
-	-(id) retain;
-	-(int) xamarinGetGCHandle;
-	-(void) xamarinSetGCHandle: (int) gchandle;
 	-(BOOL) conformsToProtocol:(void *)p0;
 	-(id) init;
 @end

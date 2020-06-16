@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{85B9C11F-A0FD-41C8-97B9-93579057E57A}|Default">
+  <MonoDevelop.Ide.ItemProperties.TratoMedi.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.1CC2FB97-E8F1-4BA4-B3EC-8771A59BADBD" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="TratoMedi/TratoMedi.iOS/Info.plist" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TratoMedi" expanded="True">
+            <Node name="TratoMedi.iOS" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TratoMedi.Android PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

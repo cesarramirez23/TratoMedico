@@ -18,3 +18,15 @@
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/XamlC.stamp
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.pdb
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Release/netstandard2.0/TratoMedi.deps.json
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Release/netstandard2.0/TratoMedi.dll
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Release/netstandard2.0/TratoMedi.pdb
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/App.xaml.g.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/Views/Inicio.xaml.g.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.AssemblyInfoInputs.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.AssemblyInfo.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.csproj.CoreCompileInputs.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/XamlC.stamp
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.dll
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Release/netstandard2.0/TratoMedi.pdb

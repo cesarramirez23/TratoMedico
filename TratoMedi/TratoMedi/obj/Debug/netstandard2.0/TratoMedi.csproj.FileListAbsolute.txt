@@ -56,38 +56,50 @@ C:/Users/AlsainVR/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/net
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.dll
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.pdb
 /Users/saullopez/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.deps.json
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.dll
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.pdb
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Citas.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Consulta.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Info.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Login.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_MainPage.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_MasterMenu.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Medicamentos.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_NCita.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Opciones.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Paciente.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Perfil.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\v_PerfilProm.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\V_Registro.xaml.g.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csproj.CoreCompileInputs.cache
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfoInputs.cache
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfo.cs
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.dll
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.pdb
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
-C:\Users\Arkms-Alsain\Documents\GitHub\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\XamlC.stamp
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\Views\Inicio.xaml.g.cs
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfoInputs.cache
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.AssemblyInfo.cs
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.csprojAssemblyReference.cache
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.deps.json
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.dll
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\bin\Debug\netstandard2.0\TratoMedi.pdb
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\XamlC.stamp
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.dll
-C:\Users\Grafico\Documents\Cesar\proyectos visual\TratoMedico\TratoMedi\TratoMedi\obj\Debug\netstandard2.0\TratoMedi.pdb
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.deps.json
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.dll
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.pdb
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/App.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Citas.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Consulta.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Info.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Login.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_MainPage.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_MasterMenu.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Medicamentos.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_NCita.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Opciones.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Paciente.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Perfil.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/v_PerfilProm.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/V_Registro.xaml.g.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csproj.CoreCompileInputs.cache
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfoInputs.cache
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfo.cs
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.dll
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.pdb
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
+C:/Users/Arkms-Alsain/Documents/GitHub/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/XamlC.stamp
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/App.xaml.g.cs
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/Inicio.xaml.g.cs
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfoInputs.cache
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfo.cs
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.deps.json
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.dll
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.pdb
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/XamlC.stamp
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.dll
+C:/Users/Grafico/Documents/Cesar/proyectos visual/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.pdb
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.deps.json
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.dll
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/bin/Debug/netstandard2.0/TratoMedi.pdb
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csprojAssemblyReference.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/App.xaml.g.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/Views/Inicio.xaml.g.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfoInputs.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.AssemblyInfo.cs
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.csproj.CoreCompileInputs.cache
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.dll
+/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/Debug/netstandard2.0/TratoMedi.pdb

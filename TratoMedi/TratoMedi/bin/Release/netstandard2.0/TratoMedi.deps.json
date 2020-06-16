@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "230adba29d6a8cb4e7d2e2dc7a78ed7cb90943fe"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -9,50 +9,17 @@
     ".NETStandard,Version=v2.0/": {
       "TratoMedi/1.0.0": {
         "dependencies": {
-          "CClarke.Plugin.Calendars": "1.0.0",
           "NETStandard.Library": "2.0.3",
-          "Newtonsoft.Json": "11.0.2",
-          "Plugin.Permissions": "3.0.0.12",
-          "Xamarin.Forms": "3.2.0.871581",
-          "ZXing.Net.Mobile": "2.4.1",
-          "ZXing.Net.Mobile.Forms": "2.4.1"
+          "Xamarin.Forms": "3.2.0.871581"
         },
         "runtime": {
           "TratoMedi.dll": {}
-        }
-      },
-      "CClarke.Plugin.Calendars/1.0.0": {
-        "runtime": {
-          "lib/netstandard1.0/Plugin.Calendars.Abstractions.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          },
-          "lib/netstandard1.0/Plugin.Calendars.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
-        }
-      },
-      "Newtonsoft.Json/11.0.2": {
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
-          }
-        }
-      },
-      "Plugin.Permissions/3.0.0.12": {
-        "runtime": {
-          "lib/netstandard2.0/Plugin.Permissions.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       },
       "Xamarin.Forms/3.2.0.871581": {
@@ -70,34 +37,6 @@
             "fileVersion": "2.0.0.0"
           }
         }
-      },
-      "ZXing.Net.Mobile/2.4.1": {
-        "runtime": {
-          "lib/netstandard1.0/ZXing.Net.Mobile.Core.dll": {
-            "assemblyVersion": "2.4.1.0",
-            "fileVersion": "2.4.1.0"
-          },
-          "lib/netstandard1.0/ZXingNetMobile.dll": {
-            "assemblyVersion": "2.4.1.0",
-            "fileVersion": "2.4.1.0"
-          },
-          "lib/netstandard1.0/zxing.portable.dll": {
-            "assemblyVersion": "0.16.2.0",
-            "fileVersion": "0.16.2.0"
-          }
-        }
-      },
-      "ZXing.Net.Mobile.Forms/2.4.1": {
-        "dependencies": {
-          "Xamarin.Forms": "3.2.0.871581",
-          "ZXing.Net.Mobile": "2.4.1"
-        },
-        "runtime": {
-          "lib/netstandard1.0/ZXing.Net.Mobile.Forms.dll": {
-            "assemblyVersion": "2.4.1.0",
-            "fileVersion": "2.4.1.0"
-          }
-        }
       }
     }
   },
@@ -106,13 +45,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "CClarke.Plugin.Calendars/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lyA+3cDBYDA0t8ruy5AIYAE7X+3ZzagdRY5mVNXyFuZBjS+DPwMjqXSKiI06m75LIks0NCdRRESofo5PLMew3Q==",
-      "path": "cclarke.plugin.calendars/1.0.0",
-      "hashPath": "cclarke.plugin.calendars.1.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -128,40 +60,12 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
-    },
-    "Plugin.Permissions/3.0.0.12": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-R8Rlzfci1byoPBGOiJfCMzu0HhhN6Q4Vq4YizlF41W946NEmoL/Mb8U5caP5t5KfSbdPQpzdQ9JfM8fxPG8pfw==",
-      "path": "plugin.permissions/3.0.0.12",
-      "hashPath": "plugin.permissions.3.0.0.12.nupkg.sha512"
-    },
     "Xamarin.Forms/3.2.0.871581": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1yKOnOHYR1v4Afa5XIkpPfdIG3A3Tu0gT5TX4923xG5DV+8dJw+beSPuLagSJoU33NzV023t73R5iSbMoSF7qQ==",
+      "sha512": "sha512-PI+BD/fzCvpH/iKlLd6N8z+gN3ZrhOaoaLg4JmMF0eaLhrWinlzNFLYo+QsNCoIE0biSa7GU88YcyNiCoQO+7Q==",
       "path": "xamarin.forms/3.2.0.871581",
       "hashPath": "xamarin.forms.3.2.0.871581.nupkg.sha512"
-    },
-    "ZXing.Net.Mobile/2.4.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-iCL2WcqOyUnC1iFFdzXijk0EXfoLMDqW88MyhoTZigSyhJZM2C5hKgSZVyfx9E35tgkde/IZwHkk8cVDnbQlYg==",
-      "path": "zxing.net.mobile/2.4.1",
-      "hashPath": "zxing.net.mobile.2.4.1.nupkg.sha512"
-    },
-    "ZXing.Net.Mobile.Forms/2.4.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7z+MfL8TbfE36s1GGvrnlkhLUOV5dgdn1gYhUb3GU2W6YXzpfF39k6EqkmFsyNm1O07evTaKFgh7UTOqcWub3g==",
-      "path": "zxing.net.mobile.forms/2.4.1",
-      "hashPath": "zxing.net.mobile.forms.2.4.1.nupkg.sha512"
     }
   }
 }

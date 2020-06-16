@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DBkiOpgmja+Ni6E7lv6S974UBmafQ9W7bur3uqa70e4wg9q1jz6Dnycf2z4vOKuDVmV0yEunfzGzaPj/s+rXfQ==",
+  "success": true,
+  "projectFilePath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi.iOS/TratoMedi.iOS.csproj",
+  "expectedPackageFiles": [
+    "/Users/alsain/.nuget/packages/xamarin.forms/3.2.0.871581/xamarin.forms.3.2.0.871581.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj": {}
+    "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj": {
+    "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
+        "projectUniqueName": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj",
         "projectName": "TratoMedi",
-        "projectPath": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj",
-        "packagesPath": "C:\\Users\\Grafico\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\obj\\",
+        "projectPath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj",
+        "packagesPath": "/Users/alsain/.nuget/packages/",
+        "outputPath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Grafico\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/alsain/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +57,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
         }
       }
     }

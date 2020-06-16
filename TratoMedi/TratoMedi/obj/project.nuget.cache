@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "zWsumihy7g8zrAUBg4xUQ8ZnrYgOmKXYUE1WqlmLqwDRqZKJR/x/QZgyK1i5n6zUy1k2fanD2jvpuuXo865tsg==",
+  "success": true,
+  "projectFilePath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj",
+  "expectedPackageFiles": [
+    "/Users/alsain/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/alsain/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/alsain/.nuget/packages/xamarin.forms/3.2.0.871581/xamarin.forms.3.2.0.871581.nupkg.sha512"
+  ],
+  "logs": []
+}

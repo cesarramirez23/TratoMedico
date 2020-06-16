@@ -720,39 +720,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Grafico\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/Users/alsain/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
+      "projectUniqueName": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi.iOS/TratoMedi.iOS.csproj",
       "projectName": "TratoMedi.iOS",
-      "projectPath": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\TratoMedi.iOS.csproj",
-      "packagesPath": "C:\\Users\\Grafico\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi.iOS\\obj\\",
+      "projectPath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi.iOS/TratoMedi.iOS.csproj",
+      "packagesPath": "/Users/alsain/.nuget/packages/",
+      "outputPath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi.iOS/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Grafico\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/alsain/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj": {
-              "projectPath": "C:\\Users\\Grafico\\Documents\\Cesar\\proyectos visual\\TratoMedico\\TratoMedi\\TratoMedi\\TratoMedi.csproj"
+            "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj": {
+              "projectPath": "/Users/alsain/Documents/Github/TratoMedico/TratoMedi/TratoMedi/TratoMedi.csproj"
             }
           }
         }

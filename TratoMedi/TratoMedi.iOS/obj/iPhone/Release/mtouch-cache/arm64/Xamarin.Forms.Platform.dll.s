@@ -21,7 +21,7 @@ Ldebug_info_begin:
 	.short 2
 	.long 0
 	.byte 8,1
-	.asciz "Mono AOT Compiler 5.12.0 (tarball Mon Sep 17 21:30:02 EDT 2018)"
+	.asciz "Mono AOT Compiler 6.12.0 (2020-02/165f4b03417 Wed Apr  8 09:02:28 EDT 2020)"
 	.asciz "Xamarin.Forms.Platform.dll"
 	.asciz ""
 
@@ -577,7 +577,7 @@ assembly_name:
 	.align 3
 _mono_aot_file_info:
 
-	.long 144,0
+	.long 172,0
 	.align 3
 	.quad mono_aot_Xamarin_Forms_Platform_got
 	.align 3
@@ -617,11 +617,19 @@ _mono_aot_file_info:
 	.align 3
 	.quad 0
 	.align 3
+	.quad 0
+	.align 3
+	.quad 0
+	.align 3
 	.quad mem_end
 	.align 3
 	.quad assembly_guid
 	.align 3
 	.quad runtime_version
+	.align 3
+	.quad 0
+	.align 3
+	.quad 0
 	.align 3
 	.quad 0
 	.align 3
@@ -647,13 +655,14 @@ _mono_aot_file_info:
 	.align 3
 	.quad unbox_trampoline_addresses
 
-	.long 25,208,1,29,66,387000831,0,1075
-	.long 128,8,8,8,0,25,1976,888
-	.long 696,208,0,576,640,520,0,200
-	.long 56,880,0,0,0,0,0,0
+	.long 25,208,1,29,0,98,387000831,0
+	.long 813,128,8,8,8,9,8388607,0
+	.long 4,25,1704,0,0,880,688,208
+	.long 0,568,632,520,0,200,56,872
 	.long 0,0,0,0,0,0,0,0
-	.long 0,0
-	.byte 42,174,208,58,192,76,205,100,115,203,76,65,180,170,98,58
+	.long 0,0,0,0,0,0,0,0
+	.long 0,0,0,0,0,0,0,0
+	.byte 134,4,129,226,198,67,214,246,15,20,99,87,56,29,103,145
 	.globl _mono_aot_module_Xamarin_Forms_Platform_info
 	.align 3
 _mono_aot_module_Xamarin_Forms_Platform_info:
